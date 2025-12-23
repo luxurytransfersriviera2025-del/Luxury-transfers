@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva - Luxury Transfers Riviera</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --oro: #d4af37;
+            --oro-oscuro: #b8962e;
+            --negro: #000000;
+            --gris-fondo: #121212;
+            --gris-card: #1e1e1e;
+            --blanco: #ffffff;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--negro);
+            color: var(--blanco);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 500px;
+            background: var(--gris-fondo);
+            border: 1px solid var(--oro);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15);
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--oro);
+            text-align: center;
+            margin: 0 0 25px 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        /* --- SECCIONES DEL FORMULARIO --- */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            color: var(--oro);
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 8px;
+            font-size: 15px;
+            box-sizing: border-box;
+            font-family: 'Lato', sans-serif;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--oro);
+            outline: none;
+            background: #333;
+        }
+
+        /* --- SWITCH DE DIRECCIÓN --- */
+        .direccion-switch {
+            display: flex;
+            background: #2a2a2a;
+            border-radius: 10px;
+            padding: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #444;
+        }
+
+        .dir-opt {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.3s;
+            color: #888;
+        }
+
+        .dir-opt.active {
+            background: var(--oro);
+            color: var(--negro);
+            box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        /* --- FILA DOBLE PARA FECHAS --- */
+        .fila-doble {
+            display: flex;
+            gap: 10px;
+        }
+        .col { flex: 1; }
+
+        /* --- CONTENEDOR VUELTA (OCULTO POR DEFECTO) --- */
+        #contenedorVuelta {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+        }
+
+        /* --- BOTÓN COTIZAR --- */
+        .btn-cotizar {
+            background: linear-gradient(135deg, var(--oro), var(--oro-oscuro));
+            color: var(--negro);
+            border: none;
+            padding: 16px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-cotizar:active {
+            transform: scale(0.98);
+        }
+
+        /* --- RESULTADOS --- */
+        #resultados {
+            margin-top: 30px;
+            display: none;
+        }
+
+        .tarjeta {
+            background: var(--gris-card);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tarjeta::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 4px;
+            background: var(--oro);
+        }
+
+        .info-vehiculo h3 {
+            margin: 0;
+            color: var(--oro);
+            font-size: 16px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .info-vehiculo p {
+            margin: 5px 0 0;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .precio-box {
+            text-align: right;
+        }
+
+        .precio {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .btn-reservar {
+            background: transparent;
+            border: 1px solid var(--oro);
+            color: var(--oro);
+            padding: 6px 12px;
+            font-size: 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn-reservar:hover {
+            background: var(--oro);
+            color: var(--negro);
+        }
+
+        .bloqueado {
+            opacity: 0.5;
+            pointer-events: none;
+            background: #111;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <h1>Luxury Transfers</h1>
+
+    <div class="fila-doble">
+        <div class="col form-group">
+            <label>Servicio</label>
+            <select id="tipoServicio" onchange="toggleVuelta()">
+                <option value="SENCILLO">Sencillo (Ida)</option>
+                <option value="REDONDO">Redondo (Ida y Vuelta)</option>
+            </select>
+        </div>
+        <div class="col form-group">
+            <label>Moneda</label>
+            <select id="moneda" onchange="limpiarResultados()">
+                <option value="MXN">Pesos (MXN)</option>
+                <option value="USD">Dólares (USD)</option>
+            </select>
+        </div>
+    </div>
+
+    <label>Dirección del Viaje</label>
+    <div class="direccion-switch">
+        <div class="dir-opt active" id="btnDesdeAero" onclick="setDireccion('desdeAero')">Desde Aeropuerto</div>
+        <div class="dir-opt" id="btnHaciaAero" onclick="setDireccion('haciaAero')">Hacia Aeropuerto</div>
+    </div>
+
+    <div class="form-group">
+        <label id="labelOrigen">Desde</label>
+        <input type="text" id="origen" value="Aeropuerto Internacional de Cancún" readonly style="background:#1a1a1a; color:#888;">
+    </div>
+
+    <div class="form-group">
+        <label id="labelDestino">Hacia</label>
+        <input type="text" id="destino" placeholder="Busca tu Hotel o Dirección...">
+    </div>
+
+    <div class="fila-doble">
+        <div class="col form-group">
+            <label>Fecha Ida</label>
+            <input type="date" id="fechaIda">
+        </div>
+        <div class="col form-group">
+            <label>Hora Ida</label>
+            <input type="time" id="horaIda">
+        </div>
+    </div>
+
+    <div id="contenedorVuelta">
+        <div class="fila-doble">
+            <div class="col form-group">
+                <label>Fecha Vuelta</label>
+                <input type="date" id="fechaVuelta">
+            </div>
+            <div class="col form-group">
+                <label>Hora Vuelta</label>
+                <input type="time" id="horaVuelta">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Pasajeros</label>
+        <select id="pasajeros">
+            <option value="1">1 Pasajero</option>
+            <option value="2">2 Pasajeros</option>
+            <option value="3">3 Pasajeros</option>
+            <option value="4">4 Pasajeros</option>
+            <option value="5">5 Pasajeros</option>
+            <option value="6">6 Pasajeros</option>
+            <option value="7">7 Pasajeros</option>
+            <option value="8">8 Pasajeros</option>
+            <option value="9">9 Pasajeros</option>
+            <option value="10">10 Pasajeros</option>
+            <option value="11">11 Pasajeros</option>
+            <option value="12">12 Pasajeros</option>
+            <option value="13">13 Pasajeros</option>
+            <option value="14">14 Pasajeros</option>
+            <option value="15">15 Pasajeros</option>
+        </select>
+    </div>
+
+    <button class="btn-cotizar" onclick="cotizar()">VER PRECIOS Y RESERVAR</button>
+
+    <div id="resultados"></div>
+    <p style="text-align:center; font-size:10px; color:#666; margin-top:10px;">Precios sujetos a cambio sin previo aviso.</p>
+</div>
+
+<script>
+    // --- VARIABLES GLOBALES ---
+    let direccionMode = 'desdeAero'; // 'desdeAero' o 'haciaAero'
+
+    // --- BASES DE DATOS (Tus precios consolidados) ---
+    const tarifasSencilloMXN = {
+        "ZONA HOTELERA DE TULUM": { standart: 2970, small: 6300, luxury: 5490 },
+        "CENTRO DE TULUM": { standart: 2520, small: 5400, luxury: 5400 },
+        "ZONA HOTELERA DE CANCUN": { standart: 720, small: 1800, luxury: 1512 },
+        "CENTRO DE CANCUN": { standart: 720, small: 1800, luxury: 1512 },
+        "COSTA MUJERES": { standart: 1440, small: 2700, luxury: 2610 },
+        "PLAYA MUJERES": { standart: 1170, small: 3338, luxury: 2340 },
+        "PUERTO JUAREZ": { standart: 990, small: 2520, luxury: 1980 },
+        "PLAYA PARAISO": { standart: 1170, small: 3338, luxury: 2340 },
+        "PUERTO MORELOS": { standart: 990, small: 2520, luxury: 1980 },
+        "PLAYA DEL CARMEN": { standart: 1440, small: 2700, luxury: 2610 },
+        "PUERTO AVENTURAS": { standart: 1710, small: 4050, luxury: 3060 },
+        "AKUMAL": { standart: 2070, small: 4860, luxury: 4230 },
+        "FELIPE CARRILLO PUERTO": { standart: 8100, small: 19386, luxury: 21870 },
+        "MAHAHUAL": { standart: 9900, small: 19386, luxury: 17820 },
+        "BACALAR": { standart: 9900, small: 19386, luxury: 17820 },
+        "CHETUMAL": { standart: 10000, small: 19386, luxury: 19000 },
+        "HOLBOX": { standart: 5760, small: 14400, luxury: 11160 },
+        "VALLADOLID": { standart: 5400, small: 11120, luxury: 15684 },
+        "MERIDA": { standart: 9900, small: 17820, luxury: 17820 }
+    };
+    const tarifasSencilloUSD = {
+        "ZONA HOTELERA DE TULUM": { standart: 170, small: 360, luxury: 314 },
+        "CENTRO DE TULUM": { standart: 144, small: 309, luxury: 309 },
+        "ZONA HOTELERA DE CANCUN": { standart: 42, small: 103, luxury: 87 },
+        "CENTRO DE CANCUN": { standart: 42, small: 103, luxury: 87 },
+        "COSTA MUJERES": { standart: 83, small: 155, luxury: 150 },
+        "PLAYA MUJERES": { standart: 67, small: 191, luxury: 134 },
+        "PUERTO JUAREZ": { standart: 57, small: 144, luxury: 114 },
+        "PLAYA PARAISO": { standart: 67, small: 191, luxury: 134 },
+        "PUERTO MORELOS": { standart: 57, small: 144, luxury: 114 },
+        "PLAYA DEL CARMEN": { standart: 83, small: 155, luxury: 150 },
+        "PUERTO AVENTURAS": { standart: 98, small: 232, luxury: 175 },
+        "AKUMAL": { standart: 119, small: 278, luxury: 242 },
+        "FELIPE CARRILLO PUERTO": { standart: 463, small: 1108, luxury: 1250 },
+        "MAHAHUAL": { standart: 566, small: 1108, luxury: 1019 },
+        "BACALAR": { standart: 566, small: 1108, luxury: 1019 },
+        "CHETUMAL": { standart: 572, small: 1108, luxury: 1086 },
+        "HOLBOX": { standart: 330, small: 823, luxury: 638 },
+        "VALLADOLID": { standart: 309, small: 636, luxury: 897 },
+        "MERIDA": { standart: 566, small: 1019, luxury: 1019 }
+    };
+    const tarifasRedondoMXN = {
+        "ZONA HOTELERA DE TULUM": { standart: 5940, small: 12600, luxury: 10980 },
+        "CENTRO DE TULUM": { standart: 5040, small: 10800, luxury: 10800 },
+        "ZONA HOTELERA DE CANCUN": { standart: 1440, small: 3600, luxury: 3024 },
+        "CENTRO DE CANCUN": { standart: 1440, small: 3600, luxury: 3024 },
+        "COSTA MUJERES": { standart: 2880, small: 5400, luxury: 5220 },
+        "PLAYA MUJERES": { standart: 2340, small: 6676, luxury: 4680 },
+        "PUERTO JUAREZ": { standart: 1980, small: 5040, luxury: 3960 },
+        "PLAYA PARAISO": { standart: 2340, small: 6676, luxury: 4680 },
+        "PUERTO MORELOS": { standart: 1980, small: 5040, luxury: 3960 },
+        "PLAYA DEL CARMEN": { standart: 2880, small: 5400, luxury: 5220 },
+        "PUERTO AVENTURAS": { standart: 3420, small: 8100, luxury: 6120 },
+        "AKUMAL": { standart: 4140, small: 9720, luxury: 8460 },
+        "FELIPE CARRILLO PUERTO": { standart: 16200, small: 38772, luxury: 43740 },
+        "MAHAHUAL": { standart: 19800, small: 38772, luxury: 35640 },
+        "BACALAR": { standart: 19800, small: 38772, luxury: 35640 },
+        "CHETUMAL": { standart: 20000, small: 38772, luxury: 38000 },
+        "HOLBOX": { standart: 11520, small: 28800, luxury: 22320 },
+        "VALLADOLID": { standart: 10800, small: 22240, luxury: 31368 },
+        "MERIDA": { standart: 19800, small: 35640, luxury: 35640 }
+    };
+    const tarifasRedondoUSD = {
+        "ZONA HOTELERA DE TULUM": { standart: 340, small: 720, luxury: 628 },
+        "CENTRO DE TULUM": { standart: 288, small: 618, luxury: 618 },
+        "ZONA HOTELERA DE CANCUN": { standart: 83, small: 206, luxury: 173 },
+        "CENTRO DE CANCUN": { standart: 83, small: 206, luxury: 173 },
+        "COSTA MUJERES": { standart: 165, small: 309, luxury: 299 },
+        "PLAYA MUJERES": { standart: 134, small: 382, luxury: 268 },
+        "PUERTO JUAREZ": { standart: 114, small: 288, luxury: 227 },
+        "PLAYA PARAISO": { standart: 134, small: 382, luxury: 268 },
+        "PUERTO MORELOS": { standart: 114, small: 288, luxury: 227 },
+        "PLAYA DEL CARMEN": { standart: 165, small: 309, luxury: 299 },
+        "PUERTO AVENTURAS": { standart: 196, small: 463, luxury: 350 },
+        "AKUMAL": { standart: 237, small: 556, luxury: 484 },
+        "FELIPE CARRILLO PUERTO": { standart: 926, small: 2216, luxury: 2500 },
+        "MAHAHUAL": { standart: 1132, small: 2216, luxury: 2037 },
+        "BACALAR": { standart: 1132, small: 2216, luxury: 2037 },
+        "CHETUMAL": { standart: 1143, small: 2216, luxury: 2172 },
+        "HOLBOX": { standart: 659, small: 1646, luxury: 1276 },
+        "VALLADOLID": { standart: 618, small: 1271, luxury: 1793 },
+        "MERIDA": { standart: 1132, small: 2037, luxury: 2037 }
+    };
+
+    const diccionarioZonas = {
+        "ZONA HOTELERA DE TULUM": ["TULUM HOTEL ZONE", "ZONA HOTELERA TULUM", "BOCA PAILA", "PAPAYA PLAYA", "NOMADE", "AZULIK"],
+        "CENTRO DE TULUM": ["TULUM DOWNTOWN", "CENTRO DE TULUM", "TULUM PUEBLO", "TULUM, Q.R.", "ZAMA", "VELETA"],
+        "ZONA HOTELERA DE CANCUN": ["CANCUN HOTEL ZONE", "ZONA HOTELERA", "KUKULCAN", "KM", "HOTEL ZONE"],
+        "CENTRO DE CANCUN": ["CANCUN DOWNTOWN", "CENTRO DE CANCUN", "CANCUN CENTRO", "SM ", "SUPERMANZANA", "CANCUN, Q.R."],
+        "COSTA MUJERES": ["COSTA MUJERES", "RIU DUNAMAR", "RIU PALACE COSTA", "PLANET HOLLYWOOD", "CATALONIA COSTA"],
+        "PLAYA MUJERES": ["PLAYA MUJERES", "ATELIER", "FINEST", "BELOVED", "EXCELLENCE PLAYA"],
+        "PUERTO MORELOS": ["PUERTO MORELOS", "DREAMS JADE", "NOW SAPPHIRE", "OCEAN CORAL"],
+        "PLAYA PARAISO": ["PLAYA PARAISO", "IBEROSTAR", "VIDANTA", "MAROMA"],
+        "PLAYA DEL CARMEN": ["PLAYA DEL CARMEN", "XCARET", "FIFTH AVENUE", "QUINTA AVENIDA", "PLAYACAR"],
+        "PUERTO AVENTURAS": ["PUERTO AVENTURAS", "HARD ROCK RIVIERA", "BARCELO", "UNICO", "CATALONIA ROYAL"],
+        "AKUMAL": ["AKUMAL", "BAHIA PRINCIPE", "SIRENIS", "PALLADIUM", "UNICO"],
+        "MAHAHUAL": ["MAHAHUAL"],
+        "BACALAR": ["BACALAR"],
+        "CHETUMAL": ["CHETUMAL"],
+        "HOLBOX": ["HOLBOX", "CHIQUILA"],
+        "VALLADOLID": ["VALLADOLID"],
+        "MERIDA": ["MERIDA"]
+    };
+
+    // --- FUNCIONES UI ---
+    function setDireccion(modo) {
+        direccionMode = modo;
+        const origenInput = document.getElementById('origen');
+        const destinoInput = document.getElementById('destino');
+        const btnDesde = document.getElementById('btnDesdeAero');
+        const btnHacia = document.getElementById('btnHaciaAero');
+
+        // Reset de estilos
+        btnDesde.classList.remove('active');
+        btnHacia.classList.remove('active');
+        origenInput.value = "";
+        destinoInput.value = "";
+        origenInput.removeAttribute('readonly');
+        destinoInput.removeAttribute('readonly');
+        origenInput.style.background = "#2a2a2a";
+        destinoInput.style.background = "#2a2a2a";
+        origenInput.style.color = "white";
+        destinoInput.style.color = "white";
+
+        if (modo === 'desdeAero') {
+            btnDesde.classList.add('active');
+            origenInput.value = "Aeropuerto Internacional de Cancún";
+            origenInput.setAttribute('readonly', true);
+            origenInput.style.background = "#1a1a1a";
+            origenInput.style.color = "#888";
+            destinoInput.placeholder = "Busca tu Hotel o Dirección...";
+            destinoInput.focus();
+        } else {
+            btnHacia.classList.add('active');
+            destinoInput.value = "Aeropuerto Internacional de Cancún";
+            destinoInput.setAttribute('readonly', true);
+            destinoInput.style.background = "#1a1a1a";
+            destinoInput.style.color = "#888";
+            origenInput.placeholder = "Busca tu Hotel o Dirección...";
+            origenInput.focus();
+        }
+    }
+
+    function toggleVuelta() {
+        const tipo = document.getElementById('tipoServicio').value;
+        const divVuelta = document.getElementById('contenedorVuelta');
+        if (tipo === 'REDONDO') {
+            divVuelta.style.display = 'block';
+        } else {
+            divVuelta.style.display = 'none';
+        }
+        limpiarResultados();
+    }
+
+    function limpiarResultados() {
+        document.getElementById('resultados').style.display = 'none';
+    }
+
+    // --- GOOGLE MAPS ---
+    function initAutocomplete() {
+        const inputLibre = direccionMode === 'desdeAero' ? 'destino' : 'origen';
+        // Aunque inicializamos ambos para que funcionen al cambiar el switch
+        new google.maps.places.Autocomplete(document.getElementById('origen'), { componentRestrictions: { country: "mx" } });
+        new google.maps.places.Autocomplete(document.getElementById('destino'), { componentRestrictions: { country: "mx" } });
+    }
+
+    // --- COTIZACIÓN ---
+    function cotizar() {
+        const tipo = document.getElementById('tipoServicio').value;
+        const moneda = document.getElementById('moneda').value;
+        const pasajeros = parseInt(document.getElementById('pasajeros').value);
+        
+        // Determinar qué input tiene el lugar "variable" (el Hotel)
+        let lugarBusqueda = "";
+        let origenTxt = document.getElementById('origen').value;
+        let destinoTxt = document.getElementById('destino').value;
+
+        if (direccionMode === 'desdeAero') {
+            lugarBusqueda = destinoTxt;
+        } else {
+            lugarBusqueda = origenTxt;
+        }
+
+        if (lugarBusqueda.length < 3) {
+            alert("Por favor indica la dirección del hotel o destino.");
+            return;
+        }
+
+        // Buscar Zona
+        let zonaDetectada = "";
+        lugarBusqueda = lugarBusqueda.toUpperCase();
+
+        for (let zona in diccionarioZonas) {
+            let alias = diccionarioZonas[zona];
+            for (let i = 0; i < alias.length; i++) {
+                if (lugarBusqueda.includes(alias[i])) {
+                    zonaDetectada = zona;
+                    break;
+                }
+            }
+            if (zonaDetectada) break;
+        }
+
+        if (!zonaDetectada) {
+            alert("Destino no detectado en nuestra cobertura automática. Contáctanos para una cotización manual.");
+            return;
+        }
+
+        // Seleccionar Base de Datos
+        let db;
+        if (moneda === 'MXN' && tipo === 'SENCILLO') db = tarifasSencilloMXN;
+        else if (moneda === 'USD' && tipo === 'SENCILLO') db = tarifasSencilloUSD;
+        else if (moneda === 'MXN' && tipo === 'REDONDO') db = tarifasRedondoMXN;
+        else if (moneda === 'USD' && tipo === 'REDONDO') db = tarifasRedondoUSD;
+
+        const precios = db[zonaDetectada];
+        
+        // Renderizar Resultados
+        const divRes = document.getElementById('resultados');
+        divRes.innerHTML = "";
+        
+        // Tarjetas (Filtrando por capacidad de pasajeros)
+        // Standart: 1-8 pax
+        if (pasajeros <= 8) {
+            divRes.innerHTML += crearCard("STANDART", "1-8 Pasajeros", precios.standart, moneda, zonaDetectada);
+        }
+        
+        // Small Group: 1-15 pax (Siempre visible hasta 15)
+        if (pasajeros <= 15) {
+            divRes.innerHTML += crearCard("SMALL GROUP", "1-15 Pasajeros", precios.small, moneda, zonaDetectada);
+        }
+
+        // Luxury: 1-5 pax
+        if (pasajeros <= 5) {
+            divRes.innerHTML += crearCard("LUXURY", "1-5 Pasajeros", precios.luxury, moneda, zonaDetectada);
+        }
+
+        divRes.style.display = 'block';
+    }
+
+    function crearCard(vehiculo, capacidad, precio, moneda, zona) {
+        // Recopilar datos para WhatsApp
+        const tipo = document.getElementById('tipoServicio').value;
+        const origen = document.getElementById('origen').value;
+        const destino = document.getElementById('destino').value;
+        const fechaIda = document.getElementById('fechaIda').value || "No definida";
+        const horaIda = document.getElementById('horaIda').value || "--:--";
+        const pax = document.getElementById('pasajeros').value;
+        
+        let extras = "";
+        if (tipo === 'REDONDO') {
+            const fVuelta = document.getElementById('fechaVuelta').value || "No definida";
+            const hVuelta = document.getElementById('horaVuelta').value || "--:--";
+            extras = `%0A🔄 *Regreso:* ${fVuelta} a las ${hVuelta}`;
+        }
+
+        const mensaje = `Hola, deseo reservar:%0A%0A🚐 *Servicio:* ${vehiculo} (${capacidad})%0A📍 *Origen:* ${origen}%0A🏁 *Destino:* ${destino} (${zona})%0A📅 *Ida:* ${fechaIda} a las ${horaIda}${extras}%0A👥 *Pasajeros:* ${pax}%0A💰 *Total:* $${precio} ${moneda}`;
+        
+        const telefono = "5219984042857"; // Tu número
+        const link = `https://wa.me/${telefono}?text=${mensaje}`;
+
+        return `
+            <div class="tarjeta">
+                <div class="info-vehiculo">
+                    <h3>${vehiculo}</h3>
+                    <p>${capacidad}</p>
+                    <p style="color:#d4af37;">${tipo === 'REDONDO' ? 'Viaje Redondo (Ida y Vuelta)' : 'Viaje Sencillo'}</p>
+                </div>
+                <div class="precio-box">
+                    <span class="precio">$${precio} ${moneda}</span>
+                    <a href="${link}" target="_blank" class="btn-reservar">RESERVAR AHORA</a>
+                </div>
+            </div>
+        `;
+    }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdK5yLQ20SQrLc_0rOuo7oxxHVQ233Bh0&libraries=places&callback=initAutocomplete" async defer></script>
+
+</body>
+</html>
