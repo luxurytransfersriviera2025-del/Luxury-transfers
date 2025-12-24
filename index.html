@@ -100,7 +100,7 @@
         /* Estilo para la sección de contacto (Siempre visible) */
         .contact-section {
             grid-column: 1 / -1;
-            display: grid; /* Siempre visible */
+            display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 6px;
             margin-top: 15px;
@@ -272,6 +272,16 @@
                         <label>Correo Electrónico</label>
                         <input type="email" id="emailCliente" placeholder="correo@ejemplo.com">
                     </div>
+
+                    <div class="input-wrapper">
+                        <label>Aerolínea (Opcional)</label>
+                        <input type="text" id="aerolinea" placeholder="Ej: Volaris">
+                    </div>
+                    <div class="input-wrapper">
+                        <label>No. Vuelo (Opcional)</label>
+                        <input type="text" id="numVuelo" placeholder="Ej: Y4 123">
+                    </div>
+
                     <div class="input-wrapper" style="grid-column: 1 / -1;">
                         <label>Notas / Equipaje / Sillas de Bebé</label>
                         <textarea id="notasCliente" rows="2" placeholder="Ej: Llevamos 4 maletas grandes, necesitamos silla de bebé..."></textarea>
@@ -552,12 +562,21 @@
         const tel = document.getElementById('telefonoCliente').value;
         const mail = document.getElementById('emailCliente').value;
         const notas = document.getElementById('notasCliente').value;
+        const aerolinea = document.getElementById('aerolinea').value;
+        const vuelo = document.getElementById('numVuelo').value;
+        
         const pax = document.getElementById('pasajeros').value;
         const fecha = document.getElementById('fechaIda').value;
         const hora = document.getElementById('horaIda').value;
 
+        // Construimos el bloque del vuelo si existe info
+        let vueloMsg = "";
+        if(aerolinea || vuelo) {
+           vueloMsg = `%0A✈️ *Vuelo:* ${aerolinea} ${vuelo}`;
+        }
+
         // Bloque de texto de contacto para WhatsApp
-        const contactoMsgBlock = `%0A%0A📝 *DATOS DEL CLIENTE:*%0A👤 *Nombre:* ${nombre}%0A📞 *Tel:* ${tel}%0A📧 *Email:* ${mail}%0A📋 *Notas:* ${notas}`;
+        const contactoMsgBlock = `%0A%0A📝 *DATOS DEL CLIENTE:*%0A👤 *Nombre:* ${nombre}%0A📞 *Tel:* ${tel}%0A📧 *Email:* ${mail}${vueloMsg}%0A📋 *Notas:* ${notas}`;
 
 
         // --- LOGICA DE COTIZACIÓN PERSONALIZADA (WHATSAPP DIRECTO) ---
