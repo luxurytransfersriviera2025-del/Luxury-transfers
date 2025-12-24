@@ -289,8 +289,13 @@
                         </div>
                     </div>
 
+                    <div class="input-wrapper" id="divItinerario" style="grid-column: 1 / -1; display: none;">
+                        <label style="color: #003580;">¿Qué lugares quieres visitar? / Itinerario</label>
+                        <textarea id="itinerarioCliente" rows="2" placeholder="Ej: Ir a Tulum Ruinas, luego un cenote y terminar a comer en..."></textarea>
+                    </div>
+
                     <div class="input-wrapper" style="grid-column: 1 / -1;">
-                        <label id="labelNotas">Notas / Equipaje / Sillas de Bebé</label>
+                        <label>Notas / Equipaje / Sillas de Bebé</label>
                         <textarea id="notasCliente" rows="2" placeholder="Ej: Llevamos 4 maletas grandes, necesitamos silla de bebé..."></textarea>
                     </div>
                 </div>
@@ -432,11 +437,10 @@
         
         const divDestinoInput = document.getElementById('divDestinoInput');
         const divHorasInput = document.getElementById('divHorasInput');
-        const labelNotas = document.getElementById('labelNotas');
-        const notasCliente = document.getElementById('notasCliente');
         
-        // CONTENEDOR DE CAMPOS DE VUELO
+        // CONTENEDOR DE CAMPOS DE VUELO E ITINERARIO
         const divVueloInfo = document.getElementById('divVueloInfo');
+        const divItinerario = document.getElementById('divItinerario');
 
         // Reset de clases y estados
         btnDesde.classList.remove('active');
@@ -448,10 +452,8 @@
         // Restaurar visibilidad normal de inputs
         divDestinoInput.style.display = 'flex';
         divHorasInput.style.display = 'none';
-
-        // Restaurar labels originales de notas
-        labelNotas.innerText = "Notas / Equipaje / Sillas de Bebé";
-        notasCliente.placeholder = "Ej: Llevamos 4 maletas grandes, necesitamos silla de bebé...";
+        // Ocultar Itinerario por defecto
+        divItinerario.style.display = 'none';
 
         // Restauramos visibilidad de RadioGroup
         document.getElementById('radioTipoViaje').style.display = 'flex';
@@ -554,26 +556,23 @@
         const destinoInput = document.getElementById('destino');
         const labelDestino = document.getElementById('labelDestino');
         
-        const labelNotas = document.getElementById('labelNotas');
-        const notasCliente = document.getElementById('notasCliente');
-
-        // Reset previo de notas
-        labelNotas.innerText = "Notas / Equipaje / Sillas de Bebé";
-        notasCliente.placeholder = "Ej: Llevamos 4 maletas grandes, necesitamos silla de bebé...";
+        // CAMPO ITINERARIO
+        const divItinerario = document.getElementById('divItinerario');
 
         if (subtipo === 'HORAS') {
             // Ocultamos el input de texto DESTINO y mostramos el SELECT de HORAS
             divDestinoInput.style.display = 'none';
             divHorasInput.style.display = 'flex';
             
-            // CAMBIO DE TÍTULO Y PLACEHOLDER DE NOTAS (IDEA DEL RECORRIDO)
-            labelNotas.innerText = "Idea del Recorrido / Ruta";
-            notasCliente.placeholder = "Ej: Ir a Tulum Ruinas, luego un cenote y comer...";
+            // MOSTRAMOS EL CAMPO DE ITINERARIO
+            divItinerario.style.display = 'flex'; // O grid, según CSS
 
         } else {
             // Regresamos al input normal
             divDestinoInput.style.display = 'flex';
             divHorasInput.style.display = 'none';
+            // OCULTAMOS ITINERARIO
+            divItinerario.style.display = 'none';
 
             labelDestino.innerText = "Destino";
             if (subtipo === 'TOUR') {
@@ -627,6 +626,7 @@
         const notas = document.getElementById('notasCliente').value;
         const aerolinea = document.getElementById('aerolinea').value;
         const vuelo = document.getElementById('numVuelo').value;
+        const itinerario = document.getElementById('itinerarioCliente').value;
         
         const pax = document.getElementById('pasajeros').value;
         const fecha = document.getElementById('fechaIda').value;
@@ -640,17 +640,14 @@
             }
         }
 
-        // Construimos etiqueta dinámica de las notas (Notas o Ruta)
-        let labelNotasTxt = "Notas";
-        if (direccionMode === 'personalizado') {
-             const subtipo = document.getElementById('subtipoPersonalizado').value;
-             if(subtipo === 'HORAS') {
-                 labelNotasTxt = "Ruta/Plan";
-             }
+        // Construimos bloque de itinerario (SOLO si es Horas)
+        let itinerarioMsg = "";
+        if (direccionMode === 'personalizado' && document.getElementById('subtipoPersonalizado').value === 'HORAS') {
+             itinerarioMsg = `%0A🗺️ *Itinerario:* ${itinerario}`;
         }
 
         // Bloque de texto de contacto
-        const contactoMsgBlock = `%0A%0A📝 *DATOS DEL CLIENTE:*%0A👤 *Nombre:* ${nombre}%0A📞 *Tel:* ${tel}%0A📧 *Email:* ${mail}${vueloMsg}%0A📋 *${labelNotasTxt}:* ${notas}`;
+        const contactoMsgBlock = `%0A%0A📝 *DATOS DEL CLIENTE:*%0A👤 *Nombre:* ${nombre}%0A📞 *Tel:* ${tel}%0A📧 *Email:* ${mail}${vueloMsg}${itinerarioMsg}%0A📋 *Notas:* ${notas}`;
 
 
         // --- LOGICA DE COTIZACIÓN PERSONALIZADA ---
