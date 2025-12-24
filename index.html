@@ -97,15 +97,15 @@
             color: var(--text-dark); background: transparent; font-family: 'Roboto', sans-serif; padding: 0;
         }
         
-        /* Estilo especial para la sección de contacto (Oculta por defecto) */
+        /* Estilo para la sección de contacto (Siempre visible) */
         .contact-section {
             grid-column: 1 / -1;
-            display: none; /* Se activa con JS */
+            display: grid; /* Siempre visible */
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 6px;
-            margin-top: 5px;
-            border-top: 1px dashed #999;
-            padding-top: 10px;
+            margin-top: 15px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
         }
 
         .btn-cotizar {
@@ -185,10 +185,10 @@
 
             <div class="direction-tabs">
                 <div class="tab-btn active" id="btnDesdeAero" onclick="setDireccion('desdeAero')">
-                    <i class="fas fa-plane-arrival"></i> Desde Aeropuerto
+                    <i class="fas fa-plane-arrival"></i> Desde Aeropuerto de Cancún
                 </div>
                 <div class="tab-btn" id="btnHaciaAero" onclick="setDireccion('haciaAero')">
-                    <i class="fas fa-plane-departure"></i> Hacia Aeropuerto
+                    <i class="fas fa-plane-departure"></i> Hacia el Aeropuerto de Cancún
                 </div>
                 <div class="tab-btn" id="btnPersonalizado" onclick="setDireccion('personalizado')">
                     <i class="fas fa-map-marked-alt"></i> Servicio Personalizado
@@ -266,7 +266,7 @@
                     </div>
                     <div class="input-wrapper">
                         <label>Teléfono (con País)</label>
-                        <input type="tel" id="telefonoCliente" placeholder="Ej: +52 1 555 123 4567">
+                        <input type="tel" id="telefonoCliente" placeholder="Ej: +52 555 123 4567">
                     </div>
                     <div class="input-wrapper">
                         <label>Correo Electrónico</label>
@@ -412,19 +412,16 @@
         const btnPersonalizado = document.getElementById('btnPersonalizado');
         const btnAccion = document.getElementById('btnAccion');
         const divSubtipo = document.getElementById('divSubtipoServicio');
-        const radioTipoViaje = document.getElementById('radioTipoViaje');
-        const seccionContacto = document.getElementById('seccionContacto');
+        
         const divDestinoInput = document.getElementById('divDestinoInput');
         const divHorasInput = document.getElementById('divHorasInput');
 
-        // Reset de clases
+        // Reset de clases y estados
         btnDesde.classList.remove('active');
         btnHacia.classList.remove('active');
         btnPersonalizado.classList.remove('active');
         
         divSubtipo.style.display = 'none';
-        seccionContacto.style.display = 'none'; // Ocultar contacto en modo auto
-        radioTipoViaje.style.display = 'flex'; 
         
         // Restaurar visibilidad normal de inputs
         divDestinoInput.style.display = 'flex';
@@ -460,8 +457,6 @@
         } else if (modo === 'personalizado') {
             btnPersonalizado.classList.add('active');
             divSubtipo.style.display = 'flex'; 
-            radioTipoViaje.style.display = 'none'; 
-            seccionContacto.style.display = 'grid'; // Mostrar contacto
 
             origenInput.value = "";
             origenInput.removeAttribute('readonly');
@@ -520,6 +515,7 @@
         const divFechaVuelta = document.getElementById('divFechaVuelta');
         const divHoraVuelta = document.getElementById('divHoraVuelta');
 
+        // La vuelta solo aplica si NO es personalizado y es REDONDO
         if (tipo === 'REDONDO' && direccionMode !== 'personalizado') {
             divFechaVuelta.style.display = 'flex';
             divHoraVuelta.style.display = 'flex';
@@ -551,6 +547,19 @@
     }
 
     function cotizar() {
+        // --- RECOPILAR DATOS DE CONTACTO (COMÚN PARA TODOS) ---
+        const nombre = document.getElementById('nombreCliente').value;
+        const tel = document.getElementById('telefonoCliente').value;
+        const mail = document.getElementById('emailCliente').value;
+        const notas = document.getElementById('notasCliente').value;
+        const pax = document.getElementById('pasajeros').value;
+        const fecha = document.getElementById('fechaIda').value;
+        const hora = document.getElementById('horaIda').value;
+
+        // Bloque de texto de contacto para WhatsApp
+        const contactoMsgBlock = `%0A%0A📝 *DATOS DEL CLIENTE:*%0A👤 *Nombre:* ${nombre}%0A📞 *Tel:* ${tel}%0A📧 *Email:* ${mail}%0A📋 *Notas:* ${notas}`;
+
+
         // --- LOGICA DE COTIZACIÓN PERSONALIZADA (WHATSAPP DIRECTO) ---
         if (direccionMode === 'personalizado') {
             const subtipo = document.getElementById('subtipoPersonalizado').value;
@@ -565,22 +574,12 @@
                 destinoFinal = document.getElementById('destino').value;
             }
 
-            const fecha = document.getElementById('fechaIda').value;
-            const hora = document.getElementById('horaIda').value;
-            const pax = document.getElementById('pasajeros').value;
-            
-            // Datos de Contacto
-            const nombre = document.getElementById('nombreCliente').value;
-            const tel = document.getElementById('telefonoCliente').value;
-            const mail = document.getElementById('emailCliente').value;
-            const notas = document.getElementById('notasCliente').value;
-
             // Validación simple
             if(origen.length < 3) { alert("Indica el Origen"); return; }
-            if(nombre.length < 2) { alert("Por favor escribe tu Nombre"); return; }
-            if(tel.length < 5) { alert("Por favor escribe tu Teléfono con el código de país"); return; }
+            if(nombre.length < 2) { alert("Por favor escribe tu Nombre para cotizar."); return; }
+            if(tel.length < 5) { alert("Por favor escribe tu Teléfono de contacto."); return; }
 
-            const mensaje = `Hola, quiero cotizar un *Servicio Especial*:%0A%0A📌 *Tipo:* ${subtipoTexto}%0A📍 *Origen:* ${origen}%0A🏁 *Destino/Duración:* ${destinoFinal}%0A📅 *Fecha:* ${fecha} - ${hora}%0A👥 *Pax:* ${pax}%0A%0A📝 *DATOS DEL CLIENTE:*%0A👤 *Nombre:* ${nombre}%0A📞 *Tel:* ${tel}%0A📧 *Email:* ${mail}%0A📋 *Notas:* ${notas}`;
+            const mensaje = `Hola, quiero cotizar un *Servicio Especial*:%0A%0A📌 *Tipo:* ${subtipoTexto}%0A📍 *Origen:* ${origen}%0A🏁 *Destino/Duración:* ${destinoFinal}%0A📅 *Fecha:* ${fecha} - ${hora}%0A👥 *Pax:* ${pax}${contactoMsgBlock}`;
             
             window.open(`https://wa.me/5219984042857?text=${mensaje}`, '_blank');
             return; 
@@ -589,7 +588,6 @@
         // --- LOGICA DE COTIZACIÓN AUTOMÁTICA (AEROPUERTO) ---
         const tipo = document.getElementById('tipoServicio').value;
         const moneda = document.getElementById('moneda').value;
-        const pasajeros = parseInt(document.getElementById('pasajeros').value);
         
         let lugarBusqueda = "";
         let origenTxt = document.getElementById('origen').value;
@@ -601,10 +599,12 @@
             lugarBusqueda = origenTxt;
         }
 
-        if (lugarBusqueda.length < 3) {
-            alert("Por favor indica la dirección del hotel o destino.");
-            return;
-        }
+        // Validaciones
+        if (lugarBusqueda.length < 3) { alert("Por favor indica la dirección del hotel o destino."); return; }
+        // Validación de contacto obligatoria para ver precios
+        if(nombre.length < 2) { alert("Por favor escribe tu Nombre para ver los precios."); return; }
+        if(tel.length < 5) { alert("Por favor escribe tu Teléfono para ver los precios."); return; }
+
 
         let zonaDetectada = "";
         lugarBusqueda = lugarBusqueda.toUpperCase();
@@ -635,28 +635,30 @@
         const divRes = document.getElementById('resultados');
         divRes.innerHTML = "";
         
+        const pasajerosNum = parseInt(pax);
+
         // 1. Categoría STANDARD
-        if (pasajeros <= 3) {
-            divRes.innerHTML += crearCard("STANDARD SEDAN", "1-3 Pasajeros", precios.standart, moneda, zonaDetectada, imgUrlErtiga);
+        if (pasajerosNum <= 3) {
+            divRes.innerHTML += crearCard("STANDARD SEDAN", "1-3 Pasajeros", precios.standart, moneda, zonaDetectada, imgUrlErtiga, contactoMsgBlock);
         } 
-        else if (pasajeros <= 8) {
-            divRes.innerHTML += crearCard("VAN STANDARD", "1-8 Pasajeros", precios.standart, moneda, zonaDetectada, imgUrlTransporter);
+        else if (pasajerosNum <= 8) {
+            divRes.innerHTML += crearCard("VAN STANDARD", "1-8 Pasajeros", precios.standart, moneda, zonaDetectada, imgUrlTransporter, contactoMsgBlock);
         }
 
         // 2. Categoría SMALL GROUP
-        if (pasajeros <= 15 && precios.small) {
-             divRes.innerHTML += crearCard("SMALL GROUP VAN", "Hasta 15 Pasajeros", precios.small, moneda, zonaDetectada, imgUrlSprinter);
+        if (pasajerosNum <= 15 && precios.small) {
+             divRes.innerHTML += crearCard("SMALL GROUP VAN", "Hasta 15 Pasajeros", precios.small, moneda, zonaDetectada, imgUrlSprinter, contactoMsgBlock);
         }
 
         // 3. Categoría LUXURY
-        if (pasajeros <= 5 && precios.luxury) {
-            divRes.innerHTML += crearCard("LUXURY SUV", "1-5 Pasajeros", precios.luxury, moneda, zonaDetectada, imgUrlSuburban);
+        if (pasajerosNum <= 5 && precios.luxury) {
+            divRes.innerHTML += crearCard("LUXURY SUV", "1-5 Pasajeros", precios.luxury, moneda, zonaDetectada, imgUrlSuburban, contactoMsgBlock);
         }
 
         divRes.style.display = 'block';
     }
 
-    function crearCard(vehiculo, capacidad, precio, moneda, zona, imgUrl) {
+    function crearCard(vehiculo, capacidad, precio, moneda, zona, imgUrl, contactoBlock) {
         const tipo = document.getElementById('tipoServicio').value;
         const origen = document.getElementById('origen').value;
         const destino = document.getElementById('destino').value;
@@ -684,7 +686,8 @@
                           </div>`;
         }
         
-        const mensaje = `Hola, quiero reservar:%0A%0A🚐 *Vehículo:* ${vehiculo}%0A📍 *Origen:* ${origen}%0A🏁 *Destino:* ${destino} (${zona})%0A📅 *Ida:* ${fechaIda}${extras}%0A👥 *Pax:* ${pax}%0A💰 *Precio:* $${precio} ${moneda}`;
+        // Se añade el bloque de contacto al mensaje final
+        const mensaje = `Hola, quiero reservar:%0A%0A🚐 *Vehículo:* ${vehiculo}%0A📍 *Origen:* ${origen}%0A🏁 *Destino:* ${destino} (${zona})%0A📅 *Ida:* ${fechaIda}${extras}%0A👥 *Pax:* ${pax}%0A💰 *Precio:* $${precio} ${moneda}${contactoBlock}`;
         const link = `https://wa.me/5219984042857?text=${mensaje}`;
 
         return `
