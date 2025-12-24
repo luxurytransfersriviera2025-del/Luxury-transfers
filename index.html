@@ -108,10 +108,9 @@
             padding-top: 15px;
         }
 
-        /* Contenedor especial para los campos de vuelo (para ocultarlos/mostrarlos juntos) */
         .flight-fields-container {
-            grid-column: 1 / -1; /* Ocupa todo el ancho disponible dentro del grid padre si es necesario, o se adapta */
-            display: contents; /* Permite que los hijos sean parte del grid padre */
+            grid-column: 1 / -1; 
+            display: contents; 
         }
 
         .btn-cotizar {
@@ -448,6 +447,10 @@
         divDestinoInput.style.display = 'flex';
         divHorasInput.style.display = 'none';
 
+        // Restauramos visibilidad de RadioGroup en general (por si se ocultó en HORAS)
+        document.getElementById('radioTipoViaje').style.display = 'flex';
+
+
         const estiloReadonly = "color:#777; background:#f5f5f5;";
         const estiloEditable = "color:var(--text-dark); background:transparent;";
 
@@ -515,15 +518,25 @@
         const divHorasInput = document.getElementById('divHorasInput');
         const destinoInput = document.getElementById('destino');
         const labelDestino = document.getElementById('labelDestino');
+        const radioGroup = document.getElementById('radioTipoViaje');
 
         if (subtipo === 'HORAS') {
             // Ocultamos el input de texto DESTINO y mostramos el SELECT de HORAS
             divDestinoInput.style.display = 'none';
             divHorasInput.style.display = 'flex';
+            
+            // Ocultar opción Ida y Vuelta
+            radioGroup.style.display = 'none';
+            // Forzar a Sencillo (Solo Ida)
+            document.querySelector('input[name="tipoViaje"][value="SENCILLO"]').checked = true;
+            updateTipoServicio('SENCILLO');
+
         } else {
             // Regresamos al input normal
             divDestinoInput.style.display = 'flex';
             divHorasInput.style.display = 'none';
+            // Mostrar opción Ida y Vuelta
+            radioGroup.style.display = 'flex';
 
             labelDestino.innerText = "Destino";
             if (subtipo === 'TOUR') {
@@ -544,8 +557,7 @@
         const divFechaVuelta = document.getElementById('divFechaVuelta');
         const divHoraVuelta = document.getElementById('divHoraVuelta');
 
-        // La vuelta solo aplica si NO es personalizado y es REDONDO
-        if (tipo === 'REDONDO' && direccionMode !== 'personalizado') {
+        if (tipo === 'REDONDO') {
             divFechaVuelta.style.display = 'flex';
             divHoraVuelta.style.display = 'flex';
         } else {
@@ -767,4 +779,4 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdK5yLQ20SQrLc_0rOuo7oxxHVQ233Bh0&libraries=places&callback=initAutocomplete" async defer></script>
 
 </body>
-</html>|
+</html>
