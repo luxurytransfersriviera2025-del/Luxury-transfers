@@ -10,14 +10,14 @@
     <style>
         :root {
             --primary-blue: #003580; 
-            --action-green: #00a651; /* Verde tipo Tripadvisor/Viator */
+            --action-green: #00a651; 
             --action-green-hover: #008c44;
             --highlight-yellow: #febb02; 
             --text-dark: #1a1a1a;
             --text-gray: #555;
             --bg-light: #f2f2f2;
             --white: #ffffff;
-            --check-color: #003580; /* Color de los checkmarks */
+            --check-color: #003580;
         }
 
         body {
@@ -55,7 +55,6 @@
             margin-bottom: 20px;
         }
 
-        /* --- SEARCH BOX (Azul y Amarillo) --- */
         .search-box-container {
             background-color: var(--highlight-yellow);
             padding: 4px;
@@ -71,7 +70,6 @@
             color: white;
         }
 
-        /* --- ELEMENTOS DEL FORMULARIO --- */
         .options-bar { display: flex; justify-content: space-between; margin-bottom: 15px; align-items: center; }
         .radio-group { display: flex; gap: 15px; }
         .radio-label { display: flex; align-items: center; cursor: pointer; font-size: 14px; }
@@ -106,7 +104,7 @@
         }
         .btn-cotizar:hover { background-color: var(--action-green-hover); }
 
-        /* --- NUEVO DISEÑO DE TARJETA (TIPO IMAGEN REFERENCIA) --- */
+        /* --- DISEÑO DE TARJETA CON FOTO --- */
         #resultados { margin-top: 20px; display: none; width: 100%; }
 
         .tarjeta {
@@ -116,106 +114,69 @@
             margin-bottom: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.15);
             display: flex;
-            flex-wrap: wrap; /* Para móviles */
+            flex-wrap: wrap; 
             gap: 20px;
             border: 1px solid #ddd;
+            overflow: hidden; /* Para que la imagen respete bordes */
         }
 
-        /* Columna Izquierda: Icono/Imagen */
+        /* Contenedor de la Imagen */
         .tarjeta-img {
-            flex: 0 0 100px;
+            flex: 0 0 180px; /* Ancho fijo para la imagen */
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #f0f4f8;
+            background: #fff;
             border-radius: 8px;
-            font-size: 40px;
-            color: var(--primary-blue);
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+        
+        .tarjeta-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ajuste perfecto */
+            display: block;
         }
 
-        /* Columna Central: Información y Features */
         .tarjeta-info {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            flex: 1; display: flex; flex-direction: column; justify-content: center;
+            min-width: 250px;
         }
         .tarjeta-info h3 { margin: 0 0 5px 0; font-size: 22px; color: var(--text-dark); }
         .tarjeta-desc { font-size: 14px; color: var(--text-gray); margin-bottom: 12px; }
 
-        /* Los "Tags" o puntos azules */
-        .feature-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
+        .feature-grid { display: flex; flex-wrap: wrap; gap: 8px; }
         .feature-tag {
-            background: #eef2ff;
-            color: var(--text-dark);
-            font-size: 12px;
-            padding: 4px 10px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-weight: 500;
+            background: #eef2ff; color: var(--text-dark); font-size: 12px; padding: 4px 10px;
+            border-radius: 20px; display: flex; align-items: center; gap: 5px; font-weight: 500;
             border: 1px solid #dbeafe;
         }
-        .feature-tag i { color: var(--check-color); } /* Checkmark azul */
+        .feature-tag i { color: var(--check-color); }
 
-        /* Columna Derecha: Precio y Botón */
         .tarjeta-price {
-            flex: 0 0 160px;
-            text-align: right;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border-left: 1px solid #eee;
-            padding-left: 20px;
+            flex: 0 0 160px; text-align: right; display: flex; flex-direction: column;
+            justify-content: center; border-left: 1px solid #eee; padding-left: 20px;
         }
 
         .price-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
-        
-        .price-old {
-            font-size: 14px;
-            color: #999;
-            text-decoration: line-through;
-            margin-bottom: 2px;
-        }
-
-        .price-current {
-            font-size: 26px;
-            font-weight: 900;
-            color: var(--action-green); /* Precio en verde */
-            margin-bottom: 10px;
-        }
+        .price-old { font-size: 14px; color: #999; text-decoration: line-through; margin-bottom: 2px; }
+        .price-current { font-size: 26px; font-weight: 900; color: var(--action-green); margin-bottom: 10px; }
 
         .btn-reservar {
-            background-color: var(--action-green);
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: 0.3s;
+            background-color: var(--action-green); color: white; text-decoration: none;
+            padding: 10px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;
+            display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s;
         }
         .btn-reservar:hover { background-color: var(--action-green-hover); box-shadow: 0 4px 10px rgba(0,166,81,0.3); }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .form-grid { grid-template-columns: 1fr; background: transparent; padding: 0; gap: 10px; }
             .input-wrapper { border-radius: 4px !important; }
             .direction-tabs { flex-direction: column; }
             .tab-btn { justify-content: center; }
-
-            /* Tarjeta Responsive */
             .tarjeta { flex-direction: column; text-align: left; padding: 15px; gap: 15px; }
-            .tarjeta-img { width: 60px; height: 60px; font-size: 25px; align-self: flex-start; }
+            .tarjeta-img { width: 100%; height: 200px; flex: auto; } /* Imagen grande en celular */
             .tarjeta-price { border-left: none; padding-left: 0; border-top: 1px solid #eee; padding-top: 15px; text-align: left; flex-direction: row; align-items: center; justify-content: space-between; flex: auto; }
             .price-container { display: flex; flex-direction: column; }
         }
@@ -300,17 +261,16 @@
                 </div>
                 <button class="btn-cotizar" onclick="cotizar()">Buscar Precios</button>
             </div>
-            
             <div id="contenedorVuelta" style="display:none;"></div> 
         </div>
-
         <div id="resultados"></div>
     </div>
 </div>
 
 <script>
-    // --- VARIABLES Y BASES DE DATOS ---
     let direccionMode = 'desdeAero'; 
+    
+    // --- TUS PRECIOS ---
     const tarifasSencilloMXN = {
         "ZONA HOTELERA DE TULUM": { standart: 2970, small: 6300, luxury: 5490 },
         "CENTRO DE TULUM": { standart: 2520, small: 5400, luxury: 5400 },
@@ -332,6 +292,7 @@
         "VALLADOLID": { standart: 5400, small: 11120, luxury: 15684 },
         "MERIDA": { standart: 9900, small: 17820, luxury: 17820 }
     };
+
     const tarifasSencilloUSD = {
         "ZONA HOTELERA DE TULUM": { standart: 170, small: 360, luxury: 314 },
         "CENTRO DE TULUM": { standart: 144, small: 309, luxury: 309 },
@@ -353,6 +314,7 @@
         "VALLADOLID": { standart: 309, small: 636, luxury: 897 },
         "MERIDA": { standart: 566, small: 1019, luxury: 1019 }
     };
+
     const tarifasRedondoMXN = {
         "ZONA HOTELERA DE TULUM": { standart: 5940, small: 12600, luxury: 10980 },
         "CENTRO DE TULUM": { standart: 5040, small: 10800, luxury: 10800 },
@@ -395,6 +357,7 @@
         "VALLADOLID": { standart: 618, small: 1271, luxury: 1793 },
         "MERIDA": { standart: 1132, small: 2037, luxury: 2037 }
     };
+
     const diccionarioZonas = {
         "ZONA HOTELERA DE TULUM": ["TULUM HOTEL ZONE", "ZONA HOTELERA TULUM", "BOCA PAILA", "PAPAYA PLAYA", "NOMADE", "AZULIK"],
         "CENTRO DE TULUM": ["TULUM DOWNTOWN", "CENTRO DE TULUM", "TULUM PUEBLO", "TULUM, Q.R.", "ZAMA", "VELETA"],
@@ -415,7 +378,6 @@
         "MERIDA": ["MERIDA"]
     };
 
-    // --- FUNCIONES UI ---
     function setDireccion(modo) {
         direccionMode = modo;
         const origenInput = document.getElementById('origen');
@@ -478,7 +440,6 @@
         document.getElementById('resultados').style.display = 'none';
     }
 
-    // --- GOOGLE MAPS ---
     function initAutocomplete() {
         const limitesPeninsula = new google.maps.LatLngBounds(
             new google.maps.LatLng(17.9, -91.5),
@@ -495,7 +456,6 @@
         new google.maps.places.Autocomplete(document.getElementById('destino'), opciones);
     }
 
-    // --- COTIZACIÓN ---
     function cotizar() {
         const tipo = document.getElementById('tipoServicio').value;
         const moneda = document.getElementById('moneda').value;
@@ -545,20 +505,25 @@
         const divRes = document.getElementById('resultados');
         divRes.innerHTML = "";
         
+        // URLs de las imágenes
+        const imgStandart = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/2019_Toyota_HiAce_Van_GL_2.8.jpg/1200px-2019_Toyota_HiAce_Van_GL_2.8.jpg";
+        const imgSmall = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Mercedes-Benz_Sprinter_%28VS30%29_IMG_2388.jpg/1200px-Mercedes-Benz_Sprinter_%28VS30%29_IMG_2388.jpg";
+        const imgLuxury = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/2021_Chevrolet_Suburban_High_Country_4WD%2C_front_12.20.20.jpg/1200px-2021_Chevrolet_Suburban_High_Country_4WD%2C_front_12.20.20.jpg";
+
         if (pasajeros <= 8) {
-            divRes.innerHTML += crearCard("VAN STANDART", "1-8 Pasajeros", precios.standart, moneda, zonaDetectada, "fa-shuttle-van");
+            divRes.innerHTML += crearCard("VAN STANDART", "1-8 Pasajeros", precios.standart, moneda, zonaDetectada, imgStandart);
         }
         if (pasajeros <= 15) {
-            divRes.innerHTML += crearCard("SMALL GROUP", "1-15 Pasajeros", precios.small, moneda, zonaDetectada, "fa-bus");
+            divRes.innerHTML += crearCard("SMALL GROUP", "1-15 Pasajeros", precios.small, moneda, zonaDetectada, imgSmall);
         }
         if (pasajeros <= 5) {
-            divRes.innerHTML += crearCard("LUXURY SUV", "1-5 Pasajeros", precios.luxury, moneda, zonaDetectada, "fa-car-side");
+            divRes.innerHTML += crearCard("LUXURY SUV", "1-5 Pasajeros", precios.luxury, moneda, zonaDetectada, imgLuxury);
         }
 
         divRes.style.display = 'block';
     }
 
-    function crearCard(vehiculo, capacidad, precio, moneda, zona, iconClass) {
+    function crearCard(vehiculo, capacidad, precio, moneda, zona, imgUrl) {
         const tipo = document.getElementById('tipoServicio').value;
         const origen = document.getElementById('origen').value;
         const destino = document.getElementById('destino').value;
@@ -571,14 +536,16 @@
             extras = `%0A🔄 *Regreso:* ${fVuelta}`;
         }
         
-        const precioAlto = Math.round(precio * 1.15); // Precio falso para el tachado
+        // --- CALCULO DEL PRECIO TACHADO (30% Extra) ---
+        const precioAlto = Math.round(precio * 1.30);
+        
         const mensaje = `Hola, quiero reservar:%0A%0A🚐 *Vehículo:* ${vehiculo}%0A📍 *Origen:* ${origen}%0A🏁 *Destino:* ${destino} (${zona})%0A📅 *Ida:* ${fechaIda}${extras}%0A👥 *Pax:* ${pax}%0A💰 *Precio:* $${precio} ${moneda}`;
         const link = `https://wa.me/5219984042857?text=${mensaje}`;
 
         return `
             <div class="tarjeta">
                 <div class="tarjeta-img">
-                    <i class="fas ${iconClass}"></i>
+                    <img src="${imgUrl}" alt="${vehiculo}">
                 </div>
                 <div class="tarjeta-info">
                     <h3>${vehiculo}</h3>
