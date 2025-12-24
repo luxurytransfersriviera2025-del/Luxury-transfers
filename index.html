@@ -290,7 +290,7 @@
                     </div>
 
                     <div class="input-wrapper" style="grid-column: 1 / -1;">
-                        <label>Notas / Equipaje / Sillas de Bebé</label>
+                        <label id="labelNotas">Notas / Equipaje / Sillas de Bebé</label>
                         <textarea id="notasCliente" rows="2" placeholder="Ej: Llevamos 4 maletas grandes, necesitamos silla de bebé..."></textarea>
                     </div>
                 </div>
@@ -432,6 +432,8 @@
         
         const divDestinoInput = document.getElementById('divDestinoInput');
         const divHorasInput = document.getElementById('divHorasInput');
+        const labelNotas = document.getElementById('labelNotas');
+        const notasCliente = document.getElementById('notasCliente');
         
         // CONTENEDOR DE CAMPOS DE VUELO
         const divVueloInfo = document.getElementById('divVueloInfo');
@@ -446,6 +448,13 @@
         // Restaurar visibilidad normal de inputs
         divDestinoInput.style.display = 'flex';
         divHorasInput.style.display = 'none';
+
+        // Restaurar labels originales de notas
+        labelNotas.innerText = "Notas / Equipaje / Sillas de Bebé";
+        notasCliente.placeholder = "Ej: Llevamos 4 maletas grandes, necesitamos silla de bebé...";
+
+        // Restauramos visibilidad de RadioGroup
+        document.getElementById('radioTipoViaje').style.display = 'flex';
 
         const estiloReadonly = "color:#777; background:#f5f5f5;";
         const estiloEditable = "color:var(--text-dark); background:transparent;";
@@ -500,7 +509,7 @@
             btnAccion.innerText = "Cotizar por WhatsApp";
             btnAccion.style.backgroundColor = "#25d366"; 
             
-            // Llamar a lógica de ajuste
+            // Forzar actualización del menú de horas según lo seleccionado en Ida/Vuelta
             updateTipoServicio(document.getElementById('tipoServicio').value);
             ajustarCamposPersonalizados();
         }
@@ -511,28 +520,24 @@
     function updateTipoServicio(valor) {
         document.getElementById('tipoServicio').value = valor;
         
-        // --- LÓGICA DE FILTRADO PARA PERSONALIZADO ---
+        // --- LOGICA DEL MENU PERSONALIZADO ---
         const optHoras = document.getElementById('optHoras');
         const selectSubtipo = document.getElementById('subtipoPersonalizado');
 
         if (direccionMode === 'personalizado') {
             if (valor === 'REDONDO') {
-                // Si es redondo, OCULTAMOS la opción de horas
                 optHoras.hidden = true; 
                 optHoras.disabled = true;
-                
-                // Si el usuario tenía seleccionado HORAS, lo regresamos a HOTEL
+                // Si estaba seleccionado, lo regresamos a Hotel
                 if(selectSubtipo.value === 'HORAS') {
                     selectSubtipo.value = 'HOTEL_A_HOTEL';
                     ajustarCamposPersonalizados();
                 }
             } else {
-                // Si es sencillo, MOSTRAMOS todo
                 optHoras.hidden = false;
                 optHoras.disabled = false;
             }
         } else {
-            // Si no estamos en personalizado, aseguramos que esté disponible para cuando entremos
             optHoras.hidden = false;
             optHoras.disabled = false;
         }
@@ -548,11 +553,23 @@
         const divHorasInput = document.getElementById('divHorasInput');
         const destinoInput = document.getElementById('destino');
         const labelDestino = document.getElementById('labelDestino');
+        
+        const labelNotas = document.getElementById('labelNotas');
+        const notasCliente = document.getElementById('notasCliente');
+
+        // Reset previo de notas
+        labelNotas.innerText = "Notas / Equipaje / Sillas de Bebé";
+        notasCliente.placeholder = "Ej: Llevamos 4 maletas grandes, necesitamos silla de bebé...";
 
         if (subtipo === 'HORAS') {
             // Ocultamos el input de texto DESTINO y mostramos el SELECT de HORAS
             divDestinoInput.style.display = 'none';
             divHorasInput.style.display = 'flex';
+            
+            // CAMBIO DE TÍTULO Y PLACEHOLDER DE NOTAS (IDEA DEL RECORRIDO)
+            labelNotas.innerText = "Idea del Recorrido / Ruta";
+            notasCliente.placeholder = "Ej: Ir a Tulum Ruinas, luego un cenote y comer...";
+
         } else {
             // Regresamos al input normal
             divDestinoInput.style.display = 'flex';
@@ -603,7 +620,7 @@
     }
 
     function cotizar() {
-        // --- RECOPILAR DATOS DE CONTACTO (COMÚN PARA TODOS) ---
+        // --- RECOPILAR DATOS ---
         const nombre = document.getElementById('nombreCliente').value;
         const tel = document.getElementById('telefonoCliente').value;
         const mail = document.getElementById('emailCliente').value;
@@ -623,17 +640,26 @@
             }
         }
 
-        // Bloque de texto de contacto para WhatsApp
-        const contactoMsgBlock = `%0A%0A📝 *DATOS DEL CLIENTE:*%0A👤 *Nombre:* ${nombre}%0A📞 *Tel:* ${tel}%0A📧 *Email:* ${mail}${vueloMsg}%0A📋 *Notas:* ${notas}`;
+        // Construimos etiqueta dinámica de las notas (Notas o Ruta)
+        let labelNotasTxt = "Notas";
+        if (direccionMode === 'personalizado') {
+             const subtipo = document.getElementById('subtipoPersonalizado').value;
+             if(subtipo === 'HORAS') {
+                 labelNotasTxt = "Ruta/Plan";
+             }
+        }
+
+        // Bloque de texto de contacto
+        const contactoMsgBlock = `%0A%0A📝 *DATOS DEL CLIENTE:*%0A👤 *Nombre:* ${nombre}%0A📞 *Tel:* ${tel}%0A📧 *Email:* ${mail}${vueloMsg}%0A📋 *${labelNotasTxt}:* ${notas}`;
 
 
-        // --- LOGICA DE COTIZACIÓN PERSONALIZADA (WHATSAPP DIRECTO) ---
+        // --- LOGICA DE COTIZACIÓN PERSONALIZADA ---
         if (direccionMode === 'personalizado') {
             const subtipo = document.getElementById('subtipoPersonalizado').value;
             const subtipoTexto = document.getElementById('subtipoPersonalizado').options[document.getElementById('subtipoPersonalizado').selectedIndex].text;
             const origen = document.getElementById('origen').value;
             
-            // Definir qué variable de "Destino" tomamos (Horas o Texto)
+            // Definir qué variable de "Destino" tomamos
             let destinoFinal = "";
             if (subtipo === 'HORAS') {
                 destinoFinal = document.getElementById('horasSeleccionadas').value;
@@ -652,7 +678,7 @@
             return; 
         }
 
-        // --- LOGICA DE COTIZACIÓN AUTOMÁTICA (AEROPUERTO) ---
+        // --- LOGICA DE COTIZACIÓN AUTOMÁTICA ---
         const tipo = document.getElementById('tipoServicio').value;
         const moneda = document.getElementById('moneda').value;
         
@@ -668,7 +694,6 @@
 
         // Validaciones
         if (lugarBusqueda.length < 3) { alert("Por favor indica la dirección del hotel o destino."); return; }
-        // Validación de contacto obligatoria para ver precios
         if(nombre.length < 2) { alert("Por favor escribe tu Nombre para ver los precios."); return; }
         if(tel.length < 5) { alert("Por favor escribe tu Teléfono para ver los precios."); return; }
 
