@@ -161,12 +161,12 @@
 
         .price-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
         .price-old { font-size: 14px; color: #999; text-decoration: line-through; margin-bottom: 2px; }
-        .price-current { font-size: 26px; font-weight: 900; color: var(--action-green); margin-bottom: 10px; }
+        .price-current { font-size: 26px; font-weight: 900; color: var(--action-green); margin-bottom: 0px; }
 
         .btn-reservar {
             background-color: var(--action-green); color: white; text-decoration: none;
             padding: 10px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;
-            display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s; margin-top: 10px;
         }
         .btn-reservar:hover { background-color: var(--action-green-hover); box-shadow: 0 4px 10px rgba(0,166,81,0.3); }
 
@@ -530,14 +530,26 @@
         const fechaIda = document.getElementById('fechaIda').value || "Pendiente";
         const pax = document.getElementById('pasajeros').value;
         
+        let notaPrecio = "";
         let extras = "";
+
+        // Calculamos precio tachado (30% más)
+        const precioAlto = Math.round(precio * 1.30);
+
         if (tipo === 'REDONDO') {
             const fVuelta = document.getElementById('fechaVuelta').value || "Pendiente";
             extras = `%0A🔄 *Regreso:* ${fVuelta}`;
+            
+            // NOTA: Incluye Ida y Vuelta
+            notaPrecio = `<div style="font-size: 11px; color: var(--action-green); font-weight: bold; margin-top: 5px;">
+                            <i class="fas fa-check"></i> Incluye Ida y Vuelta
+                          </div>`;
+        } else {
+            // NOTA: Solo Ida
+            notaPrecio = `<div style="font-size: 11px; color: #777; margin-top: 5px;">
+                            Precio por un solo trayecto
+                          </div>`;
         }
-        
-        // --- CALCULO DEL PRECIO TACHADO (30% Extra) ---
-        const precioAlto = Math.round(precio * 1.30);
         
         const mensaje = `Hola, quiero reservar:%0A%0A🚐 *Vehículo:* ${vehiculo}%0A📍 *Origen:* ${origen}%0A🏁 *Destino:* ${destino} (${zona})%0A📅 *Ida:* ${fechaIda}${extras}%0A👥 *Pax:* ${pax}%0A💰 *Precio:* $${precio} ${moneda}`;
         const link = `https://wa.me/5219984042857?text=${mensaje}`;
@@ -562,9 +574,10 @@
                 </div>
                 <div class="tarjeta-price">
                     <div class="price-container">
-                        <span class="price-label">Precio desde</span>
+                        <span class="price-label">Precio Final</span>
                         <span class="price-old">$${precioAlto} ${moneda}</span>
                         <span class="price-current">$${precio} ${moneda}</span>
+                        ${notaPrecio}
                     </div>
                     <a href="${link}" target="_blank" class="btn-reservar">
                         Reservar <i class="fas fa-arrow-right"></i>
