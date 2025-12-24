@@ -108,6 +108,12 @@
             padding-top: 15px;
         }
 
+        /* Contenedor especial para los campos de vuelo (para ocultarlos/mostrarlos juntos) */
+        .flight-fields-container {
+            grid-column: 1 / -1; /* Ocupa todo el ancho disponible dentro del grid padre si es necesario, o se adapta */
+            display: contents; /* Permite que los hijos sean parte del grid padre */
+        }
+
         .btn-cotizar {
             grid-column: 1 / -1; background-color: var(--action-green); color: white;
             font-size: 18px; font-weight: bold; border: none; padding: 15px; border-radius: 4px;
@@ -273,13 +279,15 @@
                         <input type="email" id="emailCliente" placeholder="correo@ejemplo.com">
                     </div>
 
-                    <div class="input-wrapper">
-                        <label>Aerolínea (Opcional)</label>
-                        <input type="text" id="aerolinea" placeholder="Ej: Volaris">
-                    </div>
-                    <div class="input-wrapper">
-                        <label>No. Vuelo (Opcional)</label>
-                        <input type="text" id="numVuelo" placeholder="Ej: Y4 123">
+                    <div id="divVueloInfo" class="flight-fields-container">
+                        <div class="input-wrapper">
+                            <label>Aerolínea (Opcional)</label>
+                            <input type="text" id="aerolinea" placeholder="Ej: Volaris">
+                        </div>
+                        <div class="input-wrapper">
+                            <label>No. Vuelo (Opcional)</label>
+                            <input type="text" id="numVuelo" placeholder="Ej: Y4 123">
+                        </div>
                     </div>
 
                     <div class="input-wrapper" style="grid-column: 1 / -1;">
@@ -425,6 +433,9 @@
         
         const divDestinoInput = document.getElementById('divDestinoInput');
         const divHorasInput = document.getElementById('divHorasInput');
+        
+        // CONTENEDOR DE CAMPOS DE VUELO
+        const divVueloInfo = document.getElementById('divVueloInfo');
 
         // Reset de clases y estados
         btnDesde.classList.remove('active');
@@ -442,6 +453,9 @@
 
         if (modo === 'desdeAero') {
             btnDesde.classList.add('active');
+            // Mostrar campos de vuelo
+            divVueloInfo.style.display = 'contents'; 
+            
             origenInput.value = "Aeropuerto Internacional de Cancún";
             origenInput.setAttribute('readonly', true);
             origenInput.style.cssText = estiloReadonly;
@@ -454,6 +468,9 @@
 
         } else if (modo === 'haciaAero') {
             btnHacia.classList.add('active');
+            // Mostrar campos de vuelo
+            divVueloInfo.style.display = 'contents'; 
+
             destinoInput.value = "Aeropuerto Internacional de Cancún";
             destinoInput.setAttribute('readonly', true);
             destinoInput.style.cssText = estiloReadonly;
@@ -467,6 +484,8 @@
         } else if (modo === 'personalizado') {
             btnPersonalizado.classList.add('active');
             divSubtipo.style.display = 'flex'; 
+            // OCULTAR CAMPOS DE VUELO
+            divVueloInfo.style.display = 'none';
 
             origenInput.value = "";
             origenInput.removeAttribute('readonly');
@@ -569,10 +588,12 @@
         const fecha = document.getElementById('fechaIda').value;
         const hora = document.getElementById('horaIda').value;
 
-        // Construimos el bloque del vuelo si existe info
+        // Construimos el bloque del vuelo (SOLO si no es personalizado y si escribieron algo)
         let vueloMsg = "";
-        if(aerolinea || vuelo) {
-           vueloMsg = `%0A✈️ *Vuelo:* ${aerolinea} ${vuelo}`;
+        if (direccionMode !== 'personalizado') {
+            if(aerolinea || vuelo) {
+               vueloMsg = `%0A✈️ *Vuelo:* ${aerolinea} ${vuelo}`;
+            }
         }
 
         // Bloque de texto de contacto para WhatsApp
@@ -746,4 +767,4 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdK5yLQ20SQrLc_0rOuo7oxxHVQ233Bh0&libraries=places&callback=initAutocomplete" async defer></script>
 
 </body>
-</html>
+</html>|
