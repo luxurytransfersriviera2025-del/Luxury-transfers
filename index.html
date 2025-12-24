@@ -243,6 +243,18 @@
                     <label>Hora</label>
                     <input type="time" id="horaIda">
                 </div>
+                <div class="input-wrapper" style="flex: 0.6;">
+                    <label>Tu Email</label>
+                    <input type="email" id="emailCliente" placeholder="Para enviarte confirmación">
+                </div>
+                <div class="input-wrapper" style="flex: 0.6;">
+                    <label>Forma de Pago</label>
+                    <select id="metodoPago">
+                        <option value="Efectivo al Llegar">Efectivo al abordar</option>
+                        <option value="Tarjeta al Llegar">Tarjeta al abordar</option>
+                        <option value="Link Online">Link de Pago (Adelantado)</option>
+                    </select>
+                </div>
                 <div class="input-wrapper" id="divFechaVuelta" style="display:none; flex: 0.5;">
                     <label>Fecha Vuelta</label>
                     <input type="date" id="fechaVuelta">
@@ -272,11 +284,11 @@
 <script>
     let direccionMode = 'desdeAero'; 
     
-    // --- IMÁGENES ACTUALIZADAS (SIN FONDO) ---
+    // --- IMÁGENES ---
     const imgUrlErtiga = "https://i.imgur.com/yoqbNJ7.png";
     const imgUrlTransporter = "https://i.imgur.com/8EOh4DB.png";
     const imgUrlSprinter = "https://i.imgur.com/BffyPRe.png";
-    const imgUrlSuburban = "https://i.imgur.com/95X8eqt.png"; // <--- NUEVA IMAGEN SUBURBAN
+    const imgUrlSuburban = "https://i.imgur.com/95X8eqt.png";
 
     // --- TUS PRECIOS ---
     const tarifasSencilloMXN = {
@@ -545,6 +557,10 @@
         const fechaIda = document.getElementById('fechaIda').value || "Pendiente";
         const pax = document.getElementById('pasajeros').value;
         
+        // --- VARIABLES NUEVAS PARA WHATSAPP ---
+        const email = document.getElementById('emailCliente').value || "No especificado";
+        const pago = document.getElementById('metodoPago').value;
+
         let notaPrecio = "";
         let extras = "";
 
@@ -566,7 +582,7 @@
                           </div>`;
         }
         
-        const mensaje = `Hola, quiero reservar:%0A%0A🚐 *Vehículo:* ${vehiculo}%0A📍 *Origen:* ${origen}%0A🏁 *Destino:* ${destino} (${zona})%0A📅 *Ida:* ${fechaIda}${extras}%0A👥 *Pax:* ${pax}%0A💰 *Precio:* $${precio} ${moneda}`;
+        const mensaje = `Hola, quiero reservar:%0A%0A🚐 *Vehículo:* ${vehiculo}%0A📍 *Origen:* ${origen}%0A🏁 *Destino:* ${destino} (${zona})%0A📅 *Ida:* ${fechaIda}${extras}%0A👥 *Pax:* ${pax}%0A💰 *Precio:* $${precio} ${moneda}%0A%0A📧 *Email:* ${email}%0A💳 *Pago:* ${pago}`;
         const link = `https://wa.me/5219984042857?text=${mensaje}`;
 
         return `
