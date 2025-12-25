@@ -231,7 +231,34 @@
     const tarifasRedondoMXN = { "ZONA HOTELERA DE TULUM": { standart: 5940, small: 12600, luxury: 10980 }, "CENTRO DE TULUM": { standart: 5040, small: 10800, luxury: 10800 }, "ZONA HOTELERA DE CANCUN": { standart: 1440, small: 3600, luxury: 3024 }, "CENTRO DE CANCUN": { standart: 1440, small: 3600, luxury: 3024 }, "COSTA MUJERES": { standart: 2880, small: 5400, luxury: 5220 }, "PLAYA MUJERES": { standart: 2340, small: 6676, luxury: 4680 }, "PUERTO JUAREZ": { standart: 1980, small: 5040, luxury: 3960 }, "PLAYA PARAISO": { standart: 2340, small: 6676, luxury: 4680 }, "PUERTO MORELOS": { standart: 1980, small: 5040, luxury: 3960 }, "PLAYA DEL CARMEN": { standart: 2880, small: 5400, luxury: 5220 }, "PUERTO AVENTURAS": { standart: 3420, small: 8100, luxury: 6120 }, "AKUMAL": { standart: 4140, small: 9720, luxury: 8460 }, "FELIPE CARRILLO PUERTO": { standart: 16200, small: 38772, luxury: 43740 }, "MAHAHUAL": { standart: 19800, small: 38772, luxury: 35640 }, "BACALAR": { standart: 19800, small: 38772, luxury: 35640 }, "CHETUMAL": { standart: 20000, small: 38772, luxury: 38000 }, "HOLBOX": { standart: 11520, small: 28800, luxury: 22320 }, "VALLADOLID": { standart: 10800, small: 22240, luxury: 31368 }, "MERIDA": { standart: 19800, small: 35640, luxury: 35640 } };
     const tarifasRedondoUSD = { "ZONA HOTELERA DE TULUM": { standart: 340, small: 720, luxury: 628 }, "CENTRO DE TULUM": { standart: 288, small: 618, luxury: 618 }, "ZONA HOTELERA DE CANCUN": { standart: 83, small: 206, luxury: 173 }, "CENTRO DE CANCUN": { standart: 83, small: 206, luxury: 173 }, "COSTA MUJERES": { standart: 165, small: 309, luxury: 299 }, "PLAYA MUJERES": { standart: 134, small: 382, luxury: 268 }, "PUERTO JUAREZ": { standart: 114, small: 288, luxury: 227 }, "PLAYA PARAISO": { standart: 134, small: 382, luxury: 268 }, "PUERTO MORELOS": { standart: 114, small: 288, luxury: 227 }, "PLAYA DEL CARMEN": { standart: 165, small: 309, luxury: 299 }, "PUERTO AVENTURAS": { standart: 196, small: 463, luxury: 350 }, "AKUMAL": { standart: 237, small: 556, luxury: 484 }, "FELIPE CARRILLO PUERTO": { standart: 926, small: 2216, luxury: 2500 }, "MAHAHUAL": { standart: 1132, small: 2216, luxury: 2037 }, "BACALAR": { standart: 1132, small: 2216, luxury: 2037 }, "CHETUMAL": { standart: 1143, small: 2216, luxury: 2172 }, "HOLBOX": { standart: 659, small: 1646, luxury: 1276 }, "VALLADOLID": { standart: 618, small: 1271, luxury: 1793 }, "MERIDA": { standart: 1132, small: 2037, luxury: 2037 } };
 
-    const diccionarioZonas = { "ZONA HOTELERA DE TULUM": ["TULUM HOTEL ZONE", "ZONA HOTELERA TULUM", "BOCA PAILA", "PAPAYA PLAYA", "NOMADE", "AZULIK"], "CENTRO DE TULUM": ["TULUM DOWNTOWN", "CENTRO DE TULUM", "TULUM PUEBLO", "TULUM, Q.R.", "ZAMA", "VELETA"], "ZONA HOTELERA DE CANCUN": ["CANCUN HOTEL ZONE", "ZONA HOTELERA", "KUKULCAN", "KM", "HOTEL ZONE"], "CENTRO DE CANCUN": ["CANCUN DOWNTOWN", "CENTRO DE CANCUN", "CANCUN CENTRO", "SM ", "SUPERMANZANA", "CANCUN, Q.R."], "COSTA MUJERES": ["COSTA MUJERES", "RIU DUNAMAR", "RIU PALACE COSTA", "PLANET HOLLYWOOD", "CATALONIA COSTA"], "PLAYA MUJERES": ["PLAYA MUJERES", "ATELIER", "FINEST", "BELOVED", "EXCELLENCE PLAYA"], "PUERTO MORELOS": ["PUERTO MORELOS", "DREAMS JADE", "NOW SAPPHIRE", "OCEAN CORAL"], "PLAYA PARAISO": ["PLAYA PARAISO", "IBEROSTAR", "VIDANTA", "MAROMA"], "PLAYA DEL CARMEN": ["PLAYA DEL CARMEN", "XCARET", "FIFTH AVENUE", "QUINTA AVENIDA", "PLAYACAR"], "PUERTO AVENTURAS": ["PUERTO AVENTURAS", "HARD ROCK RIVIERA", "BARCELO", "UNICO", "CATALONIA ROYAL"], "AKUMAL": ["AKUMAL", "BAHIA PRINCIPE", "SIRENIS", "PALLADIUM", "UNICO"], "MAHAHUAL": ["MAHAHUAL"], "BACALAR": ["BACALAR"], "CHETUMAL": ["CHETUMAL"], "HOLBOX": ["HOLBOX", "CHIQUILA"], "VALLADOLID": ["VALLADOLID"], "MERIDA": ["MERIDA"] };
+    // ============================================
+    // DICCIONARIO CORREGIDO Y MEJORADO
+    // ============================================
+    const diccionarioZonas = {
+        "ZONA HOTELERA DE TULUM": ["TULUM HOTEL ZONE", "ZONA HOTELERA TULUM", "BOCA PAILA", "PAPAYA PLAYA", "NOMADE", "AZULIK"],
+        "CENTRO DE TULUM": ["TULUM DOWNTOWN", "CENTRO DE TULUM", "TULUM PUEBLO", "TULUM, Q.R.", "ZAMA", "VELETA"],
+        
+        // CORRECCIÓN CANCÚN (Eliminamos palabras peligrosas como KM y SM solas)
+        "ZONA HOTELERA DE CANCUN": ["CANCUN HOTEL ZONE", "ZONA HOTELERA", "KUKULCAN", "HOTEL ZONE", "BOULEVARD KUKULCAN"],
+        "CENTRO DE CANCUN": ["CANCUN DOWNTOWN", "CENTRO DE CANCUN", "CANCUN CENTRO", "SUPERMANZANA", "CANCUN, Q.R.", "ALAMOS", "HUAYACAN"],
+        
+        "COSTA MUJERES": ["COSTA MUJERES", "RIU DUNAMAR", "RIU PALACE COSTA", "PLANET HOLLYWOOD", "CATALONIA COSTA"],
+        "PLAYA MUJERES": ["PLAYA MUJERES", "ATELIER", "FINEST", "BELOVED", "EXCELLENCE PLAYA"],
+        "PUERTO MORELOS": ["PUERTO MORELOS", "DREAMS JADE", "NOW SAPPHIRE", "OCEAN CORAL"],
+        "PLAYA PARAISO": ["PLAYA PARAISO", "IBEROSTAR", "VIDANTA", "MAROMA"],
+        "PLAYA DEL CARMEN": ["PLAYA DEL CARMEN", "XCARET", "FIFTH AVENUE", "QUINTA AVENIDA", "PLAYACAR"],
+        
+        // CORRECCIÓN PUERTO AVENTURAS (Agregamos Dreams)
+        "PUERTO AVENTURAS": ["PUERTO AVENTURAS", "DREAMS AVENTURAS", "DREAMS PUERTO", "HARD ROCK RIVIERA", "BARCELO", "UNICO", "CATALONIA ROYAL"],
+        
+        "AKUMAL": ["AKUMAL", "BAHIA PRINCIPE", "SIRENIS", "PALLADIUM", "UNICO"],
+        "MAHAHUAL": ["MAHAHUAL"],
+        "BACALAR": ["BACALAR"],
+        "CHETUMAL": ["CHETUMAL"],
+        "HOLBOX": ["HOLBOX", "CHIQUILA"],
+        "VALLADOLID": ["VALLADOLID"],
+        "MERIDA": ["MERIDA"]
+    };
 
     // --- FUNCIONES LÓGICAS ---
     function setDireccion(modo) {
