@@ -33,42 +33,12 @@
             flex-direction: column;
         }
 
-        .overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 53, 128, 0.4); 
-            z-index: 1;
-        }
+        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 53, 128, 0.4); z-index: 1; }
+        .main-container { position: relative; z-index: 10; width: 95%; max-width: 1100px; }
+        h1 { color: var(--white); text-align: center; text-shadow: 0 2px 4px rgba(0,0,0,0.5); font-size: 32px; margin-bottom: 20px; }
 
-        .main-container {
-            position: relative;
-            z-index: 10;
-            width: 95%;
-            max-width: 1100px;
-        }
-
-        h1 {
-            color: var(--white);
-            text-align: center;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
-        .search-box-container {
-            background-color: var(--highlight-yellow);
-            padding: 4px;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            margin-bottom: 20px;
-        }
-
-        .search-box-inner {
-            background-color: var(--primary-blue);
-            padding: 20px;
-            border-radius: 6px;
-            color: white;
-        }
+        .search-box-container { background-color: var(--highlight-yellow); padding: 4px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-bottom: 20px; }
+        .search-box-inner { background-color: var(--primary-blue); padding: 20px; border-radius: 6px; color: white; }
 
         .options-bar { display: flex; justify-content: space-between; margin-bottom: 15px; align-items: center; }
         .radio-group { display: flex; gap: 15px; }
@@ -76,57 +46,22 @@
         .radio-label input { margin-right: 6px; accent-color: var(--highlight-yellow); }
 
         .direction-tabs { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
-        .tab-btn {
-            background: transparent; border: 2px solid rgba(255,255,255,0.3); color: white;
-            padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight: 500;
-            transition: 0.3s; display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center; white-space: nowrap;
-        }
+        .tab-btn { background: transparent; border: 2px solid rgba(255,255,255,0.3); color: white; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight: 500; transition: 0.3s; display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center; white-space: nowrap; }
         .tab-btn.active { background: var(--white); color: var(--primary-blue); border-color: var(--white); font-weight: bold; }
 
-        .form-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 6px;
-            background: var(--highlight-yellow); padding: 5px; border-radius: 4px;
-        }
-        .input-wrapper {
-            background: var(--white); padding: 8px 12px; display: flex; flex-direction: column;
-            justify-content: center; position: relative; border-radius: 3px;
-        }
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 6px; background: var(--highlight-yellow); padding: 5px; border-radius: 4px; }
+        .input-wrapper { background: var(--white); padding: 8px 12px; display: flex; flex-direction: column; justify-content: center; position: relative; border-radius: 3px; }
         .input-wrapper label { font-size: 11px; color: #777; font-weight: bold; margin-bottom: 2px; text-transform: uppercase; }
-        .input-wrapper input, .input-wrapper select, .input-wrapper textarea {
-            border: none; outline: none; width: 100%; font-size: 14px; font-weight: 600;
-            color: var(--text-dark); background: transparent; font-family: 'Roboto', sans-serif; padding: 0;
-        }
+        .input-wrapper input, .input-wrapper select, .input-wrapper textarea { border: none; outline: none; width: 100%; font-size: 14px; font-weight: 600; color: var(--text-dark); background: transparent; font-family: 'Roboto', sans-serif; padding: 0; }
         
-        /* Estilo para la sección de contacto (Siempre visible) */
-        .contact-section {
-            grid-column: 1 / -1;
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 6px;
-            margin-top: 15px;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-        }
+        .contact-section { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 6px; margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px; }
+        .flight-fields-container { grid-column: 1 / -1; display: contents; }
 
-        .flight-fields-container {
-            grid-column: 1 / -1; 
-            display: contents; 
-        }
-
-        .btn-cotizar {
-            grid-column: 1 / -1; background-color: var(--action-green); color: white;
-            font-size: 18px; font-weight: bold; border: none; padding: 15px; border-radius: 4px;
-            cursor: pointer; margin-top: 5px; transition: background 0.2s; text-transform: uppercase;
-        }
+        .btn-cotizar { grid-column: 1 / -1; background-color: var(--action-green); color: white; font-size: 18px; font-weight: bold; border: none; padding: 15px; border-radius: 4px; cursor: pointer; margin-top: 5px; transition: background 0.2s; text-transform: uppercase; }
         .btn-cotizar:hover { background-color: var(--action-green-hover); }
 
-        /* Estilos de Tarjeta */
         #resultados { margin-top: 20px; display: none; width: 100%; }
-        .tarjeta {
-            background: var(--white); border-radius: 10px; padding: 20px; margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15); display: flex; flex-wrap: wrap; gap: 20px;
-            border: 1px solid #ddd; overflow: hidden; 
-        }
+        .tarjeta { background: var(--white); border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); display: flex; flex-wrap: wrap; gap: 20px; border: 1px solid #ddd; overflow: hidden; }
         .tarjeta-img { flex: 0 0 180px; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 8px; overflow: hidden; border: 1px solid #eee; padding: 10px; }
         .tarjeta-img img { width: 100%; height: auto; object-fit: contain; display: block; }
         .tarjeta-info { flex: 1; display: flex; flex-direction: column; justify-content: center; min-width: 250px; }
@@ -139,24 +74,56 @@
         .price-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
         .price-old { font-size: 14px; color: #999; text-decoration: line-through; margin-bottom: 2px; }
         .price-current { font-size: 26px; font-weight: 900; color: var(--action-green); margin-bottom: 0px; }
-        .btn-reservar { background-color: var(--action-green); color: white; text-decoration: none; padding: 10px 15px; border-radius: 6px; font-weight: bold; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s; margin-top: 10px; }
+        
+        .btn-reservar { background-color: var(--action-green); color: white; text-decoration: none; padding: 10px 15px; border-radius: 6px; font-weight: bold; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s; margin-top: 10px; cursor: pointer; border:none; }
         .btn-reservar:hover { background-color: var(--action-green-hover); box-shadow: 0 4px 10px rgba(0,166,81,0.3); }
 
-        @media (max-width: 768px) {
-            .form-grid, .contact-section { grid-template-columns: 1fr; background: transparent; padding: 0; gap: 10px; }
-            .input-wrapper { border-radius: 4px !important; }
-            .direction-tabs { flex-direction: column; }
-            .tab-btn { justify-content: center; }
-            .tarjeta { flex-direction: column; text-align: left; padding: 15px; gap: 15px; }
-            .tarjeta-img { width: 100%; height: 200px; flex: auto; }
-            .tarjeta-price { border-left: none; padding-left: 0; border-top: 1px solid #eee; padding-top: 15px; text-align: left; flex-direction: row; align-items: center; justify-content: space-between; flex: auto; }
-            .price-container { display: flex; flex-direction: column; }
-        }
+        /* MODAL */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 1000; display: none; align-items: center; justify-content: center; }
+        .modal-box { background: white; width: 90%; max-width: 500px; padding: 30px; border-radius: 12px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative; animation: slideUp 0.3s ease; }
+        @keyframes slideUp { from {transform: translateY(20px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        .modal-icon { font-size: 50px; color: var(--action-green); margin-bottom: 15px; }
+        .modal-title { font-size: 24px; color: var(--primary-blue); margin-bottom: 10px; font-weight: 900; }
+        .modal-text { font-size: 15px; color: #555; line-height: 1.5; margin-bottom: 20px; }
+        .modal-actions { display: grid; gap: 10px; }
+        .modal-btn { padding: 12px; border-radius: 6px; text-decoration: none; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 8px; color: white; }
+        .btn-wa { background: #25d366; }
+        .btn-call { background: var(--primary-blue); }
+        .btn-mail { background: #555; }
+        .btn-close { background: transparent; color: #888; border: none; font-size: 13px; margin-top: 15px; cursor: pointer; text-decoration: underline; }
+        
+        /* LOADING */
+        .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.8); z-index: 2000; display: none; align-items: center; justify-content: center; flex-direction: column; }
+        .spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid var(--action-green); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        @media (max-width: 768px) { .form-grid, .contact-section { grid-template-columns: 1fr; background: transparent; padding: 0; gap: 10px; } .input-wrapper { border-radius: 4px !important; } .direction-tabs { flex-direction: column; } .tab-btn { justify-content: center; } .tarjeta { flex-direction: column; text-align: left; padding: 15px; gap: 15px; } .tarjeta-img { width: 100%; height: 200px; flex: auto; } .tarjeta-price { border-left: none; padding-left: 0; border-top: 1px solid #eee; padding-top: 15px; text-align: left; flex-direction: row; align-items: center; justify-content: space-between; flex: auto; } .price-container { display: flex; flex-direction: column; } }
     </style>
 </head>
 <body>
 
 <div class="overlay"></div>
+
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+    <p style="margin-top: 15px; font-weight: bold; color: #333;">Enviando solicitud...</p>
+</div>
+
+<div class="modal-overlay" id="modalConfirmacion">
+    <div class="modal-box">
+        <div class="modal-icon"><i class="fas fa-check-circle"></i></div>
+        <h2 class="modal-title" id="modalTitle">¡Solicitud Recibida!</h2>
+        <p class="modal-text" id="modalText">
+            Hemos recibido tus datos correctamente. Te contactaremos en breve.
+        </p>
+        <div class="modal-actions">
+            <a href="tel:+529842411158" class="modal-btn btn-call"><i class="fas fa-phone-alt"></i> Llama ahora (+52 984 241 1158)</a>
+            <a href="https://wa.me/529842411158" target="_blank" class="modal-btn btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="mailto:reservas@luxurytransfersriviera.com.mx" class="modal-btn btn-mail"><i class="fas fa-envelope"></i> Enviar Correo</a>
+        </div>
+        <button class="btn-close" onclick="cerrarModal()">Cerrar</button>
+    </div>
+</div>
 
 <div class="main-container">
     <h1><i class="fas fa-plane-departure"></i> Luxury Transfers Riviera</h1>
@@ -166,38 +133,21 @@
             
             <div class="options-bar">
                 <div class="radio-group" id="radioTipoViaje">
-                    <label class="radio-label">
-                        <input type="radio" name="tipoViaje" value="SENCILLO" checked onchange="updateTipoServicio('SENCILLO')">
-                        Solo Ida
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="tipoViaje" value="REDONDO" onchange="updateTipoServicio('REDONDO')">
-                        Ida y Vuelta
-                    </label>
+                    <label class="radio-label"><input type="radio" name="tipoViaje" value="SENCILLO" checked onchange="updateTipoServicio('SENCILLO')"> Solo Ida</label>
+                    <label class="radio-label"><input type="radio" name="tipoViaje" value="REDONDO" onchange="updateTipoServicio('REDONDO')"> Ida y Vuelta</label>
                 </div>
-                <select id="tipoServicio" style="display:none;">
-                    <option value="SENCILLO">Sencillo</option>
-                    <option value="REDONDO">Redondo</option>
-                </select>
-
+                <select id="tipoServicio" style="display:none;"><option value="SENCILLO">Sencillo</option><option value="REDONDO">Redondo</option></select>
                 <div style="width: 120px;">
                     <select id="moneda" onchange="limpiarResultados()" style="width:100%; padding: 5px; border-radius:4px; border:none;">
-                        <option value="MXN">MXN ($)</option>
-                        <option value="USD">USD ($)</option>
+                        <option value="MXN">MXN ($)</option><option value="USD">USD ($)</option>
                     </select>
                 </div>
             </div>
 
             <div class="direction-tabs">
-                <div class="tab-btn active" id="btnDesdeAero" onclick="setDireccion('desdeAero')">
-                    <i class="fas fa-plane-arrival"></i> Desde Aeropuerto de Cancún
-                </div>
-                <div class="tab-btn" id="btnHaciaAero" onclick="setDireccion('haciaAero')">
-                    <i class="fas fa-plane-departure"></i> Hacia el Aeropuerto de Cancún
-                </div>
-                <div class="tab-btn" id="btnPersonalizado" onclick="setDireccion('personalizado')">
-                    <i class="fas fa-map-marked-alt"></i> Servicio Personalizado
-                </div>
+                <div class="tab-btn active" id="btnDesdeAero" onclick="setDireccion('desdeAero')"><i class="fas fa-plane-arrival"></i> Desde Aeropuerto de Cancún</div>
+                <div class="tab-btn" id="btnHaciaAero" onclick="setDireccion('haciaAero')"><i class="fas fa-plane-departure"></i> Hacia el Aeropuerto de Cancún</div>
+                <div class="tab-btn" id="btnPersonalizado" onclick="setDireccion('personalizado')"><i class="fas fa-map-marked-alt"></i> Servicio Personalizado</div>
             </div>
 
             <div class="form-grid">
@@ -211,82 +161,36 @@
                     </select>
                 </div>
 
-                <div class="input-wrapper">
-                    <label id="labelOrigen">Recogida</label>
-                    <input type="text" id="origen" value="Aeropuerto Internacional de Cancún" readonly style="color:#777; background:#f5f5f5;">
-                </div>
-                
-                <div class="input-wrapper" id="divDestinoInput">
-                    <label id="labelDestino">Destino</label>
-                    <input type="text" id="destino" placeholder="¿A qué hotel vas?">
-                </div>
-
+                <div class="input-wrapper"><label id="labelOrigen">Recogida</label><input type="text" id="origen" value="Aeropuerto Internacional de Cancún" readonly style="color:#777; background:#f5f5f5;"></div>
+                <div class="input-wrapper" id="divDestinoInput"><label id="labelDestino">Destino</label><input type="text" id="destino" placeholder="¿A qué hotel vas?"></div>
                 <div class="input-wrapper" id="divHorasInput" style="display:none;">
                     <label>Duración Requerida</label>
                     <select id="horasSeleccionadas">
-                        <option value="2 Horas">2 Horas</option>
-                        <option value="4 Horas">4 Horas</option>
-                        <option value="6 Horas">6 Horas</option>
-                        <option value="8 Horas">8 Horas</option>
-                        <option value="Mas de 8 Horas">Más de 8 Horas</option>
+                        <option value="2 Horas">2 Horas</option><option value="4 Horas">4 Horas</option><option value="6 Horas">6 Horas</option><option value="8 Horas">8 Horas</option><option value="Mas de 8 Horas">Más de 8 Horas</option>
                     </select>
                 </div>
 
-                <div class="input-wrapper" style="flex: 0.5;">
-                    <label>Fecha</label>
-                    <input type="date" id="fechaIda">
-                </div>
-                <div class="input-wrapper" style="flex: 0.4;">
-                    <label>Hora</label>
-                    <input type="time" id="horaIda">
-                </div>
-                
-                <div class="input-wrapper" id="divFechaVuelta" style="display:none; flex: 0.5;">
-                    <label>Fecha Vuelta</label>
-                    <input type="date" id="fechaVuelta">
-                </div>
-                <div class="input-wrapper" id="divHoraVuelta" style="display:none; flex: 0.4;">
-                    <label>Hora</label>
-                    <input type="time" id="horaVuelta">
-                </div>
+                <div class="input-wrapper" style="flex: 0.5;"><label>Fecha</label><input type="date" id="fechaIda"></div>
+                <div class="input-wrapper" style="flex: 0.4;"><label>Hora</label><input type="time" id="horaIda"></div>
+                <div class="input-wrapper" id="divFechaVuelta" style="display:none; flex: 0.5;"><label>Fecha Vuelta</label><input type="date" id="fechaVuelta"></div>
+                <div class="input-wrapper" id="divHoraVuelta" style="display:none; flex: 0.4;"><label>Hora</label><input type="time" id="horaVuelta"></div>
 
                 <div class="input-wrapper" style="flex: 0.4;">
                     <label>Pasajeros</label>
                     <select id="pasajeros">
-                        <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-                        <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-                        <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-                        <option value="10">10</option><option value="11">11</option><option value="12">12</option>
-                        <option value="13">13</option><option value="14">14</option><option value="15">15</option>
+                        <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option>
                     </select>
                 </div>
 
                 <div class="contact-section" id="seccionContacto">
-                    <div class="input-wrapper" style="grid-column: 1 / -1;">
-                        <label style="color:var(--action-green); font-weight:900;">TUS DATOS DE CONTACTO:</label>
-                    </div>
-                    <div class="input-wrapper">
-                        <label>Nombre Completo</label>
-                        <input type="text" id="nombreCliente" placeholder="Tu nombre">
-                    </div>
-                    <div class="input-wrapper">
-                        <label>Teléfono (con País)</label>
-                        <input type="tel" id="telefonoCliente" placeholder="Ej: +52 555 123 4567">
-                    </div>
-                    <div class="input-wrapper">
-                        <label>Correo Electrónico</label>
-                        <input type="email" id="emailCliente" placeholder="correo@ejemplo.com">
-                    </div>
+                    <div class="input-wrapper" style="grid-column: 1 / -1;"><label style="color:var(--action-green); font-weight:900;">TUS DATOS DE CONTACTO:</label></div>
+                    <div class="input-wrapper"><label>Nombre Completo</label><input type="text" id="nombreCliente" placeholder="Tu nombre"></div>
+                    <div class="input-wrapper"><label>Teléfono (con País)</label><input type="tel" id="telefonoCliente" placeholder="Ej: +52 555 123 4567"></div>
+                    <div class="input-wrapper"><label>Correo Electrónico</label><input type="email" id="emailCliente" placeholder="correo@ejemplo.com"></div>
 
                     <div id="divVueloInfo" class="flight-fields-container">
-                        <div class="input-wrapper">
-                            <label>Aerolínea (Opcional)</label>
-                            <input type="text" id="aerolinea" placeholder="Ej: Volaris">
-                        </div>
-                        <div class="input-wrapper">
-                            <label>No. Vuelo (Opcional)</label>
-                            <input type="text" id="numVuelo" placeholder="Ej: Y4 123">
-                        </div>
+                        <div class="input-wrapper"><label>Aerolínea (Opcional)</label><input type="text" id="aerolinea" placeholder="Ej: Volaris"></div>
+                        <div class="input-wrapper"><label>No. Vuelo (Opcional)</label><input type="text" id="numVuelo" placeholder="Ej: Y4 123"></div>
                     </div>
 
                     <div class="input-wrapper" id="divItinerario" style="grid-column: 1 / -1; display: none;">
@@ -309,410 +213,175 @@
 </div>
 
 <script>
+    // ============================================
+    // ¡AQUÍ ESTÁ TU URL YA PEGADA!
+    // ============================================
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyqcSDFPgOBDhhE4ZOaGJD4LWvyYPZWw4lHq5FQFlj3F8EcBDubBi8cgkMAxsAS1EuM/exec"; 
+    // ============================================
+
     let direccionMode = 'desdeAero'; 
-    
-    // --- IMÁGENES ---
     const imgUrlErtiga = "https://i.imgur.com/yoqbNJ7.png";
     const imgUrlTransporter = "https://i.imgur.com/8EOh4DB.png";
     const imgUrlSprinter = "https://i.imgur.com/BffyPRe.png";
     const imgUrlSuburban = "https://i.imgur.com/95X8eqt.png"; 
 
     // --- PRECIOS ---
-    const tarifasSencilloMXN = {
-        "ZONA HOTELERA DE TULUM": { standart: 2970, small: 6300, luxury: 5490 },
-        "CENTRO DE TULUM": { standart: 2520, small: 5400, luxury: 5400 },
-        "ZONA HOTELERA DE CANCUN": { standart: 720, small: 1800, luxury: 1512 },
-        "CENTRO DE CANCUN": { standart: 720, small: 1800, luxury: 1512 },
-        "COSTA MUJERES": { standart: 1440, small: 2700, luxury: 2610 },
-        "PLAYA MUJERES": { standart: 1170, small: 3338, luxury: 2340 },
-        "PUERTO JUAREZ": { standart: 990, small: 2520, luxury: 1980 },
-        "PLAYA PARAISO": { standart: 1170, small: 3338, luxury: 2340 },
-        "PUERTO MORELOS": { standart: 990, small: 2520, luxury: 1980 },
-        "PLAYA DEL CARMEN": { standart: 1440, small: 2700, luxury: 2610 },
-        "PUERTO AVENTURAS": { standart: 1710, small: 4050, luxury: 3060 },
-        "AKUMAL": { standart: 2070, small: 4860, luxury: 4230 },
-        "FELIPE CARRILLO PUERTO": { standart: 8100, small: 19386, luxury: 21870 },
-        "MAHAHUAL": { standart: 9900, small: 19386, luxury: 17820 },
-        "BACALAR": { standart: 9900, small: 19386, luxury: 17820 },
-        "CHETUMAL": { standart: 10000, small: 19386, luxury: 19000 },
-        "HOLBOX": { standart: 5760, small: 14400, luxury: 11160 },
-        "VALLADOLID": { standart: 5400, small: 11120, luxury: 15684 },
-        "MERIDA": { standart: 9900, small: 17820, luxury: 17820 }
-    };
+    const tarifasSencilloMXN = { "ZONA HOTELERA DE TULUM": { standart: 2970, small: 6300, luxury: 5490 }, "CENTRO DE TULUM": { standart: 2520, small: 5400, luxury: 5400 }, "ZONA HOTELERA DE CANCUN": { standart: 720, small: 1800, luxury: 1512 }, "CENTRO DE CANCUN": { standart: 720, small: 1800, luxury: 1512 }, "COSTA MUJERES": { standart: 1440, small: 2700, luxury: 2610 }, "PLAYA MUJERES": { standart: 1170, small: 3338, luxury: 2340 }, "PUERTO JUAREZ": { standart: 990, small: 2520, luxury: 1980 }, "PLAYA PARAISO": { standart: 1170, small: 3338, luxury: 2340 }, "PUERTO MORELOS": { standart: 990, small: 2520, luxury: 1980 }, "PLAYA DEL CARMEN": { standart: 1440, small: 2700, luxury: 2610 }, "PUERTO AVENTURAS": { standart: 1710, small: 4050, luxury: 3060 }, "AKUMAL": { standart: 2070, small: 4860, luxury: 4230 }, "FELIPE CARRILLO PUERTO": { standart: 8100, small: 19386, luxury: 21870 }, "MAHAHUAL": { standart: 9900, small: 19386, luxury: 17820 }, "BACALAR": { standart: 9900, small: 19386, luxury: 17820 }, "CHETUMAL": { standart: 10000, small: 19386, luxury: 19000 }, "HOLBOX": { standart: 5760, small: 14400, luxury: 11160 }, "VALLADOLID": { standart: 5400, small: 11120, luxury: 15684 }, "MERIDA": { standart: 9900, small: 17820, luxury: 17820 } };
+    const tarifasSencilloUSD = { "ZONA HOTELERA DE TULUM": { standart: 170, small: 360, luxury: 314 }, "CENTRO DE TULUM": { standart: 144, small: 309, luxury: 309 }, "ZONA HOTELERA DE CANCUN": { standart: 42, small: 103, luxury: 87 }, "CENTRO DE CANCUN": { standart: 42, small: 103, luxury: 87 }, "COSTA MUJERES": { standart: 83, small: 155, luxury: 150 }, "PLAYA MUJERES": { standart: 67, small: 191, luxury: 134 }, "PUERTO JUAREZ": { standart: 57, small: 144, luxury: 114 }, "PLAYA PARAISO": { standart: 67, small: 191, luxury: 134 }, "PUERTO MORELOS": { standart: 57, small: 144, luxury: 114 }, "PLAYA DEL CARMEN": { standart: 83, small: 155, luxury: 150 }, "PUERTO AVENTURAS": { standart: 98, small: 232, luxury: 175 }, "AKUMAL": { standart: 119, small: 278, luxury: 242 }, "FELIPE CARRILLO PUERTO": { standart: 463, small: 1108, luxury: 1250 }, "MAHAHUAL": { standart: 566, small: 1108, luxury: 1019 }, "BACALAR": { standart: 566, small: 1108, luxury: 1019 }, "CHETUMAL": { standart: 572, small: 1108, luxury: 1086 }, "HOLBOX": { standart: 330, small: 823, luxury: 638 }, "VALLADOLID": { standart: 309, small: 636, luxury: 897 }, "MERIDA": { standart: 566, small: 1019, luxury: 1019 } };
+    const tarifasRedondoMXN = { "ZONA HOTELERA DE TULUM": { standart: 5940, small: 12600, luxury: 10980 }, "CENTRO DE TULUM": { standart: 5040, small: 10800, luxury: 10800 }, "ZONA HOTELERA DE CANCUN": { standart: 1440, small: 3600, luxury: 3024 }, "CENTRO DE CANCUN": { standart: 1440, small: 3600, luxury: 3024 }, "COSTA MUJERES": { standart: 2880, small: 5400, luxury: 5220 }, "PLAYA MUJERES": { standart: 2340, small: 6676, luxury: 4680 }, "PUERTO JUAREZ": { standart: 1980, small: 5040, luxury: 3960 }, "PLAYA PARAISO": { standart: 2340, small: 6676, luxury: 4680 }, "PUERTO MORELOS": { standart: 1980, small: 5040, luxury: 3960 }, "PLAYA DEL CARMEN": { standart: 2880, small: 5400, luxury: 5220 }, "PUERTO AVENTURAS": { standart: 3420, small: 8100, luxury: 6120 }, "AKUMAL": { standart: 4140, small: 9720, luxury: 8460 }, "FELIPE CARRILLO PUERTO": { standart: 16200, small: 38772, luxury: 43740 }, "MAHAHUAL": { standart: 19800, small: 38772, luxury: 35640 }, "BACALAR": { standart: 19800, small: 38772, luxury: 35640 }, "CHETUMAL": { standart: 20000, small: 38772, luxury: 38000 }, "HOLBOX": { standart: 11520, small: 28800, luxury: 22320 }, "VALLADOLID": { standart: 10800, small: 22240, luxury: 31368 }, "MERIDA": { standart: 19800, small: 35640, luxury: 35640 } };
+    const tarifasRedondoUSD = { "ZONA HOTELERA DE TULUM": { standart: 340, small: 720, luxury: 628 }, "CENTRO DE TULUM": { standart: 288, small: 618, luxury: 618 }, "ZONA HOTELERA DE CANCUN": { standart: 83, small: 206, luxury: 173 }, "CENTRO DE CANCUN": { standart: 83, small: 206, luxury: 173 }, "COSTA MUJERES": { standart: 165, small: 309, luxury: 299 }, "PLAYA MUJERES": { standart: 134, small: 382, luxury: 268 }, "PUERTO JUAREZ": { standart: 114, small: 288, luxury: 227 }, "PLAYA PARAISO": { standart: 134, small: 382, luxury: 268 }, "PUERTO MORELOS": { standart: 114, small: 288, luxury: 227 }, "PLAYA DEL CARMEN": { standart: 165, small: 309, luxury: 299 }, "PUERTO AVENTURAS": { standart: 196, small: 463, luxury: 350 }, "AKUMAL": { standart: 237, small: 556, luxury: 484 }, "FELIPE CARRILLO PUERTO": { standart: 926, small: 2216, luxury: 2500 }, "MAHAHUAL": { standart: 1132, small: 2216, luxury: 2037 }, "BACALAR": { standart: 1132, small: 2216, luxury: 2037 }, "CHETUMAL": { standart: 1143, small: 2216, luxury: 2172 }, "HOLBOX": { standart: 659, small: 1646, luxury: 1276 }, "VALLADOLID": { standart: 618, small: 1271, luxury: 1793 }, "MERIDA": { standart: 1132, small: 2037, luxury: 2037 } };
 
-    const tarifasSencilloUSD = {
-        "ZONA HOTELERA DE TULUM": { standart: 170, small: 360, luxury: 314 },
-        "CENTRO DE TULUM": { standart: 144, small: 309, luxury: 309 },
-        "ZONA HOTELERA DE CANCUN": { standart: 42, small: 103, luxury: 87 },
-        "CENTRO DE CANCUN": { standart: 42, small: 103, luxury: 87 },
-        "COSTA MUJERES": { standart: 83, small: 155, luxury: 150 },
-        "PLAYA MUJERES": { standart: 67, small: 191, luxury: 134 },
-        "PUERTO JUAREZ": { standart: 57, small: 144, luxury: 114 },
-        "PLAYA PARAISO": { standart: 67, small: 191, luxury: 134 },
-        "PUERTO MORELOS": { standart: 57, small: 144, luxury: 114 },
-        "PLAYA DEL CARMEN": { standart: 83, small: 155, luxury: 150 },
-        "PUERTO AVENTURAS": { standart: 98, small: 232, luxury: 175 },
-        "AKUMAL": { standart: 119, small: 278, luxury: 242 },
-        "FELIPE CARRILLO PUERTO": { standart: 463, small: 1108, luxury: 1250 },
-        "MAHAHUAL": { standart: 566, small: 1108, luxury: 1019 },
-        "BACALAR": { standart: 566, small: 1108, luxury: 1019 },
-        "CHETUMAL": { standart: 572, small: 1108, luxury: 1086 },
-        "HOLBOX": { standart: 330, small: 823, luxury: 638 },
-        "VALLADOLID": { standart: 309, small: 636, luxury: 897 },
-        "MERIDA": { standart: 566, small: 1019, luxury: 1019 }
-    };
+    const diccionarioZonas = { "ZONA HOTELERA DE TULUM": ["TULUM HOTEL ZONE", "ZONA HOTELERA TULUM", "BOCA PAILA", "PAPAYA PLAYA", "NOMADE", "AZULIK"], "CENTRO DE TULUM": ["TULUM DOWNTOWN", "CENTRO DE TULUM", "TULUM PUEBLO", "TULUM, Q.R.", "ZAMA", "VELETA"], "ZONA HOTELERA DE CANCUN": ["CANCUN HOTEL ZONE", "ZONA HOTELERA", "KUKULCAN", "KM", "HOTEL ZONE"], "CENTRO DE CANCUN": ["CANCUN DOWNTOWN", "CENTRO DE CANCUN", "CANCUN CENTRO", "SM ", "SUPERMANZANA", "CANCUN, Q.R."], "COSTA MUJERES": ["COSTA MUJERES", "RIU DUNAMAR", "RIU PALACE COSTA", "PLANET HOLLYWOOD", "CATALONIA COSTA"], "PLAYA MUJERES": ["PLAYA MUJERES", "ATELIER", "FINEST", "BELOVED", "EXCELLENCE PLAYA"], "PUERTO MORELOS": ["PUERTO MORELOS", "DREAMS JADE", "NOW SAPPHIRE", "OCEAN CORAL"], "PLAYA PARAISO": ["PLAYA PARAISO", "IBEROSTAR", "VIDANTA", "MAROMA"], "PLAYA DEL CARMEN": ["PLAYA DEL CARMEN", "XCARET", "FIFTH AVENUE", "QUINTA AVENIDA", "PLAYACAR"], "PUERTO AVENTURAS": ["PUERTO AVENTURAS", "HARD ROCK RIVIERA", "BARCELO", "UNICO", "CATALONIA ROYAL"], "AKUMAL": ["AKUMAL", "BAHIA PRINCIPE", "SIRENIS", "PALLADIUM", "UNICO"], "MAHAHUAL": ["MAHAHUAL"], "BACALAR": ["BACALAR"], "CHETUMAL": ["CHETUMAL"], "HOLBOX": ["HOLBOX", "CHIQUILA"], "VALLADOLID": ["VALLADOLID"], "MERIDA": ["MERIDA"] };
 
-    const tarifasRedondoMXN = {
-        "ZONA HOTELERA DE TULUM": { standart: 5940, small: 12600, luxury: 10980 },
-        "CENTRO DE TULUM": { standart: 5040, small: 10800, luxury: 10800 },
-        "ZONA HOTELERA DE CANCUN": { standart: 1440, small: 3600, luxury: 3024 },
-        "CENTRO DE CANCUN": { standart: 1440, small: 3600, luxury: 3024 },
-        "COSTA MUJERES": { standart: 2880, small: 5400, luxury: 5220 },
-        "PLAYA MUJERES": { standart: 2340, small: 6676, luxury: 4680 },
-        "PUERTO JUAREZ": { standart: 1980, small: 5040, luxury: 3960 },
-        "PLAYA PARAISO": { standart: 2340, small: 6676, luxury: 4680 },
-        "PUERTO MORELOS": { standart: 1980, small: 5040, luxury: 3960 },
-        "PLAYA DEL CARMEN": { standart: 2880, small: 5400, luxury: 5220 },
-        "PUERTO AVENTURAS": { standart: 3420, small: 8100, luxury: 6120 },
-        "AKUMAL": { standart: 4140, small: 9720, luxury: 8460 },
-        "FELIPE CARRILLO PUERTO": { standart: 16200, small: 38772, luxury: 43740 },
-        "MAHAHUAL": { standart: 19800, small: 38772, luxury: 35640 },
-        "BACALAR": { standart: 19800, small: 38772, luxury: 35640 },
-        "CHETUMAL": { standart: 20000, small: 38772, luxury: 38000 },
-        "HOLBOX": { standart: 11520, small: 28800, luxury: 22320 },
-        "VALLADOLID": { standart: 10800, small: 22240, luxury: 31368 },
-        "MERIDA": { standart: 19800, small: 35640, luxury: 35640 }
-    };
-    const tarifasRedondoUSD = {
-        "ZONA HOTELERA DE TULUM": { standart: 340, small: 720, luxury: 628 },
-        "CENTRO DE TULUM": { standart: 288, small: 618, luxury: 618 },
-        "ZONA HOTELERA DE CANCUN": { standart: 83, small: 206, luxury: 173 },
-        "CENTRO DE CANCUN": { standart: 83, small: 206, luxury: 173 },
-        "COSTA MUJERES": { standart: 165, small: 309, luxury: 299 },
-        "PLAYA MUJERES": { standart: 134, small: 382, luxury: 268 },
-        "PUERTO JUAREZ": { standart: 114, small: 288, luxury: 227 },
-        "PLAYA PARAISO": { standart: 134, small: 382, luxury: 268 },
-        "PUERTO MORELOS": { standart: 114, small: 288, luxury: 227 },
-        "PLAYA DEL CARMEN": { standart: 165, small: 309, luxury: 299 },
-        "PUERTO AVENTURAS": { standart: 196, small: 463, luxury: 350 },
-        "AKUMAL": { standart: 237, small: 556, luxury: 484 },
-        "FELIPE CARRILLO PUERTO": { standart: 926, small: 2216, luxury: 2500 },
-        "MAHAHUAL": { standart: 1132, small: 2216, luxury: 2037 },
-        "BACALAR": { standart: 1132, small: 2216, luxury: 2037 },
-        "CHETUMAL": { standart: 1143, small: 2216, luxury: 2172 },
-        "HOLBOX": { standart: 659, small: 1646, luxury: 1276 },
-        "VALLADOLID": { standart: 618, small: 1271, luxury: 1793 },
-        "MERIDA": { standart: 1132, small: 2037, luxury: 2037 }
-    };
-
-    const diccionarioZonas = {
-        "ZONA HOTELERA DE TULUM": ["TULUM HOTEL ZONE", "ZONA HOTELERA TULUM", "BOCA PAILA", "PAPAYA PLAYA", "NOMADE", "AZULIK"],
-        "CENTRO DE TULUM": ["TULUM DOWNTOWN", "CENTRO DE TULUM", "TULUM PUEBLO", "TULUM, Q.R.", "ZAMA", "VELETA"],
-        "ZONA HOTELERA DE CANCUN": ["CANCUN HOTEL ZONE", "ZONA HOTELERA", "KUKULCAN", "KM", "HOTEL ZONE"],
-        "CENTRO DE CANCUN": ["CANCUN DOWNTOWN", "CENTRO DE CANCUN", "CANCUN CENTRO", "SM ", "SUPERMANZANA", "CANCUN, Q.R."],
-        "COSTA MUJERES": ["COSTA MUJERES", "RIU DUNAMAR", "RIU PALACE COSTA", "PLANET HOLLYWOOD", "CATALONIA COSTA"],
-        "PLAYA MUJERES": ["PLAYA MUJERES", "ATELIER", "FINEST", "BELOVED", "EXCELLENCE PLAYA"],
-        "PUERTO MORELOS": ["PUERTO MORELOS", "DREAMS JADE", "NOW SAPPHIRE", "OCEAN CORAL"],
-        "PLAYA PARAISO": ["PLAYA PARAISO", "IBEROSTAR", "VIDANTA", "MAROMA"],
-        "PLAYA DEL CARMEN": ["PLAYA DEL CARMEN", "XCARET", "FIFTH AVENUE", "QUINTA AVENIDA", "PLAYACAR"],
-        "PUERTO AVENTURAS": ["PUERTO AVENTURAS", "HARD ROCK RIVIERA", "BARCELO", "UNICO", "CATALONIA ROYAL"],
-        "AKUMAL": ["AKUMAL", "BAHIA PRINCIPE", "SIRENIS", "PALLADIUM", "UNICO"],
-        "MAHAHUAL": ["MAHAHUAL"],
-        "BACALAR": ["BACALAR"],
-        "CHETUMAL": ["CHETUMAL"],
-        "HOLBOX": ["HOLBOX", "CHIQUILA"],
-        "VALLADOLID": ["VALLADOLID"],
-        "MERIDA": ["MERIDA"]
-    };
-
+    // --- FUNCIONES LÓGICAS ---
     function setDireccion(modo) {
         direccionMode = modo;
-        const origenInput = document.getElementById('origen');
-        const destinoInput = document.getElementById('destino');
-        const btnDesde = document.getElementById('btnDesdeAero');
-        const btnHacia = document.getElementById('btnHaciaAero');
-        const btnPersonalizado = document.getElementById('btnPersonalizado');
+        const origen = document.getElementById('origen');
+        const destino = document.getElementById('destino');
         const btnAccion = document.getElementById('btnAccion');
-        const divSubtipo = document.getElementById('divSubtipoServicio');
         
-        const divDestinoInput = document.getElementById('divDestinoInput');
-        const divHorasInput = document.getElementById('divHorasInput');
-        
-        // CONTENEDOR DE CAMPOS DE VUELO E ITINERARIO
-        const divVueloInfo = document.getElementById('divVueloInfo');
-        const divItinerario = document.getElementById('divItinerario');
+        // UI Reset
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        if(modo === 'desdeAero') document.getElementById('btnDesdeAero').classList.add('active');
+        if(modo === 'haciaAero') document.getElementById('btnHaciaAero').classList.add('active');
+        if(modo === 'personalizado') document.getElementById('btnPersonalizado').classList.add('active');
 
-        // Reset de clases y estados
-        btnDesde.classList.remove('active');
-        btnHacia.classList.remove('active');
-        btnPersonalizado.classList.remove('active');
-        
-        divSubtipo.style.display = 'none';
-        
-        // Restaurar visibilidad normal de inputs
-        divDestinoInput.style.display = 'flex';
-        divHorasInput.style.display = 'none';
-        // Ocultar Itinerario por defecto
-        divItinerario.style.display = 'none';
-
-        // Restauramos visibilidad de RadioGroup
+        document.getElementById('divSubtipoServicio').style.display = 'none';
         document.getElementById('radioTipoViaje').style.display = 'flex';
+        document.getElementById('divVueloInfo').style.display = 'contents';
+        document.getElementById('divDestinoInput').style.display = 'flex';
+        document.getElementById('divHorasInput').style.display = 'none';
+        document.getElementById('divItinerario').style.display = 'none';
+        document.getElementById('resultados').style.display = 'none';
 
-        const estiloReadonly = "color:#777; background:#f5f5f5;";
-        const estiloEditable = "color:var(--text-dark); background:transparent;";
+        // Estilos
+        const ro = "color:#777; background:#f5f5f5;";
+        const ed = "color:var(--text-dark); background:transparent;";
 
         if (modo === 'desdeAero') {
-            btnDesde.classList.add('active');
-            // Mostrar campos de vuelo
-            divVueloInfo.style.display = 'contents'; 
-            
-            origenInput.value = "Aeropuerto Internacional de Cancún";
-            origenInput.setAttribute('readonly', true);
-            origenInput.style.cssText = estiloReadonly;
-            destinoInput.value = "";
-            destinoInput.removeAttribute('readonly');
-            destinoInput.style.cssText = estiloEditable;
-            destinoInput.placeholder = "¿A qué hotel vas?";
+            origen.value = "Aeropuerto Internacional de Cancún"; origen.setAttribute('readonly', true); origen.style.cssText = ro;
+            destino.value = ""; destino.removeAttribute('readonly'); destino.style.cssText = ed; destino.placeholder = "¿A qué hotel vas?";
             btnAccion.innerText = "Buscar Precios";
-            btnAccion.style.backgroundColor = "var(--action-green)";
-
         } else if (modo === 'haciaAero') {
-            btnHacia.classList.add('active');
-            // Mostrar campos de vuelo
-            divVueloInfo.style.display = 'contents'; 
-
-            destinoInput.value = "Aeropuerto Internacional de Cancún";
-            destinoInput.setAttribute('readonly', true);
-            destinoInput.style.cssText = estiloReadonly;
-            origenInput.value = "";
-            origenInput.removeAttribute('readonly');
-            origenInput.style.cssText = estiloEditable;
-            origenInput.placeholder = "¿Dónde te recogemos?";
+            destino.value = "Aeropuerto Internacional de Cancún"; destino.setAttribute('readonly', true); destino.style.cssText = ro;
+            origen.value = ""; origen.removeAttribute('readonly'); origen.style.cssText = ed; origen.placeholder = "¿Dónde te recogemos?";
             btnAccion.innerText = "Buscar Precios";
-            btnAccion.style.backgroundColor = "var(--action-green)";
-
         } else if (modo === 'personalizado') {
-            btnPersonalizado.classList.add('active');
-            divSubtipo.style.display = 'flex'; 
-            // OCULTAR CAMPOS DE VUELO
-            divVueloInfo.style.display = 'none';
-
-            origenInput.value = "";
-            origenInput.removeAttribute('readonly');
-            origenInput.style.cssText = estiloEditable;
-            origenInput.placeholder = "Lugar de Recogida";
-            
-            destinoInput.value = "";
-            destinoInput.removeAttribute('readonly');
-            destinoInput.style.cssText = estiloEditable;
-            destinoInput.placeholder = "Lugar de Destino";
-
-            // Cambiar Botón a modo Cotizar
-            btnAccion.innerText = "Cotizar por WhatsApp";
-            btnAccion.style.backgroundColor = "#25d366"; 
-            
-            // Forzar actualización del menú de horas según lo seleccionado en Ida/Vuelta
+            document.getElementById('divSubtipoServicio').style.display = 'flex';
+            document.getElementById('divVueloInfo').style.display = 'none';
+            origen.value = ""; origen.removeAttribute('readonly'); origen.style.cssText = ed; origen.placeholder = "Lugar de Recogida";
+            destino.value = ""; destino.removeAttribute('readonly'); destino.style.cssText = ed; destino.placeholder = "Lugar de Destino";
+            btnAccion.innerText = "Solicitar Cotización";
             updateTipoServicio(document.getElementById('tipoServicio').value);
             ajustarCamposPersonalizados();
         }
-        
-        limpiarResultados();
     }
 
     function updateTipoServicio(valor) {
         document.getElementById('tipoServicio').value = valor;
-        
-        // --- LOGICA DEL MENU PERSONALIZADO ---
+        // Lógica: Si es Redondo y Personalizado, oculta Horas
         const optHoras = document.getElementById('optHoras');
-        const selectSubtipo = document.getElementById('subtipoPersonalizado');
-
         if (direccionMode === 'personalizado') {
             if (valor === 'REDONDO') {
-                optHoras.hidden = true; 
-                optHoras.disabled = true;
-                // Si estaba seleccionado, lo regresamos a Hotel
-                if(selectSubtipo.value === 'HORAS') {
-                    selectSubtipo.value = 'HOTEL_A_HOTEL';
+                optHoras.hidden = true; optHoras.disabled = true;
+                if(document.getElementById('subtipoPersonalizado').value === 'HORAS') {
+                    document.getElementById('subtipoPersonalizado').value = 'HOTEL_A_HOTEL';
                     ajustarCamposPersonalizados();
                 }
             } else {
-                optHoras.hidden = false;
-                optHoras.disabled = false;
+                optHoras.hidden = false; optHoras.disabled = false;
             }
         } else {
-            optHoras.hidden = false;
-            optHoras.disabled = false;
+            optHoras.hidden = false; optHoras.disabled = false;
         }
-
         toggleVuelta();
     }
 
     function ajustarCamposPersonalizados() {
         if (direccionMode !== 'personalizado') return;
-
         const subtipo = document.getElementById('subtipoPersonalizado').value;
-        const divDestinoInput = document.getElementById('divDestinoInput');
-        const divHorasInput = document.getElementById('divHorasInput');
-        const destinoInput = document.getElementById('destino');
-        const labelDestino = document.getElementById('labelDestino');
-        
-        // CAMPO ITINERARIO
-        const divItinerario = document.getElementById('divItinerario');
+        const divDest = document.getElementById('divDestinoInput');
+        const divHoras = document.getElementById('divHorasInput');
+        const divItin = document.getElementById('divItinerario');
 
         if (subtipo === 'HORAS') {
-            // Ocultamos el input de texto DESTINO y mostramos el SELECT de HORAS
-            divDestinoInput.style.display = 'none';
-            divHorasInput.style.display = 'flex';
-            
-            // MOSTRAMOS EL CAMPO DE ITINERARIO
-            divItinerario.style.display = 'flex'; // O grid, según CSS
-
+            divDest.style.display = 'none';
+            divHoras.style.display = 'flex';
+            divItin.style.display = 'flex';
         } else {
-            // Regresamos al input normal
-            divDestinoInput.style.display = 'flex';
-            divHorasInput.style.display = 'none';
-            // OCULTAMOS ITINERARIO
-            divItinerario.style.display = 'none';
-
-            labelDestino.innerText = "Destino";
-            if (subtipo === 'TOUR') {
-                destinoInput.placeholder = "Ej: Xcaret, Chichén Itzá...";
-            } else {
-                destinoInput.placeholder = "Ej: Hotel Xcaret, Airbnb Centro...";
-            }
+            divDest.style.display = 'flex';
+            divHoras.style.display = 'none';
+            divItin.style.display = 'none';
+            const ph = subtipo === 'TOUR' ? "Ej: Xcaret, Chichén Itzá..." : "Ej: Hotel Xcaret, Airbnb...";
+            document.getElementById('destino').placeholder = ph;
         }
     }
 
     function toggleVuelta() {
         const tipo = document.getElementById('tipoServicio').value;
-        const divFechaVuelta = document.getElementById('divFechaVuelta');
-        const divHoraVuelta = document.getElementById('divHoraVuelta');
-
-        if (tipo === 'REDONDO') {
-            divFechaVuelta.style.display = 'flex';
-            divHoraVuelta.style.display = 'flex';
-        } else {
-            divFechaVuelta.style.display = 'none';
-            divHoraVuelta.style.display = 'none';
-        }
-        limpiarResultados();
-    }
-
-    function limpiarResultados() {
+        const show = (tipo === 'REDONDO') ? 'flex' : 'none';
+        document.getElementById('divFechaVuelta').style.display = show;
+        document.getElementById('divHoraVuelta').style.display = show;
         document.getElementById('resultados').style.display = 'none';
     }
 
-    function initAutocomplete() {
-        const limitesPeninsula = new google.maps.LatLngBounds(
-            new google.maps.LatLng(17.9, -91.5),
-            new google.maps.LatLng(21.8, -86.5)
-        );
-        const opciones = {
-            bounds: limitesPeninsula,
-            strictBounds: true,
-            componentRestrictions: { country: "mx" },
-            fields: ["address_components", "geometry", "icon", "name"],
-            types: ["establishment", "geocode"]
-        };
-        new google.maps.places.Autocomplete(document.getElementById('origen'), opciones);
-        new google.maps.places.Autocomplete(document.getElementById('destino'), opciones);
-    }
+    function limpiarResultados() { document.getElementById('resultados').style.display = 'none'; }
 
     function cotizar() {
-        // --- RECOPILAR DATOS ---
         const nombre = document.getElementById('nombreCliente').value;
         const tel = document.getElementById('telefonoCliente').value;
-        const mail = document.getElementById('emailCliente').value;
-        const notas = document.getElementById('notasCliente').value;
-        const aerolinea = document.getElementById('aerolinea').value;
-        const vuelo = document.getElementById('numVuelo').value;
-        const itinerario = document.getElementById('itinerarioCliente').value;
-        
-        const pax = document.getElementById('pasajeros').value;
-        const fecha = document.getElementById('fechaIda').value;
-        const hora = document.getElementById('horaIda').value;
+        if(nombre.length < 2) { alert("Escribe tu nombre."); return; }
+        if(tel.length < 5) { alert("Escribe tu teléfono."); return; }
 
-        // Construimos el bloque del vuelo (SOLO si no es personalizado y si escribieron algo)
-        let vueloMsg = "";
-        if (direccionMode !== 'personalizado') {
-            if(aerolinea || vuelo) {
-               vueloMsg = `%0A✈️ *Vuelo:* ${aerolinea} ${vuelo}`;
-            }
-        }
-
-        // Construimos bloque de itinerario (SOLO si es Horas)
-        let itinerarioMsg = "";
-        if (direccionMode === 'personalizado' && document.getElementById('subtipoPersonalizado').value === 'HORAS') {
-             itinerarioMsg = `%0A🗺️ *Itinerario:* ${itinerario}`;
-        }
-
-        // Bloque de texto de contacto
-        const contactoMsgBlock = `%0A%0A📝 *DATOS DEL CLIENTE:*%0A👤 *Nombre:* ${nombre}%0A📞 *Tel:* ${tel}%0A📧 *Email:* ${mail}${vueloMsg}${itinerarioMsg}%0A📋 *Notas:* ${notas}`;
-
-
-        // --- LOGICA DE COTIZACIÓN PERSONALIZADA ---
         if (direccionMode === 'personalizado') {
+            // PROCESO PARA COTIZACIÓN (SIN PRECIO FIJO)
             const subtipo = document.getElementById('subtipoPersonalizado').value;
-            const subtipoTexto = document.getElementById('subtipoPersonalizado').options[document.getElementById('subtipoPersonalizado').selectedIndex].text;
-            const origen = document.getElementById('origen').value;
+            const subtipoTxt = document.getElementById('subtipoPersonalizado').options[document.getElementById('subtipoPersonalizado').selectedIndex].text;
             
-            // Definir qué variable de "Destino" tomamos
             let destinoFinal = "";
-            if (subtipo === 'HORAS') {
-                destinoFinal = document.getElementById('horasSeleccionadas').value;
-            } else {
-                destinoFinal = document.getElementById('destino').value;
-            }
+            if(subtipo === 'HORAS') destinoFinal = document.getElementById('horasSeleccionadas').value;
+            else destinoFinal = document.getElementById('destino').value;
 
-            // Validación simple
-            if(origen.length < 3) { alert("Indica el Origen"); return; }
-            if(nombre.length < 2) { alert("Por favor escribe tu Nombre para cotizar."); return; }
-            if(tel.length < 5) { alert("Por favor escribe tu Teléfono de contacto."); return; }
-
-            const mensaje = `Hola, quiero cotizar un *Servicio Especial*:%0A%0A📌 *Tipo:* ${subtipoTexto}%0A📍 *Origen:* ${origen}%0A🏁 *Destino/Duración:* ${destinoFinal}%0A📅 *Fecha:* ${fecha} - ${hora}%0A👥 *Pax:* ${pax}${contactoMsgBlock}`;
+            // Preparamos objeto para enviar
+            const datosCotizacion = {
+                esVenta: false, // Flag Importante
+                nombre: nombre,
+                telefono: tel,
+                email: document.getElementById('emailCliente').value,
+                tipoViaje: document.getElementById('tipoServicio').value + " - " + subtipoTxt,
+                origen: document.getElementById('origen').value,
+                destino: destinoFinal,
+                fecha: document.getElementById('fechaIda').value,
+                hora: document.getElementById('horaIda').value,
+                notas: document.getElementById('notasCliente').value,
+                itinerario: document.getElementById('itinerarioCliente').value,
+                vehiculo: "Cotización Especial",
+                precio: "Por Cotizar"
+            };
             
-            window.open(`https://wa.me/5219984042857?text=${mensaje}`, '_blank');
-            return; 
-        }
-
-        // --- LOGICA DE COTIZACIÓN AUTOMÁTICA ---
-        const tipo = document.getElementById('tipoServicio').value;
-        const moneda = document.getElementById('moneda').value;
-        
-        let lugarBusqueda = "";
-        let origenTxt = document.getElementById('origen').value;
-        let destinoTxt = document.getElementById('destino').value;
-
-        if (direccionMode === 'desdeAero') {
-            lugarBusqueda = destinoTxt;
-        } else {
-            lugarBusqueda = origenTxt;
-        }
-
-        // Validaciones
-        if (lugarBusqueda.length < 3) { alert("Por favor indica la dirección del hotel o destino."); return; }
-        if(nombre.length < 2) { alert("Por favor escribe tu Nombre para ver los precios."); return; }
-        if(tel.length < 5) { alert("Por favor escribe tu Teléfono para ver los precios."); return; }
-
-
-        let zonaDetectada = "";
-        lugarBusqueda = lugarBusqueda.toUpperCase();
-
-        for (let zona in diccionarioZonas) {
-            let alias = diccionarioZonas[zona];
-            for (let i = 0; i < alias.length; i++) {
-                if (lugarBusqueda.includes(alias[i])) {
-                    zonaDetectada = zona;
-                    break;
-                }
-            }
-            if (zonaDetectada) break;
-        }
-
-        if (!zonaDetectada) {
-            alert("Destino no detectado automáticamente. Contáctanos para cotización manual.");
+            // Enviamos
+            iniciarEnvio(datosCotizacion);
             return;
         }
+
+        // PROCESO PARA VENTA (AEROPUERTO)
+        const tipo = document.getElementById('tipoServicio').value;
+        const moneda = document.getElementById('moneda').value;
+        const pax = parseInt(document.getElementById('pasajeros').value);
+        let lugar = (direccionMode === 'desdeAero') ? document.getElementById('destino').value : document.getElementById('origen').value;
+        
+        if (lugar.length < 3) { alert("Indica el lugar."); return; }
+
+        let zona = "";
+        lugar = lugar.toUpperCase();
+        for (let z in diccionarioZonas) {
+            for (let i=0; i<diccionarioZonas[z].length; i++) {
+                if (lugar.includes(diccionarioZonas[z][i])) { zona = z; break; }
+            }
+            if(zona) break;
+        }
+
+        if (!zona) { alert("Zona no detectada. Usa Servicio Personalizado."); return; }
 
         let db;
         if (moneda === 'MXN' && tipo === 'SENCILLO') db = tarifasSencilloMXN;
@@ -720,100 +389,113 @@
         else if (moneda === 'MXN' && tipo === 'REDONDO') db = tarifasRedondoMXN;
         else if (moneda === 'USD' && tipo === 'REDONDO') db = tarifasRedondoUSD;
 
-        const precios = db[zonaDetectada];
+        const p = db[zona];
         const divRes = document.getElementById('resultados');
         divRes.innerHTML = "";
         
-        const pasajerosNum = parseInt(pax);
-
-        // 1. Categoría STANDARD
-        if (pasajerosNum <= 3) {
-            divRes.innerHTML += crearCard("STANDARD SEDAN", "1-3 Pasajeros", precios.standart, moneda, zonaDetectada, imgUrlErtiga, contactoMsgBlock);
-        } 
-        else if (pasajerosNum <= 8) {
-            divRes.innerHTML += crearCard("VAN STANDARD", "1-8 Pasajeros", precios.standart, moneda, zonaDetectada, imgUrlTransporter, contactoMsgBlock);
-        }
-
-        // 2. Categoría SMALL GROUP
-        if (pasajerosNum <= 15 && precios.small) {
-             divRes.innerHTML += crearCard("SMALL GROUP VAN", "Hasta 15 Pasajeros", precios.small, moneda, zonaDetectada, imgUrlSprinter, contactoMsgBlock);
-        }
-
-        // 3. Categoría LUXURY
-        if (pasajerosNum <= 5 && precios.luxury) {
-            divRes.innerHTML += crearCard("LUXURY SUV", "1-5 Pasajeros", precios.luxury, moneda, zonaDetectada, imgUrlSuburban, contactoMsgBlock);
-        }
+        if(pax<=3) divRes.innerHTML+=crearCard("STANDARD SEDAN","1-3 Pax",p.standart,moneda,zona,imgUrlErtiga);
+        else if(pax<=8) divRes.innerHTML+=crearCard("VAN STANDARD","1-8 Pax",p.standart,moneda,zona,imgUrlTransporter);
+        
+        if(pax<=15 && p.small) divRes.innerHTML+=crearCard("SMALL GROUP VAN","Hasta 15 Pax",p.small,moneda,zona,imgUrlSprinter);
+        if(pax<=5 && p.luxury) divRes.innerHTML+=crearCard("LUXURY SUV","1-5 Pax",p.luxury,moneda,zona,imgUrlSuburban);
 
         divRes.style.display = 'block';
     }
 
-    function crearCard(vehiculo, capacidad, precio, moneda, zona, imgUrl, contactoBlock) {
+    function crearCard(veh, cap, precio, moneda, zona, img) {
         const tipo = document.getElementById('tipoServicio').value;
-        const origen = document.getElementById('origen').value;
-        const destino = document.getElementById('destino').value;
-        const fechaIda = document.getElementById('fechaIda').value || "Pendiente";
-        const pax = document.getElementById('pasajeros').value;
+        const pAlto = Math.round(precio * 1.30);
         
-        let notaPrecio = "";
-        let extras = "";
-
-        // Calculamos precio tachado (30% más)
-        const precioAlto = Math.round(precio * 1.30);
-
-        if (tipo === 'REDONDO') {
-            const fVuelta = document.getElementById('fechaVuelta').value || "Pendiente";
-            extras = `%0A🔄 *Regreso:* ${fVuelta}`;
-            
-            // NOTA VERDE
-            notaPrecio = `<div style="font-size: 11px; color: var(--action-green); font-weight: bold; margin-top: 5px;">
-                            <i class="fas fa-check"></i> Incluye Ida y Vuelta
-                          </div>`;
-        } else {
-            // NOTA GRIS
-            notaPrecio = `<div style="font-size: 11px; color: #777; margin-top: 5px;">
-                            Precio por un solo trayecto
-                          </div>`;
-        }
-        
-        // Se añade el bloque de contacto al mensaje final
-        const mensaje = `Hola, quiero reservar:%0A%0A🚐 *Vehículo:* ${vehiculo}%0A📍 *Origen:* ${origen}%0A🏁 *Destino:* ${destino} (${zona})%0A📅 *Ida:* ${fechaIda}${extras}%0A👥 *Pax:* ${pax}%0A💰 *Precio:* $${precio} ${moneda}${contactoBlock}`;
-        const link = `https://wa.me/5219984042857?text=${mensaje}`;
+        // Objeto listo para enviar
+        const dataObj = JSON.stringify({
+            esVenta: true,
+            vehiculo: veh,
+            precio: "$" + precio + " " + moneda,
+            zona: zona
+        }).replace(/"/g, "&quot;");
 
         return `
-            <div class="tarjeta">
-                <div class="tarjeta-img">
-                    <img src="${imgUrl}" alt="${vehiculo}">
-                </div>
-                <div class="tarjeta-info">
-                    <h3>${vehiculo}</h3>
-                    <p class="tarjeta-desc">Capacidad: ${capacidad} | ${tipo === 'REDONDO' ? 'Viaje Redondo' : 'Viaje Sencillo'}</p>
-                    
-                    <div class="feature-grid">
-                        <div class="feature-tag"><i class="fas fa-check-circle"></i> Servicio Privado</div>
-                        <div class="feature-tag"><i class="fas fa-check-circle"></i> Monitoreo de Vuelo</div>
-                        <div class="feature-tag"><i class="fas fa-check-circle"></i> Sin cargos ocultos</div>
-                        <div class="feature-tag"><i class="fas fa-check-circle"></i> Aire Acondicionado</div>
-                        <div class="feature-tag"><i class="fas fa-check-circle"></i> Seguro Incluido</div>
-                        <div class="feature-tag"><i class="fas fa-check-circle"></i> Letrero de Bienvenida</div>
-                    </div>
-                </div>
-                <div class="tarjeta-price">
-                    <div class="price-container">
-                        <span class="price-label">Precio Final</span>
-                        <span class="price-old">$${precioAlto} ${moneda}</span>
-                        <span class="price-current">$${precio} ${moneda}</span>
-                        ${notaPrecio}
-                    </div>
-                    <a href="${link}" target="_blank" class="btn-reservar">
-                        Reservar <i class="fas fa-arrow-right"></i>
-                    </a>
+        <div class="tarjeta">
+            <div class="tarjeta-img"><img src="${img}" alt="${veh}"></div>
+            <div class="tarjeta-info">
+                <h3>${veh}</h3>
+                <p class="tarjeta-desc">${cap} | ${tipo}</p>
+                <div class="feature-grid">
+                    <div class="feature-tag"><i class="fas fa-check-circle"></i> Seguro</div>
+                    <div class="feature-tag"><i class="fas fa-check-circle"></i> Privado</div>
                 </div>
             </div>
-        `;
+            <div class="tarjeta-price">
+                <div class="price-container">
+                    <span class="price-old">$${pAlto}</span>
+                    <span class="price-current">$${precio} ${moneda}</span>
+                </div>
+                <button class="btn-reservar" onclick="prepararVenta(${dataObj})">Reservar <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>`;
+    }
+
+    function prepararVenta(datosCard) {
+        // Juntamos datos del form + datos de la tarjeta seleccionada
+        const datosVenta = {
+            esVenta: true,
+            nombre: document.getElementById('nombreCliente').value,
+            telefono: document.getElementById('telefonoCliente').value,
+            email: document.getElementById('emailCliente').value,
+            tipoViaje: document.getElementById('tipoServicio').value,
+            origen: document.getElementById('origen').value,
+            destino: document.getElementById('destino').value,
+            fecha: document.getElementById('fechaIda').value,
+            hora: document.getElementById('horaIda').value,
+            notas: document.getElementById('notasCliente').value,
+            vuelo: document.getElementById('aerolinea').value + ' ' + document.getElementById('numVuelo').value,
+            // Datos de la card
+            vehiculo: datosCard.vehiculo,
+            precio: datosCard.precio,
+            zona: datosCard.zona
+        };
+        iniciarEnvio(datosVenta);
+    }
+
+    // --- FUNCIÓN MAESTRA DE ENVÍO ---
+    function iniciarEnvio(data) {
+        if(SCRIPT_URL.includes("PEGAR")) { alert("Falta configurar la URL del Script."); return; }
+        
+        document.getElementById('loadingOverlay').style.display = 'flex';
+
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        })
+        .then(() => {
+            document.getElementById('loadingOverlay').style.display = 'none';
+            // Mensaje dinámico en Modal
+            if(data.esVenta) {
+                document.getElementById('modalTitle').innerText = "¡Reserva Recibida!";
+                document.getElementById('modalText').innerText = "Gracias " + data.nombre + ". Hemos recibido tu reserva. Te enviaremos la confirmación en breve.";
+            } else {
+                document.getElementById('modalTitle').innerText = "¡Solicitud Enviada!";
+                document.getElementById('modalText').innerText = "Gracias " + data.nombre + ". Hemos recibido tu solicitud de cotización. Te contactaremos con el mejor precio.";
+            }
+            document.getElementById('modalConfirmacion').style.display = 'flex';
+        })
+        .catch(e => {
+            console.error(e);
+            alert("Error al enviar. Intenta por WhatsApp.");
+            document.getElementById('loadingOverlay').style.display = 'none';
+        });
+    }
+
+    function cerrarModal() { document.getElementById('modalConfirmacion').style.display = 'none'; }
+    function initAutocomplete() {
+        const bounds = new google.maps.LatLngBounds(new google.maps.LatLng(17.9, -91.5), new google.maps.LatLng(21.8, -86.5));
+        const opts = { bounds: bounds, strictBounds: true, componentRestrictions: { country: "mx" }, fields: ["name"], types: ["establishment", "geocode"] };
+        new google.maps.places.Autocomplete(document.getElementById('origen'), opts);
+        new google.maps.places.Autocomplete(document.getElementById('destino'), opts);
     }
 </script>
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdK5yLQ20SQrLc_0rOuo7oxxHVQ233Bh0&libraries=places&callback=initAutocomplete" async defer></script>
-
 </body>
 </html>
