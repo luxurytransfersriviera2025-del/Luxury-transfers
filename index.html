@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
     <style>
-        /* --- ESTILOS GENERALES --- */
+        /* --- ESTILOS DE DISEÑO (VERSIÓN FINAL) --- */
         :root { 
             --primary-blue: #003580; 
             --action-green: #00a651; 
@@ -27,7 +27,6 @@
         
         h1 { color: var(--white); text-align: center; text-shadow: 0 4px 10px rgba(0,0,0,0.5); font-size: 32px; margin-bottom: 25px; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase; }
         
-        /* SEARCH BOX */
         .search-box-container { background-color: var(--highlight-yellow); padding: 4px; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); margin-bottom: 20px; }
         .search-box-inner { background-color: var(--primary-blue); padding: 25px; border-radius: 9px; color: white; }
         
@@ -59,7 +58,7 @@
         .btn-cotizar:hover { background-color: var(--action-green-hover); transform: translateY(2px); box-shadow: 0 3px 0 #007a3d; }
         .btn-cotizar:active { transform: translateY(5px); box-shadow: none; }
 
-        /* HEADER DE RESULTADOS (CORREGIDO AL ESTILO QUE TE GUSTA) */
+        /* HEADER DE RESULTADOS */
         #resultados { margin-top: 30px; display: none; width: 100%; }
         .ruta-header { 
             background: rgba(0, 0, 0, 0.6); 
@@ -104,7 +103,6 @@
         .modal-icon { font-size: 70px; color: var(--action-green); margin-bottom: 20px; }
         .modal-title { font-size: 28px; color: var(--primary-blue); margin-bottom: 10px; font-weight: 900; letter-spacing: -1px; }
         .modal-text { font-size: 15px; color: #666; line-height: 1.6; margin-bottom: 20px; }
-        
         .tyc-content { text-align: left; font-size: 13px; color: #444; line-height: 1.5; margin-top: 15px; }
         .tyc-content h4 { color: var(--primary-blue); margin-bottom: 5px; margin-top: 15px; font-size: 14px; }
         .tyc-content ul { padding-left: 20px; margin: 0; }
@@ -122,7 +120,6 @@
         
         .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); z-index: 2000; display: none; align-items: center; justify-content: center; flex-direction: column; }
         .spinner { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--action-green); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
-        
         @keyframes slideUp { from {transform: translateY(50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
@@ -194,7 +191,7 @@
         
         <div class="modal-actions">
             <a href="tel:+529842411158" class="modal-btn btn-call"><i class="fas fa-phone"></i> Llama ahora</a>
-            <a href="#" target="_blank" class="modal-btn btn-wa" id="btnWhatsapp"><i class="fab fa-whatsapp"></i> Confirmar por WhatsApp</a>
+            <a href="#" target="_blank" class="modal-btn btn-wa" id="btnWhatsapp"><i class="fab fa-whatsapp"></i> Enviar Whatsapp</a>
             <a href="#" class="modal-btn btn-mail" id="btnMail"><i class="fas fa-envelope"></i> Enviar Correo</a>
         </div>
     </div>
@@ -299,9 +296,9 @@
 
 <script>
     // ============================================
-    // ¡URL DEL ROBOT CONECTADA!
+    // ¡URL DEL ROBOT ACTUALIZADA!
     // ============================================
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyqcSDFPgOBDhhE4ZOaGJD4LWvyYPZWw4lHq5FQFlj3F8EcBDubBi8cgkMAxsAS1EuM/exec"; 
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz4yYNHpyD73w0efQsxTI7sM3TjU7Gn9PLXrJC7pQcB0M3I2r6O69YCzvdgVk_wwm2o/exec"; 
     // ============================================
 
     let direccionMode = 'desdeAero'; 
@@ -310,7 +307,6 @@
     const imgUrlSprinter = "https://i.imgur.com/BffyPRe.png";
     const imgUrlSuburban = "https://i.imgur.com/95X8eqt.png"; 
 
-    // BLOQUEO DE FECHAS PASADAS (HORA LIBRE)
     window.onload = function() {
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('fechaIda').setAttribute('min', today);
@@ -682,8 +678,8 @@
 
         const pax = document.getElementById('pasajeros').value;
         
-        // --- TEXTO WHATSAPP PROFESIONAL Y LIMPIO ---
-        let saludo = data.esVenta ? "Hola, quiero *confirmar* el siguiente servicio:" : "Hola, quiero *cotizar* el siguiente servicio:";
+        // --- TEXTO WHATSAPP LIMPIO ---
+        let saludo = data.esVenta ? "Hola, quiero *CONFIRMAR* el siguiente servicio:" : "Hola, quiero *COTIZAR* el siguiente servicio:";
         
         let baseText = `${saludo}%0A%0A*CÓDIGO:* ${data.codigo}%0A*TIPO:* ${data.tipoViaje}%0A*VEHÍCULO:* ${data.vehiculo}%0A*ORIGEN:* ${data.origen}%0A*DESTINO:* ${data.destino}%0A*FECHA:* ${data.fecha} - *HORA:* ${data.hora}%0A*PASAJEROS:* ${pax}`;
 
@@ -693,10 +689,8 @@
 
         baseText += `%0A%0A*Mi Nombre:* ${data.nombre}`;
         
-        // NO USAR encodeURIComponent aquí para el cuerpo, ya que lo construimos manualmente con %0A
-        // Pero el asunto del mail si necesita encode
         const subject = encodeURIComponent("Solicitud " + data.codigo + " - " + data.nombre);
-        const mailBody = encodeURIComponent(baseText.replace(/%0A/g, "\n").replace(/\*/g, "")); // Limpiamos asteriscos para mail
+        const mailBody = encodeURIComponent(baseText.replace(/%0A/g, "\n").replace(/\*/g, "")); 
 
         document.getElementById('btnWhatsapp').href = `https://wa.me/529842411158?text=${baseText}`;
         document.getElementById('btnMail').href = `mailto:reservas@luxurytransfersriviera.com.mx?subject=${subject}&body=${mailBody}`;
