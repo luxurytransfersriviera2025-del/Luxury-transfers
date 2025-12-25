@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
     <style>
-        /* ESTILOS DE DISEÑO (OPTIMIZADOS) */
+        /* ESTILOS DE DISEÑO (Optimizado para Móvil y PC) */
         :root { --primary-blue: #003580; --action-green: #00a651; --action-green-hover: #008c44; --highlight-yellow: #febb02; --text-dark: #1a1a1a; --text-gray: #555; --bg-light: #f2f2f2; --white: #ffffff; --check-color: #003580; }
         body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background: url('https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?q=80&w=2069&auto=format&fit=crop') no-repeat center center fixed; background-size: cover; min-height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; }
         .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 53, 128, 0.4); z-index: 1; }
@@ -208,7 +208,7 @@
         "CENTRO DE CANCUN": ["CANCUN DOWNTOWN", "CENTRO DE CANCUN", "CANCUN CENTRO", "SUPERMANZANA", "CANCUN, Q.R.", "ALAMOS", "HUAYACAN"],
         "COSTA MUJERES": ["COSTA MUJERES", "RIU DUNAMAR", "RIU PALACE COSTA", "PLANET HOLLYWOOD", "CATALONIA COSTA"],
         "PLAYA MUJERES": ["PLAYA MUJERES", "ATELIER", "FINEST", "BELOVED", "EXCELLENCE PLAYA"],
-        "PUERTO MORELOS": ["PUERTO MORELOS", "DREAMS JADE", "NOW SAPPHIRE", "OCEAN CORAL", "MOON PALACE", "ROYALTON"],
+        "PUERTO MORELOS": ["PUERTO MORELOS", "DREAMS JADE", "NOW SAPPHIRE", "OCEAN CORAL"],
         "PLAYA PARAISO": ["PLAYA PARAISO", "IBEROSTAR", "VIDANTA", "MAROMA"],
         "PLAYA DEL CARMEN": ["PLAYA DEL CARMEN", "XCARET", "FIFTH AVENUE", "QUINTA AVENIDA", "PLAYACAR"],
         "PUERTO AVENTURAS": ["PUERTO AVENTURAS", "DREAMS AVENTURAS", "DREAMS PUERTO", "HARD ROCK RIVIERA", "BARCELO", "UNICO", "CATALONIA ROYAL"],
@@ -222,7 +222,7 @@
     };
 
     // ===============================================
-    // 1. ZONAS GPS (MALLA CONTINUA SIN FUGAS)
+    // 1. ZONAS GPS (AUDITORÍA "TOLERANCIA CERO")
     // ===============================================
     const zonasGPS = [
         // --- ZONA NORTE Y CARA (PRIORIDAD ALTA) ---
@@ -230,7 +230,7 @@
         { nombre: "COSTA MUJERES", latMin: 21.2300, latMax: 21.3500, lonMin: -86.8500, lonMax: -86.7800 },
         // Playa Mujeres: Entre Costa y Puerto Juárez
         { nombre: "PLAYA MUJERES", latMin: 21.2000, latMax: 21.2290, lonMin: -86.8200, lonMax: -86.7800 },
-        // Puerto Juárez: Al Norte de la Av. Uxmal (aprox 21.17) Y AL ESTE DE BONAMPAK
+        // Puerto Juárez: Al Norte de la Av. Uxmal Y AL ESTE DE BONAMPAK
         { nombre: "PUERTO JUAREZ", latMin: 21.1650, latMax: 21.1990, lonMin: -86.8250, lonMax: -86.7900 },
 
         // --- ZONA HOTELERA DE CANCÚN (DIVIDIDA EN 2 CAJAS) ---
@@ -241,7 +241,6 @@
 
         // --- RIVIERA MAYA SUR (CONEXIÓN CONTINUA) ---
         // 1. ZONA SEGURIDAD SUR (Moon Palace, Royalton) -> Mapea a Puerto Morelos
-        // Esta caja atrapa a los hoteles saliendo del aeropuerto hacia el sur
         { nombre: "PUERTO MORELOS", latMin: 20.9500, latMax: 21.0500, lonMin: -86.9500, lonMax: -86.8300 },
 
         // 2. Puerto Morelos Centro + Dreams Jade
@@ -251,11 +250,9 @@
         { nombre: "PLAYA PARAISO", latMin: 20.7000, latMax: 20.8200, lonMin: -86.9900, lonMax: -86.9200 },
         
         // 4. Playa del Carmen (Extendida al Sur para cubrir Xcaret/Xplor)
-        // Xcaret está en 20.58. Bajamos el límite a 20.55
         { nombre: "PLAYA DEL CARMEN", latMin: 20.5500, latMax: 20.7000, lonMin: -87.1500, lonMax: -87.0000 },
 
         // 5. Puerto Aventuras (Extendida para cubrir Paamul y Xpu-Ha)
-        // Xpu-Ha está en 20.47. Bajamos límite a 20.45
         { nombre: "PUERTO AVENTURAS", latMin: 20.4500, latMax: 20.5500, lonMin: -87.3000, lonMax: -87.1500 },
 
         // 6. Akumal
