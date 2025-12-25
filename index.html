@@ -35,7 +35,6 @@
         /* ESTILOS DE LA TARJETA Y ANIMACIÓN */
         #resultados { margin-top: 20px; display: none; width: 100%; }
         
-        /* Título de la ruta encima de los resultados */
         .ruta-header { background: rgba(0,0,0,0.6); color: white; padding: 10px 15px; border-radius: 6px; margin-bottom: 15px; text-align: center; font-size: 16px; border-left: 5px solid var(--highlight-yellow); animation: fadeIn 0.5s ease-in-out; }
         .ruta-header i { color: var(--highlight-yellow); margin: 0 10px; }
 
@@ -47,7 +46,6 @@
         .tarjeta-info { flex: 1; display: flex; flex-direction: column; justify-content: center; min-width: 250px; }
         .tarjeta-info h3 { margin: 0 0 5px 0; font-size: 22px; color: var(--text-dark); text-transform: uppercase; letter-spacing: 0.5px; }
         
-        /* Nueva clase para la ruta DENTRO de la tarjeta */
         .tarjeta-route-display { font-size: 13px; color: #003580; font-weight: 700; margin-bottom: 8px; background: #e3f2fd; padding: 5px 8px; border-radius: 4px; display: inline-block; }
 
         .tarjeta-specs { margin-bottom: 12px; font-size: 14px; color: #444; display: flex; flex-direction: column; gap: 4px; }
@@ -212,7 +210,19 @@
     const imgUrlSprinter = "https://i.imgur.com/BffyPRe.png";
     const imgUrlSuburban = "https://i.imgur.com/95X8eqt.png"; 
 
-    // --- PRECIOS ---
+    // --- BLOQUEO DE FECHAS PASADAS (SEGURIDAD) ---
+    window.onload = function() {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('fechaIda').setAttribute('min', today);
+        document.getElementById('fechaVuelta').setAttribute('min', today);
+
+        // Si cambian fecha ida, la vuelta no puede ser anterior
+        document.getElementById('fechaIda').addEventListener('change', function() {
+            document.getElementById('fechaVuelta').setAttribute('min', this.value);
+        });
+    };
+
+    // --- PRECIOS (SIN SIAN KA'AN - SOLO ZONAS SEGURAS) ---
     const tarifasSencilloMXN = { "ZONA HOTELERA DE TULUM": { standart: 2970, small: 6300, luxury: 5490 }, "CENTRO DE TULUM": { standart: 2520, small: 5400, luxury: 5400 }, "ZONA HOTELERA DE CANCUN": { standart: 720, small: 1800, luxury: 1512 }, "CENTRO DE CANCUN": { standart: 720, small: 1800, luxury: 1512 }, "COSTA MUJERES": { standart: 1440, small: 2700, luxury: 2610 }, "PLAYA MUJERES": { standart: 1170, small: 3338, luxury: 2340 }, "PUERTO JUAREZ": { standart: 990, small: 2520, luxury: 1980 }, "PLAYA PARAISO": { standart: 1170, small: 3338, luxury: 2340 }, "PUERTO MORELOS": { standart: 990, small: 2520, luxury: 1980 }, "PLAYA DEL CARMEN": { standart: 1440, small: 2700, luxury: 2610 }, "PUERTO AVENTURAS": { standart: 1710, small: 4050, luxury: 3060 }, "AKUMAL": { standart: 2070, small: 4860, luxury: 4230 }, "FELIPE CARRILLO PUERTO": { standart: 8100, small: 19386, luxury: 21870 }, "MAHAHUAL": { standart: 9900, small: 19386, luxury: 17820 }, "BACALAR": { standart: 9900, small: 19386, luxury: 17820 }, "CHETUMAL": { standart: 10000, small: 19386, luxury: 19000 }, "HOLBOX": { standart: 5760, small: 14400, luxury: 11160 }, "VALLADOLID": { standart: 5400, small: 11120, luxury: 15684 }, "MERIDA": { standart: 9900, small: 17820, luxury: 17820 } };
     const tarifasSencilloUSD = { "ZONA HOTELERA DE TULUM": { standart: 170, small: 360, luxury: 314 }, "CENTRO DE TULUM": { standart: 144, small: 309, luxury: 309 }, "ZONA HOTELERA DE CANCUN": { standart: 42, small: 103, luxury: 87 }, "CENTRO DE CANCUN": { standart: 42, small: 103, luxury: 87 }, "COSTA MUJERES": { standart: 83, small: 155, luxury: 150 }, "PLAYA MUJERES": { standart: 67, small: 191, luxury: 134 }, "PUERTO JUAREZ": { standart: 57, small: 144, luxury: 114 }, "PLAYA PARAISO": { standart: 67, small: 191, luxury: 134 }, "PUERTO MORELOS": { standart: 57, small: 144, luxury: 114 }, "PLAYA DEL CARMEN": { standart: 83, small: 155, luxury: 150 }, "PUERTO AVENTURAS": { standart: 98, small: 232, luxury: 175 }, "AKUMAL": { standart: 119, small: 278, luxury: 242 }, "FELIPE CARRILLO PUERTO": { standart: 463, small: 1108, luxury: 1250 }, "MAHAHUAL": { standart: 566, small: 1108, luxury: 1019 }, "BACALAR": { standart: 566, small: 1108, luxury: 1019 }, "CHETUMAL": { standart: 572, small: 1108, luxury: 1086 }, "HOLBOX": { standart: 330, small: 823, luxury: 638 }, "VALLADOLID": { standart: 309, small: 636, luxury: 897 }, "MERIDA": { standart: 566, small: 1019, luxury: 1019 } };
     const tarifasRedondoMXN = { "ZONA HOTELERA DE TULUM": { standart: 5940, small: 12600, luxury: 10980 }, "CENTRO DE TULUM": { standart: 5040, small: 10800, luxury: 10800 }, "ZONA HOTELERA DE CANCUN": { standart: 1440, small: 3600, luxury: 3024 }, "CENTRO DE CANCUN": { standart: 1440, small: 3600, luxury: 3024 }, "COSTA MUJERES": { standart: 2880, small: 5400, luxury: 5220 }, "PLAYA MUJERES": { standart: 2340, small: 6676, luxury: 4680 }, "PUERTO JUAREZ": { standart: 1980, small: 5040, luxury: 3960 }, "PLAYA PARAISO": { standart: 2340, small: 6676, luxury: 4680 }, "PUERTO MORELOS": { standart: 1980, small: 5040, luxury: 3960 }, "PLAYA DEL CARMEN": { standart: 2880, small: 5400, luxury: 5220 }, "PUERTO AVENTURAS": { standart: 3420, small: 8100, luxury: 6120 }, "AKUMAL": { standart: 4140, small: 9720, luxury: 8460 }, "FELIPE CARRILLO PUERTO": { standart: 16200, small: 38772, luxury: 43740 }, "MAHAHUAL": { standart: 19800, small: 38772, luxury: 35640 }, "BACALAR": { standart: 19800, small: 38772, luxury: 35640 }, "CHETUMAL": { standart: 20000, small: 38772, luxury: 38000 }, "HOLBOX": { standart: 11520, small: 28800, luxury: 22320 }, "VALLADOLID": { standart: 10800, small: 22240, luxury: 31368 }, "MERIDA": { standart: 19800, small: 35640, luxury: 35640 } };
@@ -401,6 +411,10 @@
     function limpiarResultados() { document.getElementById('resultados').style.display = 'none'; }
 
     function cotizar() {
+        // --- VALIDACIÓN DE FECHA OBLIGATORIA ---
+        const fecha = document.getElementById('fechaIda').value;
+        if (!fecha) { alert("⚠️ Por favor, selecciona una fecha para tu viaje."); return; }
+
         const nombre = document.getElementById('nombreCliente').value;
         const tel = document.getElementById('telefonoCliente').value;
         if(nombre.length < 2) { alert("Escribe tu nombre."); return; }
@@ -490,7 +504,7 @@
         const divRes = document.getElementById('resultados');
         divRes.innerHTML = "";
         
-        // --- AQUÍ CREAMOS EL ENCABEZADO "RESULTADOS PARA..." ---
+        // --- ENCABEZADO "RESULTADOS PARA..." ---
         let rutaLabel = "";
         if(direccionMode === 'desdeAero') rutaLabel = "Aeropuerto Cancún <i class='fas fa-arrow-right'></i> " + document.getElementById('destino').value;
         else rutaLabel = document.getElementById('origen').value + " <i class='fas fa-arrow-right'></i> Aeropuerto Cancún";
@@ -518,7 +532,7 @@
         let tipoTexto = (tipo === 'SENCILLO') ? "Solo Ida" : "Ida y Vuelta";
         let iconoTipo = (tipo === 'SENCILLO') ? "fa-arrow-right" : "fa-exchange-alt";
 
-        // Limpiamos el label de la ruta para que no tenga HTML en el atributo data (opcional, pero limpio)
+        // Limpiamos el label de la ruta para que no tenga HTML en el atributo data
         let rutaSimple = rutaLabel.replace(/<[^>]*>?/gm, ' -> ');
 
         return `
