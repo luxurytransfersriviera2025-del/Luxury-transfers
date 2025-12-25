@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
     <style>
-        /* --- ESTILOS DE DISEÑO (VERSIÓN PLATINUM) --- */
+        /* --- ESTILOS GENERALES --- */
         :root { 
             --primary-blue: #003580; 
             --action-green: #00a651; 
@@ -27,7 +27,7 @@
         
         h1 { color: var(--white); text-align: center; text-shadow: 0 4px 10px rgba(0,0,0,0.5); font-size: 32px; margin-bottom: 25px; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase; }
         
-        /* CAJA DE BÚSQUEDA */
+        /* SEARCH BOX */
         .search-box-container { background-color: var(--highlight-yellow); padding: 4px; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); margin-bottom: 20px; }
         .search-box-inner { background-color: var(--primary-blue); padding: 25px; border-radius: 9px; color: white; }
         
@@ -50,7 +50,7 @@
         .contact-section { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; }
         .flight-fields-container { grid-column: 1 / -1; display: contents; }
         
-        /* ESTILOS DEL CHECKBOX DE TÉRMINOS */
+        /* CHECKBOX TÉRMINOS */
         .terms-container { grid-column: 1 / -1; display: flex; align-items: center; margin-top: 10px; font-size: 13px; color: white; gap: 10px; justify-content: center; }
         .terms-container input { width: 18px; height: 18px; accent-color: var(--highlight-yellow); cursor: pointer; }
         .terms-link { color: var(--highlight-yellow); text-decoration: underline; cursor: pointer; font-weight: 700; }
@@ -59,50 +59,52 @@
         .btn-cotizar:hover { background-color: var(--action-green-hover); transform: translateY(2px); box-shadow: 0 3px 0 #007a3d; }
         .btn-cotizar:active { transform: translateY(5px); box-shadow: none; }
 
-        /* HEADER DE RESULTADOS */
+        /* HEADER DE RESULTADOS (CORREGIDO AL ESTILO QUE TE GUSTA) */
         #resultados { margin-top: 30px; display: none; width: 100%; }
-        .ruta-header { background: rgba(0, 53, 128, 0.9); color: white; padding: 15px 20px; border-radius: 10px; margin-bottom: 20px; text-align: center; font-size: 16px; font-weight: 700; border-left: 6px solid var(--highlight-yellow); animation: fadeIn 0.5s ease-in-out; backdrop-filter: blur(10px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        .ruta-header i { color: var(--highlight-yellow); margin: 0 12px; }
+        .ruta-header { 
+            background: rgba(0, 0, 0, 0.6); 
+            color: white; 
+            padding: 15px 20px; 
+            border-radius: 8px; 
+            margin-bottom: 20px; 
+            text-align: center; 
+            font-size: 16px; 
+            font-weight: 600; 
+            border-left: 5px solid var(--highlight-yellow);
+            animation: fadeIn 0.5s ease-in-out; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .ruta-header i { color: var(--highlight-yellow); margin: 0 10px; }
 
-        /* TARJETAS DE VEHÍCULOS */
+        /* TARJETAS */
         .tarjeta { background: var(--white); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; flex-wrap: wrap; gap: 25px; border: 1px solid #f0f0f0; overflow: hidden; animation: fadeIn 0.5s ease-in-out; transition: transform 0.3s, box-shadow 0.3s; }
         .tarjeta:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
-        
         .tarjeta-img { flex: 0 0 220px; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 12px; padding: 10px; border: 1px solid #f5f5f5; }
         .tarjeta-img img { width: 100%; height: auto; object-fit: contain; max-height: 140px; }
-        
         .tarjeta-info { flex: 1; display: flex; flex-direction: column; justify-content: center; min-width: 280px; }
         .tarjeta-info h3 { margin: 0 0 8px 0; font-size: 22px; color: var(--text-dark); text-transform: uppercase; letter-spacing: -0.5px; font-weight: 900; }
-        
         .tarjeta-route-display { font-size: 12px; color: var(--primary-blue); font-weight: 700; margin-bottom: 12px; background: #eef2ff; padding: 8px 12px; border-radius: 6px; display: inline-block; border: 1px solid #dbeafe; }
-
         .tarjeta-specs { margin-bottom: 15px; font-size: 14px; color: #555; display: flex; flex-direction: column; gap: 6px; font-weight: 500; }
         .spec-row { display: flex; align-items: center; gap: 10px; }
         .spec-row i { color: var(--primary-blue); width: 20px; text-align: center; font-size: 16px; }
-
         .feature-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 5px; }
         .feature-tag { background: #f8fafc; color: #475569; font-size: 11px; padding: 6px 12px; border-radius: 20px; display: flex; align-items: center; gap: 6px; font-weight: 600; border: 1px solid #e2e8f0; }
         .feature-tag i { color: var(--action-green); font-size: 12px; }
-        
         .tarjeta-price { flex: 0 0 180px; text-align: right; display: flex; flex-direction: column; justify-content: center; border-left: 2px solid #f5f5f5; padding-left: 25px; }
         .price-old { font-size: 14px; color: #bbb; text-decoration: line-through; margin-bottom: 2px; font-weight: 600; }
         .price-current { font-size: 32px; font-weight: 900; color: var(--action-green); margin-bottom: 10px; letter-spacing: -1px; line-height: 1; }
-        
         .btn-reservar { background-color: var(--action-green); color: white; text-decoration: none; padding: 14px 20px; border-radius: 8px; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; margin-top: 5px; cursor: pointer; border:none; text-transform: uppercase; letter-spacing: 0.5px; width: 100%; box-shadow: 0 4px 10px rgba(0,166,81,0.2); }
         .btn-reservar:hover { background-color: var(--action-green-hover); box-shadow: 0 8px 20px rgba(0,166,81,0.4); transform: translateY(-2px); }
         
         /* MODALES */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 1000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .modal-box { background: white; width: 90%; max-width: 450px; padding: 40px 30px; border-radius: 20px; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.5); position: relative; animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); max-height: 90vh; overflow-y: auto; }
-        
         .modal-top-close { position: absolute; top: 15px; right: 20px; border: none; background: transparent; color: #aaa; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; font-family: 'Montserrat', sans-serif; }
         .modal-top-close:hover { color: #333; }
-        
         .modal-icon { font-size: 70px; color: var(--action-green); margin-bottom: 20px; }
         .modal-title { font-size: 28px; color: var(--primary-blue); margin-bottom: 10px; font-weight: 900; letter-spacing: -1px; }
         .modal-text { font-size: 15px; color: #666; line-height: 1.6; margin-bottom: 20px; }
         
-        /* ESTILO TYC */
         .tyc-content { text-align: left; font-size: 13px; color: #444; line-height: 1.5; margin-top: 15px; }
         .tyc-content h4 { color: var(--primary-blue); margin-bottom: 5px; margin-top: 15px; font-size: 14px; }
         .tyc-content ul { padding-left: 20px; margin: 0; }
@@ -115,9 +117,8 @@
         
         .btn-wa { background: #25d366; }
         .btn-call { background: var(--primary-blue); }
-        .btn-call i { transform: scaleX(1); } /* Corrección icono espejo */
+        .btn-call i { transform: scaleX(1); } 
         .btn-mail { background: #333; }
-        .btn-close { background: transparent; color: #888; border: none; font-size: 13px; margin-top: 15px; cursor: pointer; text-decoration: underline; }
         
         .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); z-index: 2000; display: none; align-items: center; justify-content: center; flex-direction: column; }
         .spinner { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--action-green); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
@@ -152,43 +153,26 @@
         <h2 class="modal-title" style="font-size: 22px;">Términos y Condiciones</h2>
         <div class="tyc-content">
             <p>Al reservar con Luxury Transfers Riviera, aceptas lo siguiente:</p>
-            
             <h4>1. Cancelaciones y Reembolsos</h4>
             <ul>
                 <li>Cancelaciones con 24 horas de antelación: Reembolso del 100%.</li>
                 <li>Cancelaciones con menos de 24 horas: No aplica reembolso (Cargo por No-Show).</li>
             </ul>
-
             <h4>2. Tiempos de Espera</h4>
             <ul>
                 <li><strong>Aeropuerto:</strong> Monitoreamos tu vuelo. El chofer espera hasta 60 min después del aterrizaje.</li>
                 <li><strong>Hotel/Airbnb:</strong> Tolerancia máxima de 15 minutos en el lobby.</li>
             </ul>
-
             <h4>3. Limpieza y Daños</h4>
-            <ul>
-                <li>Si un pasajero ensucia el vehículo (vómito, alimentos, arena excesiva) se cobrará una cuota de limpieza de $2,500 MXN.</li>
-            </ul>
-
+            <ul><li>Si un pasajero ensucia el vehículo (vómito, alimentos, arena excesiva) se cobrará una cuota de limpieza de $2,500 MXN.</li></ul>
             <h4>4. Equipaje y Objetos</h4>
-            <ul>
-                <li>No nos hacemos responsables por objetos olvidados. Revisa tus pertenencias antes de bajar.</li>
-            </ul>
-
+            <ul><li>No nos hacemos responsables por objetos olvidados. Revisa tus pertenencias antes de bajar.</li></ul>
             <h4 style="color:#d32f2f;">5. Eximición por Tráfico y Fuerza Mayor</h4>
-            <ul>
-                <li>La empresa <strong>NO se hace responsable</strong> por vuelos perdidos o retrasos derivados de: tráfico pesado, accidentes carreteros, manifestaciones, obras viales o condiciones climáticas severas. Sugerimos anticipar su salida.</li>
-            </ul>
-
+            <ul><li>La empresa <strong>NO se hace responsable</strong> por vuelos perdidos o retrasos derivados de: tráfico pesado, accidentes carreteros, manifestaciones, obras viales o condiciones climáticas severas. Sugerimos anticipar su salida.</li></ul>
             <h4>6. Fallas Mecánicas</h4>
-            <ul>
-                <li>En el improbable caso de falla mecánica, la empresa se compromete a enviar una unidad de sustitución (propia o de un tercero) para completar el traslado. Esto no es motivo de reembolso total, salvo que el servicio no pueda completarse.</li>
-            </ul>
-
+            <ul><li>En el improbable caso de falla mecánica, la empresa se compromete a enviar una unidad de sustitución para completar el traslado. Esto no es motivo de reembolso total.</li></ul>
             <h4>7. Vehículos e Imágenes</h4>
-            <ul>
-                <li>Las imágenes mostradas en el sitio web son <strong>ilustrativas y de referencia</strong>. La marca, modelo o color del vehículo asignado puede variar según la disponibilidad operativa, garantizando siempre la misma categoría o superior (ej: Van Standard).</li>
-            </ul>
+            <ul><li>Las imágenes mostradas son <strong>ilustrativas y de referencia</strong>. La marca, modelo o color del vehículo puede variar, garantizando siempre la misma categoría.</li></ul>
         </div>
         <button class="btn-reservar" onclick="cerrarTyC()" style="margin-top: 20px;">HE LEÍDO Y ACEPTO</button>
     </div>
@@ -213,7 +197,6 @@
             <a href="#" target="_blank" class="modal-btn btn-wa" id="btnWhatsapp"><i class="fab fa-whatsapp"></i> Confirmar por WhatsApp</a>
             <a href="#" class="modal-btn btn-mail" id="btnMail"><i class="fas fa-envelope"></i> Enviar Correo</a>
         </div>
-        <button class="btn-close" onclick="cerrarModal()">Cerrar Ventana</button>
     </div>
 </div>
 
@@ -327,7 +310,7 @@
     const imgUrlSprinter = "https://i.imgur.com/BffyPRe.png";
     const imgUrlSuburban = "https://i.imgur.com/95X8eqt.png"; 
 
-    // --- BLOQUEO DE FECHAS PASADAS ---
+    // BLOQUEO DE FECHAS PASADAS (HORA LIBRE)
     window.onload = function() {
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('fechaIda').setAttribute('min', today);
@@ -337,7 +320,6 @@
         });
     };
 
-    // FUNCIONES MODAL TYC
     function abrirTyC() { document.getElementById('modalTyC').style.display = 'flex'; }
     function cerrarTyC() { document.getElementById('modalTyC').style.display = 'none'; }
 
@@ -530,19 +512,6 @@
         if(!fecha) { alert("⚠️ Selecciona una fecha."); return; }
         if(!hora) { alert("⚠️ Selecciona la hora."); return; }
 
-        const todayStr = new Date().toISOString().split('T')[0];
-        if (fecha === todayStr) {
-            const now = new Date();
-            const currentHour = now.getHours();
-            const currentMin = now.getMinutes();
-            const [selHour, selMin] = hora.split(':').map(Number);
-
-            if (selHour < currentHour || (selHour === currentHour && selMin < currentMin)) {
-                alert("⚠️ La hora seleccionada ya pasó. Por favor elige una hora válida.");
-                return;
-            }
-        }
-
         const nombre = document.getElementById('nombreCliente').value;
         const tel = document.getElementById('telefonoCliente').value;
         if(nombre.length < 2) { alert("Escribe tu nombre."); return; }
@@ -712,19 +681,25 @@
         document.getElementById('loadingOverlay').style.display = 'flex';
 
         const pax = document.getElementById('pasajeros').value;
-        let baseText = `Hola, quiero cotizar el siguiente servicio:\n\n🔖 CÓDIGO: ${data.codigo}\n🔴 TIPO: ${data.tipoViaje}\n🚐 VEHÍCULO: ${data.vehiculo}\n📍 ORIGEN: ${data.origen}\n🏁 DESTINO: ${data.destino}\n📅 FECHA: ${data.fecha} - HORA: ${data.hora}\n👥 PASAJEROS: ${pax}`;
+        
+        // --- TEXTO WHATSAPP PROFESIONAL Y LIMPIO ---
+        let saludo = data.esVenta ? "Hola, quiero *confirmar* el siguiente servicio:" : "Hola, quiero *cotizar* el siguiente servicio:";
+        
+        let baseText = `${saludo}%0A%0A*CÓDIGO:* ${data.codigo}%0A*TIPO:* ${data.tipoViaje}%0A*VEHÍCULO:* ${data.vehiculo}%0A*ORIGEN:* ${data.origen}%0A*DESTINO:* ${data.destino}%0A*FECHA:* ${data.fecha} - *HORA:* ${data.hora}%0A*PASAJEROS:* ${pax}`;
 
         if(data.precio && data.precio !== "Por Cotizar") {
-            baseText += `\n💲 PRECIO WEB: ${data.precio}`;
+            baseText += `%0A*PRECIO WEB:* ${data.precio}`;
         }
 
-        baseText += `\n\n👤 Mi Nombre: ${data.nombre}`;
+        baseText += `%0A%0A*Mi Nombre:* ${data.nombre}`;
         
-        const encodedText = encodeURIComponent(baseText);
-        const subject = encodeURIComponent("Solicitud de Cotización " + data.codigo + " - " + data.nombre);
+        // NO USAR encodeURIComponent aquí para el cuerpo, ya que lo construimos manualmente con %0A
+        // Pero el asunto del mail si necesita encode
+        const subject = encodeURIComponent("Solicitud " + data.codigo + " - " + data.nombre);
+        const mailBody = encodeURIComponent(baseText.replace(/%0A/g, "\n").replace(/\*/g, "")); // Limpiamos asteriscos para mail
 
-        document.getElementById('btnWhatsapp').href = `https://wa.me/529842411158?text=${encodedText}`;
-        document.getElementById('btnMail').href = `mailto:reservas@luxurytransfersriviera.com.mx?subject=${subject}&body=${encodedText}`;
+        document.getElementById('btnWhatsapp').href = `https://wa.me/529842411158?text=${baseText}`;
+        document.getElementById('btnMail').href = `mailto:reservas@luxurytransfersriviera.com.mx?subject=${subject}&body=${mailBody}`;
 
         fetch(SCRIPT_URL, {
             method: 'POST',
