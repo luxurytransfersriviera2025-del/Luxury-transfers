@@ -23,9 +23,24 @@
         .navbar { position: fixed; top: 0; left: 0; width: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); padding: 10px 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.3); border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
         .nav-container { width: 90%; max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         
-        /* LOGO EN NAVBAR */
+        /* LOGO Y TEXTO EN NAVBAR (MODIFICADO) */
         .nav-logo { display: flex; align-items: center; text-decoration: none; }
-        .nav-logo img { height: 50px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
+        .nav-logo img { 
+            height: 65px; /* Aumentado de 50px a 65px */
+            width: auto; 
+            object-fit: contain; 
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); 
+            margin-right: 12px; /* Espacio entre imagen y texto */
+        }
+        /* Nuevo estilo para el texto junto al logo */
+        .nav-logo span {
+            font-family: var(--font-title);
+            color: var(--white);
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
         .nav-links { display: flex; gap: 25px; }
         .nav-link { color: var(--white); text-decoration: none; font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
@@ -36,7 +51,7 @@
             position: relative; min-height: 100vh;
             background: url('https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?q=80&w=2069&auto=format&fit=crop') no-repeat center center;
             background-size: cover; background-attachment: fixed; 
-            display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 120px 20px 60px 20px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 140px 20px 60px 20px; /* Aumenté un poco el padding superior por el navbar más grande */
         }
         .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0, 53, 128, 0.5), rgba(0, 30, 80, 0.6)); z-index: 1; }
         .hero-content { position: relative; z-index: 10; text-align: center; margin-bottom: 40px; color: var(--white); }
@@ -77,23 +92,23 @@
         .service-title { font-family: var(--font-title); font-size: 26px; color: var(--white); margin-bottom: 15px; font-weight: 700; }
         .service-desc { font-size: 14px; color: #cbd5e1; line-height: 1.6; font-weight: 400; }
 
-        /* --- SECCIÓN FLOTA (CARRUSEL MODIFICADO CON MARCA DE AGUA) --- */
+        /* --- SECCIÓN FLOTA (CARRUSEL) --- */
         .fleet-carousel-container { position: relative; max-width: 1200px; margin: 0 auto; height: 550px; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.4); }
         .carousel-track-container { height: 100%; position: relative; overflow: hidden; }
         .carousel-track { padding: 0; margin: 0; list-style: none; position: relative; height: 100%; transition: transform 0.5s ease-in-out; }
         .carousel-slide { position: absolute; top: 0; bottom: 0; width: 100%; background-size: cover; background-position: center; }
         
-        /* NUEVO ESTILO PARA LA MARCA DE AGUA SUPERIOR DERECHA */
+        /* MARCA DE AGUA SUPERIOR DERECHA (TAMAÑO AUMENTADO) */
         .slide-watermark {
             position: absolute;
             top: 30px;
             right: 30px;
             z-index: 2;
-            opacity: 0.7; /* Transparencia para efecto marca de agua */
+            opacity: 0.7;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
         }
         .slide-watermark img {
-            height: 60px; /* Tamaño ajustable */
+            height: 120px; /* AUMENTADO DE 60px A 120px */
             width: auto;
             object-fit: contain;
         }
@@ -133,9 +148,10 @@
 
         @media (max-width: 768px) {
             .hero-title { font-size: 32px; } .nav-links { display: none; } .nav-container { justify-content: center; }
+            .nav-logo img { height: 45px; } .nav-logo span { font-size: 14px; } /* Ajuste logo móvil */
             .form-grid, .contact-section { grid-template-columns: 1fr; }
             .fleet-carousel-container { height: 450px; border-radius: 0; }
-            .slide-watermark { top: 20px; right: 20px; } .slide-watermark img { height: 40px; }
+            .slide-watermark { top: 20px; right: 20px; } .slide-watermark img { height: 60px; } /* Ajuste marca de agua móvil */
             .slide-info-panel { bottom: 90px; left: 20px; right: 20px; max-width: none; padding: 15px; }
             .slide-actions { bottom: 20px; left: 20px; right: 20px; flex-direction: row; justify-content: space-between; gap: 10px; }
             .fleet-action-btn { min-width: auto; flex: 1; padding: 10px; font-size: 12px; }
@@ -151,6 +167,7 @@
     <div class="nav-container">
         <a href="#" class="nav-logo">
             <img src="https://i.imgur.com/S28i4YP.png" alt="Luxury Transfers Riviera">
+            <span>Luxury Transfers Riviera</span>
         </a>
         <div class="nav-links"><a href="#inicio" class="nav-link">Inicio</a><a href="#servicios" class="nav-link">Servicios</a><a href="#flota" class="nav-link">Flota</a></div>
     </div>
