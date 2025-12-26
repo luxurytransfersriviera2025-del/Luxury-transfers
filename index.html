@@ -13,50 +13,70 @@
         :root { 
             --primary-blue: #003580; --action-green: #00a651; --action-green-hover: #008c44;
             --text-dark: #1a1a1a; --white: #ffffff; 
-            --navy-bg: #0f172a; --gold-accent: #d4af37; --gold-hover: #febb02;
+            
+            /* AQUÍ ESTÁ EL CAMBIO DE COLOR: AZUL ELEGANTE */
+            --navy-bg: #002855;      /* Azul Royal Profundo (Elegante, no negro) */
+            
+            --gold-accent: #d4af37; --gold-hover: #febb02;
             --orange-btn: #ff8c00; --wa-green: #25d366;
             --font-main: 'Montserrat', sans-serif; --font-title: 'Playfair Display', serif;
         }
         body { font-family: var(--font-main); margin: 0; padding: 0; background-color: #f9f9f9; color: var(--text-dark); overflow-x: hidden; }
 
-        /* --- NAVBAR --- */
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); padding: 10px 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.3); border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
-        .nav-container { width: 90%; max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        /* --- NAVBAR (BARRA SUPERIOR MODIFICADA) --- */
+        .navbar { 
+            position: fixed; top: 0; left: 0; width: 100%; 
+            
+            /* CAMBIO: Fondo Azul Elegante Sólido con ligera transparencia */
+            background: rgba(0, 40, 85, 0.98); 
+            
+            backdrop-filter: blur(10px); 
+            
+            /* CAMBIO: Más espacio vertical para que quepa el logo grande */
+            padding: 15px 0; 
+            
+            z-index: 1000; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
+            border-bottom: 1px solid rgba(212, 175, 55, 0.4); /* Línea dorada más visible */
+        }
         
-        /* LOGO Y TEXTO EN NAVBAR (MODIFICADO) */
+        .nav-container { 
+            width: 90%; max-width: 1200px; margin: 0 auto; 
+            display: flex; justify-content: space-between; align-items: center; 
+        }
+        
+        /* LOGO (TAMAÑO AUMENTADO Y ALINEADO) */
         .nav-logo { display: flex; align-items: center; text-decoration: none; }
         .nav-logo img { 
-            height: 65px; /* Aumentado de 50px a 65px */
+            height: 90px; /* AUMENTADO: Logo mucho más grande */
             width: auto; 
             object-fit: contain; 
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); 
-            margin-right: 12px; /* Espacio entre imagen y texto */
-        }
-        /* Nuevo estilo para el texto junto al logo */
-        .nav-logo span {
-            font-family: var(--font-title);
-            color: var(--white);
-            font-size: 20px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            display: block;
         }
 
-        .nav-links { display: flex; gap: 25px; }
-        .nav-link { color: var(--white); text-decoration: none; font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-        .nav-link:hover { color: var(--gold-accent); }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-link { 
+            color: var(--white); text-decoration: none; font-weight: 600; font-size: 14px; 
+            text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; 
+            padding: 5px 0;
+        }
+        .nav-link:hover { color: var(--gold-accent); border-bottom: 2px solid var(--gold-accent); }
 
         /* --- HERO SECTION --- */
         .hero-section {
             position: relative; min-height: 100vh;
             background: url('https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?q=80&w=2069&auto=format&fit=crop') no-repeat center center;
             background-size: cover; background-attachment: fixed; 
-            display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 140px 20px 60px 20px; /* Aumenté un poco el padding superior por el navbar más grande */
+            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+            
+            /* CAMBIO: Más padding superior para que el Navbar grande no tape el título */
+            padding: 160px 20px 60px 20px; 
         }
-        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0, 53, 128, 0.5), rgba(0, 30, 80, 0.6)); z-index: 1; }
+        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0, 40, 85, 0.6), rgba(0, 30, 80, 0.7)); z-index: 1; }
         .hero-content { position: relative; z-index: 10; text-align: center; margin-bottom: 40px; color: var(--white); }
-        .hero-title { font-family: var(--font-title); font-size: 48px; font-weight: 700; margin-bottom: 15px; text-transform: uppercase; text-shadow: 0 4px 20px rgba(0,0,0,0.6); letter-spacing: 2px; }
-        .hero-subtitle { font-size: 16px; font-weight: 300; letter-spacing: 1px; opacity: 0.95; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .hero-title { font-family: var(--font-title); font-size: 52px; font-weight: 700; margin-bottom: 15px; text-transform: uppercase; text-shadow: 0 4px 20px rgba(0,0,0,0.6); letter-spacing: 2px; }
+        .hero-subtitle { font-size: 18px; font-weight: 300; letter-spacing: 1px; opacity: 0.95; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
         /* --- COTIZADOR --- */
         .main-container { position: relative; z-index: 10; width: 100%; max-width: 1100px; }
@@ -78,7 +98,7 @@
         .btn-cotizar { grid-column: 1 / -1; background-color: var(--action-green); color: white; font-size: 18px; font-weight: 800; border: none; padding: 18px; border-radius: 8px; cursor: pointer; margin-top: 10px; transition: all 0.2s; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 5px 0 #007a3d; width: 100%; }
         .btn-cotizar:hover { background-color: var(--action-green-hover); transform: translateY(2px); }
 
-        /* --- SECCIÓN SERVICIOS (DARK PREMIUM) --- */
+        /* --- SECCIÓN SERVICIOS (USANDO EL NUEVO AZUL ELEGANTE) --- */
         .section-wrapper { padding: 80px 20px; text-align: center; }
         .section-bg-gray { background-color: #f0f0f0; }
         .section-header h2 { font-family: var(--font-title); font-size: 42px; color: var(--navy-bg); font-weight: 700; margin-bottom: 10px; letter-spacing: -1px; }
@@ -98,22 +118,10 @@
         .carousel-track { padding: 0; margin: 0; list-style: none; position: relative; height: 100%; transition: transform 0.5s ease-in-out; }
         .carousel-slide { position: absolute; top: 0; bottom: 0; width: 100%; background-size: cover; background-position: center; }
         
-        /* MARCA DE AGUA SUPERIOR DERECHA (TAMAÑO AUMENTADO) */
-        .slide-watermark {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            z-index: 2;
-            opacity: 0.7;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
-        }
-        .slide-watermark img {
-            height: 120px; /* AUMENTADO DE 60px A 120px */
-            width: auto;
-            object-fit: contain;
-        }
+        .slide-watermark { position: absolute; top: 30px; right: 30px; z-index: 2; opacity: 0.8; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
+        .slide-watermark img { height: 120px; width: auto; object-fit: contain; }
 
-        .slide-info-panel { position: absolute; bottom: 50px; left: 50px; background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255, 255, 255, 0.3); backdrop-filter: blur(8px); padding: 25px; border-radius: 15px; max-width: 380px; color: white; z-index: 2; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .slide-info-panel { position: absolute; bottom: 50px; left: 50px; background: rgba(0, 40, 85, 0.85); border: 1px solid rgba(255, 255, 255, 0.3); backdrop-filter: blur(8px); padding: 25px; border-radius: 15px; max-width: 380px; color: white; z-index: 2; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .slide-title { font-family: var(--font-title); font-size: 26px; font-weight: 700; margin: 0 0 10px 0; color: var(--white); }
         .slide-desc { font-size: 14px; line-height: 1.6; margin: 0; color: #e2e8f0; }
         .slide-actions { position: absolute; bottom: 50px; right: 50px; display: flex; flex-direction: column; gap: 15px; z-index: 2; }
@@ -129,7 +137,7 @@
         .carousel-dot.active { background: white; width: 30px; border-radius: 10px; }
 
         /* --- FOOTER & OTROS --- */
-        footer { background: var(--navy-bg); color: #94a3b8; padding: 40px 20px; text-align: center; font-size: 14px; border-top: 1px solid #334155; }
+        footer { background: var(--navy-bg); color: #94a3b8; padding: 40px 20px; text-align: center; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); }
         #resultados { margin-top: 30px; display: none; width: 100%; }
         .ruta-header { background: var(--navy-bg); color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; font-weight: 600; border-left: 5px solid var(--gold-accent); }
         .tarjeta { background: var(--white); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: flex; flex-wrap: wrap; gap: 25px; border: 1px solid #eee; }
@@ -148,10 +156,10 @@
 
         @media (max-width: 768px) {
             .hero-title { font-size: 32px; } .nav-links { display: none; } .nav-container { justify-content: center; }
-            .nav-logo img { height: 45px; } .nav-logo span { font-size: 14px; } /* Ajuste logo móvil */
+            .nav-logo img { height: 60px; } /* Logo móvil */
             .form-grid, .contact-section { grid-template-columns: 1fr; }
             .fleet-carousel-container { height: 450px; border-radius: 0; }
-            .slide-watermark { top: 20px; right: 20px; } .slide-watermark img { height: 60px; } /* Ajuste marca de agua móvil */
+            .slide-watermark { top: 20px; right: 20px; } .slide-watermark img { height: 60px; }
             .slide-info-panel { bottom: 90px; left: 20px; right: 20px; max-width: none; padding: 15px; }
             .slide-actions { bottom: 20px; left: 20px; right: 20px; flex-direction: row; justify-content: space-between; gap: 10px; }
             .fleet-action-btn { min-width: auto; flex: 1; padding: 10px; font-size: 12px; }
@@ -167,7 +175,6 @@
     <div class="nav-container">
         <a href="#" class="nav-logo">
             <img src="https://i.imgur.com/S28i4YP.png" alt="Luxury Transfers Riviera">
-            <span>Luxury Transfers Riviera</span>
         </a>
         <div class="nav-links"><a href="#inicio" class="nav-link">Inicio</a><a href="#servicios" class="nav-link">Servicios</a><a href="#flota" class="nav-link">Flota</a></div>
     </div>
