@@ -8,40 +8,76 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
     <style>
-        /* ESTILOS DE DISEÑO */
-        :root { --primary-blue: #003580; --action-green: #00a651; --action-green-hover: #008c44; --highlight-yellow: #febb02; --text-dark: #1a1a1a; --text-gray: #555; --bg-light: #f2f2f2; --white: #ffffff; }
+        /* --- ESTILOS DE DISEÑO (VERSIÓN FINAL) --- */
+        :root { 
+            --primary-blue: #003580; 
+            --action-green: #00a651; 
+            --action-green-hover: #008c44; 
+            --highlight-yellow: #febb02; 
+            --text-dark: #1a1a1a; 
+            --text-gray: #555; 
+            --bg-light: #f2f2f2; 
+            --white: #ffffff; 
+        }
+        
         body { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; background: url('https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?q=80&w=2069&auto=format&fit=crop') no-repeat center center fixed; background-size: cover; min-height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+        
         .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 53, 128, 0.5); z-index: 1; }
         .main-container { position: relative; z-index: 10; width: 95%; max-width: 1100px; padding: 20px 0; }
+        
         h1 { color: var(--white); text-align: center; text-shadow: 0 4px 10px rgba(0,0,0,0.5); font-size: 32px; margin-bottom: 25px; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase; }
         
+        /* SEARCH BOX */
         .search-box-container { background-color: var(--highlight-yellow); padding: 4px; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); margin-bottom: 20px; }
         .search-box-inner { background-color: var(--primary-blue); padding: 25px; border-radius: 9px; color: white; }
+        
         .options-bar { display: flex; justify-content: space-between; margin-bottom: 20px; align-items: center; }
         .radio-group { display: flex; gap: 20px; }
         .radio-label { display: flex; align-items: center; cursor: pointer; font-size: 14px; font-weight: 600; }
         .radio-label input { margin-right: 8px; accent-color: var(--highlight-yellow); width: 18px; height: 18px; }
+        
         .direction-tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
         .tab-btn { background: transparent; border: 2px solid rgba(255,255,255,0.3); color: white; padding: 12px 20px; border-radius: 50px; cursor: pointer; font-size: 13px; font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center; white-space: nowrap; }
         .tab-btn.active { background: var(--white); color: var(--primary-blue); border-color: var(--white); font-weight: 800; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transform: translateY(-2px); }
+        .tab-btn:hover { background: rgba(255,255,255,0.1); }
+
         .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2); }
         .input-wrapper { background: var(--white); padding: 12px 15px; display: flex; flex-direction: column; justify-content: center; position: relative; border-radius: 8px; transition: 0.2s; }
+        .input-wrapper:focus-within { box-shadow: 0 0 0 3px rgba(254, 187, 2, 0.5); }
         .input-wrapper label { font-size: 10px; color: #555; font-weight: 800; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
         .input-wrapper input, .input-wrapper select, .input-wrapper textarea { border: none; outline: none; width: 100%; font-size: 15px; font-weight: 600; color: var(--text-dark); background: transparent; font-family: 'Montserrat', sans-serif; padding: 0; }
+        
         .contact-section { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; }
         .flight-fields-container { grid-column: 1 / -1; display: contents; }
+        
+        /* CHECKBOX TÉRMINOS */
         .terms-container { grid-column: 1 / -1; display: flex; align-items: center; margin-top: 10px; font-size: 13px; color: white; gap: 10px; justify-content: center; }
         .terms-container input { width: 18px; height: 18px; accent-color: var(--highlight-yellow); cursor: pointer; }
         .terms-link { color: var(--highlight-yellow); text-decoration: underline; cursor: pointer; font-weight: 700; }
 
         .btn-cotizar { grid-column: 1 / -1; background-color: var(--action-green); color: white; font-size: 18px; font-weight: 800; border: none; padding: 18px; border-radius: 8px; cursor: pointer; margin-top: 15px; transition: all 0.2s; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 5px 0 #007a3d; width: 100%; }
         .btn-cotizar:hover { background-color: var(--action-green-hover); transform: translateY(2px); box-shadow: 0 3px 0 #007a3d; }
+        .btn-cotizar:active { transform: translateY(5px); box-shadow: none; }
 
+        /* HEADER DE RESULTADOS */
         #resultados { margin-top: 30px; display: none; width: 100%; }
-        .ruta-header { background: rgba(0, 0, 0, 0.6); color: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; text-align: center; font-size: 16px; font-weight: 600; border-left: 5px solid var(--highlight-yellow); animation: fadeIn 0.5s ease-in-out; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .ruta-header { 
+            background: rgba(0, 0, 0, 0.6); 
+            color: white; 
+            padding: 15px 20px; 
+            border-radius: 8px; 
+            margin-bottom: 20px; 
+            text-align: center; 
+            font-size: 16px; 
+            font-weight: 600; 
+            border-left: 5px solid var(--highlight-yellow);
+            animation: fadeIn 0.5s ease-in-out; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
         .ruta-header i { color: var(--highlight-yellow); margin: 0 10px; }
 
-        .tarjeta { background: var(--white); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; flex-wrap: wrap; gap: 25px; border: 1px solid #f0f0f0; overflow: hidden; animation: fadeIn 0.5s ease-in-out; transition: transform 0.3s; }
+        /* TARJETAS */
+        .tarjeta { background: var(--white); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; flex-wrap: wrap; gap: 25px; border: 1px solid #f0f0f0; overflow: hidden; animation: fadeIn 0.5s ease-in-out; transition: transform 0.3s, box-shadow 0.3s; }
         .tarjeta:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
         .tarjeta-img { flex: 0 0 220px; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 12px; padding: 10px; border: 1px solid #f5f5f5; }
         .tarjeta-img img { width: 100%; height: auto; object-fit: contain; max-height: 140px; }
@@ -60,6 +96,7 @@
         .btn-reservar { background-color: var(--action-green); color: white; text-decoration: none; padding: 14px 20px; border-radius: 8px; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; margin-top: 5px; cursor: pointer; border:none; text-transform: uppercase; letter-spacing: 0.5px; width: 100%; box-shadow: 0 4px 10px rgba(0,166,81,0.2); }
         .btn-reservar:hover { background-color: var(--action-green-hover); box-shadow: 0 8px 20px rgba(0,166,81,0.4); transform: translateY(-2px); }
         
+        /* MODALES */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 1000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .modal-box { background: white; width: 90%; max-width: 450px; padding: 40px 30px; border-radius: 20px; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.5); position: relative; animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); max-height: 90vh; overflow-y: auto; }
         .modal-top-close { position: absolute; top: 15px; right: 20px; border: none; background: transparent; color: #aaa; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; font-family: 'Montserrat', sans-serif; }
@@ -67,22 +104,24 @@
         .modal-icon { font-size: 70px; color: var(--action-green); margin-bottom: 20px; }
         .modal-title { font-size: 28px; color: var(--primary-blue); margin-bottom: 10px; font-weight: 900; letter-spacing: -1px; }
         .modal-text { font-size: 15px; color: #666; line-height: 1.6; margin-bottom: 20px; }
+        
         .tyc-content { text-align: left; font-size: 13px; color: #444; line-height: 1.5; margin-top: 15px; }
         .tyc-content h4 { color: var(--primary-blue); margin-bottom: 5px; margin-top: 15px; font-size: 14px; }
         .tyc-content ul { padding-left: 20px; margin: 0; }
+        
         .codigo-reserva { background-color: #ecfdf5; border: 2px dashed #00a651; color: #003580; padding: 15px; font-size: 28px; font-weight: 900; letter-spacing: 3px; border-radius: 12px; margin: 10px 0 25px 0; display: inline-block; width: 100%; box-sizing: border-box; }
         
-        /* ESTILOS MODAL BOTONES MEJORADOS */
-        .modal-actions { display: flex; flex-direction: column; gap: 15px; }
+        /* ESTILOS BOTONES DEL MODAL (ACTUALIZADOS) */
+        .modal-actions { display: flex; flex-direction: column; gap: 12px; }
         .modal-btn { 
-            padding: 18px; 
-            border-radius: 12px; 
+            padding: 16px; 
+            border-radius: 10px; 
             text-decoration: none; 
             font-weight: 700; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            gap: 15px; 
+            gap: 15px; /* Más espacio entre icono y texto */
             color: white; 
             font-size: 16px; 
             transition: 0.2s; 
@@ -90,18 +129,25 @@
             cursor: pointer; 
             box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
         }
-        .modal-btn i { font-size: 24px; } /* Iconos más grandes para todos */
+        
+        .modal-btn i { font-size: 24px; } /* Iconos más grandes en general */
         .modal-btn:hover { transform: translateY(-2px); opacity: 0.95; box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
         
-        .btn-wa { background: #25d366; font-size: 18px; } /* Texto más grande en WA */
-        .btn-wa i { font-size: 32px; } /* Icono WA GIGANTE */
-        
+        /* Estilos específicos por botón */
+        .btn-wa { 
+            background: #25d366; 
+            font-size: 18px; /* Texto un poquito más grande para WhatsApp */
+            padding: 18px;   /* Botón un poco más grande */
+        }
+        .btn-wa i { font-size: 32px; } /* ICONO WHATSAPP GIGANTE */
+
         .btn-call { background: var(--primary-blue); }
         .btn-call i { transform: scaleX(1); } 
         .btn-mail { background: #333; }
         
         .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); z-index: 2000; display: none; align-items: center; justify-content: center; flex-direction: column; }
         .spinner { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--action-green); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        
         @keyframes slideUp { from {transform: translateY(50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
@@ -133,17 +179,25 @@
         <div class="tyc-content">
             <p>Al reservar con Luxury Transfers Riviera, aceptas lo siguiente:</p>
             <h4>1. Cancelaciones y Reembolsos</h4>
-            <ul><li>Cancelaciones con 24 horas de antelación: Reembolso del 100%.</li><li>Cancelaciones con menos de 24 horas: No aplica reembolso.</li></ul>
+            <ul>
+                <li>Cancelaciones con 24 horas de antelación: Reembolso del 100%.</li>
+                <li>Cancelaciones con menos de 24 horas: No aplica reembolso (Cargo por No-Show).</li>
+            </ul>
             <h4>2. Tiempos de Espera</h4>
-            <ul><li><strong>Aeropuerto:</strong> 60 min después del aterrizaje.</li><li><strong>Hotel:</strong> 15 minutos en lobby.</li></ul>
+            <ul>
+                <li><strong>Aeropuerto:</strong> Monitoreamos tu vuelo. El chofer espera hasta 60 min después del aterrizaje.</li>
+                <li><strong>Hotel/Airbnb:</strong> Tolerancia máxima de 15 minutos en el lobby.</li>
+            </ul>
             <h4>3. Limpieza y Daños</h4>
-            <ul><li>Cuota de limpieza de $2,500 MXN en caso de suciedad excesiva.</li></ul>
-            <h4 style="color:#d32f2f;">5. Eximición por Tráfico</h4>
-            <ul><li>No nos hacemos responsables por retrasos debidos a tráfico o accidentes ajenos.</li></ul>
+            <ul><li>Si un pasajero ensucia el vehículo (vómito, alimentos, arena excesiva) se cobrará una cuota de limpieza de $2,500 MXN.</li></ul>
+            <h4>4. Equipaje y Objetos</h4>
+            <ul><li>No nos hacemos responsables por objetos olvidados. Revisa tus pertenencias antes de bajar.</li></ul>
+            <h4 style="color:#d32f2f;">5. Eximición por Tráfico y Fuerza Mayor</h4>
+            <ul><li>La empresa <strong>NO se hace responsable</strong> por vuelos perdidos o retrasos derivados de: tráfico pesado, accidentes carreteros, manifestaciones, obras viales o condiciones climáticas severas. Sugerimos anticipar su salida.</li></ul>
             <h4>6. Fallas Mecánicas</h4>
-            <ul><li>Se enviará unidad de sustitución en caso de falla.</li></ul>
-            <h4>7. Vehículos</h4>
-            <ul><li>Imágenes referenciales.</li></ul>
+            <ul><li>En el improbable caso de falla mecánica, la empresa se compromete a enviar una unidad de sustitución para completar el traslado. Esto no es motivo de reembolso total.</li></ul>
+            <h4>7. Vehículos e Imágenes</h4>
+            <ul><li>Las imágenes mostradas son <strong>ilustrativas y de referencia</strong>. La marca, modelo o color del vehículo puede variar, garantizando siempre la misma categoría.</li></ul>
         </div>
         <button class="btn-reservar" onclick="cerrarTyC()" style="margin-top: 20px;">HE LEÍDO Y ACEPTO</button>
     </div>
@@ -152,11 +206,23 @@
 <div class="modal-overlay" id="modalConfirmacion">
     <div class="modal-box">
         <button class="modal-top-close" onclick="cerrarModal()">Cerrar <i class="fas fa-times"></i></button>
+
         <div class="modal-icon"><i class="fas fa-check-circle"></i></div>
         <h2 class="modal-title" id="modalTitle">¡Solicitud Recibida!</h2>
-        <p style="margin:0; font-size:11px; color:#888; text-transform: uppercase; font-weight:700; letter-spacing: 1px;">Tu código de confirmación es:</p>
+        
+        <p style="margin:0; font-size:11px; color:#888; text-transform: uppercase; font-weight:700; letter-spacing: 1px;">Tu código de referencia es:</p>
         <div id="codigoDisplay" class="codigo-reserva">LTR-????</div>
-        <p class="modal-text" id="modalText">Hemos recibido tus datos correctamente. Por favor guarda tu código y contáctanos para finalizar.</p>
+
+        <p class="modal-text" id="modalText">
+            Hemos recibido tus datos correctamente.
+        </p>
+
+        <div style="background-color: #fff4e5; border-left: 4px solid #ff9800; padding: 10px; margin-bottom: 20px; text-align: left; font-size: 13px; color: #663c00;">
+            <i class="fas fa-exclamation-triangle"></i> <strong>IMPORTANTE:</strong><br>
+            Te hemos enviado un correo de confirmación. <br>
+            <span style="text-decoration: underline; font-weight: 800;">Por favor revisa tu carpeta de SPAM o "Correo no deseado"</span> si no lo ves en tu bandeja de entrada (Especialmente usuarios de Outlook/Hotmail).
+        </div>
+        
         <div class="modal-actions">
             <a href="tel:+529842411158" class="modal-btn btn-call"><i class="fas fa-phone"></i> Llama ahora</a>
             <a href="#" target="_blank" class="modal-btn btn-wa" id="btnWhatsapp"><i class="fab fa-whatsapp"></i> Confirmar por WhatsApp</a>
@@ -170,6 +236,7 @@
 
     <div class="search-box-container">
         <div class="search-box-inner">
+            
             <div class="options-bar">
                 <div class="radio-group" id="radioTipoViaje">
                     <label class="radio-label"><input type="radio" name="tipoViaje" value="SENCILLO" checked onchange="updateTipoServicio('SENCILLO')"> Solo Ida</label>
@@ -190,6 +257,7 @@
             </div>
 
             <div class="form-grid">
+                
                 <div class="input-wrapper" id="divSubtipoServicio" style="display:none; grid-column: 1 / -1; background-color: #e3f2fd;">
                     <label style="color: #003580;">Tipo de Servicio Especial:</label>
                     <select id="subtipoPersonalizado" onchange="ajustarCamposPersonalizados()">
@@ -200,7 +268,10 @@
                 </div>
 
                 <div class="input-wrapper"><label id="labelOrigen">Recogida</label><input type="text" id="origen" value="Aeropuerto Internacional de Cancún" readonly style="color:#777; background:#f5f5f5;"></div>
-                <input type="hidden" id="latitudDestino"><input type="hidden" id="longitudDestino"><input type="hidden" id="latitudOrigen"><input type="hidden" id="longitudOrigen"><input type="hidden" id="cpDestino"><input type="hidden" id="cpOrigen">
+                
+                <input type="hidden" id="latitudDestino"><input type="hidden" id="longitudDestino">
+                <input type="hidden" id="latitudOrigen"><input type="hidden" id="longitudOrigen">
+                <input type="hidden" id="cpDestino"><input type="hidden" id="cpOrigen">
 
                 <div class="input-wrapper" id="divDestinoInput"><label id="labelDestino">Destino</label><input type="text" id="destino" placeholder="¿A qué hotel vas?"></div>
                 <div class="input-wrapper" id="divHorasInput" style="display:none;">
@@ -259,7 +330,7 @@
 
 <script>
     // ============================================
-    // URL DEL SCRIPT (TU YA LA TIENES INTEGRADA EN EL CÓDIGO)
+    // ¡URL DEL ROBOT CONFIGURADA!
     // ============================================
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz4yYNHpyD73w0efQsxTI7sM3TjU7Gn9PLXrJC7pQcB0M3I2r6O69YCzvdgVk_wwm2o/exec"; 
     // ============================================
@@ -270,6 +341,7 @@
     const imgUrlSprinter = "https://i.imgur.com/BffyPRe.png";
     const imgUrlSuburban = "https://i.imgur.com/95X8eqt.png"; 
 
+    // --- BLOQUEO DE FECHAS PASADAS (HORA LIBRE) ---
     window.onload = function() {
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('fechaIda').setAttribute('min', today);
