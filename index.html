@@ -28,17 +28,18 @@
         .nav-link { color: var(--white); text-decoration: none; font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .nav-link:hover { color: var(--gold-accent); }
 
-        /* --- HERO SECTION (FONDO DE PLAYA ACTUALIZADO) --- */
+        /* --- HERO SECTION (FOTO ORIGINAL RESTAURADA) --- */
         .hero-section {
             position: relative; min-height: 100vh;
-            /* ¡AQUÍ ESTÁ EL CAMBIO! Nueva imagen de playa */
-            background: url('https://i.imgur.com/Q9q4q9D.jpg') no-repeat center center;
+            /* FOTO DE LA PLAYA DEL CÓDIGO ORIGINAL (UNSPLASH) */
+            background: url('https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?q=80&w=2069&auto=format&fit=crop') no-repeat center center;
             background-size: cover;
+            /* Efecto fijo para elegancia */
+            background-attachment: fixed; 
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             padding: 120px 20px 60px 20px;
         }
-        /* Overlay oscuro para que el texto y el cotizador resalten sobre la playa brillante */
-        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.7)); z-index: 1; }
+        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0, 53, 128, 0.5), rgba(0, 30, 80, 0.6)); z-index: 1; }
         .hero-content { position: relative; z-index: 10; text-align: center; margin-bottom: 40px; color: var(--white); }
         .hero-title { font-family: var(--font-title); font-size: 48px; font-weight: 700; margin-bottom: 15px; text-transform: uppercase; text-shadow: 0 4px 20px rgba(0,0,0,0.6); letter-spacing: 2px; }
         .hero-subtitle { font-size: 16px; font-weight: 300; letter-spacing: 1px; opacity: 0.95; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
@@ -309,7 +310,6 @@
         const email = document.getElementById('emailCliente').value; const nombre = document.getElementById('nombreCliente').value; const tel = document.getElementById('telefonoCliente').value; const fecha = document.getElementById('fechaIda').value;
         if(email.length<5 || nombre.length<2 || tel.length<5 || !fecha) { alert("Completa los datos obligatorios."); return; }
         if(direccionMode === 'personalizado') { const subtipo = document.getElementById('subtipoPersonalizado').value; let dest = (subtipo==='HORAS') ? document.getElementById('horasSeleccionadas').value : document.getElementById('destino').value; const data = { esVenta: false, codigo: generarCodigo(), nombre: nombre, telefono: tel, email: email, tipoViaje: "COTIZACION " + subtipo, origen: document.getElementById('origen').value, destino: dest, fecha: fecha, hora: document.getElementById('horaIda').value, notas: document.getElementById('notasCliente').value, vehiculo: "Cotización Especial", precio: "Por Cotizar" }; document.getElementById('codigoDisplay').innerText = data.codigo; iniciarEnvio(data); return; }
-        // LÓGICA SIMPLIFICADA DE ZONA PARA DEMO
         let zona = "ZONA HOTELERA DE CANCUN"; 
         const divRes = document.getElementById('resultados'); divRes.innerHTML = "";
         let ruta = (direccionMode==='desdeAero') ? "Aeropuerto -> " + document.getElementById('destino').value : document.getElementById('origen').value + " -> Aeropuerto";
