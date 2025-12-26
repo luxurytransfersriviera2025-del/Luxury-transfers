@@ -20,24 +20,23 @@
         body { font-family: var(--font-main); margin: 0; padding: 0; background-color: #f9f9f9; color: var(--text-dark); overflow-x: hidden; }
 
         /* --- NAVBAR --- */
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); padding: 15px 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.3); border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); padding: 10px 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.3); border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
         .nav-container { width: 90%; max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .nav-logo { color: var(--white); font-weight: 700; font-family: var(--font-title); font-size: 22px; text-transform: uppercase; text-decoration: none; letter-spacing: 1px; }
-        .nav-logo i { color: var(--gold-accent); margin-right: 8px; }
+        
+        /* LOGO EN NAVBAR */
+        .nav-logo { display: flex; align-items: center; text-decoration: none; }
+        .nav-logo img { height: 50px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
+
         .nav-links { display: flex; gap: 25px; }
         .nav-link { color: var(--white); text-decoration: none; font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .nav-link:hover { color: var(--gold-accent); }
 
-        /* --- HERO SECTION (FOTO ORIGINAL RESTAURADA) --- */
+        /* --- HERO SECTION --- */
         .hero-section {
             position: relative; min-height: 100vh;
-            /* FOTO DE LA PLAYA DEL CÓDIGO ORIGINAL (UNSPLASH) */
             background: url('https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?q=80&w=2069&auto=format&fit=crop') no-repeat center center;
-            background-size: cover;
-            /* Efecto fijo para elegancia */
-            background-attachment: fixed; 
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 120px 20px 60px 20px;
+            background-size: cover; background-attachment: fixed; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 120px 20px 60px 20px;
         }
         .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0, 53, 128, 0.5), rgba(0, 30, 80, 0.6)); z-index: 1; }
         .hero-content { position: relative; z-index: 10; text-align: center; margin-bottom: 40px; color: var(--white); }
@@ -78,14 +77,27 @@
         .service-title { font-family: var(--font-title); font-size: 26px; color: var(--white); margin-bottom: 15px; font-weight: 700; }
         .service-desc { font-size: 14px; color: #cbd5e1; line-height: 1.6; font-weight: 400; }
 
-        /* --- SECCIÓN FLOTA (CARRUSEL) --- */
+        /* --- SECCIÓN FLOTA (CARRUSEL MODIFICADO CON MARCA DE AGUA) --- */
         .fleet-carousel-container { position: relative; max-width: 1200px; margin: 0 auto; height: 550px; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.4); }
         .carousel-track-container { height: 100%; position: relative; overflow: hidden; }
         .carousel-track { padding: 0; margin: 0; list-style: none; position: relative; height: 100%; transition: transform 0.5s ease-in-out; }
         .carousel-slide { position: absolute; top: 0; bottom: 0; width: 100%; background-size: cover; background-position: center; }
-        .slide-logo { position: absolute; top: 40px; left: 50%; transform: translateX(-50%); z-index: 2; text-align: center; color: var(--navy-bg); }
-        .slide-logo img { height: 60px; display: block; margin: 0 auto 5px auto; filter: drop-shadow(0 2px 4px rgba(255,255,255,0.8)); }
-        .slide-logo span { font-family: var(--font-title); font-weight: 800; font-size: 28px; letter-spacing: 1px; color: #003580; text-shadow: 0 0 10px white; }
+        
+        /* NUEVO ESTILO PARA LA MARCA DE AGUA SUPERIOR DERECHA */
+        .slide-watermark {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            z-index: 2;
+            opacity: 0.7; /* Transparencia para efecto marca de agua */
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+        }
+        .slide-watermark img {
+            height: 60px; /* Tamaño ajustable */
+            width: auto;
+            object-fit: contain;
+        }
+
         .slide-info-panel { position: absolute; bottom: 50px; left: 50px; background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255, 255, 255, 0.3); backdrop-filter: blur(8px); padding: 25px; border-radius: 15px; max-width: 380px; color: white; z-index: 2; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .slide-title { font-family: var(--font-title); font-size: 26px; font-weight: 700; margin: 0 0 10px 0; color: var(--white); }
         .slide-desc { font-size: 14px; line-height: 1.6; margin: 0; color: #e2e8f0; }
@@ -123,6 +135,7 @@
             .hero-title { font-size: 32px; } .nav-links { display: none; } .nav-container { justify-content: center; }
             .form-grid, .contact-section { grid-template-columns: 1fr; }
             .fleet-carousel-container { height: 450px; border-radius: 0; }
+            .slide-watermark { top: 20px; right: 20px; } .slide-watermark img { height: 40px; }
             .slide-info-panel { bottom: 90px; left: 20px; right: 20px; max-width: none; padding: 15px; }
             .slide-actions { bottom: 20px; left: 20px; right: 20px; flex-direction: row; justify-content: space-between; gap: 10px; }
             .fleet-action-btn { min-width: auto; flex: 1; padding: 10px; font-size: 12px; }
@@ -136,7 +149,9 @@
 
 <nav class="navbar">
     <div class="nav-container">
-        <a href="#" class="nav-logo"><i class="fas fa-gem"></i> Luxury Transfers</a>
+        <a href="#" class="nav-logo">
+            <img src="https://i.imgur.com/S28i4YP.png" alt="Luxury Transfers Riviera">
+        </a>
         <div class="nav-links"><a href="#inicio" class="nav-link">Inicio</a><a href="#servicios" class="nav-link">Servicios</a><a href="#flota" class="nav-link">Flota</a></div>
     </div>
 </nav>
@@ -241,22 +256,22 @@
         <div class="carousel-track-container">
             <ul class="carousel-track">
                 <li class="carousel-slide current-slide" style="background-image: url('https://i.imgur.com/HEjiWrV.jpg');">
-                    <div class="slide-logo"><img src="https://i.imgur.com/ev6UUQp.png" alt="Logo"><span>LUXURY</span></div>
+                    <div class="slide-watermark"><img src="https://i.imgur.com/UvP7v9T.png" alt="Watermark"></div>
                     <div class="slide-info-panel"><h3 class="slide-title">Luxury SUV</h3><p class="slide-desc">Confort superior. Ideal para viajes exclusivos en familia (1-5 Pax).</p></div>
                     <div class="slide-actions"><a href="#inicio" class="fleet-action-btn btn-quote-orange">Cotizar ahora <i class="fas fa-arrow-right"></i></a><a href="https://wa.me/529842411158" target="_blank" class="fleet-action-btn btn-wa-green">WhatsApp <i class="fab fa-whatsapp"></i></a></div>
                 </li>
                 <li class="carousel-slide" style="background-image: url('https://i.imgur.com/O3kFZic.jpg');">
-                    <div class="slide-logo"><img src="https://i.imgur.com/ev6UUQp.png" alt="Logo"><span>LUXURY</span></div>
+                    <div class="slide-watermark"><img src="https://i.imgur.com/UvP7v9T.png" alt="Watermark"></div>
                     <div class="slide-info-panel"><h3 class="slide-title">Van Ejecutiva</h3><p class="slide-desc">Perfecta para grupos pequeños y traslados de negocios (1-8 Pax).</p></div>
                     <div class="slide-actions"><a href="#inicio" class="fleet-action-btn btn-quote-orange">Cotizar ahora <i class="fas fa-arrow-right"></i></a><a href="https://wa.me/529842411158" target="_blank" class="fleet-action-btn btn-wa-green">WhatsApp <i class="fab fa-whatsapp"></i></a></div>
                 </li>
                 <li class="carousel-slide" style="background-image: url('https://i.imgur.com/aBZ1z02.jpg');">
-                    <div class="slide-logo"><img src="https://i.imgur.com/ev6UUQp.png" alt="Logo"><span>LUXURY</span></div>
+                    <div class="slide-watermark"><img src="https://i.imgur.com/UvP7v9T.png" alt="Watermark"></div>
                     <div class="slide-info-panel"><h3 class="slide-title">Sedán Premium</h3><p class="slide-desc">Elegancia y puntualidad para parejas o viajeros solos (1-3 Pax).</p></div>
                     <div class="slide-actions"><a href="#inicio" class="fleet-action-btn btn-quote-orange">Cotizar ahora <i class="fas fa-arrow-right"></i></a><a href="https://wa.me/529842411158" target="_blank" class="fleet-action-btn btn-wa-green">WhatsApp <i class="fab fa-whatsapp"></i></a></div>
                 </li>
                 <li class="carousel-slide" style="background-image: url('https://i.imgur.com/A7MkcYK.jpg');">
-                    <div class="slide-logo"><img src="https://i.imgur.com/ev6UUQp.png" alt="Logo"><span>LUXURY</span></div>
+                    <div class="slide-watermark"><img src="https://i.imgur.com/UvP7v9T.png" alt="Watermark"></div>
                     <div class="slide-info-panel"><h3 class="slide-title">Sprinter</h3><p class="slide-desc">La mejor opción para grupos grandes sin sacrificar comodidad (Hasta 15 Pax).</p></div>
                     <div class="slide-actions"><a href="#inicio" class="fleet-action-btn btn-quote-orange">Cotizar ahora <i class="fas fa-arrow-right"></i></a><a href="https://wa.me/529842411158" target="_blank" class="fleet-action-btn btn-wa-green">WhatsApp <i class="fab fa-whatsapp"></i></a></div>
                 </li>
