@@ -1,442 +1,444 @@
-<!doctype html>
-<html lang="es" class="h-full">
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Transfers Riviera - Transporte Premium</title>
-    
-    <script src="/_sdk/element_sdk.js"></script>
-    <script src="/_sdk/data_sdk.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Reserva Profesional - Luxury Transfers Riviera</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    screens: { 'xs': '375px' }
-                }
-            }
-        }
-    </script>
-
+    
     <style>
-        body { font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
-        #heroTitle, #carouselTitle, .vehicle-title, #servicesTitle { font-family: 'Playfair Display', serif !important; }
-        
-        /* Hero Section */
-        .hero-bg {
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.8)), url('https://i.imgur.com/e3SkUT6.jpg');
-            background-size: cover; background-position: center; min-height: 100vh; padding-top: 80px;
-            display: flex; align-items: center; justify-content: center;
-        }
-        @media (min-width: 1024px) { .hero-bg { background-attachment: fixed; } }
-
-        /* Carrusel */
-        .carousel { position: relative; width: 100%; max-width: 1200px; height: 70vh; max-height: 500px; min-height: 400px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-        @media (min-width: 768px) { .carousel { height: 550px; max-height: none; } }
-        .carousel-item { display: none; width: 100%; height: 100%; background-size: cover; background-position: center; transition: background-image 0.3s ease; }
-        .carousel-item.active { display: block; animation: fadeEffect 1s; }
-        @keyframes fadeEffect { from {opacity: 0.6;} to {opacity: 1;} }
-        
-        .carousel-text-box { position: absolute; bottom: 33px; left: 16px; padding: 12px 14px; max-width: 280px; border-radius: 16px; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(10px); border: 2px solid #FFFFFF; pointer-events: none; }
-        .carousel-text-box h3 { color: #FFFFFF !important; font-weight: 700; font-size: 18px; margin: 0 0 4px 0; }
-        .carousel-text-box p { color: #FFFFFF !important; font-size: 13px; margin: 0; line-height: 1.4; }
-        
-        .carousel-buttons { position: absolute; bottom: 33px; right: 16px; display: flex; flex-direction: column; gap: 8px; }
-        .carousel-btn { padding: 10px 20px; border-radius: 50px; font-weight: 600; font-size: 13px; color: white; display: flex; align-items: center; gap: 8px; text-decoration: none; border: none; width: 100%; justify-content: center; }
-        .carousel-btn-quote { background-color: #FF8C00; } 
-        .carousel-btn-whatsapp { background-color: #25D366; }
-        
-        .carousel-arrow { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.2); color: white; width: 50px; height: 50px; border-radius: 50%; position: absolute; top: 50%; transform: translateY(-50%); cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 20; }
-        .carousel-arrow:hover { background: white; color: #0f172a; } 
-        .carousel-arrow-left { left: 20px; } 
-        .carousel-arrow-right { right: 20px; }
-        
-        /* Servicios */
-        .service-card-premium { background-color: #0f172a; border: 2px solid #d4af37; border-radius: 20px; overflow: hidden; transition: all 0.4s; }
-        .service-card-premium:hover { transform: translateY(-12px); box-shadow: 0 20px 50px rgba(212, 175, 55, 0.3); }
-
-        /* Navegación Hover */
-        .nav-link { position: relative; transition: 0.3s; }
-        .nav-link:hover::after { width: 100%; }
-        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: #1e293b; transition: width 0.3s ease; }
-    </style>
-
-    <style>
-        /* Contenedor principal del cotizador para proteger estilos */
-        #cotizador-wrapper {
-            /* Variables originales del cotizador */
+        /* --- ESTILOS DE DISEÑO (VERSIÓN FINAL) --- */
+        :root { 
             --primary-blue: #003580; 
             --action-green: #00a651; 
             --action-green-hover: #008c44; 
             --highlight-yellow: #febb02; 
             --text-dark: #1a1a1a; 
-            --white: #ffffff;
-            
-            font-family: 'Montserrat', sans-serif;
-            position: relative;
-            padding: 50px 0;
-            /* IMAGEN DE FONDO PLAYA ORIGINAL */
-            background: url('https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?q=80&w=2069&auto=format&fit=crop') no-repeat center center;
-            background-size: cover;
-            background-attachment: fixed; 
+            --text-gray: #555; 
+            --bg-light: #f2f2f2; 
+            --white: #ffffff; 
         }
-
-        #cotizador-wrapper .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 53, 128, 0.5); z-index: 1; }
-        #cotizador-wrapper .main-container { position: relative; z-index: 10; width: 95%; max-width: 1100px; margin: 0 auto; }
         
-        #cotizador-wrapper h2.cotizador-titulo { 
-            color: var(--white); text-align: center; text-shadow: 0 4px 10px rgba(0,0,0,0.5); 
-            font-size: 32px; margin-bottom: 25px; font-weight: 800; text-transform: uppercase; 
+        body { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; background: url('https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?q=80&w=2069&auto=format&fit=crop') no-repeat center center fixed; background-size: cover; min-height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+        
+        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 53, 128, 0.5); z-index: 1; }
+        .main-container { position: relative; z-index: 10; width: 95%; max-width: 1100px; padding: 20px 0; }
+        
+        h1 { color: var(--white); text-align: center; text-shadow: 0 4px 10px rgba(0,0,0,0.5); font-size: 32px; margin-bottom: 25px; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase; }
+        
+        /* SEARCH BOX */
+        .search-box-container { background-color: var(--highlight-yellow); padding: 4px; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); margin-bottom: 20px; }
+        .search-box-inner { background-color: var(--primary-blue); padding: 25px; border-radius: 9px; color: white; }
+        
+        .options-bar { display: flex; justify-content: space-between; margin-bottom: 20px; align-items: center; }
+        .radio-group { display: flex; gap: 20px; }
+        .radio-label { display: flex; align-items: center; cursor: pointer; font-size: 14px; font-weight: 600; }
+        .radio-label input { margin-right: 8px; accent-color: var(--highlight-yellow); width: 18px; height: 18px; }
+        
+        .direction-tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .tab-btn { background: transparent; border: 2px solid rgba(255,255,255,0.3); color: white; padding: 12px 20px; border-radius: 50px; cursor: pointer; font-size: 13px; font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center; white-space: nowrap; }
+        .tab-btn.active { background: var(--white); color: var(--primary-blue); border-color: var(--white); font-weight: 800; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transform: translateY(-2px); }
+        .tab-btn:hover { background: rgba(255,255,255,0.1); }
+
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2); }
+        .input-wrapper { background: var(--white); padding: 12px 15px; display: flex; flex-direction: column; justify-content: center; position: relative; border-radius: 8px; transition: 0.2s; }
+        .input-wrapper:focus-within { box-shadow: 0 0 0 3px rgba(254, 187, 2, 0.5); }
+        .input-wrapper label { font-size: 10px; color: #555; font-weight: 800; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .input-wrapper input, .input-wrapper select, .input-wrapper textarea { border: none; outline: none; width: 100%; font-size: 15px; font-weight: 600; color: var(--text-dark); background: transparent; font-family: 'Montserrat', sans-serif; padding: 0; }
+        
+        .contact-section { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; }
+        .flight-fields-container { grid-column: 1 / -1; display: contents; }
+        
+        /* CHECKBOX TÉRMINOS */
+        .terms-container { grid-column: 1 / -1; display: flex; align-items: center; margin-top: 10px; font-size: 13px; color: white; gap: 10px; justify-content: center; }
+        .terms-container input { width: 18px; height: 18px; accent-color: var(--highlight-yellow); cursor: pointer; }
+        .terms-link { color: var(--highlight-yellow); text-decoration: underline; cursor: pointer; font-weight: 700; }
+
+        .btn-cotizar { grid-column: 1 / -1; background-color: var(--action-green); color: white; font-size: 18px; font-weight: 800; border: none; padding: 18px; border-radius: 8px; cursor: pointer; margin-top: 15px; transition: all 0.2s; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 5px 0 #007a3d; width: 100%; }
+        .btn-cotizar:hover { background-color: var(--action-green-hover); transform: translateY(2px); box-shadow: 0 3px 0 #007a3d; }
+        .btn-cotizar:active { transform: translateY(5px); box-shadow: none; }
+
+        /* HEADER DE RESULTADOS */
+        #resultados { margin-top: 30px; display: none; width: 100%; }
+        .ruta-header { 
+            background: rgba(0, 0, 0, 0.6); 
+            color: white; 
+            padding: 15px 20px; 
+            border-radius: 8px; 
+            margin-bottom: 20px; 
+            text-align: center; 
+            font-size: 16px; 
+            font-weight: 600; 
+            border-left: 5px solid var(--highlight-yellow);
+            animation: fadeIn 0.5s ease-in-out; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
+        .ruta-header i { color: var(--highlight-yellow); margin: 0 10px; }
 
-        /* Search Box */
-        #cotizador-wrapper .search-box-container { background-color: var(--highlight-yellow); padding: 4px; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); margin-bottom: 20px; }
-        #cotizador-wrapper .search-box-inner { background-color: var(--primary-blue); padding: 25px; border-radius: 9px; color: white; }
+        /* TARJETAS */
+        .tarjeta { background: var(--white); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; flex-wrap: wrap; gap: 25px; border: 1px solid #f0f0f0; overflow: hidden; animation: fadeIn 0.5s ease-in-out; transition: transform 0.3s, box-shadow 0.3s; }
+        .tarjeta:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        .tarjeta-img { flex: 0 0 220px; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 12px; padding: 10px; border: 1px solid #f5f5f5; }
+        .tarjeta-img img { width: 100%; height: auto; object-fit: contain; max-height: 140px; }
+        .tarjeta-info { flex: 1; display: flex; flex-direction: column; justify-content: center; min-width: 280px; }
+        .tarjeta-info h3 { margin: 0 0 8px 0; font-size: 22px; color: var(--text-dark); text-transform: uppercase; letter-spacing: -0.5px; font-weight: 900; }
+        .tarjeta-route-display { font-size: 12px; color: var(--primary-blue); font-weight: 700; margin-bottom: 12px; background: #eef2ff; padding: 8px 12px; border-radius: 6px; display: inline-block; border: 1px solid #dbeafe; }
+        .tarjeta-specs { margin-bottom: 15px; font-size: 14px; color: #555; display: flex; flex-direction: column; gap: 6px; font-weight: 500; }
+        .spec-row { display: flex; align-items: center; gap: 10px; }
+        .spec-row i { color: var(--primary-blue); width: 20px; text-align: center; font-size: 16px; }
+        .feature-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 5px; }
+        .feature-tag { background: #f8fafc; color: #475569; font-size: 11px; padding: 6px 12px; border-radius: 20px; display: flex; align-items: center; gap: 6px; font-weight: 600; border: 1px solid #e2e8f0; }
+        .feature-tag i { color: var(--action-green); font-size: 12px; }
+        .tarjeta-price { flex: 0 0 180px; text-align: right; display: flex; flex-direction: column; justify-content: center; border-left: 2px solid #f5f5f5; padding-left: 25px; }
+        .price-old { font-size: 14px; color: #bbb; text-decoration: line-through; margin-bottom: 2px; font-weight: 600; }
+        .price-current { font-size: 32px; font-weight: 900; color: var(--action-green); margin-bottom: 10px; letter-spacing: -1px; line-height: 1; }
+        .btn-reservar { background-color: var(--action-green); color: white; text-decoration: none; padding: 14px 20px; border-radius: 8px; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; margin-top: 5px; cursor: pointer; border:none; text-transform: uppercase; letter-spacing: 0.5px; width: 100%; box-shadow: 0 4px 10px rgba(0,166,81,0.2); }
+        .btn-reservar:hover { background-color: var(--action-green-hover); box-shadow: 0 8px 20px rgba(0,166,81,0.4); transform: translateY(-2px); }
         
-        #cotizador-wrapper .options-bar { display: flex; justify-content: space-between; margin-bottom: 20px; align-items: center; flex-wrap: wrap; gap: 10px; }
-        #cotizador-wrapper .radio-label { display: flex; align-items: center; cursor: pointer; font-size: 14px; font-weight: 600; margin-right: 15px; color: white; }
-        #cotizador-wrapper .radio-label input { margin-right: 8px; width: 18px; height: 18px; accent-color: var(--highlight-yellow); }
+        /* MODALES */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 1000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        .modal-box { background: white; width: 90%; max-width: 450px; padding: 40px 30px; border-radius: 20px; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.5); position: relative; animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); max-height: 90vh; overflow-y: auto; }
+        .modal-top-close { position: absolute; top: 15px; right: 20px; border: none; background: transparent; color: #aaa; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; font-family: 'Montserrat', sans-serif; }
+        .modal-top-close:hover { color: #333; }
+        .modal-icon { font-size: 70px; color: var(--action-green); margin-bottom: 20px; }
+        .modal-title { font-size: 28px; color: var(--primary-blue); margin-bottom: 10px; font-weight: 900; letter-spacing: -1px; }
+        .modal-text { font-size: 15px; color: #666; line-height: 1.6; margin-bottom: 20px; }
         
-        #cotizador-wrapper .direction-tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-        #cotizador-wrapper .tab-btn { background: transparent; border: 2px solid rgba(255,255,255,0.3); color: white; padding: 12px 20px; border-radius: 50px; cursor: pointer; font-size: 13px; font-weight: 600; transition: 0.3s; flex: 1; display: flex; justify-content: center; align-items: center; gap: 8px; }
-        #cotizador-wrapper .tab-btn.active { background: var(--white); color: var(--primary-blue); border-color: var(--white); font-weight: 800; transform: translateY(-2px); }
+        .tyc-content { text-align: left; font-size: 13px; color: #444; line-height: 1.5; margin-top: 15px; }
+        .tyc-content h4 { color: var(--primary-blue); margin-bottom: 5px; margin-top: 15px; font-size: 14px; }
+        .tyc-content ul { padding-left: 20px; margin: 0; }
         
-        #cotizador-wrapper .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2); }
+        .codigo-reserva { background-color: #ecfdf5; border: 2px dashed #00a651; color: #003580; padding: 15px; font-size: 28px; font-weight: 900; letter-spacing: 3px; border-radius: 12px; margin: 10px 0 25px 0; display: inline-block; width: 100%; box-sizing: border-box; }
         
-        /* Inputs limpios (sin estilos de Tailwind) */
-        #cotizador-wrapper .input-wrapper { background: var(--white); padding: 12px 15px; display: flex; flex-direction: column; justify-content: center; border-radius: 8px; min-height: 50px; }
-        #cotizador-wrapper .input-wrapper label { font-size: 10px; color: #555; font-weight: 800; margin-bottom: 4px; text-transform: uppercase; line-height: 1; }
-        #cotizador-wrapper .input-wrapper input, 
-        #cotizador-wrapper .input-wrapper select, 
-        #cotizador-wrapper .input-wrapper textarea { 
-            border: none; outline: none; width: 100%; font-size: 15px; font-weight: 600; color: #1a1a1a; background: transparent; padding: 0; margin: 0; box-shadow: none;
+        /* ESTILOS BOTONES DEL MODAL (ACTUALIZADOS) */
+        .modal-actions { display: flex; flex-direction: column; gap: 12px; }
+        .modal-btn { 
+            padding: 16px; 
+            border-radius: 10px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 15px; /* Más espacio entre icono y texto */
+            color: white; 
+            font-size: 16px; 
+            transition: 0.2s; 
+            border: none; 
+            cursor: pointer; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
         }
-
-        #cotizador-wrapper .btn-cotizar { grid-column: 1 / -1; background-color: var(--action-green); color: white; font-size: 18px; font-weight: 800; border: none; padding: 18px; border-radius: 8px; cursor: pointer; margin-top: 15px; text-transform: uppercase; width: 100%; transition: 0.2s; }
-        #cotizador-wrapper .btn-cotizar:hover { background-color: var(--action-green-hover); transform: translateY(2px); }
-
-        /* Resultados */
-        #cotizador-wrapper #resultados { margin-top: 30px; display: none; }
-        #cotizador-wrapper .ruta-header { background: rgba(0,0,0,0.6); color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; border-left: 5px solid var(--highlight-yellow); font-weight: 600; }
         
-        #cotizador-wrapper .tarjeta { background: white; border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; flex-wrap: wrap; gap: 20px; border: 1px solid #f0f0f0; }
-        #cotizador-wrapper .tarjeta-img { flex: 0 0 200px; display: flex; align-items: center; justify-content: center; background: #f9f9f9; border-radius: 12px; padding: 10px; }
-        #cotizador-wrapper .tarjeta-img img { width: 100%; height: auto; max-height: 120px; object-fit: contain; }
-        #cotizador-wrapper .tarjeta-info { flex: 1; min-width: 250px; }
-        #cotizador-wrapper .tarjeta-price { flex: 0 0 160px; text-align: right; border-left: 2px solid #f5f5f5; padding-left: 20px; display: flex; flex-direction: column; justify-content: center; }
-        #cotizador-wrapper .price-current { font-size: 28px; font-weight: 900; color: var(--action-green); line-height: 1; margin-bottom: 10px; }
-        #cotizador-wrapper .btn-reservar { background: var(--action-green); color: white; padding: 12px; border-radius: 8px; font-weight: 800; width: 100%; cursor: pointer; border: none; }
+        .modal-btn i { font-size: 24px; } /* Iconos más grandes en general */
+        .modal-btn:hover { transform: translateY(-2px); opacity: 0.95; box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
+        
+        /* Estilos específicos por botón */
+        .btn-wa { 
+            background: #25d366; 
+            font-size: 18px; /* Texto un poquito más grande para WhatsApp */
+            padding: 18px;   /* Botón un poco más grande */
+        }
+        .btn-wa i { font-size: 32px; } /* ICONO WHATSAPP GIGANTE */
 
-        /* Modales */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 3000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .modal-box { background: white; width: 90%; max-width: 450px; padding: 30px; border-radius: 20px; text-align: center; position: relative; max-height: 90vh; overflow-y: auto; }
-        .modal-btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 15px; border-radius: 10px; color: white; font-weight: 700; margin-bottom: 10px; width: 100%; text-decoration: none; }
-        .btn-wa { background: #25d366; } .btn-call { background: #003580; }
-
-        @media (max-width: 768px) {
-            #cotizador-wrapper .form-grid { grid-template-columns: 1fr; }
-            #cotizador-wrapper .tarjeta { flex-direction: column; }
-            #cotizador-wrapper .tarjeta-price { border-left: none; padding-left: 0; border-top: 1px solid #eee; padding-top: 20px; text-align: center; }
+        .btn-call { background: var(--primary-blue); }
+        .btn-call i { transform: scaleX(1); } 
+        .btn-mail { background: #333; }
+        
+        .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); z-index: 2000; display: none; align-items: center; justify-content: center; flex-direction: column; }
+        .spinner { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--action-green); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        
+        @keyframes slideUp { from {transform: translateY(50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        @media (max-width: 768px) { 
+            .form-grid, .contact-section { grid-template-columns: 1fr; background: transparent; padding: 0; gap: 12px; border: none; } 
+            .input-wrapper { border-radius: 10px !important; box-shadow: 0 2px 5px rgba(0,0,0,0.05); } 
+            .direction-tabs { flex-direction: column; gap: 8px; } 
+            .tab-btn { justify-content: center; padding: 14px; } 
+            .tarjeta { flex-direction: column; text-align: left; padding: 20px; gap: 15px; } 
+            .tarjeta-img { width: 100%; height: 180px; flex: auto; border:none; padding:0; background: #f9f9f9; } 
+            .tarjeta-price { border-left: none; padding-left: 0; border-top: 1px solid #eee; padding-top: 20px; text-align: left; flex-direction: row; align-items: center; justify-content: space-between; flex: auto; } 
+            .btn-reservar { width: auto; padding: 12px 25px; margin-top: 0; }
         }
     </style>
 </head>
+<body>
 
-<body class="bg-white">
+<div class="overlay"></div>
 
-<div id="app" class="w-full overflow-x-hidden">
-    
-    <nav class="bg-white shadow-lg fixed top-0 w-full z-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex items-center space-x-2">
-                    <img src="https://i.imgur.com/Yo8eKru.png" alt="Logo" class="w-10 h-10 object-contain"> 
-                    <span class="text-xl md:text-2xl font-bold truncate text-slate-800">Luxury Transfers Riviera</span>
-                </div>
-                <div class="hidden md:flex items-center space-x-6">
-                    <a href="#inicio" class="nav-link font-medium text-slate-800">Inicio</a>
-                    <a href="#servicios" class="nav-link font-medium text-slate-800">Servicios</a>
-                    <a href="#cotizar" class="nav-link font-medium text-slate-800">Cotizar</a>
-                </div>
-                <button onclick="toggleMobileMenu()" class="md:hidden p-2 border rounded border-gray-400">
-                    <i class="fas fa-bars text-slate-800"></i>
-                </button>
-            </div>
-            <div id="mobileMenu" class="hidden md:hidden pb-4">
-                <div class="flex flex-col space-y-2">
-                    <a href="#inicio" onclick="toggleMobileMenu()" class="py-2 px-4 hover:bg-gray-100 rounded text-slate-800">Inicio</a>
-                    <a href="#servicios" onclick="toggleMobileMenu()" class="py-2 px-4 hover:bg-gray-100 rounded text-slate-800">Servicios</a>
-                    <a href="#cotizar" onclick="toggleMobileMenu()" class="py-2 px-4 hover:bg-gray-100 rounded text-slate-800">Cotizar</a>
-                </div>
-            </div>
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+    <p style="margin-top: 15px; font-weight: 700; color: #333; font-size: 14px;">GENERANDO RESERVA...</p>
+</div>
+
+<div class="modal-overlay" id="modalTyC">
+    <div class="modal-box">
+        <button class="modal-top-close" onclick="cerrarTyC()">Cerrar <i class="fas fa-times"></i></button>
+        <h2 class="modal-title" style="font-size: 22px;">Términos y Condiciones</h2>
+        <div class="tyc-content">
+            <p>Al reservar con Luxury Transfers Riviera, aceptas lo siguiente:</p>
+            <h4>1. Cancelaciones y Reembolsos</h4>
+            <ul>
+                <li>Cancelaciones con 24 horas de antelación: Reembolso del 100%.</li>
+                <li>Cancelaciones con menos de 24 horas: No aplica reembolso (Cargo por No-Show).</li>
+            </ul>
+            <h4>2. Tiempos de Espera</h4>
+            <ul>
+                <li><strong>Aeropuerto:</strong> Monitoreamos tu vuelo. El chofer espera hasta 60 min después del aterrizaje.</li>
+                <li><strong>Hotel/Airbnb:</strong> Tolerancia máxima de 15 minutos en el lobby.</li>
+            </ul>
+            <h4>3. Limpieza y Daños</h4>
+            <ul><li>Si un pasajero ensucia el vehículo (vómito, alimentos, arena excesiva) se cobrará una cuota de limpieza de $2,500 MXN.</li></ul>
+            <h4>4. Equipaje y Objetos</h4>
+            <ul><li>No nos hacemos responsables por objetos olvidados. Revisa tus pertenencias antes de bajar.</li></ul>
+            <h4 style="color:#d32f2f;">5. Eximición por Tráfico y Fuerza Mayor</h4>
+            <ul><li>La empresa <strong>NO se hace responsable</strong> por vuelos perdidos o retrasos derivados de: tráfico pesado, accidentes carreteros, manifestaciones, obras viales o condiciones climáticas severas. Sugerimos anticipar su salida.</li></ul>
+            <h4>6. Fallas Mecánicas</h4>
+            <ul><li>En el improbable caso de falla mecánica, la empresa se compromete a enviar una unidad de sustitución para completar el traslado. Esto no es motivo de reembolso total.</li></ul>
+            <h4>7. Vehículos e Imágenes</h4>
+            <ul><li>Las imágenes mostradas son <strong>ilustrativas y de referencia</strong>. La marca, modelo o color del vehículo puede variar, garantizando siempre la misma categoría.</li></ul>
         </div>
-    </nav>
+        <button class="btn-reservar" onclick="cerrarTyC()" style="margin-top: 20px;">HE LEÍDO Y ACEPTO</button>
+    </div>
+</div>
 
-    <section id="inicio" class="hero-bg">
-        <div class="max-w-7xl mx-auto text-center w-full px-4">
-            <h1 id="heroTitle" class="text-4xl sm:text-6xl lg:text-8xl font-bold text-white mb-6">Transporte Premium en Riviera Maya</h1>
-            <p class="text-lg sm:text-2xl text-white opacity-90 mb-8 max-w-3xl mx-auto">Viaja con comodidad, seguridad y estilo. Servicio profesional las 24 horas.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#cotizar" class="px-8 py-3 rounded-full font-bold bg-[#d4af37] text-white hover:bg-[#b88a44] transition shadow-lg uppercase tracking-wider">Reservar Ahora</a>
-                <a href="https://wa.me/5219842411158" class="px-8 py-3 rounded-full font-bold border-2 border-white text-white hover:bg-white hover:text-slate-900 transition flex items-center justify-center gap-2">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-            </div>
+<div class="modal-overlay" id="modalConfirmacion">
+    <div class="modal-box">
+        <button class="modal-top-close" onclick="cerrarModal()">Cerrar <i class="fas fa-times"></i></button>
+
+        <div class="modal-icon"><i class="fas fa-check-circle"></i></div>
+        <h2 class="modal-title" id="modalTitle">¡Solicitud Recibida!</h2>
+        
+        <p style="margin:0; font-size:11px; color:#888; text-transform: uppercase; font-weight:700; letter-spacing: 1px;">Tu código de referencia es:</p>
+        <div id="codigoDisplay" class="codigo-reserva">LTR-????</div>
+
+        <p class="modal-text" id="modalText">
+            Hemos recibido tus datos correctamente.
+        </p>
+
+        <div style="background-color: #fff4e5; border-left: 4px solid #ff9800; padding: 10px; margin-bottom: 20px; text-align: left; font-size: 13px; color: #663c00;">
+            <i class="fas fa-exclamation-triangle"></i> <strong>IMPORTANTE:</strong><br>
+            Te hemos enviado un correo de confirmación. <br>
+            <span style="text-decoration: underline; font-weight: 800;">Por favor revisa tu carpeta de SPAM o "Correo no deseado"</span> si no lo ves en tu bandeja de entrada (Especialmente usuarios de Outlook/Hotmail).
         </div>
-    </section>
-
-    <section class="py-12 bg-gray-100">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 id="carouselTitle" class="text-3xl sm:text-4xl font-bold text-center mb-8 text-slate-800">Nuestra Flota</h2>
-            <div class="carousel">
-                <div class="carousel-item active" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://i.imgur.com/HEjiWrV.jpg');">
-                    <div class="carousel-text-box"><h3>SUV Luxury</h3><p>Confort Superior. Ideal para familias.</p></div>
-                    <div class="carousel-buttons"><a href="#cotizar" class="carousel-btn carousel-btn-quote"><i class="fas fa-search"></i> Cotizar</a></div>
-                </div>
-                <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://i.imgur.com/O3kFZic.jpg');">
-                    <div class="carousel-text-box"><h3>Van Ejecutiva</h3><p>Perfecta para grupos y negocios.</p></div>
-                    <div class="carousel-buttons"><a href="#cotizar" class="carousel-btn carousel-btn-quote"><i class="fas fa-search"></i> Cotizar</a></div>
-                </div>
-                 <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://i.imgur.com/aBZ1z02.jpg');">
-                    <div class="carousel-text-box"><h3>Sedán Premium</h3><p>Elegancia para parejas.</p></div>
-                    <div class="carousel-buttons"><a href="#cotizar" class="carousel-btn carousel-btn-quote"><i class="fas fa-search"></i> Cotizar</a></div>
-                </div>
-                <button onclick="previousSlide()" class="carousel-arrow carousel-arrow-left"><i class="fas fa-chevron-left"></i></button>
-                <button onclick="nextSlide()" class="carousel-arrow carousel-arrow-right"><i class="fas fa-chevron-right"></i></button>
-            </div>
+        
+        <div class="modal-actions">
+            <a href="tel:+529842411158" class="modal-btn btn-call"><i class="fas fa-phone"></i> Llama ahora</a>
+            <a href="#" target="_blank" class="modal-btn btn-wa" id="btnWhatsapp"><i class="fab fa-whatsapp"></i> Confirmar por WhatsApp</a>
+            <a href="#" class="modal-btn btn-mail" id="btnMail"><i class="fas fa-envelope"></i> Enviar Correo</a>
         </div>
-    </section>
+    </div>
+</div>
 
-    <section id="servicios" class="py-16 bg-[#f8f7f4] px-4">
-        <div class="max-w-7xl mx-auto text-center">
-            <h2 id="servicesTitle" class="text-4xl font-bold mb-12 text-slate-800">Nuestros Servicios</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="service-card-premium p-6 text-white text-center">
-                    <i class="fas fa-plane-arrival text-4xl mb-4 text-[#d4af37]"></i>
-                    <h3 class="text-xl font-bold mb-2">Aeropuerto</h3>
-                    <p class="text-sm opacity-80">Traslados puntuales desde/hacia Cancún y Tulum.</p>
-                </div>
-                <div class="service-card-premium p-6 text-white text-center">
-                    <i class="fas fa-hotel text-4xl mb-4 text-[#d4af37]"></i>
-                    <h3 class="text-xl font-bold mb-2">Hotel a Hotel</h3>
-                    <p class="text-sm opacity-80">Movilidad entre resorts de la Riviera Maya.</p>
-                </div>
-                <div class="service-card-premium p-6 text-white text-center">
-                    <i class="fas fa-map-marked-alt text-4xl mb-4 text-[#d4af37]"></i>
-                    <h3 class="text-xl font-bold mb-2">Tours</h3>
-                    <p class="text-sm opacity-80">Visita Chichén Itzá, Xcaret o Cenotes.</p>
-                </div>
-                <div class="service-card-premium p-6 text-white text-center">
-                    <i class="fas fa-clock text-4xl mb-4 text-[#d4af37]"></i>
-                    <h3 class="text-xl font-bold mb-2">Por Horas</h3>
-                    <p class="text-sm opacity-80">Servicio a disposición con chofer privado.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="main-container">
+    <h1><i class="fas fa-plane-departure"></i> Luxury Transfers Riviera</h1>
 
-    <section id="cotizar" class="w-full">
-        <div id="cotizador-wrapper">
-            <div class="overlay"></div>
+    <div class="search-box-container">
+        <div class="search-box-inner">
             
-            <div class="loading-overlay" id="loadingOverlay">
-                <div style="width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid #00a651; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-                <p style="margin-top: 15px; font-weight: 700; color: #333;">PROCESANDO...</p>
+            <div class="options-bar">
+                <div class="radio-group" id="radioTipoViaje">
+                    <label class="radio-label"><input type="radio" name="tipoViaje" value="SENCILLO" checked onchange="updateTipoServicio('SENCILLO')"> Solo Ida</label>
+                    <label class="radio-label"><input type="radio" name="tipoViaje" value="REDONDO" onchange="updateTipoServicio('REDONDO')"> Ida y Vuelta</label>
+                </div>
+                <select id="tipoServicio" style="display:none;"><option value="SENCILLO">Sencillo</option><option value="REDONDO">Redondo</option></select>
+                <div style="width: 120px;">
+                    <select id="moneda" onchange="limpiarResultados()" style="width:100%; padding: 10px; border-radius:8px; border:none; font-weight:700; font-family:'Montserrat'; cursor:pointer; background:white;">
+                        <option value="MXN">MXN ($)</option><option value="USD">USD ($)</option>
+                    </select>
+                </div>
             </div>
 
-            <div class="modal-overlay" id="modalTyC">
-                <div class="modal-box">
-                    <button style="position:absolute; top:10px; right:15px; border:none; background:transparent; font-size:20px; cursor:pointer;" onclick="cerrarTyC()">&times;</button>
-                    <h2 style="color:#003580; font-weight:800; margin-bottom:15px;">Términos y Condiciones</h2>
-                    <div style="text-align: left; font-size: 13px; color: #444; max-height: 250px; overflow-y:auto; margin-bottom:15px;">
-                        <p>1. Cancelaciones 24h antes: 100% reembolso.</p>
-                        <p>2. Tiempo de espera: 60 min aeropuerto, 15 min hotel.</p>
-                        <p>3. No nos hacemos responsables por objetos olvidados.</p>
+            <div class="direction-tabs">
+                <div class="tab-btn active" id="btnDesdeAero" onclick="setDireccion('desdeAero')"><i class="fas fa-plane-arrival"></i> Desde Aeropuerto</div>
+                <div class="tab-btn" id="btnHaciaAero" onclick="setDireccion('haciaAero')"><i class="fas fa-plane-departure"></i> Hacia Aeropuerto</div>
+                <div class="tab-btn" id="btnPersonalizado" onclick="setDireccion('personalizado')"><i class="fas fa-map-marked-alt"></i> Personalizado</div>
+            </div>
+
+            <div class="form-grid">
+                
+                <div class="input-wrapper" id="divSubtipoServicio" style="display:none; grid-column: 1 / -1; background-color: #e3f2fd;">
+                    <label style="color: #003580;">Tipo de Servicio Especial:</label>
+                    <select id="subtipoPersonalizado" onchange="ajustarCamposPersonalizados()">
+                        <option value="HOTEL_A_HOTEL">📍 Traslado a Hotel / Airbnb</option>
+                        <option value="TOUR">🎢 Traslado a Tours (Parques/Ruinas)</option>
+                        <option value="HORAS" id="optHoras">⏳ Servicio por Horas (Disposición)</option>
+                    </select>
+                </div>
+
+                <div class="input-wrapper"><label id="labelOrigen">Recogida</label><input type="text" id="origen" value="Aeropuerto Internacional de Cancún" readonly style="color:#777; background:#f5f5f5;"></div>
+                
+                <input type="hidden" id="latitudDestino"><input type="hidden" id="longitudDestino">
+                <input type="hidden" id="latitudOrigen"><input type="hidden" id="longitudOrigen">
+                <input type="hidden" id="cpDestino"><input type="hidden" id="cpOrigen">
+
+                <div class="input-wrapper" id="divDestinoInput"><label id="labelDestino">Destino</label><input type="text" id="destino" placeholder="¿A qué hotel vas?"></div>
+                <div class="input-wrapper" id="divHorasInput" style="display:none;">
+                    <label>Duración Requerida</label>
+                    <select id="horasSeleccionadas">
+                        <option value="2 Horas">2 Horas</option><option value="4 Horas">4 Horas</option><option value="6 Horas">6 Horas</option><option value="8 Horas">8 Horas</option><option value="Mas de 8 Horas">Más de 8 Horas</option>
+                    </select>
+                </div>
+
+                <div class="input-wrapper" style="flex: 0.6;"><label>Fecha</label><input type="date" id="fechaIda"></div>
+                <div class="input-wrapper" style="flex: 0.4;"><label>Hora</label><input type="time" id="horaIda"></div>
+                <div class="input-wrapper" id="divFechaVuelta" style="display:none; flex: 0.6;"><label>Fecha Vuelta</label><input type="date" id="fechaVuelta"></div>
+                <div class="input-wrapper" id="divHoraVuelta" style="display:none; flex: 0.4;"><label>Hora</label><input type="time" id="horaVuelta"></div>
+
+                <div class="input-wrapper" style="flex: 0.4;">
+                    <label>Pasajeros</label>
+                    <select id="pasajeros">
+                        <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option>
+                    </select>
+                </div>
+
+                <div class="contact-section" id="seccionContacto">
+                    <div class="input-wrapper" style="grid-column: 1 / -1;"><label style="color:var(--action-green); font-weight:900; font-size: 11px;">TUS DATOS DE CONTACTO:</label></div>
+                    <div class="input-wrapper"><label>Nombre Completo</label><input type="text" id="nombreCliente" placeholder="Tu nombre"></div>
+                    <div class="input-wrapper"><label>Teléfono</label><input type="tel" id="telefonoCliente" placeholder="Ej: +52 987 654 3210"></div>
+                    <div class="input-wrapper"><label>Correo Electrónico</label><input type="email" id="emailCliente" placeholder="correo@ejemplo.com"></div>
+
+                    <div id="divVueloInfo" class="flight-fields-container">
+                        <div class="input-wrapper"><label>Aerolínea (Opcional)</label><input type="text" id="aerolinea" placeholder="Ej: Volaris"></div>
+                        <div class="input-wrapper"><label>No. Vuelo (Opcional)</label><input type="text" id="numVuelo" placeholder="Ej: Y4 123"></div>
                     </div>
-                    <button class="btn-reservar" onclick="cerrarTyC()">ACEPTAR</button>
-                </div>
-            </div>
 
-            <div class="modal-overlay" id="modalConfirmacion">
-                <div class="modal-box">
-                    <button style="position:absolute; top:10px; right:15px; border:none; background:transparent; font-size:20px; cursor:pointer;" onclick="cerrarModal()">&times;</button>
-                    <div style="font-size: 60px; color: #00a651; margin-bottom: 10px;"><i class="fas fa-check-circle"></i></div>
-                    <h2 style="color:#003580; font-weight:800; margin-bottom:5px;" id="modalTitle">¡Listo!</h2>
-                    <p style="font-size:12px; color:#888;">Tu código de referencia:</p>
-                    <div id="codigoDisplay" style="background:#ecfdf5; color:#003580; padding:10px; font-weight:900; letter-spacing:2px; margin:10px 0; border:2px dashed #00a651;">LTR-XXXX</div>
-                    <p id="modalText" style="color:#555; margin-bottom:15px; font-size:14px;">Hemos recibido tu solicitud.</p>
-                    <a href="#" id="btnWhatsapp" class="modal-btn btn-wa"><i class="fab fa-whatsapp"></i> Enviar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="main-container">
-                <h2 class="cotizador-titulo"><i class="fas fa-search-location"></i> Cotiza tu Viaje</h2>
-            
-                <div class="search-box-container">
-                    <div class="search-box-inner">
-                        
-                        <div class="options-bar">
-                            <div style="display:flex;">
-                                <label class="radio-label"><input type="radio" name="tipoViaje" value="SENCILLO" checked onchange="updateTipoServicio('SENCILLO')"> Solo Ida</label>
-                                <label class="radio-label"><input type="radio" name="tipoViaje" value="REDONDO" onchange="updateTipoServicio('REDONDO')"> Redondo</label>
-                            </div>
-                            <input type="hidden" id="tipoServicio" value="SENCILLO">
-                            
-                            <select id="moneda" onchange="limpiarResultados()" style="padding: 8px; border-radius:6px; border:none; font-weight:700; cursor:pointer;">
-                                <option value="MXN">MXN ($)</option><option value="USD">USD ($)</option>
-                            </select>
-                        </div>
-            
-                        <div class="direction-tabs">
-                            <div class="tab-btn active" id="btnDesdeAero" onclick="setDireccion('desdeAero')"><i class="fas fa-plane-arrival"></i> Desde Aeropuerto</div>
-                            <div class="tab-btn" id="btnHaciaAero" onclick="setDireccion('haciaAero')"><i class="fas fa-plane-departure"></i> Hacia Aeropuerto</div>
-                            <div class="tab-btn" id="btnPersonalizado" onclick="setDireccion('personalizado')"><i class="fas fa-map-marked-alt"></i> Personalizado</div>
-                        </div>
-            
-                        <div class="form-grid">
-                            
-                            <div class="input-wrapper" id="divSubtipoServicio" style="display:none; grid-column: 1 / -1; background-color: #e3f2fd;">
-                                <label style="color: #003580;">Tipo de Servicio:</label>
-                                <select id="subtipoPersonalizado" onchange="ajustarCamposPersonalizados()">
-                                    <option value="HOTEL_A_HOTEL">📍 Hotel a Hotel / Airbnb</option>
-                                    <option value="TOUR">🎢 Tours / Parques</option>
-                                    <option value="HORAS" id="optHoras">⏳ Por Horas</option>
-                                </select>
-                            </div>
-            
-                            <div class="input-wrapper">
-                                <label id="labelOrigen">Recogida</label>
-                                <input type="text" id="origen" value="Aeropuerto Internacional de Cancún" readonly style="color:#777;">
-                            </div>
-                            
-                            <input type="hidden" id="latitudDestino"><input type="hidden" id="longitudDestino">
-                            <input type="hidden" id="latitudOrigen"><input type="hidden" id="longitudOrigen">
-                            <input type="hidden" id="cpDestino"><input type="hidden" id="cpOrigen">
-            
-                            <div class="input-wrapper" id="divDestinoInput">
-                                <label id="labelDestino">Destino</label>
-                                <input type="text" id="destino" placeholder="¿A qué hotel vas?">
-                            </div>
-                            
-                            <div class="input-wrapper" id="divHorasInput" style="display:none;">
-                                <label>Duración</label>
-                                <select id="horasSeleccionadas">
-                                    <option value="4 Horas">4 Horas</option>
-                                    <option value="8 Horas">8 Horas</option>
-                                    <option value="12 Horas">12 Horas</option>
-                                </select>
-                            </div>
-            
-                            <div class="input-wrapper" style="flex: 0.6;"><label>Fecha</label><input type="date" id="fechaIda"></div>
-                            <div class="input-wrapper" style="flex: 0.4;"><label>Hora</label><input type="time" id="horaIda"></div>
-                            
-                            <div class="input-wrapper" id="divFechaVuelta" style="display:none; flex: 0.6;"><label>Fecha Vuelta</label><input type="date" id="fechaVuelta"></div>
-                            <div class="input-wrapper" id="divHoraVuelta" style="display:none; flex: 0.4;"><label>Hora</label><input type="time" id="horaVuelta"></div>
-            
-                            <div class="input-wrapper" style="flex: 0.4;">
-                                <label>Pax</label>
-                                <select id="pasajeros">
-                                    <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="8">8</option><option value="10">10</option><option value="15">15</option>
-                                </select>
-                            </div>
-            
-                            <div class="input-wrapper" style="grid-column: 1 / -1; margin-top:10px; background:#f0f9ff; border:1px solid #bae6fd;">
-                                <label style="color:#0284c7;">TUS DATOS:</label>
-                                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
-                                    <input type="text" id="nombreCliente" placeholder="Nombre" style="border-bottom:1px solid #ddd; padding:5px;">
-                                    <input type="tel" id="telefonoCliente" placeholder="Teléfono" style="border-bottom:1px solid #ddd; padding:5px;">
-                                </div>
-                                <input type="email" id="emailCliente" placeholder="Correo Electrónico" style="width:100%; border-bottom:1px solid #ddd; padding:5px; margin-top:5px;">
-                            </div>
-                            
-                            <div id="divVueloInfo" style="display: contents;">
-                                <div class="input-wrapper"><label>Aerolínea</label><input type="text" id="aerolinea" placeholder="Opcional"></div>
-                                <div class="input-wrapper"><label>No. Vuelo</label><input type="text" id="numVuelo" placeholder="Opcional"></div>
-                            </div>
-
-                            <div class="input-wrapper" id="divItinerario" style="grid-column: 1 / -1; display: none;">
-                                <label>Itinerario</label><textarea id="itinerarioCliente" rows="2" placeholder="Describe tu ruta..."></textarea>
-                            </div>
-            
-                            <div class="input-wrapper" style="grid-column: 1 / -1;">
-                                <label>Notas</label>
-                                <textarea id="notasCliente" rows="1" placeholder="Ej: Silla de bebé, maletas extra..."></textarea>
-                            </div>
-            
-                            <div style="grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; gap: 8px; color: white; font-size: 12px; margin-top: 5px;">
-                                <input type="checkbox" id="termsCheck">
-                                <span>Acepto los <span onclick="abrirTyC()" style="color: #febb02; text-decoration: underline; cursor: pointer;">Términos</span></span>
-                            </div>
-                            
-                            <button class="btn-cotizar" id="btnAccion" onclick="cotizar()">Buscar Precios</button>
-                        </div>
+                    <div class="input-wrapper" id="divItinerario" style="grid-column: 1 / -1; display: none;">
+                        <label style="color: #003580;">¿Qué lugares quieres visitar? / Itinerario</label>
+                        <textarea id="itinerarioCliente" rows="2" placeholder="Ej: Ir a Tulum Ruinas, luego un cenote y terminar a comer en..."></textarea>
                     </div>
-                    
-                    <div id="resultados"></div>
+
+                    <div class="input-wrapper" style="grid-column: 1 / -1;">
+                        <label>Notas / Equipaje / Sillas de Bebé</label>
+                        <textarea id="notasCliente" rows="2" placeholder="Ej: Llevamos 4 maletas grandes, necesitamos silla de bebé..."></textarea>
+                    </div>
+
+                    <div class="terms-container">
+                        <input type="checkbox" id="termsCheck">
+                        <span>He leído y acepto los <span class="terms-link" onclick="abrirTyC()">Términos y Condiciones</span></span>
+                    </div>
                 </div>
-            </div>
-        </div>
-        </section>
 
-    <footer class="bg-slate-800 text-white py-6">
-        <div class="max-w-7xl mx-auto text-center px-4">
-            <div class="flex items-center justify-center space-x-2 mb-4">
-                <img src="https://i.imgur.com/6yIvjbS.png" alt="Logo" class="w-8 h-8 object-contain">
-                <span class="text-xl font-bold">Luxury Transfers Riviera</span>
+                <button class="btn-cotizar" id="btnAccion" onclick="cotizar()">Buscar Precios</button>
             </div>
-            <p class="text-sm opacity-60">© 2025 Todos los derechos reservados.</p>
+            <div id="contenedorVuelta" style="display:none;"></div> 
         </div>
-    </footer>
-
+        <div id="resultados"></div>
+    </div>
 </div>
 
 <script>
-    // --- Menú Móvil (Landing Page) ---
-    function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
+    // ============================================
+    // ¡URL DEL ROBOT CONFIGURADA!
+    // ============================================
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz4yYNHpyD73w0efQsxTI7sM3TjU7Gn9PLXrJC7pQcB0M3I2r6O69YCzvdgVk_wwm2o/exec"; 
+    // ============================================
 
-    // --- Carrusel (Landing Page) ---
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carousel-item');
-    function showSlide(index) { slides.forEach(s => s.classList.remove('active')); slides[index].classList.add('active'); }
-    function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
-    function previousSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); }
-    setInterval(nextSlide, 8000); // Auto-play
-
-    // ======================================
-    // LOGICA DEL COTIZADOR
-    // ======================================
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz4yYNHpyD73w0efQsxTI7sM3TjU7Gn9PLXrJC7pQcB0M3I2r6O69YCzvdgVk_wwm2o/exec";
-    
-    let direccionMode = 'desdeAero';
+    let direccionMode = 'desdeAero'; 
     const imgUrlErtiga = "https://i.imgur.com/yoqbNJ7.png";
     const imgUrlTransporter = "https://i.imgur.com/8EOh4DB.png";
     const imgUrlSprinter = "https://i.imgur.com/BffyPRe.png";
-    const imgUrlSuburban = "https://i.imgur.com/95X8eqt.png";
+    const imgUrlSuburban = "https://i.imgur.com/95X8eqt.png"; 
 
-    // --- DATOS DE TARIFAS (Zonas y Precios) ---
+    // --- BLOQUEO DE FECHAS PASADAS (HORA LIBRE) ---
+    window.onload = function() {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('fechaIda').setAttribute('min', today);
+        document.getElementById('fechaVuelta').setAttribute('min', today);
+        document.getElementById('fechaIda').addEventListener('change', function() {
+            document.getElementById('fechaVuelta').setAttribute('min', this.value);
+        });
+    };
+
+    function abrirTyC() { document.getElementById('modalTyC').style.display = 'flex'; }
+    function cerrarTyC() { document.getElementById('modalTyC').style.display = 'none'; }
+
+    function generarCodigo() {
+        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        let result = 'LTR-';
+        for (let i = 0; i < 4; i++) result += chars.charAt(Math.floor(Math.random() * chars.length));
+        return result;
+    }
+
     const tarifasSencilloMXN = { "ZONA HOTELERA DE TULUM": { standart: 2970, small: 6300, luxury: 5490 }, "CENTRO DE TULUM": { standart: 2520, small: 5400, luxury: 5400 }, "ZONA HOTELERA DE CANCUN": { standart: 720, small: 1800, luxury: 1512 }, "CENTRO DE CANCUN": { standart: 720, small: 1800, luxury: 1512 }, "COSTA MUJERES": { standart: 1440, small: 2700, luxury: 2610 }, "PLAYA MUJERES": { standart: 1170, small: 3338, luxury: 2340 }, "PUERTO JUAREZ": { standart: 990, small: 2520, luxury: 1980 }, "PLAYA PARAISO": { standart: 1170, small: 3338, luxury: 2340 }, "PUERTO MORELOS": { standart: 990, small: 2520, luxury: 1980 }, "PLAYA DEL CARMEN": { standart: 1440, small: 2700, luxury: 2610 }, "PUERTO AVENTURAS": { standart: 1710, small: 4050, luxury: 3060 }, "AKUMAL": { standart: 2070, small: 4860, luxury: 4230 }, "FELIPE CARRILLO PUERTO": { standart: 8100, small: 19386, luxury: 21870 }, "MAHAHUAL": { standart: 9900, small: 19386, luxury: 17820 }, "BACALAR": { standart: 9900, small: 19386, luxury: 17820 }, "CHETUMAL": { standart: 10000, small: 19386, luxury: 19000 }, "HOLBOX": { standart: 5760, small: 14400, luxury: 11160 }, "VALLADOLID": { standart: 5400, small: 11120, luxury: 15684 }, "MERIDA": { standart: 9900, small: 17820, luxury: 17820 } };
     const tarifasSencilloUSD = { "ZONA HOTELERA DE TULUM": { standart: 170, small: 360, luxury: 314 }, "CENTRO DE TULUM": { standart: 144, small: 309, luxury: 309 }, "ZONA HOTELERA DE CANCUN": { standart: 42, small: 103, luxury: 87 }, "CENTRO DE CANCUN": { standart: 42, small: 103, luxury: 87 }, "COSTA MUJERES": { standart: 83, small: 155, luxury: 150 }, "PLAYA MUJERES": { standart: 67, small: 191, luxury: 134 }, "PUERTO JUAREZ": { standart: 57, small: 144, luxury: 114 }, "PLAYA PARAISO": { standart: 67, small: 191, luxury: 134 }, "PUERTO MORELOS": { standart: 57, small: 144, luxury: 114 }, "PLAYA DEL CARMEN": { standart: 83, small: 155, luxury: 150 }, "PUERTO AVENTURAS": { standart: 98, small: 232, luxury: 175 }, "AKUMAL": { standart: 119, small: 278, luxury: 242 }, "FELIPE CARRILLO PUERTO": { standart: 463, small: 1108, luxury: 1250 }, "MAHAHUAL": { standart: 566, small: 1108, luxury: 1019 }, "BACALAR": { standart: 566, small: 1108, luxury: 1019 }, "CHETUMAL": { standart: 572, small: 1108, luxury: 1086 }, "HOLBOX": { standart: 330, small: 823, luxury: 638 }, "VALLADOLID": { standart: 309, small: 636, luxury: 897 }, "MERIDA": { standart: 566, small: 1019, luxury: 1019 } };
     const tarifasRedondoMXN = { "ZONA HOTELERA DE TULUM": { standart: 5940, small: 12600, luxury: 10980 }, "CENTRO DE TULUM": { standart: 5040, small: 10800, luxury: 10800 }, "ZONA HOTELERA DE CANCUN": { standart: 1440, small: 3600, luxury: 3024 }, "CENTRO DE CANCUN": { standart: 1440, small: 3600, luxury: 3024 }, "COSTA MUJERES": { standart: 2880, small: 5400, luxury: 5220 }, "PLAYA MUJERES": { standart: 2340, small: 6676, luxury: 4680 }, "PUERTO JUAREZ": { standart: 1980, small: 5040, luxury: 3960 }, "PLAYA PARAISO": { standart: 2340, small: 6676, luxury: 4680 }, "PUERTO MORELOS": { standart: 1980, small: 5040, luxury: 3960 }, "PLAYA DEL CARMEN": { standart: 2880, small: 5400, luxury: 5220 }, "PUERTO AVENTURAS": { standart: 3420, small: 8100, luxury: 6120 }, "AKUMAL": { standart: 4140, small: 9720, luxury: 8460 }, "FELIPE CARRILLO PUERTO": { standart: 16200, small: 38772, luxury: 43740 }, "MAHAHUAL": { standart: 19800, small: 38772, luxury: 35640 }, "BACALAR": { standart: 19800, small: 38772, luxury: 35640 }, "CHETUMAL": { standart: 20000, small: 38772, luxury: 38000 }, "HOLBOX": { standart: 11520, small: 28800, luxury: 22320 }, "VALLADOLID": { standart: 10800, small: 22240, luxury: 31368 }, "MERIDA": { standart: 19800, small: 35640, luxury: 35640 } };
     const tarifasRedondoUSD = { "ZONA HOTELERA DE TULUM": { standart: 340, small: 720, luxury: 628 }, "CENTRO DE TULUM": { standart: 288, small: 618, luxury: 618 }, "ZONA HOTELERA DE CANCUN": { standart: 83, small: 206, luxury: 173 }, "CENTRO DE CANCUN": { standart: 83, small: 206, luxury: 173 }, "COSTA MUJERES": { standart: 165, small: 309, luxury: 299 }, "PLAYA MUJERES": { standart: 134, small: 382, luxury: 268 }, "PUERTO JUAREZ": { standart: 114, small: 288, luxury: 227 }, "PLAYA PARAISO": { standart: 134, small: 382, luxury: 268 }, "PUERTO MORELOS": { standart: 114, small: 288, luxury: 227 }, "PLAYA DEL CARMEN": { standart: 165, small: 309, luxury: 299 }, "PUERTO AVENTURAS": { standart: 196, small: 463, luxury: 350 }, "AKUMAL": { standart: 237, small: 556, luxury: 484 }, "FELIPE CARRILLO PUERTO": { standart: 926, small: 2216, luxury: 2500 }, "MAHAHUAL": { standart: 1132, small: 2216, luxury: 2037 }, "BACALAR": { standart: 1132, small: 2216, luxury: 2037 }, "CHETUMAL": { standart: 1143, small: 2216, luxury: 2172 }, "HOLBOX": { standart: 659, small: 1646, luxury: 1276 }, "VALLADOLID": { standart: 618, small: 1271, luxury: 1793 }, "MERIDA": { standart: 1132, small: 2037, luxury: 2037 } };
 
-    const diccionarioZonas = { "ZONA HOTELERA DE TULUM": ["TULUM HOTEL ZONE","ZONA HOTELERA TULUM","PAPAYA PLAYA","NOMADE","AZULIK"], "CENTRO DE TULUM": ["TULUM DOWNTOWN","CENTRO DE TULUM","VELETA","ALDEA ZAMA"], "ZONA HOTELERA DE CANCUN": ["CANCUN HOTEL ZONE","ZONA HOTELERA","KUKULCAN"], "CENTRO DE CANCUN": ["CANCUN DOWNTOWN","CENTRO DE CANCUN","HUAYACAN"], "PLAYA DEL CARMEN": ["PLAYA DEL CARMEN","XCARET","FIFTH AVENUE"], "PUERTO MORELOS": ["PUERTO MORELOS","VIDANTA"], "AKUMAL": ["AKUMAL","BAHIA PRINCIPE"], "PUERTO AVENTURAS": ["PUERTO AVENTURAS","BARCELO","HARD ROCK"], "COSTA MUJERES": ["COSTA MUJERES","RIU DUNAMAR","PLANET HOLLYWOOD"], "PLAYA MUJERES": ["PLAYA MUJERES","ATELIER"], "MAHAHUAL": ["MAHAHUAL"], "BACALAR": ["BACALAR"], "HOLBOX": ["CHIQUILA","HOLBOX"], "VALLADOLID": ["VALLADOLID"], "MERIDA": ["MERIDA"] };
-    const zonasGPS = [{ nombre: "COSTA MUJERES", latMin: 21.23, latMax: 21.35, lonMin: -86.85, lonMax: -86.78 }, { nombre: "ZONA HOTELERA DE CANCUN", latMin: 21.0, latMax: 21.15, lonMin: -86.81, lonMax: -86.72 }, { nombre: "PLAYA DEL CARMEN", latMin: 20.55, latMax: 20.7, lonMin: -87.15, lonMax: -87.0 }, { nombre: "ZONA HOTELERA DE TULUM", latMin: 20.1215, latMax: 20.22, lonMin: -87.47, lonMax: -87.4 }, { nombre: "CENTRO DE TULUM", latMin: 20.18, latMax: 20.24, lonMin: -87.55, lonMax: -87.47 }];
-
-    window.onload = function() {
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('fechaIda').setAttribute('min', today);
-        document.getElementById('fechaVuelta').setAttribute('min', today);
-        document.getElementById('fechaIda').addEventListener('change', function() { document.getElementById('fechaVuelta').setAttribute('min', this.value); });
+    const diccionarioZonas = {
+        "ZONA HOTELERA DE TULUM": ["TULUM HOTEL ZONE", "ZONA HOTELERA TULUM", "PAPAYA PLAYA", "NOMADE", "AZULIK", "ESTRELLITA", "LIBELULA", "CASA PHOENIX"],
+        "CENTRO DE TULUM": ["TULUM DOWNTOWN", "CENTRO DE TULUM", "TULUM PUEBLO", "TULUM, Q.R.", "ZAMA", "VELETA"],
+        "ZONA HOTELERA DE CANCUN": ["CANCUN HOTEL ZONE", "ZONA HOTELERA", "KUKULCAN", "HOTEL ZONE", "BOULEVARD KUKULCAN"],
+        "CENTRO DE CANCUN": ["CANCUN DOWNTOWN", "CENTRO DE CANCUN", "CANCUN CENTRO", "SUPERMANZANA", "CANCUN, Q.R.", "ALAMOS", "HUAYACAN"],
+        "COSTA MUJERES": ["COSTA MUJERES", "RIU DUNAMAR", "RIU PALACE COSTA", "PLANET HOLLYWOOD", "CATALONIA COSTA"],
+        "PLAYA MUJERES": ["PLAYA MUJERES", "ATELIER", "FINEST", "BELOVED", "EXCELLENCE PLAYA"],
+        "PUERTO MORELOS": ["PUERTO MORELOS", "DREAMS JADE", "NOW SAPPHIRE", "OCEAN CORAL", "MOON PALACE", "ROYALTON"],
+        "PLAYA PARAISO": ["PLAYA PARAISO", "IBEROSTAR", "VIDANTA", "MAROMA"],
+        "PLAYA DEL CARMEN": ["PLAYA DEL CARMEN", "XCARET", "FIFTH AVENUE", "QUINTA AVENIDA", "PLAYACAR"],
+        "PUERTO AVENTURAS": ["PUERTO AVENTURAS", "DREAMS AVENTURAS", "DREAMS PUERTO", "HARD ROCK RIVIERA", "BARCELO", "UNICO", "CATALONIA ROYAL"],
+        "AKUMAL": ["AKUMAL", "BAHIA PRINCIPE", "SIRENIS", "PALLADIUM", "UNICO"],
+        "MAHAHUAL": ["MAHAHUAL"],
+        "BACALAR": ["BACALAR"],
+        "CHETUMAL": ["CHETUMAL"],
+        "HOLBOX": ["HOLBOX", "CHIQUILA"],
+        "VALLADOLID": ["VALLADOLID"],
+        "MERIDA": ["MERIDA"]
     };
 
-    function abrirTyC() { document.getElementById('modalTyC').style.display = 'flex'; }
-    function cerrarTyC() { document.getElementById('modalTyC').style.display = 'none'; }
-    function generarCodigo() { const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; let result = 'LTR-'; for (let i = 0; i < 4; i++) result += chars.charAt(Math.floor(Math.random() * chars.length)); return result; }
+    const zonasGPS = [
+        { nombre: "COSTA MUJERES", latMin: 21.2300, latMax: 21.3500, lonMin: -86.8500, lonMax: -86.7800 },
+        { nombre: "PLAYA MUJERES", latMin: 21.2000, latMax: 21.2290, lonMin: -86.8200, lonMax: -86.7800 },
+        { nombre: "PUERTO JUAREZ", latMin: 21.1650, latMax: 21.1990, lonMin: -86.8250, lonMax: -86.7900 },
+        { nombre: "ZONA HOTELERA DE CANCUN", latMin: 21.0000, latMax: 21.1200, lonMin: -86.8100, lonMax: -86.7500 },
+        { nombre: "ZONA HOTELERA DE CANCUN", latMin: 21.1200, latMax: 21.1500, lonMin: -86.8100, lonMax: -86.7200 },
+        { nombre: "PUERTO MORELOS", latMin: 20.9500, latMax: 21.0500, lonMin: -86.9500, lonMax: -86.8300 },
+        { nombre: "PUERTO MORELOS", latMin: 20.8200, latMax: 20.9500, lonMin: -87.0000, lonMax: -86.8000 },
+        { nombre: "PLAYA PARAISO", latMin: 20.7000, latMax: 20.8200, lonMin: -86.9900, lonMax: -86.9200 },
+        { nombre: "PLAYA DEL CARMEN", latMin: 20.5500, latMax: 20.7000, lonMin: -87.1500, lonMax: -87.0000 },
+        { nombre: "PUERTO AVENTURAS", latMin: 20.4500, latMax: 20.5500, lonMin: -87.3000, lonMax: -87.1500 },
+        { nombre: "AKUMAL", latMin: 20.3000, latMax: 20.4500, lonMin: -87.3500, lonMax: -87.2500 },
+        { nombre: "ZONA HOTELERA DE TULUM", latMin: 20.1215, latMax: 20.2200, lonMin: -87.4700, lonMax: -87.4000 },
+        { nombre: "CENTRO DE TULUM", latMin: 20.1800, latMax: 20.2400, lonMin: -87.5500, lonMax: -87.4701 },
+        { nombre: "CENTRO DE CANCUN", latMin: 21.1200, latMax: 21.1700, lonMin: -86.9500, lonMax: -86.8250 },
+        { nombre: "MERIDA", latMin: 20.8500, latMax: 21.1000, lonMin: -89.7500, lonMax: -89.5000 },
+        { nombre: "VALLADOLID", latMin: 20.6500, latMax: 20.7500, lonMin: -88.2500, lonMax: -88.1500 }
+    ];
 
-    // --- Control de Pestañas y Dirección ---
+    const zonasCP = {
+        "7750": "CENTRO DE CANCUN", "7751": "CENTRO DE CANCUN",
+        "77520": "PUERTO JUAREZ", 
+        "77580": "PUERTO MORELOS",
+        "77710": "PLAYA DEL CARMEN", "77712": "PLAYA DEL CARMEN", "77714": "PLAYA DEL CARMEN",
+        "77733": "PUERTO AVENTURAS",
+        "77776": "AKUMAL",
+        "77760": "CENTRO DE TULUM", "77780": "CENTRO DE TULUM",
+        "77310": "HOLBOX",
+        "77930": "BACALAR",
+        "770": "CHETUMAL",
+        "970": "MERIDA", "971": "MERIDA", "972": "MERIDA", "973": "MERIDA",
+        "9778": "VALLADOLID"
+    };
+
+    function detectarZonaPorGPS(lat, lng) {
+        if (!lat || !lng) return null;
+        for (let i = 0; i < zonasGPS.length; i++) {
+            if (lat >= zonasGPS[i].latMin && lat <= zonasGPS[i].latMax && 
+                lng >= zonasGPS[i].lonMin && lng <= zonasGPS[i].lonMax) {
+                return zonasGPS[i].nombre;
+            }
+        }
+        return null;
+    }
+
+    function detectarZonaPorCP(cp) {
+        if (!cp) return null;
+        for (let codigo in zonasCP) {
+            if (cp.startsWith(codigo) || cp.includes(codigo)) return zonasCP[codigo];
+        }
+        return null;
+    }
+
     function setDireccion(modo) {
         direccionMode = modo;
         const origen = document.getElementById('origen');
@@ -449,6 +451,7 @@
         if(modo === 'personalizado') document.getElementById('btnPersonalizado').classList.add('active');
 
         document.getElementById('divSubtipoServicio').style.display = 'none';
+        document.getElementById('radioTipoViaje').style.display = 'flex';
         document.getElementById('divVueloInfo').style.display = 'contents';
         document.getElementById('divDestinoInput').style.display = 'flex';
         document.getElementById('divHorasInput').style.display = 'none';
@@ -456,7 +459,7 @@
         document.getElementById('resultados').style.display = 'none';
 
         const ro = "color:#777; background:#f5f5f5;";
-        const ed = "color:#1a1a1a; background:transparent;";
+        const ed = "color:var(--text-dark); background:transparent;";
 
         if (modo === 'desdeAero') {
             origen.value = "Aeropuerto Internacional de Cancún"; origen.setAttribute('readonly', true); origen.style.cssText = ro;
@@ -490,10 +493,10 @@
             } else {
                 optHoras.hidden = false; optHoras.disabled = false;
             }
+        } else {
+            optHoras.hidden = false; optHoras.disabled = false;
         }
-        const show = (valor === 'REDONDO') ? 'flex' : 'none';
-        document.getElementById('divFechaVuelta').style.display = show;
-        document.getElementById('divHoraVuelta').style.display = show;
+        toggleVuelta();
     }
 
     function ajustarCamposPersonalizados() {
@@ -504,51 +507,106 @@
         const divItin = document.getElementById('divItinerario');
 
         if (subtipo === 'HORAS') {
-            divDest.style.display = 'none'; divHoras.style.display = 'flex'; divItin.style.display = 'flex';
+            divDest.style.display = 'none';
+            divHoras.style.display = 'flex';
+            divItin.style.display = 'flex';
         } else {
-            divDest.style.display = 'flex'; divHoras.style.display = 'none'; divItin.style.display = 'none';
-            document.getElementById('destino').placeholder = (subtipo === 'TOUR') ? "Ej: Xcaret, Chichén Itzá..." : "Ej: Hotel Xcaret, Airbnb...";
+            divDest.style.display = 'flex';
+            divHoras.style.display = 'none';
+            divItin.style.display = 'none';
+            const ph = subtipo === 'TOUR' ? "Ej: Xcaret, Chichén Itzá..." : "Ej: Hotel Xcaret, Airbnb...";
+            document.getElementById('destino').placeholder = ph;
         }
+    }
+
+    function toggleVuelta() {
+        const tipo = document.getElementById('tipoServicio').value;
+        const show = (tipo === 'REDONDO') ? 'flex' : 'none';
+        document.getElementById('divFechaVuelta').style.display = show;
+        document.getElementById('divHoraVuelta').style.display = show;
+        document.getElementById('resultados').style.display = 'none';
     }
 
     function limpiarResultados() { document.getElementById('resultados').style.display = 'none'; }
 
-    // --- COTIZAR LÓGICA ---
     function cotizar() {
-        if(!document.getElementById('termsCheck').checked) { alert("⚠️ Acepta los Términos."); return; }
-        const email = document.getElementById('emailCliente').value;
-        const fecha = document.getElementById('fechaIda').value;
-        if(email.length < 5) { alert("⚠️ Escribe tu correo."); return; }
-        if(!fecha) { alert("⚠️ Selecciona fecha."); return; }
-
-        const nombre = document.getElementById('nombreCliente').value;
-        const tel = document.getElementById('telefonoCliente').value;
-        
-        // MODO PERSONALIZADO
-        if (direccionMode === 'personalizado') {
-            const subtipo = document.getElementById('subtipoPersonalizado').value;
-            let destinoFinal = (subtipo === 'HORAS') ? document.getElementById('horasSeleccionadas').value : document.getElementById('destino').value;
-            const cod = generarCodigo();
-            document.getElementById('codigoDisplay').innerText = cod;
-            iniciarEnvio({ esVenta: false, codigo: cod, nombre: nombre, telefono: tel, email: email, tipoViaje: "PERSONALIZADO ("+subtipo+")", origen: document.getElementById('origen').value, destino: destinoFinal, fecha: fecha, hora: document.getElementById('horaIda').value, notas: document.getElementById('notasCliente').value, vehiculo: "A Cotizar", precio: "Por Cotizar" });
+        if(!document.getElementById('termsCheck').checked) {
+            alert("⚠️ Debes leer y aceptar los Términos y Condiciones para continuar.");
             return;
         }
 
-        // MODO AUTOMÁTICO
-        let lugarBusqueda = (direccionMode === 'desdeAero') ? document.getElementById('destino').value : document.getElementById('origen').value;
+        const email = document.getElementById('emailCliente').value;
+        const hora = document.getElementById('horaIda').value;
+        const fecha = document.getElementById('fechaIda').value;
+
+        if(email.length < 5) { alert("⚠️ Por favor escribe tu correo electrónico."); return; }
+        if(!fecha) { alert("⚠️ Selecciona una fecha."); return; }
+        if(!hora) { alert("⚠️ Selecciona la hora."); return; }
+
+        const nombre = document.getElementById('nombreCliente').value;
+        const tel = document.getElementById('telefonoCliente').value;
+        if(nombre.length < 2) { alert("Escribe tu nombre."); return; }
+        if(tel.length < 5) { alert("Escribe tu teléfono."); return; }
+
+        if (direccionMode === 'personalizado') {
+            const subtipo = document.getElementById('subtipoPersonalizado').value;
+            const subtipoTxt = document.getElementById('subtipoPersonalizado').options[document.getElementById('subtipoPersonalizado').selectedIndex].text;
+            let destinoFinal = (subtipo === 'HORAS') ? document.getElementById('horasSeleccionadas').value : document.getElementById('destino').value;
+
+            const codigoUnico = generarCodigo();
+            const datosCotizacion = {
+                esVenta: false,
+                codigo: codigoUnico,
+                nombre: nombre, telefono: tel, email: email,
+                tipoViaje: document.getElementById('tipoServicio').value + " - " + subtipoTxt,
+                origen: document.getElementById('origen').value, destino: destinoFinal,
+                fecha: fecha, hora: hora,
+                notas: document.getElementById('notasCliente').value, itinerario: document.getElementById('itinerarioCliente').value,
+                vehiculo: "Cotización Especial", precio: "Por Cotizar"
+            };
+            
+            document.getElementById('codigoDisplay').innerText = codigoUnico;
+            iniciarEnvio(datosCotizacion);
+            return;
+        }
+
+        const tipo = document.getElementById('tipoServicio').value;
+        const moneda = document.getElementById('moneda').value;
+        const pax = parseInt(document.getElementById('pasajeros').value);
+        
+        let lugarBusqueda = "";
+        let latBusqueda = 0;
+        let lonBusqueda = 0;
+        let cpBusqueda = "";
+
+        if (direccionMode === 'desdeAero') {
+            lugarBusqueda = document.getElementById('destino').value;
+            latBusqueda = parseFloat(document.getElementById('latitudDestino').value);
+            lonBusqueda = parseFloat(document.getElementById('longitudDestino').value);
+            cpBusqueda = document.getElementById('cpDestino').value;
+        } else {
+            lugarBusqueda = document.getElementById('origen').value;
+            latBusqueda = parseFloat(document.getElementById('latitudOrigen').value);
+            lonBusqueda = parseFloat(document.getElementById('longitudOrigen').value);
+            cpBusqueda = document.getElementById('cpOrigen').value;
+        }
+        
         if (lugarBusqueda.length < 3) { alert("Indica el lugar."); return; }
 
         let zonaDetectada = "";
-        let lat = parseFloat(document.getElementById(direccionMode === 'desdeAero'?'latitudDestino':'latitudOrigen').value);
-        let lon = parseFloat(document.getElementById(direccionMode === 'desdeAero'?'longitudDestino':'longitudOrigen').value);
-        
-        if (!isNaN(lat)) {
-             for (let i = 0; i < zonasGPS.length; i++) {
-                if (lat >= zonasGPS[i].latMin && lat <= zonasGPS[i].latMax && lon >= zonasGPS[i].lonMin && lon <= zonasGPS[i].lonMax) {
-                    zonaDetectada = zonasGPS[i].nombre; break;
-                }
+
+        if (!isNaN(latBusqueda) && !isNaN(lonBusqueda)) {
+            if (latBusqueda < 20.1215 && latBusqueda > 19.0 && lonBusqueda > -87.6) {
+                alert("📍 Zona de Terracería / Sian Ka'an detectada (Sur de Estrellita).\nPor las condiciones del camino, esta zona requiere cotización especial.\n\nPor favor usa el botón 'Servicio Personalizado'.");
+                return;
             }
+            zonaDetectada = detectarZonaPorGPS(latBusqueda, lonBusqueda);
         }
+
+        if (!zonaDetectada && cpBusqueda) {
+            zonaDetectada = detectarZonaPorCP(cpBusqueda);
+        }
+
         if (!zonaDetectada) {
             lugarBusqueda = lugarBusqueda.toUpperCase();
             for (let z in diccionarioZonas) {
@@ -558,10 +616,9 @@
                 if(zonaDetectada) break;
             }
         }
-        if (!zonaDetectada) { alert("Zona no detectada o requiere cotización especial. Usa 'Personalizado'."); return; }
 
-        const moneda = document.getElementById('moneda').value;
-        const tipo = document.getElementById('tipoServicio').value;
+        if (!zonaDetectada) { alert("Zona no detectada o requiere cotización especial. Usa Servicio Personalizado."); return; }
+
         let db;
         if (moneda === 'MXN' && tipo === 'SENCILLO') db = tarifasSencilloMXN;
         else if (moneda === 'USD' && tipo === 'SENCILLO') db = tarifasSencilloUSD;
@@ -569,61 +626,165 @@
         else if (moneda === 'USD' && tipo === 'REDONDO') db = tarifasRedondoUSD;
 
         const p = db[zonaDetectada];
-        if(!p) { alert("Sin tarifa automática."); return; }
-
         const divRes = document.getElementById('resultados');
         divRes.innerHTML = "";
-        let rutaLabel = (direccionMode === 'desdeAero') ? "Aeropuerto Cancún -> " + document.getElementById('destino').value : document.getElementById('origen').value + " -> Aeropuerto Cancún";
+        
+        let rutaLabel = "";
+        if(direccionMode === 'desdeAero') rutaLabel = "Aeropuerto Cancún <i class='fas fa-arrow-right'></i> " + document.getElementById('destino').value;
+        else rutaLabel = document.getElementById('origen').value + " <i class='fas fa-arrow-right'></i> Aeropuerto Cancún";
+        
         divRes.innerHTML = `<div class="ruta-header">Resultados para: ${rutaLabel}</div>`;
-        const pax = parseInt(document.getElementById('pasajeros').value);
 
-        if(pax<=3) divRes.innerHTML+=crearCard("STANDARD SEDAN","1-3 Pax",p.standart,moneda,zonaDetectada,imgUrlErtiga);
-        else if(pax<=8) divRes.innerHTML+=crearCard("VAN STANDARD","1-8 Pax",p.standart,moneda,zonaDetectada,imgUrlTransporter);
-        if(pax<=15 && p.small) divRes.innerHTML+=crearCard("SMALL GROUP VAN","Hasta 15 Pax",p.small,moneda,zonaDetectada,imgUrlSprinter);
-        if(pax<=5 && p.luxury) divRes.innerHTML+=crearCard("LUXURY SUV","1-5 Pax",p.luxury,moneda,zonaDetectada,imgUrlSuburban);
+        if(pax<=3) divRes.innerHTML+=crearCard("STANDARD SEDAN","1-3 Pax",p.standart,moneda,zonaDetectada,imgUrlErtiga, rutaLabel);
+        else if(pax<=8) divRes.innerHTML+=crearCard("VAN STANDARD","1-8 Pax",p.standart,moneda,zonaDetectada,imgUrlTransporter, rutaLabel);
+        
+        if(pax<=15 && p.small) divRes.innerHTML+=crearCard("SMALL GROUP VAN","Hasta 15 Pax",p.small,moneda,zonaDetectada,imgUrlSprinter, rutaLabel);
+        if(pax<=5 && p.luxury) divRes.innerHTML+=crearCard("LUXURY SUV","1-5 Pax",p.luxury,moneda,zonaDetectada,imgUrlSuburban, rutaLabel);
 
         divRes.style.display = 'block';
         divRes.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    function crearCard(veh, cap, precio, moneda, zona, img) {
+    function crearCard(veh, cap, precio, moneda, zona, img, rutaLabel) {
+        const tipo = document.getElementById('tipoServicio').value;
+        const pAlto = Math.round(precio * 1.30);
         const dataObj = JSON.stringify({ esVenta: true, vehiculo: veh, precio: "$" + precio + " " + moneda, zona: zona }).replace(/"/g, "&quot;");
-        return `<div class="tarjeta"><div class="tarjeta-img"><img src="${img}" alt="${veh}"></div><div class="tarjeta-info"><h3>${veh}</h3><p style="font-size:12px; color:#555;">${cap} | Privado | A/C</p></div><div class="tarjeta-price"><div class="price-current">$${precio} ${moneda}</div><button class="btn-reservar" onclick="prepararVenta(${dataObj})">RESERVAR</button></div></div>`;
+        
+        let tipoTexto = (tipo === 'SENCILLO') ? "Solo Ida" : "Ida y Vuelta";
+        let iconoTipo = (tipo === 'SENCILLO') ? "fa-arrow-right" : "fa-exchange-alt";
+
+        let rutaSimple = rutaLabel.replace(/<[^>]*>?/gm, ' -> ');
+
+        return `
+        <div class="tarjeta">
+            <div class="tarjeta-img"><img src="${img}" alt="${veh}"></div>
+            <div class="tarjeta-info">
+                <h3>${veh}</h3>
+                <div class="tarjeta-route-display">${rutaLabel}</div>
+                <div class="tarjeta-specs">
+                    <div class="spec-row"><i class="fas fa-user-friends"></i> <span>${cap}</span></div>
+                    <div class="spec-row"><i class="fas ${iconoTipo}"></i> <span>${tipoTexto}</span></div>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature-tag"><i class="fas fa-plane-arrival"></i> Monitoreo de Vuelo</div>
+                    <div class="feature-tag"><i class="fas fa-snowflake"></i> Aire Acondicionado</div>
+                    <div class="feature-tag"><i class="fas fa-shield-alt"></i> Seguro de Viajero</div>
+                    <div class="feature-tag"><i class="fas fa-car"></i> 100% Privado</div>
+                    <div class="feature-tag"><i class="fas fa-ban"></i> Sin Cargos Ocultos</div>
+                </div>
+            </div>
+            <div class="tarjeta-price">
+                <div class="price-container">
+                    <span class="price-old">$${pAlto}</span>
+                    <span class="price-current">$${precio} ${moneda}</span>
+                </div>
+                <button class="btn-reservar" onclick="prepararVenta(${dataObj})">RESERVAR <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>`;
     }
 
     function prepararVenta(datosCard) {
-        const cod = generarCodigo();
-        document.getElementById('codigoDisplay').innerText = cod;
-        iniciarEnvio({ esVenta: true, codigo: cod, nombre: document.getElementById('nombreCliente').value, telefono: document.getElementById('telefonoCliente').value, email: document.getElementById('emailCliente').value, tipoViaje: document.getElementById('tipoServicio').value, origen: document.getElementById('origen').value, destino: document.getElementById('destino').value, fecha: document.getElementById('fechaIda').value, hora: document.getElementById('horaIda').value, notas: document.getElementById('notasCliente').value, vehiculo: datosCard.vehiculo, precio: datosCard.precio, zona: datosCard.zona });
+        const codigoUnico = generarCodigo();
+        const datosVenta = {
+            esVenta: true,
+            codigo: codigoUnico,
+            nombre: document.getElementById('nombreCliente').value,
+            telefono: document.getElementById('telefonoCliente').value,
+            email: document.getElementById('emailCliente').value,
+            tipoViaje: document.getElementById('tipoServicio').value,
+            origen: document.getElementById('origen').value,
+            destino: document.getElementById('destino').value,
+            fecha: document.getElementById('fechaIda').value,
+            hora: document.getElementById('horaIda').value,
+            notas: document.getElementById('notasCliente').value,
+            vuelo: document.getElementById('aerolinea').value + ' ' + document.getElementById('numVuelo').value,
+            vehiculo: datosCard.vehiculo,
+            precio: datosCard.precio,
+            zona: datosCard.zona
+        };
+        
+        document.getElementById('codigoDisplay').innerText = codigoUnico;
+        iniciarEnvio(datosVenta);
     }
 
     function iniciarEnvio(data) {
+        if(SCRIPT_URL.includes("PEGAR")) { alert("Falta configurar la URL del Script."); return; }
         document.getElementById('loadingOverlay').style.display = 'flex';
-        let txt = `Solicitud *${data.codigo}* (${data.esVenta?'RESERVA':'COTIZACION'})%0A%0A*Vehículo:* ${data.vehiculo}%0A*Precio:* ${data.precio}%0A*Ruta:* ${data.origen} -> ${data.destino}%0A*Fecha:* ${data.fecha} ${data.hora}%0A*Cliente:* ${data.nombre}`;
-        document.getElementById('btnWhatsapp').href = `https://wa.me/529842411158?text=${txt}`;
+
+        const pax = document.getElementById('pasajeros').value;
         
-        fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data) })
+        // --- TEXTO WHATSAPP LIMPIO ---
+        let saludo = data.esVenta ? "Hola, quiero *CONFIRMAR* el siguiente servicio:" : "Hola, quiero *COTIZAR* el siguiente servicio:";
+        
+        let baseText = `${saludo}%0A%0A*CÓDIGO:* ${data.codigo}%0A*TIPO:* ${data.tipoViaje}%0A*VEHÍCULO:* ${data.vehiculo}%0A*ORIGEN:* ${data.origen}%0A*DESTINO:* ${data.destino}%0A*FECHA:* ${data.fecha} - *HORA:* ${data.hora}%0A*PASAJEROS:* ${pax}`;
+
+        if(data.precio && data.precio !== "Por Cotizar") {
+            baseText += `%0A*PRECIO WEB:* ${data.precio}`;
+        }
+
+        baseText += `%0A%0A*Mi Nombre:* ${data.nombre}`;
+        
+        const subject = encodeURIComponent("Solicitud " + data.codigo + " - " + data.nombre);
+        const mailBody = encodeURIComponent(baseText.replace(/%0A/g, "\n").replace(/\*/g, "")); 
+
+        document.getElementById('btnWhatsapp').href = `https://wa.me/529842411158?text=${baseText}`;
+        document.getElementById('btnMail').href = `mailto:reservas@luxurytransfersriviera.com.mx?subject=${subject}&body=${mailBody}`;
+
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        })
         .then(() => {
             document.getElementById('loadingOverlay').style.display = 'none';
-            document.getElementById('modalTitle').innerText = data.esVenta ? "¡Reserva Recibida!" : "¡Enviado!";
+            if(data.esVenta) {
+                document.getElementById('modalTitle').innerText = "¡Reserva Recibida!";
+                document.getElementById('modalText').innerText = "Gracias " + data.nombre + ". Hemos recibido tu reserva. Te enviaremos la confirmación en breve.";
+            } else {
+                document.getElementById('modalTitle').innerText = "¡Solicitud Enviada!";
+                document.getElementById('modalText').innerText = "Gracias " + data.nombre + ". Hemos recibido tu solicitud de cotización. Te contactaremos con el mejor precio.";
+            }
             document.getElementById('modalConfirmacion').style.display = 'flex';
         })
-        .catch(() => { document.getElementById('loadingOverlay').style.display = 'none'; alert("Error de red. Usa WhatsApp."); });
+        .catch(e => {
+            console.error(e);
+            alert("Error al enviar. Intenta por WhatsApp.");
+            document.getElementById('loadingOverlay').style.display = 'none';
+        });
     }
-    function cerrarModal() { document.getElementById('modalConfirmacion').style.display = 'none'; }
 
-    // --- Google Maps Autocomplete ---
+    function cerrarModal() { document.getElementById('modalConfirmacion').style.display = 'none'; }
+    
     function initAutocomplete() {
         const bounds = new google.maps.LatLngBounds(new google.maps.LatLng(17.9, -91.5), new google.maps.LatLng(21.8, -86.5));
-        const opts = { bounds: bounds, strictBounds: true, componentRestrictions: { country: "mx" }, fields: ["geometry", "address_components"], types: ["establishment", "geocode"] };
+        const opts = { bounds: bounds, strictBounds: true, componentRestrictions: { country: "mx" }, fields: ["name", "geometry", "address_components"], types: ["establishment", "geocode"] };
+        
         const autoOrigen = new google.maps.places.Autocomplete(document.getElementById('origen'), opts);
         const autoDestino = new google.maps.places.Autocomplete(document.getElementById('destino'), opts);
-        function extraerDatos(place, tipo) { if (place.geometry) { document.getElementById('latitud' + tipo).value = place.geometry.location.lat(); document.getElementById('longitud' + tipo).value = place.geometry.location.lng(); } }
+
+        function extraerDatos(place, tipo) {
+            if (place.geometry) {
+                document.getElementById('latitud' + tipo).value = place.geometry.location.lat();
+                document.getElementById('longitud' + tipo).value = place.geometry.location.lng();
+            }
+            let cpEncontrado = "";
+            if (place.address_components) {
+                for (let i = 0; i < place.address_components.length; i++) {
+                    const types = place.address_components[i].types;
+                    if (types.includes("postal_code")) {
+                        cpEncontrado = place.address_components[i].long_name;
+                        break;
+                    }
+                }
+            }
+            document.getElementById('cp' + tipo).value = cpEncontrado;
+        }
+
         autoOrigen.addListener('place_changed', function() { extraerDatos(autoOrigen.getPlace(), "Origen"); });
         autoDestino.addListener('place_changed', function() { extraerDatos(autoDestino.getPlace(), "Destino"); });
     }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdK5yLQ20SQrLc_0rOuo7oxxHVQ233Bh0&libraries=places&callback=initAutocomplete" async defer></script>
-
 </body>
 </html>
