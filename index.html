@@ -101,7 +101,7 @@
         .service-desc { font-size: 14px; color: #cbd5e1; line-height: 1.6; font-weight: 400; }
 
         /* =========================================
-           FLOTA (CARRUSEL) CON MARCA DE AGUA
+           FLOTA (CARRUSEL) CON MARCA DE AGUA RESPONSIVA
            ========================================= */
         .fleet-section {
             padding: 80px 20px;
@@ -152,11 +152,12 @@
             display: block;
         }
 
-        /* --- MARCA DE AGUA (ABAJO A LA DERECHA) --- */
+        /* --- MARCA DE AGUA: Posición por defecto (ESCRITORIO: ARRIBA DERECHA) --- */
         .watermark-clean {
             position: absolute;
-            bottom: 15px;  /* AQUÍ ESTÁ EL CAMBIO: Abajo */
-            right: 15px;   /* A la derecha */
+            top: 20px;
+            right: 20px;
+            bottom: auto; /* Nos aseguramos de limpiar bottom */
             width: 80px;
             height: auto;
             z-index: 2;
@@ -285,7 +286,15 @@
             
             /* Ajustes MÓVIL */
             .vehicle-img-clean { height: 250px; }
-            .watermark-clean { width: 60px; bottom: 10px; right: 10px; } /* Ajuste fino móvil */
+            
+            /* --- MARCA DE AGUA: Posición en MÓVIL (ABAJO DERECHA) --- */
+            .watermark-clean { 
+                width: 60px; 
+                top: auto;      /* Desactivamos top */
+                bottom: 15px;   /* Activamos bottom */
+                right: 15px;    /* Derecha */
+            } 
+            
             .slider-btn { width: 40px; height: 40px; font-size: 16px; top: 40%; }
             .vehicle-name-clean { font-size: 1.6rem; }
 
