@@ -4,33 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxury Transfers | Transporte VIP</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* --- VARIABLES UNIFICADAS --- */
+        /* --- ESTILOS BASE --- */
         :root {
             --gold: #D4AF37;
             --gold-hover: #b5952f;
             --black: #0a0a0a;
-            --navy-bg: #002855;
+            --dark-gray: #222;
             --white: #fff;
-            --action-green: #00a651;
-            --primary-blue: #003580;
-            --font-main: 'Montserrat', sans-serif;
-            --font-title: 'Playfair Display', serif;
+            --light-bg: #f9f9f9;
         }
 
         body {
-            font-family: var(--font-main);
-            margin: 0; padding: 0; color: #333; background-color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0; padding: 0; color: var(--dark-gray); background-color: var(--white);
             overflow-x: hidden;
         }
 
-        a { text-decoration: none; transition: 0.3s; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
 
-        /* --- HEADER (DEL CODIGO 1) --- */
+        /* --- HEADER --- */
         header {
             background-color: rgba(10, 10, 10, 0.95);
             padding: 10px 0;
@@ -44,112 +40,95 @@
         }
 
         .logo {
-            font-size: 1.4rem; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 2px; color: var(--gold);
-            display: flex; align-items: center; gap: 12px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .logo-icon { height: 35px; width: auto; }
+        .logo-icon {
+            height: 35px;
+            width: auto;
+        }
         
         .nav-links { display: flex; gap: 30px; }
-        .nav-links a { color: var(--white); font-size: 0.8rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
         .nav-links a:hover { color: var(--gold); }
 
-        /* --- HERO SECTION (DISEÑO 1) --- */
+        /* --- HERO SECTION --- */
         .hero {
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://imgur.com/LygZMxs.jpg');
-            background-size: cover; background-position: center;
-            height: 100vh; display: flex; align-items: center; justify-content: center;
-            text-align: center; color: var(--white); padding: 0 20px;
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('https://imgur.com/LygZMxs.jpg');
+            background-size: cover;
+            background-position: center center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
         }
 
-        .hero-content { max-width: 900px; display: flex; flex-direction: column; align-items: center; }
-
-        .hero h1 {
-            order: 1; font-family: var(--font-title); font-size: 3.8rem; margin-bottom: 20px;
-            text-transform: uppercase; text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+        .hero-content {
+            max-width: 900px;
+            z-index: 1;
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .hero p {
-            order: 2; font-size: 1.3rem; margin-bottom: 40px;
-            text-shadow: 1px 1px 8px rgba(0,0,0,0.8); max-width: 700px;
+        .hero-content h1 {
+            order: 1;
+            font-size: 3.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            font-weight: 800;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+        }
+
+        .hero-content p {
+            order: 2;
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            font-weight: 400;
+            text-shadow: 1px 1px 8px rgba(0,0,0,0.8);
+            max-width: 800px;
         }
 
         .btn-cta {
-            order: 3; background-color: var(--gold); color: var(--black);
-            padding: 18px 50px; border-radius: 50px; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 2px;
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4); border: 2px solid var(--gold);
+            order: 3;
+            background-color: var(--gold);
+            color: var(--black);
+            padding: 18px 50px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+            border: 2px solid var(--gold); 
         }
 
-        .btn-cta:hover { background-color: var(--gold-hover); transform: translateY(-3px); }
+        .btn-cta:hover {
+            background-color: var(--gold-hover); 
+            transform: translateY(-3px); 
+            border-color: var(--gold-hover);
+        }
 
-        /* --- SECCIÓN COTIZADOR (EL CORAZÓN) --- */
-        .main-container { width: 100%; max-width: 1100px; margin: -80px auto 50px; position: relative; z-index: 10; padding: 0 15px; box-sizing: border-box; }
-        .search-box-container { background-color: var(--gold); padding: 3px; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-        .search-box-inner { background-color: var(--white); padding: 25px; border-radius: 9px; }
-        
-        .options-bar { display: flex; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; flex-wrap: wrap; gap: 10px; }
-        .radio-group { display: flex; gap: 20px; }
-        .radio-label { display: flex; align-items: center; cursor: pointer; font-size: 13px; font-weight: 700; color: var(--navy-bg); }
-        .radio-label input { margin-right: 6px; accent-color: var(--navy-bg); }
-
-        .direction-tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-        .tab-btn { background: #f0f2f5; border: 1px solid #ddd; padding: 12px; border-radius: 50px; cursor: pointer; font-size: 12px; font-weight: 600; flex: 1; text-align: center; transition: 0.3s; }
-        .tab-btn.active { background: var(--navy-bg); color: white; border-color: var(--navy-bg); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-
-        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
-        .input-wrapper { background: #fff; padding: 10px 15px; border-radius: 8px; border: 1px solid #ddd; display: flex; flex-direction: column; }
-        .input-wrapper label { font-size: 10px; color: var(--primary-blue); font-weight: 800; margin-bottom: 4px; text-transform: uppercase; }
-        .input-wrapper input, .input-wrapper select, .input-wrapper textarea { border: none; outline: none; font-size: 14px; font-weight: 600; font-family: inherit; }
-
-        .contact-section { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin-top: 15px; border-top: 2px dashed #eee; padding-top: 20px; }
-        .btn-cotizar { grid-column: 1 / -1; background-color: var(--action-green); color: white; font-size: 18px; font-weight: 800; border: none; padding: 18px; border-radius: 8px; cursor: pointer; box-shadow: 0 5px 0 #007a3d; }
-
-        /* --- SERVICIOS Y FLOTA --- */
-        .section-padding { padding: 80px 20px; }
-        .section-title { text-align: center; margin-bottom: 50px; }
-        .section-title h2 { font-family: var(--font-title); font-size: 2.5rem; color: var(--navy-bg); }
-
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .service-card { background: var(--navy-bg); border-radius: 15px; overflow: hidden; color: white; border: 1px solid var(--gold); }
-        .service-img { height: 200px; width: 100%; object-fit: cover; opacity: 0.8; }
-        .service-info { padding: 25px; text-align: center; }
-
-        /* --- FLOTA --- */
-        .slider-container { position: relative; max-width: 850px; margin: 0 auto; overflow: hidden; padding-bottom: 40px; }
-        .slider-track { display: flex; transition: transform 0.5s ease; }
-        .slider-slide { min-width: 100%; padding: 10px; box-sizing: border-box; }
-        .vehicle-card-clean { background: white; border-radius: 15px; border: 1px solid #eee; overflow: hidden; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .vehicle-img-clean { width: 100%; height: 400px; object-fit: cover; border-bottom: 3px solid var(--gold); }
-
-        /* --- MODALES Y OTROS --- */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .modal-box { background: white; width: 90%; max-width: 450px; padding: 30px; border-radius: 20px; text-align: center; }
-        .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 3000; display: none; align-items: center; justify-content: center; flex-direction: column; }
-        .spinner { width: 40px; height: 40px; border: 4px solid #eee; border-top-color: var(--action-green); border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* --- RESULTADOS --- */
-        #resultados { margin-top: 30px; display: none; }
-        .tarjeta { background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 1px solid #eee; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .tarjeta img { width: 180px; object-fit: contain; }
-        .price-current { font-size: 24px; font-weight: 900; color: var(--action-green); }
-
-        /* --- RESPONSIVE MÓVIL (EL DISEÑO QUE TE GUSTÓ) --- */
         @media (max-width: 768px) {
-            .nav-container { flex-direction: column; padding: 10px; }
-            .nav-links { gap: 15px; }
-            
-            .hero { align-items: flex-start; }
-            .hero-content { height: 85vh; margin-top: 100px; }
-            .hero h1 { order: 1; font-size: 2.2rem; }
-            .btn-cta { order: 2; margin-top: 190px; } /* EL MARGEN DE 190PX */
-            .hero p { order: 3; margin-top: auto; font-size: 1rem; padding-bottom: 40px; text-shadow: 0 2px 10px black; }
-
-            .vehicle-img-clean { height: 250px; }
-            .tarjeta { flex-direction: column; text-align: center; }
-            .main-container { margin-top: -50px; }
+            .nav-container { flex-direction: column; gap: 15px; }
+            .hero {
+                background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg');
+            }
+            .hero-content h1 { font-size: 2.3rem; }
+            .btn-cta { margin-top: 190px; }
         }
     </style>
 </head>
@@ -163,9 +142,8 @@
             </div>
             <nav class="nav-links">
                 <a href="#inicio">Inicio</a>
-                <a href="#servicios">Servicios</a>
                 <a href="#flota">Flota</a>
-                <a href="#cotizador-anchor">Cotizar</a>
+                <a href="#cotizar">Cotizar</a>
             </nav>
         </div>
     </header>
@@ -173,204 +151,7 @@
     <section id="inicio" class="hero">
         <div class="hero-content">
             <h1>Viaja con Exclusividad<br>en la Riviera Maya</h1>
-            <p>Servicio de transporte privado de lujo. Puntualidad, confort y estilo VIP desde el aeropuerto.</p>
-            <a href="#cotizador-anchor" class="btn-cta">COTIZAR AHORA</a>
+            <p>Servicio de transporte privado de lujo. Puntualidad, confort y estilo VIP desde el aeropuerto hasta tu destino.</p>
+            <a href="#cotizar" class="btn-cta">COTIZAR AHORA</a>
         </div>
     </section>
-
-    <div id="cotizador-anchor"></div>
-
-    <div class="main-container">
-        <div class="search-box-container">
-            <div class="search-box-inner">
-                <div class="options-bar">
-                    <div class="radio-group">
-                        <label class="radio-label"><input type="radio" name="tipoViaje" value="SENCILLO" checked onchange="updateTipoServicio('SENCILLO')"> Solo Ida</label>
-                        <label class="radio-label"><input type="radio" name="tipoViaje" value="REDONDO" onchange="updateTipoServicio('REDONDO')"> Ida y Vuelta</label>
-                    </div>
-                    <select id="tipoServicio" style="display:none;"><option value="SENCILLO">Sencillo</option><option value="REDONDO">Redondo</option></select>
-                    <select id="moneda" onchange="limpiarResultados()" style="padding:5px; font-weight:700;"><option value="MXN">MXN</option><option value="USD">USD</option></select>
-                </div>
-
-                <div class="direction-tabs">
-                    <div class="tab-btn active" id="btnDesdeAero" onclick="setDireccion('desdeAero')"><i class="fas fa-plane-arrival"></i> Desde Aeropuerto</div>
-                    <div class="tab-btn" id="btnHaciaAero" onclick="setDireccion('haciaAero')"><i class="fas fa-plane-departure"></i> Hacia Aeropuerto</div>
-                    <div class="tab-btn" id="btnPersonalizado" onclick="setDireccion('personalizado')"><i class="fas fa-map-marked-alt"></i> Especial</div>
-                </div>
-
-                <div class="form-grid">
-                    <div class="input-wrapper" id="divSubtipoServicio" style="display:none; grid-column:1/-1; background:#f0f7ff;">
-                        <label>Servicio Especial:</label>
-                        <select id="subtipoPersonalizado" onchange="ajustarCamposPersonalizados()"><option value="HOTEL_A_HOTEL">Hotel a Hotel</option><option value="TOUR">Tours / Parques</option><option value="HORAS">Por Horas</option></select>
-                    </div>
-                    <div class="input-wrapper"><label id="labelOrigen">Recogida</label><input type="text" id="origen" value="Aeropuerto Internacional de Cancún" readonly style="color:#888;"></div>
-                    <div class="input-wrapper" id="divDestinoInput"><label id="labelDestino">Destino</label><input type="text" id="destino" placeholder="¿A qué hotel vas?"></div>
-                    <div class="input-wrapper" id="divHorasInput" style="display:none;"><label>Horas</label><select id="horasSeleccionadas"><option>2 Horas</option><option>4 Horas</option><option>8 Horas</option></select></div>
-                    <div class="input-wrapper"><label>Fecha</label><input type="date" id="fechaIda"></div>
-                    <div class="input-wrapper"><label>Hora</label><input type="time" id="horaIda"></div>
-                    <div class="input-wrapper" id="divFechaVuelta" style="display:none;"><label>Fecha Vuelta</label><input type="date" id="fechaVuelta"></div>
-                    <div class="input-wrapper" id="divHoraVuelta" style="display:none;"><label>Hora Vuelta</label><input type="time" id="horaVuelta"></div>
-                    <div class="input-wrapper"><label>Pasajeros</label><select id="pasajeros"><option>1</option><option>2</option><option>4</option><option>6</option><option>8</option><option>10+</option></select></div>
-
-                    <div class="contact-section">
-                        <div class="input-wrapper"><label>Nombre</label><input type="text" id="nombreCliente" placeholder="Tu nombre"></div>
-                        <div class="input-wrapper"><label>WhatsApp</label><input type="tel" id="telefonoCliente" placeholder="+52..."></div>
-                        <div class="input-wrapper"><label>Email</label><input type="email" id="emailCliente" placeholder="tu@correo.com"></div>
-                        <div style="grid-column:1/-1; text-align:center; font-size:11px;"><input type="checkbox" id="termsCheck"> Acepto Términos y Condiciones</div>
-                    </div>
-                    <button class="btn-cotizar" id="btnAccion" onclick="cotizar()">BUSCAR PRECIOS</button>
-                </div>
-            </div>
-            <div id="resultados" style="padding:20px;"></div>
-        </div>
-    </div>
-
-    <section id="servicios" class="section-padding">
-        <div class="section-title">
-            <h2>Nuestros Servicios</h2>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600" class="service-img">
-                <div class="service-info"><h3>Aeropuerto</h3><p>Transfer premium desde Cancún y Tulum.</p></div>
-            </div>
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600" class="service-img">
-                <div class="service-info"><h3>Hoteles</h3><p>Traslados exclusivos a cualquier Resort.</p></div>
-            </div>
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1518638150340-f706e86654de?w=600" class="service-img">
-                <div class="service-info"><h3>Tours</h3><p>Visita los mejores parques con chofer privado.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="flota" class="section-padding" style="background:#f9f9f9;">
-        <div class="section-title"><h2>Nuestra Flota Premium</h2></div>
-        <div class="slider-container">
-            <div class="slider-track">
-                <div class="slider-slide"><div class="vehicle-card-clean"><img src="https://imgur.com/sVAYDET.jpg" class="vehicle-img-clean"><h3>Sedán Ejecutivo</h3><p>1-3 Pax</p></div></div>
-                <div class="slider-slide"><div class="vehicle-card-clean"><img src="https://imgur.com/3RPB7mA.jpg" class="vehicle-img-clean"><h3>Luxury SUV</h3><p>1-5 Pax</p></div></div>
-                <div class="slider-slide"><div class="vehicle-card-clean"><img src="https://imgur.com/QcQgVO9.jpg" class="vehicle-img-clean"><h3>Van Ejecutiva</h3><p>1-8 Pax</p></div></div>
-            </div>
-        </div>
-    </section>
-
-    <footer style="background:#0a0a0a; color:white; text-align:center; padding:40px;">
-        <p>&copy; 2025 Luxury Transfers. Todos los derechos reservados.</p>
-    </footer>
-
-    <div class="loading-overlay" id="loadingOverlay"><div class="spinner"></div><p>PROCESANDO...</p></div>
-    <div class="modal-overlay" id="modalConfirmacion">
-        <div class="modal-box">
-            <i class="fas fa-check-circle" style="font-size:50px; color:var(--action-green);"></i>
-            <h2>¡Solicitud Enviada!</h2>
-            <p id="codigoDisplay" style="font-size:24px; font-weight:800; color:var(--navy-bg);"></p>
-            <div style="display:flex; flex-direction:column; gap:10px; margin-top:20px;">
-                <a href="#" target="_blank" id="btnWhatsapp" style="background:#25d366; color:white; padding:12px; border-radius:8px; font-weight:bold;">Confirmar por WhatsApp</a>
-            </div>
-            <button onclick="document.getElementById('modalConfirmacion').style.display='none'" style="margin-top:15px; border:none; background:none; cursor:pointer;">Cerrar</button>
-        </div>
-    </div>
-
-    <script>
-        const SCRIPT_URL = "TU_URL_DE_GOOGLE_SCRIPT"; 
-        let direccionMode = 'desdeAero';
-
-        window.onload = function() {
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('fechaIda').setAttribute('min', today);
-            initSlider();
-        };
-
-        function initSlider() {
-            const track = document.querySelector('.slider-track');
-            const slides = Array.from(document.querySelectorAll('.slider-slide'));
-            let index = 0;
-            setInterval(() => {
-                index = (index + 1) % slides.length;
-                track.style.transform = `translateX(-${index * 100}%)`;
-            }, 4000);
-        }
-
-        function setDireccion(modo) {
-            direccionMode = modo;
-            const origen = document.getElementById('origen');
-            const destino = document.getElementById('destino');
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById('btn' + modo.charAt(0).toUpperCase() + modo.slice(1)).classList.add('active');
-            
-            document.getElementById('divSubtipoServicio').style.display = (modo === 'personalizado') ? 'flex' : 'none';
-            
-            if (modo === 'desdeAero') {
-                origen.value = "Aeropuerto Internacional de Cancún";
-                origen.readOnly = true; destino.value = ""; destino.placeholder = "¿A qué hotel vas?";
-            } else if (modo === 'haciaAero') {
-                destino.value = "Aeropuerto Internacional de Cancún";
-                destino.readOnly = true; origen.value = ""; origen.placeholder = "¿Dónde te recogemos?";
-            } else {
-                origen.readOnly = false; destino.readOnly = false;
-                origen.value = ""; destino.value = "";
-            }
-        }
-
-        function updateTipoServicio(valor) {
-            const show = (valor === 'REDONDO') ? 'flex' : 'none';
-            document.getElementById('divFechaVuelta').style.display = show;
-            document.getElementById('divHoraVuelta').style.display = show;
-        }
-
-        function ajustarCamposPersonalizados() {
-            const subtipo = document.getElementById('subtipoPersonalizado').value;
-            document.getElementById('divDestinoInput').style.display = (subtipo === 'HORAS') ? 'none' : 'flex';
-            document.getElementById('divHorasInput').style.display = (subtipo === 'HORAS') ? 'flex' : 'none';
-        }
-
-        function limpiarResultados() { document.getElementById('resultados').style.display = 'none'; }
-        function generarCodigo() { return 'LTR-' + Math.random().toString(36).substr(2, 4).toUpperCase(); }
-
-        function cotizar() {
-            if(!document.getElementById('termsCheck').checked) { alert("Acepta los términos."); return; }
-            const nombre = document.getElementById('nombreCliente').value;
-            if(!nombre) { alert("Completa tus datos."); return; }
-
-            // Lógica de visualización de resultados
-            const divRes = document.getElementById('resultados');
-            divRes.innerHTML = `<h3 style="text-align:center;">Tarifas Disponibles</h3>`;
-            
-            const moneda = document.getElementById('moneda').value;
-            const base = (moneda === 'MXN') ? 1400 : 80;
-
-            divRes.innerHTML += crearCard("SEDÁN EJECUTIVO", "1-3 Pax", base, moneda, "https://i.imgur.com/yoqbNJ7.png");
-            divRes.innerHTML += crearCard("LUXURY SUV", "1-5 Pax", base*2, moneda, "https://i.imgur.com/95X8eqt.png");
-            
-            divRes.style.display = 'block';
-            divRes.scrollIntoView({behavior:'smooth'});
-        }
-
-        function crearCard(veh, cap, precio, moneda, img) {
-            const data = JSON.stringify({vehiculo: veh, precio: precio + " " + moneda}).replace(/"/g, "&quot;");
-            return `<div class="tarjeta">
-                <img src="${img}">
-                <div style="flex:1;"><h4>${veh}</h4><p>${cap}</p></div>
-                <div style="text-align:right;"><p class="price-current">$${precio} ${moneda}</p>
-                <button onclick="prepararVenta(${data})" style="background:var(--navy-bg); color:white; border:none; padding:10px; border-radius:5px; cursor:pointer;">RESERVAR</button></div>
-            </div>`;
-        }
-
-        function prepararVenta(datos) {
-            const codigo = generarCodigo();
-            document.getElementById('codigoDisplay').innerText = "COD: " + codigo;
-            document.getElementById('loadingOverlay').style.display = 'flex';
-            
-            let msg = `Hola, quiero RESERVAR:%0A*CÓDIGO:* ${codigo}%0A*Vehículo:* ${datos.vehiculo}%0A*Precio:* ${datos.precio}`;
-            document.getElementById('btnWhatsapp').href = `https://wa.me/529842411158?text=${msg}`;
-
-            setTimeout(() => {
-                document.getElementById('loadingOverlay').style.display = 'none';
-                document.getElementById('modalConfirmacion').style.display = 'flex';
-            }, 1500);
-        }
-    </script>
-</body>
-</html>
