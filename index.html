@@ -101,7 +101,7 @@
         .service-desc { font-size: 14px; color: #cbd5e1; line-height: 1.6; font-weight: 400; }
 
         /* =========================================
-           FLOTA (CARRUSEL): Ajustes de Altura
+           FLOTA (CARRUSEL) CON MARCA DE AGUA
            ========================================= */
         .fleet-section {
             padding: 80px 20px;
@@ -110,7 +110,7 @@
 
         .slider-container {
             position: relative;
-            max-width: 800px; /* Un poco más ancho para equilibrar */
+            max-width: 800px;
             margin: 0 auto;
             overflow: hidden;
             padding-bottom: 40px; 
@@ -139,12 +139,30 @@
             border: 1px solid #eee;
         }
 
-        /* --- AQUÍ ESTÁ EL CAMBIO CLAVE --- */
+        /* --- NUEVO: Contenedor para la imagen y la marca de agua --- */
+        .image-container-clean {
+            position: relative; /* Necesario para posicionar la marca de agua dentro */
+            width: 100%;
+        }
+
         .vehicle-img-clean {
             width: 100%;
-            height: 450px; /* Aumentado drásticamente para Desktop */
+            height: 450px; /* Altura Desktop */
             object-fit: cover;
             border-bottom: 3px solid var(--gold-accent);
+            display: block; /* Elimina espacios extra */
+        }
+
+        /* --- NUEVO: Estilos de la Marca de Agua (Logo) --- */
+        .watermark-clean {
+            position: absolute;
+            top: 20px;     /* Distancia desde arriba */
+            right: 20px;   /* Distancia desde la derecha */
+            width: 80px;   /* Tamaño del logo */
+            height: auto;
+            z-index: 2;    /* Asegura que esté sobre la foto */
+            opacity: 0.9;  /* Ligeramente transparente */
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); /* Sombra para que resalte */
         }
 
         .card-content-clean {
@@ -203,12 +221,12 @@
 
         .slider-btn {
             position: absolute;
-            top: 45%; /* Ligeramente ajustado */
+            top: 45%;
             transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.9);
             color: var(--navy-bg);
             border: none;
-            width: 60px; height: 60px; /* Botones más grandes en desktop */
+            width: 60px; height: 60px;
             border-radius: 50%;
             font-size: 24px;
             cursor: pointer;
@@ -266,8 +284,11 @@
             .nav-logo-text { font-size: 16px; } 
             .form-grid, .contact-section { grid-template-columns: 1fr; }
             
-            /* Ajustes MÓVIL (Se mantiene el estilo que te gustó) */
-            .vehicle-img-clean { height: 250px; } /* Altura buena para móvil */
+            /* Ajustes MÓVIL */
+            .vehicle-img-clean { height: 250px; } /* Altura móvil */
+            /* Ajuste del tamaño de la marca de agua en móvil */
+            .watermark-clean { width: 60px; top: 15px; right: 15px; }
+
             .slider-btn { width: 40px; height: 40px; font-size: 16px; top: 40%; }
             .vehicle-name-clean { font-size: 1.6rem; }
 
@@ -396,7 +417,10 @@
             
             <div class="slider-slide">
                 <div class="vehicle-card-clean">
-                    <img src="https://imgur.com/4noBWpT.jpg" alt="Sedán Ejecutivo" class="vehicle-img-clean">
+                    <div class="image-container-clean">
+                        <img src="https://imgur.com/4noBWpT.jpg" alt="Sedán Ejecutivo" class="vehicle-img-clean">
+                        <img src="https://imgur.com/lS3Crlx.png" alt="Marca de Agua" class="watermark-clean">
+                    </div>
                     <div class="card-content-clean">
                         <h3 class="vehicle-name-clean">Sedán Ejecutivo</h3>
                         <p class="vehicle-desc-clean">Viaja ligero y con total comodidad. Ideal para parejas o viajeros de negocios que buscan un traslado privado y eficiente.</p>
@@ -408,7 +432,10 @@
 
             <div class="slider-slide">
                 <div class="vehicle-card-clean">
-                    <img src="https://imgur.com/LygZMxs.jpg" alt="Luxury SUV" class="vehicle-img-clean">
+                    <div class="image-container-clean">
+                        <img src="https://imgur.com/LygZMxs.jpg" alt="Luxury SUV" class="vehicle-img-clean">
+                        <img src="https://imgur.com/lS3Crlx.png" alt="Marca de Agua" class="watermark-clean">
+                    </div>
                     <div class="card-content-clean">
                         <h3 class="vehicle-name-clean">Luxury SUV</h3>
                         <p class="vehicle-desc-clean">Exclusividad y potencia desde tu llegada. El recibimiento perfecto en el aeropuerto para ejecutivos y familias VIP.</p>
@@ -420,7 +447,10 @@
 
             <div class="slider-slide">
                 <div class="vehicle-card-clean">
-                    <img src="https://imgur.com/QXUuphg.jpg" alt="Van Ejecutiva" class="vehicle-img-clean">
+                    <div class="image-container-clean">
+                        <img src="https://imgur.com/QXUuphg.jpg" alt="Van Ejecutiva" class="vehicle-img-clean">
+                        <img src="https://imgur.com/lS3Crlx.png" alt="Marca de Agua" class="watermark-clean">
+                    </div>
                     <div class="card-content-clean">
                         <h3 class="vehicle-name-clean">Van Ejecutiva</h3>
                         <p class="vehicle-desc-clean">Espacio inteligente y confort total. La opción ideal para familias o grupos de amigos que buscan viajar juntos con seguridad.</p>
@@ -432,7 +462,10 @@
 
             <div class="slider-slide">
                 <div class="vehicle-card-clean">
-                    <img src="https://imgur.com/3m2Sf6Y.jpg" alt="Sprinter" class="vehicle-img-clean">
+                    <div class="image-container-clean">
+                        <img src="https://imgur.com/3m2Sf6Y.jpg" alt="Sprinter" class="vehicle-img-clean">
+                        <img src="https://imgur.com/lS3Crlx.png" alt="Marca de Agua" class="watermark-clean">
+                    </div>
                     <div class="card-content-clean">
                         <h3 class="vehicle-name-clean">Sprinter</h3>
                         <p class="vehicle-desc-clean">Ideal para bodas, eventos o familias numerosas. Viajen todos juntos, seguros y con aire acondicionado de primera.</p>
