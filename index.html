@@ -132,7 +132,7 @@
         footer { background: var(--black); color: #888; text-align: center; padding: 40px 20px; }
 
         /* =========================================
-           VERSION MÓVIL (AJUSTES FINALES)
+           VERSION MÓVIL (AJUSTES SOLICITADOS)
            ========================================= */
         @media (max-width: 768px) {
             header { padding: 15px 0; }
@@ -166,15 +166,12 @@
                 text-shadow: 0 2px 15px rgba(0,0,0,0.9);
             }
 
-            /* 2. BOTÓN (Línea Verde / Defensa) */
+            /* 2. BOTÓN (Sobre la puerta/salpicadera - ZONA VERDE) */
             .btn-cta {
                 order: 2;
-                
-                /* AQUÍ ESTÁ EL TRUCO: margin-top: auto */
-                /* Esto empuja el botón lejos del título, bajándolo hasta el texto */
-                margin-top: auto; 
-                margin-bottom: 20px; /* Un pequeño espacio entre el botón y el texto */
-                
+                /* Este margen empuja el botón hacia arriba, a la posición deseada */
+                margin-top: 150px; 
+                margin-bottom: 0;
                 align-self: center;
                 width: auto;
                 font-size: 0.9rem;
@@ -184,12 +181,12 @@
             /* 3. TEXTO (Abajo / Llantas) */
             .hero-content p {
                 order: 3;
-                margin-top: 0; /* Ya no empuja, solo se sienta bajo el botón */
+                margin-top: auto; /* Empuja el texto hasta el final */
                 font-size: 1rem;
                 line-height: 1.4;
                 text-shadow: 0 2px 5px rgba(0,0,0,1);
                 padding: 0 15px;
-                padding-bottom: 40px; /* Espacio final */
+                padding-bottom: 40px;
                 width: 100%;
                 box-sizing: border-box;
                 background: none; /* SIN SOMBRA DE FONDO */
@@ -207,7 +204,7 @@
 
     <header>
         <div class="nav-container">
-            <div class="logo">Luxury Transfers</div>
+            <div class="logo">Luxury Transfers Riviera</div>
             <nav class="nav-links">
                 <a href="#inicio">Inicio</a>
                 <a href="#flota">Flota</a>
