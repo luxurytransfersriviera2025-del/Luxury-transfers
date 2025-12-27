@@ -23,12 +23,12 @@
         }
         body { font-family: var(--font-main); margin: 0; padding: 0; background-color: #f9f9f9; color: var(--text-dark); overflow-x: hidden; }
 
-        /* --- NAVBAR (LOGO NUEVO ANCHO) --- */
+        /* --- NAVBAR --- */
         .navbar { 
             position: fixed; top: 0; left: 0; width: 100%; 
             background: rgba(0, 40, 85, 0.98); 
             backdrop-filter: blur(10px); 
-            padding: 10px 0; /* Padding reducido para logo ancho */
+            padding: 10px 0; 
             z-index: 1000; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
             border-bottom: 1px solid rgba(212, 175, 55, 0.3); 
@@ -39,15 +39,33 @@
             display: flex; justify-content: space-between; align-items: center; 
         }
         
-        /* LOGO NUEVO (IMAGEN ANCHA COMPLETA) */
+        /* LOGO + TEXTO "LUXURY TRANSFERS RIVIERA" */
         .nav-logo { 
-            display: flex; align-items: center; text-decoration: none; 
+            display: flex; 
+            align-items: center; 
+            text-decoration: none; 
+            gap: 15px; /* Espacio entre logo y texto */
         }
+        
+        /* Imagen del diamante (recortada o icono) */
         .nav-logo img { 
-            height: 60px; /* Altura controlada para que se vea nítido */
+            height: 50px; 
             width: auto; 
             object-fit: contain; 
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); 
+        }
+
+        /* Texto de la marca */
+        .nav-logo-text {
+            font-family: var(--font-title); /* Playfair Display */
+            color: var(--white);
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .nav-links { display: flex; gap: 30px; align-items: center; }
@@ -147,7 +165,8 @@
 
         @media (max-width: 768px) {
             .hero-title { font-size: 32px; } .nav-links { display: none; } .nav-container { justify-content: center; }
-            .nav-logo img { height: 50px; } /* Logo móvil ajustado */
+            .nav-logo img { height: 40px; } /* Logo móvil */
+            .nav-logo-text { font-size: 16px; } /* Texto móvil */
             .form-grid, .contact-section { grid-template-columns: 1fr; }
             .fleet-carousel-container { height: 450px; border-radius: 0; }
             .slide-watermark { top: 20px; right: 20px; } .slide-watermark img { height: 60px; }
@@ -165,9 +184,14 @@
 <nav class="navbar">
     <div class="nav-container">
         <a href="#" class="nav-logo">
-            <img src="https://i.imgur.com/lS3Crlx.png" alt="Luxury Transfers Riviera">
+            <img src="https://i.imgur.com/S28i4YP.png" alt="Luxury Transfers Riviera" style="object-position: left; object-fit: cover; width: 60px;">
+            <span class="nav-logo-text">Luxury Transfers Riviera</span>
         </a>
-        <div class="nav-links"><a href="#inicio" class="nav-link">Inicio</a><a href="#servicios" class="nav-link">Servicios</a><a href="#flota" class="nav-link">Flota</a></div>
+        <div class="nav-links">
+            <a href="#inicio" class="nav-link">Inicio</a>
+            <a href="#servicios" class="nav-link">Servicios</a>
+            <a href="#flota" class="nav-link">Flota</a>
+        </div>
     </div>
 </nav>
 
