@@ -14,7 +14,7 @@
             --primary-blue: #003580; --action-green: #00a651; --action-green-hover: #008c44;
             --text-dark: #1a1a1a; --white: #ffffff; 
             
-            /* AZUL ELEGANTE PARA EL NAVBAR */
+            /* AZUL ELEGANTE */
             --navy-bg: #002855;      
             
             --gold-accent: #d4af37; --gold-hover: #febb02;
@@ -23,12 +23,12 @@
         }
         body { font-family: var(--font-main); margin: 0; padding: 0; background-color: #f9f9f9; color: var(--text-dark); overflow-x: hidden; }
 
-        /* --- NAVBAR (AZUL ELEGANTE + LOGO GRANDE + TEXTO) --- */
+        /* --- NAVBAR (LOGO NUEVO ANCHO) --- */
         .navbar { 
             position: fixed; top: 0; left: 0; width: 100%; 
-            background: rgba(0, 40, 85, 0.98); /* Azul Real Profundo */
+            background: rgba(0, 40, 85, 0.98); 
             backdrop-filter: blur(10px); 
-            padding: 15px 0; /* Más espacio vertical */
+            padding: 10px 0; /* Padding reducido para logo ancho */
             z-index: 1000; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
             border-bottom: 1px solid rgba(212, 175, 55, 0.3); 
@@ -39,29 +39,15 @@
             display: flex; justify-content: space-between; align-items: center; 
         }
         
-        /* LOGO + TEXTO "LUXURY TRANSFERS RIVIERA" */
+        /* LOGO NUEVO (IMAGEN ANCHA COMPLETA) */
         .nav-logo { 
-            display: flex; 
-            align-items: center; 
-            text-decoration: none; 
-            gap: 15px; /* Espacio entre el diamante y el texto */
+            display: flex; align-items: center; text-decoration: none; 
         }
-        
         .nav-logo img { 
-            height: 90px; /* TAMAÑO AUMENTADO (era 55px) */
+            height: 60px; /* Altura controlada para que se vea nítido */
             width: auto; 
             object-fit: contain; 
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); 
-        }
-
-        .nav-logo span {
-            font-family: var(--font-title); /* Playfair Display */
-            color: var(--white);
-            font-size: 24px; /* TAMAÑO AUMENTADO (era 22px) */
-            font-weight: 700; /* Negrita */
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            line-height: 1;
         }
 
         .nav-links { display: flex; gap: 30px; align-items: center; }
@@ -78,7 +64,7 @@
             background: url('https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?q=80&w=2069&auto=format&fit=crop') no-repeat center center;
             background-size: cover; background-attachment: fixed; 
             display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            padding: 160px 20px 60px 20px; /* Padding superior aumentado a 160px */
+            padding: 140px 20px 60px 20px; 
         }
         .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0, 40, 85, 0.5), rgba(0, 30, 80, 0.7)); z-index: 1; }
         .hero-content { position: relative; z-index: 10; text-align: center; margin-bottom: 40px; color: var(--white); }
@@ -105,7 +91,7 @@
         .btn-cotizar { grid-column: 1 / -1; background-color: var(--action-green); color: white; font-size: 18px; font-weight: 800; border: none; padding: 18px; border-radius: 8px; cursor: pointer; margin-top: 10px; transition: all 0.2s; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 5px 0 #007a3d; width: 100%; }
         .btn-cotizar:hover { background-color: var(--action-green-hover); transform: translateY(2px); }
 
-        /* --- SECCIÓN SERVICIOS (USANDO EL NUEVO AZUL ELEGANTE) --- */
+        /* --- SECCIÓN SERVICIOS (DARK PREMIUM) --- */
         .section-wrapper { padding: 80px 20px; text-align: center; }
         .section-bg-gray { background-color: #f0f0f0; }
         .section-header h2 { font-family: var(--font-title); font-size: 42px; color: var(--navy-bg); font-weight: 700; margin-bottom: 10px; letter-spacing: -1px; }
@@ -161,8 +147,7 @@
 
         @media (max-width: 768px) {
             .hero-title { font-size: 32px; } .nav-links { display: none; } .nav-container { justify-content: center; }
-            .nav-logo img { height: 60px; } /* Logo móvil */
-            .nav-logo span { font-size: 16px; } /* Texto móvil */
+            .nav-logo img { height: 50px; } /* Logo móvil ajustado */
             .form-grid, .contact-section { grid-template-columns: 1fr; }
             .fleet-carousel-container { height: 450px; border-radius: 0; }
             .slide-watermark { top: 20px; right: 20px; } .slide-watermark img { height: 60px; }
@@ -180,14 +165,9 @@
 <nav class="navbar">
     <div class="nav-container">
         <a href="#" class="nav-logo">
-            <img src="https://i.imgur.com/S28i4YP.png" alt="Luxury Transfers Riviera">
-            <span>Luxury Transfers Riviera</span>
+            <img src="https://i.imgur.com/lS3Crlx.png" alt="Luxury Transfers Riviera">
         </a>
-        <div class="nav-links">
-            <a href="#inicio" class="nav-link">Inicio</a>
-            <a href="#servicios" class="nav-link">Servicios</a>
-            <a href="#flota" class="nav-link">Flota</a>
-        </div>
+        <div class="nav-links"><a href="#inicio" class="nav-link">Inicio</a><a href="#servicios" class="nav-link">Servicios</a><a href="#flota" class="nav-link">Flota</a></div>
     </div>
 </nav>
 
