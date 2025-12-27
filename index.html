@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Transfers Riviera | Transporte VIP</title>
+    <title>Luxury Transfers | Transporte VIP</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -39,7 +39,7 @@
             justify-content: space-between; align-items: center; padding: 0 20px;
         }
 
-        /* 1. LOGO RESTAURADO (Sin "Riviera") */
+        /* LOGO SIN RIVIERA */
         .logo { font-size: 1.4rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); }
         
         .nav-links { display: flex; gap: 30px; }
@@ -69,7 +69,7 @@
             align-items: center;
         }
 
-        /* Orden para Web: Título -> Texto -> Botón */
+        /* Orden Web: Título -> Texto -> Botón */
         .hero-content h1 {
             order: 1;
             font-size: 3.8rem;
@@ -89,7 +89,7 @@
             max-width: 800px;
         }
 
-        /* ESTILO DEL BOTÓN PRINCIPAL (WEB) */
+        /* BOTÓN WEB */
         .btn-cta {
             order: 3;
             background-color: var(--gold);
@@ -102,13 +102,11 @@
             letter-spacing: 2px;
             display: inline-block;
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
-            /* Borde del mismo color dorado */
             border: 2px solid var(--gold); 
         }
 
-        /* 2b. CORRECCIÓN DEL HOVER (WEB) */
         .btn-cta:hover {
-            /* Ya NO cambia a blanco. Se oscurece el dorado y el texto sigue negro */
+            /* Hover Web: Dorado oscuro */
             background-color: var(--gold-hover); 
             color: var(--black); 
             transform: translateY(-3px); 
@@ -151,6 +149,7 @@
             .nav-links a { font-size: 0.8rem; }
 
             .hero {
+                /* IMAGEN VERTICAL */
                 background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg');
                 background-position: center center;
                 height: 100vh;
@@ -166,7 +165,7 @@
                 flex-direction: column;
             }
 
-            /* TÍTULO (Arriba en el cielo) */
+            /* 1. TÍTULO (Arriba) */
             .hero-content h1 {
                 order: 1;
                 font-size: 2.3rem;
@@ -175,11 +174,11 @@
                 text-shadow: 0 2px 15px rgba(0,0,0,0.9);
             }
 
-            /* 2a. BOTÓN (Bajado a la zona verde) */
+            /* 2. BOTÓN (BAJADO EXACTAMENTE DONDE EMPEZABA EL ANTERIOR) */
             .btn-cta {
                 order: 2;
-                /* Aumentamos el margen superior para bajarlo */
-                margin-top: 220px; 
+                /* CAMBIO: Aumentado de 220px a 285px para bajarlo esa distancia extra */
+                margin-top: 285px; 
                 margin-bottom: 0;
                 align-self: center;
                 width: auto;
@@ -187,15 +186,14 @@
                 padding: 15px 40px;
             }
             
-            /* 2b. CORRECCIÓN DEL HOVER (MÓVIL) */
-            /* Al tocar en celular, mantiene el estilo dorado oscuro y texto negro */
+            /* HOVER MÓVIL: NO CAMBIA A BLANCO, SIGUE DORADO */
             .btn-cta:hover, .btn-cta:active {
                 background-color: var(--gold-hover);
                 color: var(--black);
                 border-color: var(--gold-hover);
             }
 
-            /* TEXTO (Abajo / Llantas) */
+            /* 3. TEXTO (Abajo / Llantas) - SIN SOMBRA */
             .hero-content p {
                 order: 3;
                 margin-top: auto; 
@@ -206,7 +204,7 @@
                 padding-bottom: 40px;
                 width: 100%;
                 box-sizing: border-box;
-                background: none; 
+                background: none; /* FONDO TRANSPARENTE */
             }
 
             .section-padding { padding: 60px 20px; }
