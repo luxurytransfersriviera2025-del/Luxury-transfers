@@ -42,7 +42,7 @@
         .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
         .nav-links a:hover { color: var(--gold); }
 
-        /* --- HERO SECTION (CONFIGURACIÓN INTELIGENTE) --- */
+        /* --- HERO SECTION (WEB) --- */
         .hero {
             /* Imagen Horizontal para PC */
             background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('https://imgur.com/LygZMxs.jpg');
@@ -61,17 +61,14 @@
             max-width: 900px;
             z-index: 1;
             margin-top: 60px;
-            /* Flexbox activado para controlar el orden */
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: auto;
         }
 
-        /* --- ORDEN PARA COMPUTADORA (PC) --- */
-        /* 1. Título */
+        /* Orden para Web: Título -> Texto -> Botón */
         .hero-content h1 {
-            order: 1; /* Primero */
+            order: 1;
             font-size: 3.8rem;
             margin-bottom: 20px;
             line-height: 1.2;
@@ -80,9 +77,8 @@
             text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
         }
 
-        /* 2. Texto Descriptivo (En medio para PC) */
         .hero-content p {
-            order: 2; /* Segundo */
+            order: 2;
             font-size: 1.3rem;
             margin-bottom: 40px;
             font-weight: 400;
@@ -90,13 +86,12 @@
             max-width: 800px;
         }
 
-        /* 3. Botón (Al final para PC) */
         .btn-cta {
-            order: 3; /* Tercero */
+            order: 3;
             background-color: var(--gold);
             color: var(--black);
             padding: 18px 50px;
-            border-radius: 50px; /* Redondo estilo píldora */
+            border-radius: 50px;
             font-weight: 800;
             font-size: 1rem;
             text-transform: uppercase;
@@ -137,7 +132,7 @@
         footer { background: var(--black); color: #888; text-align: center; padding: 40px 20px; }
 
         /* =========================================
-           VERSION MÓVIL (LÓGICA DE REORDENAMIENTO)
+           VERSION MÓVIL (AJUSTES FINALES)
            ========================================= */
         @media (max-width: 768px) {
             header { padding: 15px 0; }
@@ -150,56 +145,57 @@
                 background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg');
                 background-position: center center;
                 height: 100vh;
-                align-items: flex-start; /* Alinea contenido arriba */
+                align-items: flex-start;
             }
 
             .hero-content {
-                height: 85vh; /* Ocupa casi toda la pantalla */
+                height: 85vh;
                 width: 100%;
                 margin-top: 100px;
                 padding-bottom: 20px;
+                display: flex;
+                flex-direction: column;
             }
 
-            /* --- REORDENAMIENTO MÓVIL --- */
-
-            /* 1. TÍTULO (Arriba) */
+            /* 1. TÍTULO (Arriba en el cielo) */
             .hero-content h1 {
-                order: 1; /* Se mantiene primero */
+                order: 1;
                 font-size: 2.3rem;
-                margin-bottom: 20px;
+                margin-bottom: 0;
                 white-space: normal;
                 text-shadow: 0 2px 15px rgba(0,0,0,0.9);
             }
 
-            /* 2. BOTÓN (En Medio - Sobre el Cofre) */
-            .hero-content .btn-cta {
-                order: 2; /* Pasa a ser el segundo elemento */
-                margin-bottom: 0; /* Quitamos margen extra */
+            /* 2. BOTÓN (Línea Verde / Defensa) */
+            .btn-cta {
+                order: 2;
+                
+                /* AQUÍ ESTÁ EL TRUCO: margin-top: auto */
+                /* Esto empuja el botón lejos del título, bajándolo hasta el texto */
+                margin-top: auto; 
+                margin-bottom: 20px; /* Un pequeño espacio entre el botón y el texto */
+                
                 align-self: center;
+                width: auto;
                 font-size: 0.9rem;
                 padding: 15px 40px;
-                /* IMPORTANTE: Esto asegura que el botón no ocupe todo el ancho */
-                width: auto; 
             }
 
-            /* 3. TEXTO (Hasta Abajo - Sobre las Llantas) */
+            /* 3. TEXTO (Abajo / Llantas) */
             .hero-content p {
-                order: 3; /* Pasa a ser el último */
-                margin-top: auto; /* ESTO LO EMPUJA AL FONDO */
+                order: 3;
+                margin-top: 0; /* Ya no empuja, solo se sienta bajo el botón */
                 font-size: 1rem;
                 line-height: 1.4;
                 text-shadow: 0 2px 5px rgba(0,0,0,1);
                 padding: 0 15px;
-                padding-bottom: 50px; /* Espacio para que no pegue con el borde del celular */
-                
-                /* AQUÍ ESTÁ EL CAMBIO: FONDO QUITADO */
-                background: none; 
-                
+                padding-bottom: 40px; /* Espacio final */
                 width: 100%;
                 box-sizing: border-box;
+                background: none; /* SIN SOMBRA DE FONDO */
             }
 
-            /* Ajustes Carrusel Móvil */
+            /* Ajustes Generales Móvil */
             .section-padding { padding: 60px 20px; }
             .carousel-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 20px; padding-bottom: 30px; }
             .vehicle-card { min-width: 85vw; scroll-snap-align: center; }
