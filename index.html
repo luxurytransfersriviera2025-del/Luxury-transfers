@@ -29,8 +29,7 @@
         /* --- HEADER --- */
         header {
             background-color: rgba(10, 10, 10, 0.95);
-            padding: 10px 0;
-            position: fixed; width: 100%; top: 0; z-index: 1000;
+            padding: 10px 0; position: fixed; width: 100%; top: 0; z-index: 1000;
             border-bottom: 2px solid var(--gold);
         }
 
@@ -39,22 +38,12 @@
             justify-content: space-between; align-items: center; padding: 0 20px;
         }
 
-        /* LOGO CON IMAGEN */
         .logo {
-            font-size: 1.4rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gold);
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            font-size: 1.4rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 2px; color: var(--gold); display: flex; align-items: center; gap: 12px;
         }
 
-        .logo-icon {
-            height: 35px;
-            width: auto;
-        }
+        .logo-icon { height: 35px; width: auto; }
         
         .nav-links { display: flex; gap: 30px; }
         .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
@@ -75,7 +64,7 @@
         }
 
         .hero-content {
-            max-width: 900px; /* Ancho estándar de nuevo */
+            max-width: 1100px;
             z-index: 1;
             margin-top: 60px;
             display: flex;
@@ -83,37 +72,38 @@
             align-items: center;
         }
 
-        /* --- TAMAÑOS CORREGIDOS (WEB) --- */
-        
-        /* 1. TÍTULO (Tamaño de tu referencia: 3.5rem) */
+        /* --- TÍTULO AJUSTADO (WEB) --- */
         .hero-content h1 {
             order: 1;
-            font-size: 3.5rem; /* CORREGIDO: De 4.5rem a 3.5rem */
+            /* Reducido de 4.5rem a 3.8rem para que no sea tan excesivo */
+            font-size: 3.8rem; 
             margin-bottom: 20px;
             line-height: 1.2;
-            font-weight: 800;
+            /* Cambiado de 800 (Extra Bold) a 700 (Bold) para reducir el grosor */
+            font-weight: 700; 
             text-transform: uppercase;
             text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
         }
 
-        /* 2. DESCRIPCIÓN (Tamaño de tu referencia: 1.2rem) */
+        /* Descripción */
         .hero-content p {
             order: 2;
-            font-size: 1.2rem; /* CORREGIDO: De 1.5rem a 1.2rem */
-            margin-bottom: 30px;
+            font-size: 1.4rem; 
+            margin-bottom: 40px;
             font-weight: 400;
             text-shadow: 1px 1px 8px rgba(0,0,0,0.8);
-            max-width: 700px;
+            max-width: 900px;
+            line-height: 1.5;
         }
 
         .btn-cta {
             order: 3;
             background-color: var(--gold);
             color: var(--black);
-            padding: 15px 40px; /* Padding estándar */
+            padding: 18px 55px;
             border-radius: 50px;
             font-weight: 800;
-            font-size: 1rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             display: inline-block;
@@ -155,7 +145,7 @@
         footer { background: var(--black); color: #888; text-align: center; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
 
         /* =========================================
-           VERSION MÓVIL (MANTENIENDO LO QUE YA FUNCIONA)
+           VERSION MÓVIL (MANTIENE TAMAÑOS PEQUEÑOS)
            ========================================= */
         @media (max-width: 768px) {
             header { padding: 15px 0; }
@@ -182,12 +172,13 @@
                 flex-direction: column;
             }
 
-            /* TÍTULO MÓVIL (Independiente del de escritorio) */
+            /* TÍTULO MÓVIL (Tamaño normal para celular) */
             .hero-content h1 {
                 order: 1;
-                font-size: 2.3rem; 
+                font-size: 2.3rem; /* Mucho más pequeño que en web */
                 margin-bottom: 0;
                 white-space: normal;
+                font-weight: 700; /* Mismo grosor que web */
                 text-shadow: 0 2px 15px rgba(0,0,0,0.9);
             }
 
@@ -212,7 +203,7 @@
             .hero-content p {
                 order: 3;
                 margin-top: auto; 
-                font-size: 1rem; 
+                font-size: 1rem; /* Pequeño para celular */
                 line-height: 1.4;
                 text-shadow: 0 2px 5px rgba(0,0,0,1);
                 padding: 0 15px;
