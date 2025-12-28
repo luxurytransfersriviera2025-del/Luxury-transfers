@@ -29,7 +29,7 @@
         /* --- HEADER --- */
         header {
             background-color: rgba(10, 10, 10, 0.95);
-            padding: 10px 0; /* Reduje un poco el padding para ajustar el nuevo icono */
+            padding: 10px 0;
             position: fixed; width: 100%; top: 0; z-index: 1000;
             border-bottom: 2px solid var(--gold);
         }
@@ -46,15 +46,13 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--gold);
-            /* Nuevas propiedades para alinear imagen y texto */
             display: flex;
             align-items: center;
-            gap: 12px; /* Espacio entre el icono y el texto */
+            gap: 12px;
         }
 
-        /* Estilo para el nuevo icono */
         .logo-icon {
-            height: 35px; /* Tamaño controlado del icono */
+            height: 35px;
             width: auto;
         }
         
@@ -77,7 +75,7 @@
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 1100px; /* Aumentado para que el texto grande quepa bien */
             z-index: 1;
             margin-top: 60px;
             display: flex;
@@ -85,34 +83,38 @@
             align-items: center;
         }
 
-        /* Orden Web: Título -> Texto -> Botón */
+        /* --- TAMAÑOS AJUSTADOS PARA VERSIÓN WEB --- */
+        
+        /* 1. TÍTULO GRANDE (WEB) */
         .hero-content h1 {
             order: 1;
-            font-size: 3.8rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
+            font-size: 4.5rem; /* Aumentado de 3.8rem a 4.5rem */
+            margin-bottom: 25px;
+            line-height: 1.1;
             font-weight: 800;
             text-transform: uppercase;
             text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
         }
 
+        /* 2. DESCRIPCIÓN GRANDE (WEB) */
         .hero-content p {
             order: 2;
-            font-size: 1.3rem;
-            margin-bottom: 40px;
+            font-size: 1.5rem; /* Aumentado de 1.3rem a 1.5rem */
+            margin-bottom: 50px;
             font-weight: 400;
             text-shadow: 1px 1px 8px rgba(0,0,0,0.8);
-            max-width: 800px;
+            max-width: 900px;
+            line-height: 1.6;
         }
 
         .btn-cta {
             order: 3;
             background-color: var(--gold);
             color: var(--black);
-            padding: 18px 50px;
+            padding: 20px 60px; /* Un poco más grande para acompañar el texto */
             border-radius: 50px;
             font-weight: 800;
-            font-size: 1rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             display: inline-block;
@@ -154,7 +156,7 @@
         footer { background: var(--black); color: #888; text-align: center; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
 
         /* =========================================
-           VERSION MÓVIL
+           VERSION MÓVIL (MANTIENE TAMAÑOS PEQUEÑOS)
            ========================================= */
         @media (max-width: 768px) {
             header { padding: 15px 0; }
@@ -162,7 +164,6 @@
             .nav-links { gap: 20px; }
             .nav-links a { font-size: 0.8rem; }
             
-            /* Ajuste del logo en móvil para que no sea tan grande */
             .logo { font-size: 1.2rem; letter-spacing: 1px; }
             .logo-icon { height: 30px; }
 
@@ -182,19 +183,19 @@
                 flex-direction: column;
             }
 
-            /* 1. TÍTULO */
+            /* TÍTULO MÓVIL (Tamaño normal para celular) */
             .hero-content h1 {
                 order: 1;
-                font-size: 2.3rem;
+                font-size: 2.3rem; /* Mucho más pequeño que en web */
                 margin-bottom: 0;
                 white-space: normal;
                 text-shadow: 0 2px 15px rgba(0,0,0,0.9);
             }
 
-            /* 2. BOTÓN (POSICIÓN CORRECTA HACIA ARRIBA) */
+            /* BOTÓN MÓVIL (Posición arriba) */
             .btn-cta {
                 order: 2;
-                margin-top: 190px; 
+                margin-top: 190px;
                 margin-bottom: 0;
                 align-self: center;
                 width: auto;
@@ -208,11 +209,11 @@
                 border-color: var(--gold-hover);
             }
 
-            /* 3. TEXTO (Abajo) */
+            /* TEXTO MÓVIL (Abajo y pequeño) */
             .hero-content p {
                 order: 3;
                 margin-top: auto; 
-                font-size: 1rem;
+                font-size: 1rem; /* Pequeño para celular */
                 line-height: 1.4;
                 text-shadow: 0 2px 5px rgba(0,0,0,1);
                 padding: 0 15px;
