@@ -25,17 +25,17 @@
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
 
-        /* --- HEADER --- */
+        /* --- HEADER (Restaurado con botones) --- */
         header {
             background-color: rgba(10, 10, 10, 0.95);
-            padding: 10px 0;
+            padding: 15px 0;
             position: fixed; width: 100%; top: 0; z-index: 1000;
             border-bottom: 2px solid var(--gold);
         }
 
         .nav-container {
             max-width: 1200px; margin: 0 auto; display: flex;
-            justify-content: center; align-items: center; padding: 0 20px;
+            justify-content: space-between; align-items: center; padding: 0 20px;
         }
 
         .logo {
@@ -53,8 +53,13 @@
             height: 35px;
             width: auto;
         }
+        
+        /* Botones de navegación restaurados */
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        .nav-links a:hover { color: var(--gold); }
 
-        /* --- HERO SECTION (WEB) --- */
+        /* --- HERO SECTION --- */
         .hero {
             background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('https://imgur.com/LygZMxs.jpg');
             background-size: cover;
@@ -111,12 +116,14 @@
             border: 2px solid var(--gold); 
         }
 
-        /* =========================================
-           VERSION MÓVIL
-           ========================================= */
+        /* --- AJUSTES MÓVIL (Respetando tu diseño original) --- */
         @media (max-width: 768px) {
-            .logo { font-size: 1.2rem; }
-            .logo-icon { height: 30px; }
+            .nav-container { flex-direction: row; justify-content: space-between; }
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 0.7rem; }
+            
+            .logo { font-size: 1.1rem; }
+            .logo-icon { height: 25px; }
 
             .hero {
                 background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg');
@@ -129,10 +136,11 @@
             }
 
             .hero-content h1 {
+                order: 1;
                 font-size: 2.3rem;
-                text-shadow: 0 2px 15px rgba(0,0,0,0.9);
             }
 
+            /* Volvimos a poner el botón abajo del texto o según tu lógica de 'order' original */
             .btn-cta {
                 order: 2;
                 margin-top: 190px; 
@@ -156,6 +164,11 @@
                 <img src="https://i.imgur.com/lS3Crlx.png" alt="Icono Luxury" class="logo-icon">
                 Luxury Transfers
             </div>
+            <nav class="nav-links">
+                <a href="#">Inicio</a>
+                <a href="#">Vehículos</a>
+                <a href="#">Cotizar</a>
+            </nav>
         </div>
     </header>
 
