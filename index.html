@@ -75,7 +75,7 @@
         }
 
         .hero-content {
-            max-width: 1100px; /* Aumentado para que el texto grande quepa bien */
+            max-width: 900px; /* Ancho estándar de nuevo */
             z-index: 1;
             margin-top: 60px;
             display: flex;
@@ -83,38 +83,37 @@
             align-items: center;
         }
 
-        /* --- TAMAÑOS AJUSTADOS PARA VERSIÓN WEB --- */
+        /* --- TAMAÑOS CORREGIDOS (WEB) --- */
         
-        /* 1. TÍTULO GRANDE (WEB) */
+        /* 1. TÍTULO (Tamaño de tu referencia: 3.5rem) */
         .hero-content h1 {
             order: 1;
-            font-size: 4.5rem; /* Aumentado de 3.8rem a 4.5rem */
-            margin-bottom: 25px;
-            line-height: 1.1;
+            font-size: 3.5rem; /* CORREGIDO: De 4.5rem a 3.5rem */
+            margin-bottom: 20px;
+            line-height: 1.2;
             font-weight: 800;
             text-transform: uppercase;
             text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
         }
 
-        /* 2. DESCRIPCIÓN GRANDE (WEB) */
+        /* 2. DESCRIPCIÓN (Tamaño de tu referencia: 1.2rem) */
         .hero-content p {
             order: 2;
-            font-size: 1.5rem; /* Aumentado de 1.3rem a 1.5rem */
-            margin-bottom: 50px;
+            font-size: 1.2rem; /* CORREGIDO: De 1.5rem a 1.2rem */
+            margin-bottom: 30px;
             font-weight: 400;
             text-shadow: 1px 1px 8px rgba(0,0,0,0.8);
-            max-width: 900px;
-            line-height: 1.6;
+            max-width: 700px;
         }
 
         .btn-cta {
             order: 3;
             background-color: var(--gold);
             color: var(--black);
-            padding: 20px 60px; /* Un poco más grande para acompañar el texto */
+            padding: 15px 40px; /* Padding estándar */
             border-radius: 50px;
             font-weight: 800;
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             display: inline-block;
@@ -156,7 +155,7 @@
         footer { background: var(--black); color: #888; text-align: center; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
 
         /* =========================================
-           VERSION MÓVIL (MANTIENE TAMAÑOS PEQUEÑOS)
+           VERSION MÓVIL (MANTENIENDO LO QUE YA FUNCIONA)
            ========================================= */
         @media (max-width: 768px) {
             header { padding: 15px 0; }
@@ -183,10 +182,10 @@
                 flex-direction: column;
             }
 
-            /* TÍTULO MÓVIL (Tamaño normal para celular) */
+            /* TÍTULO MÓVIL (Independiente del de escritorio) */
             .hero-content h1 {
                 order: 1;
-                font-size: 2.3rem; /* Mucho más pequeño que en web */
+                font-size: 2.3rem; 
                 margin-bottom: 0;
                 white-space: normal;
                 text-shadow: 0 2px 15px rgba(0,0,0,0.9);
@@ -213,7 +212,7 @@
             .hero-content p {
                 order: 3;
                 margin-top: auto; 
-                font-size: 1rem; /* Pequeño para celular */
+                font-size: 1rem; 
                 line-height: 1.4;
                 text-shadow: 0 2px 5px rgba(0,0,0,1);
                 padding: 0 15px;
