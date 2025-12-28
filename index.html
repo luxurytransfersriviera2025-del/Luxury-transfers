@@ -15,6 +15,7 @@
             --black: #0a0a0a;
             --dark-gray: #222;
             --white: #fff;
+            --light-bg: #f9f9f9;
         }
 
         body {
@@ -25,10 +26,10 @@
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
 
-        /* --- HEADER (Restaurado con botones) --- */
+        /* --- HEADER --- */
         header {
             background-color: rgba(10, 10, 10, 0.95);
-            padding: 15px 0;
+            padding: 10px 0;
             position: fixed; width: 100%; top: 0; z-index: 1000;
             border-bottom: 2px solid var(--gold);
         }
@@ -54,12 +55,11 @@
             width: auto;
         }
         
-        /* Botones de navegación restaurados */
         .nav-links { display: flex; gap: 30px; }
         .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
         .nav-links a:hover { color: var(--gold); }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION (WEB) --- */
         .hero {
             background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('https://imgur.com/LygZMxs.jpg');
             background-size: cover;
@@ -116,34 +116,56 @@
             border: 2px solid var(--gold); 
         }
 
-        /* --- AJUSTES MÓVIL (Respetando tu diseño original) --- */
+        .btn-cta:hover {
+            background-color: var(--gold-hover); 
+            color: var(--black); 
+            transform: translateY(-3px); 
+            border-color: var(--gold-hover);
+        }
+
+        /* =========================================
+            VERSION MÓVIL
+           ========================================= */
         @media (max-width: 768px) {
-            .nav-container { flex-direction: row; justify-content: space-between; }
-            .nav-links { gap: 15px; }
-            .nav-links a { font-size: 0.7rem; }
+            header { padding: 15px 0; }
+            .nav-container { flex-direction: column; gap: 15px; }
+            .nav-links { gap: 20px; }
+            .nav-links a { font-size: 0.8rem; }
             
-            .logo { font-size: 1.1rem; }
-            .logo-icon { height: 25px; }
+            .logo { font-size: 1.2rem; letter-spacing: 1px; }
+            .logo-icon { height: 30px; }
 
             .hero {
                 background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg');
+                background-position: center center;
+                height: 100vh;
                 align-items: flex-start;
             }
 
             .hero-content {
                 height: 85vh;
+                width: 100%;
                 margin-top: 100px;
+                padding-bottom: 20px;
+                display: flex;
+                flex-direction: column;
             }
 
             .hero-content h1 {
                 order: 1;
                 font-size: 2.3rem;
+                margin-bottom: 0;
+                white-space: normal;
+                text-shadow: 0 2px 15px rgba(0,0,0,0.9);
             }
 
-            /* Volvimos a poner el botón abajo del texto o según tu lógica de 'order' original */
             .btn-cta {
                 order: 2;
                 margin-top: 190px; 
+                margin-bottom: 0;
+                align-self: center;
+                width: auto;
+                font-size: 0.9rem;
                 padding: 15px 40px;
             }
 
@@ -151,7 +173,13 @@
                 order: 3;
                 margin-top: auto; 
                 font-size: 1rem;
+                line-height: 1.4;
+                text-shadow: 0 2px 5px rgba(0,0,0,1);
+                padding: 0 15px;
                 padding-bottom: 40px;
+                width: 100%;
+                box-sizing: border-box;
+                background: none; 
             }
         }
     </style>
@@ -165,9 +193,9 @@
                 Luxury Transfers
             </div>
             <nav class="nav-links">
-                <a href="#">Inicio</a>
-                <a href="#">Vehículos</a>
-                <a href="#">Cotizar</a>
+                <a href="#inicio">Inicio</a>
+                <a href="#flota">Flota</a>
+                <a href="#cotizar">Cotizar</a>
             </nav>
         </div>
     </header>
@@ -178,7 +206,7 @@
             
             <p>Servicio de transporte privado de lujo. Puntualidad, confort y estilo VIP desde el aeropuerto hasta tu destino.</p>
             
-            <a href="#" class="btn-cta">VER FLOTA</a>
+            <a href="#cotizar" class="btn-cta">COTIZAR AHORA</a>
         </div>
     </section>
 
