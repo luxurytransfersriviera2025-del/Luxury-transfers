@@ -67,9 +67,9 @@
         .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
         .nav-links a:hover { color: var(--gold); }
 
-        /* HERO SECTION (IMAGEN CORREGIDA) */
+        /* HERO SECTION (IMAGEN NEGRA DE LUJO) */
         .hero {
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://i.imgur.com/3JAl89S.jpeg');
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://i.imgur.com/3JAl89S.jpeg');
             background-size: cover; background-position: center center;
             height: 100vh;
             display: flex; align-items: center; justify-content: center;
@@ -117,6 +117,7 @@
             .logo-icon { height: 30px; }
 
             .hero {
+                /* Fondo móvil original */
                 background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg');
                 background-position: center center;
                 height: 100vh;
@@ -161,7 +162,18 @@
         .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 53, 128, 0.5); z-index: 1; }
         .main-container-calc { position: relative; z-index: 10; width: 95%; max-width: 1100px; padding: 20px 0; }
         
-        .title-calc { color: var(--white); text-align: center; text-shadow: 0 4px 10px rgba(0,0,0,0.5); font-size: 32px; margin-bottom: 25px; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase; }
+        /* ESTILO DEL TITULO DEL COTIZADOR ACTUALIZADO */
+        .title-calc { 
+            color: var(--white); 
+            text-align: center; 
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5); 
+            font-size: 32px; 
+            margin-bottom: 25px; 
+            font-weight: 800; 
+            letter-spacing: -0.5px; 
+            text-transform: uppercase; 
+            line-height: 1.2;
+        }
         
         .search-box-container { background-color: var(--highlight-yellow); padding: 4px; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); margin-bottom: 20px; }
         .search-box-inner { background-color: var(--primary-blue); padding: 25px; border-radius: 9px; color: white; }
@@ -257,9 +269,9 @@
         }
 
         /* ==========================================================================
-           3. ESTILOS NUEVOS (SERVICIOS + FLOTA) - AÑADIDOS AL FINAL
+           3. ESTILOS SERVICIOS + FLOTA
            ========================================================================== */
-        /* --- SECCIÓN SERVICIOS (MODIFICADO A NEGRO) --- */
+        /* SECCIÓN SERVICIOS (NEGRO) */
         .section-wrapper { padding: 80px 20px; text-align: center; background-color: white; }
         .section-header { text-align: center; margin-bottom: 40px; }
         .section-header h2 { font-family: var(--font-title); font-size: 42px; color: var(--navy-bg); font-weight: 700; margin-bottom: 10px; letter-spacing: -1px; }
@@ -267,7 +279,6 @@
 
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
         
-        /* CAMBIO DE COLOR AQUÍ */
         .service-card { background-color: var(--black); border: 1px solid var(--gold); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: all 0.4s ease; position: relative; display: flex; flex-direction: column; }
         
         .service-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3); border-color: var(--gold-hover); }
@@ -277,151 +288,33 @@
         .service-title { font-family: var(--font-title); font-size: 26px; color: var(--white); margin-bottom: 15px; font-weight: 700; }
         .service-desc { font-size: 14px; color: #cbd5e1; line-height: 1.6; font-weight: 400; }
 
-        /* --- SECCIÓN FLOTA (CARRUSEL) --- */
-        .fleet-section {
-            padding: 80px 20px;
-            background-color: #fafafa;
-        }
+        /* SECCIÓN FLOTA (CARRUSEL) */
+        .fleet-section { padding: 80px 20px; background-color: #fafafa; }
+        .slider-container { position: relative; max-width: 800px; margin: 0 auto; overflow: hidden; padding-bottom: 40px; }
+        .slider-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
+        .slider-slide { min-width: 100%; box-sizing: border-box; padding: 10px; }
 
-        .slider-container {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            overflow: hidden;
-            padding-bottom: 40px; 
-        }
+        .vehicle-card-clean { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.08); display: flex; flex-direction: column; height: 100%; border: 1px solid #eee; }
+        .image-container-clean { position: relative; width: 100%; }
+        .vehicle-img-clean { width: 100%; height: 450px; object-fit: cover; border-bottom: 3px solid var(--gold); display: block; }
+        .card-content-clean { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; text-align: center; }
+        .vehicle-name-clean { font-size: 2rem; color: var(--black); margin: 0 0 10px 0; font-weight: 600; font-family: var(--font-title); }
+        .vehicle-desc-clean { font-size: 1.1rem; color: #666; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+        .vehicle-capacity-clean { display: inline-block; background: var(--light-gray); padding: 8px 20px; border-radius: 50px; font-size: 0.9rem; color: #555; font-weight: 600; margin-bottom: 25px; }
 
-        .slider-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            width: 100%;
-        }
-
-        .slider-slide {
-            min-width: 100%;
-            box-sizing: border-box;
-            padding: 10px;
-        }
-
-        .vehicle-card-clean {
-            background: #fff;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            border: 1px solid #eee;
-        }
-
-        .image-container-clean {
-            position: relative;
-            width: 100%;
-        }
-
-        .vehicle-img-clean {
-            width: 100%;
-            height: 450px; /* Altura Desktop */
-            object-fit: cover;
-            border-bottom: 3px solid var(--gold);
-            display: block;
-        }
-
-        .card-content-clean {
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            text-align: center;
-        }
-
-        .vehicle-name-clean {
-            font-size: 2rem;
-            color: var(--black);
-            margin: 0 0 10px 0;
-            font-weight: 600;
-            font-family: var(--font-title);
-        }
-
-        .vehicle-desc-clean {
-            font-size: 1.1rem;
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .vehicle-capacity-clean {
-            display: inline-block;
-            background: var(--light-gray);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            color: #555;
-            font-weight: 600;
-            margin-bottom: 25px;
-        }
-
-        .btn-reservar-clean {
-            display: inline-block;
-            background-color: var(--black);
-            color: var(--white);
-            padding: 15px 0;
-            width: 100%;
-            border-radius: 8px;
-            text-transform: uppercase;
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            transition: background 0.3s;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-        }
-
+        .btn-reservar-clean { display: inline-block; background-color: var(--black); color: var(--white); padding: 15px 0; width: 100%; border-radius: 8px; text-transform: uppercase; font-size: 1rem; font-weight: 500; letter-spacing: 1px; transition: background 0.3s; text-decoration: none; cursor: pointer; border: none; }
         .btn-reservar-clean:hover { background-color: var(--gold); }
 
-        .slider-btn {
-            position: absolute;
-            top: 45%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--navy-bg);
-            border: none;
-            width: 60px; height: 60px;
-            border-radius: 50%;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 10;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: 0.3s;
-            display: flex; align-items: center; justify-content: center;
-        }
+        .slider-btn { position: absolute; top: 45%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.9); color: var(--navy-bg); border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 24px; cursor: pointer; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; display: flex; align-items: center; justify-content: center; }
         .slider-btn:hover { background: var(--navy-bg); color: var(--gold); }
         .slider-btn.prev { left: 20px; }
         .slider-btn.next { right: 20px; }
 
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-        }
-        .slider-dot {
-            width: 12px; height: 12px;
-            background: #ccc;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: 0.3s;
-            border: none;
-            padding: 0;
-        }
+        .slider-dots { display: flex; justify-content: center; gap: 10px; position: absolute; bottom: 0; left: 0; width: 100%; }
+        .slider-dot { width: 12px; height: 12px; background: #ccc; border-radius: 50%; cursor: pointer; transition: 0.3s; border: none; padding: 0; }
         .slider-dot.active { background: var(--navy-bg); width: 30px; border-radius: 10px; }
 
-        /* FOOTER (MODIFICADO A NEGRO Y BLANCO) */
+        /* FOOTER (NEGRO Y BLANCO) */
         footer { 
             background: var(--black); 
             color: var(--white); 
@@ -457,7 +350,7 @@
         <div class="hero-content">
             <h1>Viaja con Exclusividad<br>en la Riviera Maya</h1>
             
-            <p>Servicio de transporte privado de lujo. Puntualidad, confort y estilo VIP desde el aeropuerto hasta tu destino.</p>
+            <p>Es Seguridad, es Confort, es Exclusividad. Es Luxury Transfers Riviera.</p>
             
             <a href="#seccion-calculadora" class="btn-cta">COTIZAR AHORA</a>
         </div>
@@ -532,7 +425,10 @@
         </div>
 
         <div class="main-container-calc">
-            <h1 class="title-calc"><i class="fas fa-plane-departure"></i> Luxury Transfers Riviera</h1>
+            <h1 class="title-calc">
+                <i class="fas fa-map-marker-alt"></i> Reserve su Transporte Privado
+                <span style="font-size: 18px; font-weight: 400; text-transform: none; display: block; margin-top: 5px;">Cotiza y asegura tu traslado al instante</span>
+            </h1>
 
             <div class="search-box-container">
                 <div class="search-box-inner">
