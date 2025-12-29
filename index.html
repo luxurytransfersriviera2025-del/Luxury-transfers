@@ -10,17 +10,17 @@
 
     <style>
         /* ==========================================================================
-           1. ESTILOS ORIGINALES (HERO + CALCULADORA) - NO TOCAR
+           1. ESTILOS BASE Y VARIABLES
            ========================================================================== */
         :root {
-            /* Variables Parte 1 (Hero/Header) */
+            /* Variables Hero/Header */
             --gold: #D4AF37;
             --gold-hover: #b5952f;
             --black: #0a0a0a;
             --dark-gray: #222;
             --white: #fff;
             
-            /* Variables Parte 2 (Calculadora) */
+            /* Variables Calculadora */
             --primary-blue: #003580; 
             --action-green: #00a651; 
             --action-green-hover: #008c44; 
@@ -28,7 +28,7 @@
             --text-dark: #1a1a1a; 
             --bg-light: #f2f2f2; 
 
-            /* --- NUEVAS VARIABLES PARA SERVICIOS Y FLOTA --- */
+            /* Variables Servicios/Flota */
             --navy-bg: #002855;
             --font-title: 'Playfair Display', serif;
             --light-gray: #f4f4f4;
@@ -42,7 +42,7 @@
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
 
-        /* HEADER ORIGINAL */
+        /* HEADER */
         header {
             background-color: rgba(10, 10, 10, 0.95);
             padding: 10px 0;
@@ -67,10 +67,10 @@
         .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
         .nav-links a:hover { color: var(--gold); }
 
-        /* HERO SECTION ORIGINAL (IMAGEN CORREGIDA AQUÍ) */
+        /* HERO SECTION (TU IMAGEN NUEVA AQUÍ) */
         .hero {
-            /* HE CAMBIADO LA IMAGEN ROTA POR UNA DE ALTA CALIDAD DE UNSPLASH QUE NO CADUCA */
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop');
+            /* IMAGEN ACTUALIZADA CON TU ENLACE DE IMGUR */
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://i.imgur.com/3JAl89S.jpeg');
             background-size: cover; background-position: center center;
             height: 100vh;
             display: flex; align-items: center; justify-content: center;
@@ -107,7 +107,7 @@
             background-color: var(--gold-hover); transform: translateY(-3px); border-color: var(--gold-hover);
         }
 
-        /* MEDIA QUERIES HERO (Versión Móvil - INTOCABLE) */
+        /* MEDIA QUERIES HERO (Versión Móvil) */
         @media (max-width: 768px) {
             header { padding: 15px 0; }
             .nav-container { flex-direction: column; gap: 15px; }
@@ -118,7 +118,7 @@
             .logo-icon { height: 30px; }
 
             .hero {
-                /* Mantenemos la imagen móvil */
+                /* Fondo móvil original */
                 background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg');
                 background-position: center center;
                 height: 100vh;
@@ -148,7 +148,7 @@
         }
 
         /* ==========================================================================
-           2. ESTILOS CALCULADORA (ENCAPSULADA) - NO TOCAR
+           2. ESTILOS CALCULADORA (ENCAPSULADA)
            ========================================================================== */
         #seccion-calculadora { 
             position: relative;
@@ -259,9 +259,9 @@
         }
 
         /* ==========================================================================
-           3. ESTILOS NUEVOS (SERVICIOS + FLOTA) - AÑADIDOS AL FINAL
+           3. ESTILOS SERVICIOS + FLOTA
            ========================================================================== */
-        /* --- SECCIÓN SERVICIOS --- */
+        /* SECCIÓN SERVICIOS */
         .section-wrapper { padding: 80px 20px; text-align: center; background-color: white; }
         .section-header { text-align: center; margin-bottom: 40px; }
         .section-header h2 { font-family: var(--font-title); font-size: 42px; color: var(--navy-bg); font-weight: 700; margin-bottom: 10px; letter-spacing: -1px; }
@@ -276,148 +276,30 @@
         .service-title { font-family: var(--font-title); font-size: 26px; color: var(--white); margin-bottom: 15px; font-weight: 700; }
         .service-desc { font-size: 14px; color: #cbd5e1; line-height: 1.6; font-weight: 400; }
 
-        /* --- SECCIÓN FLOTA (CARRUSEL) --- */
-        .fleet-section {
-            padding: 80px 20px;
-            background-color: #fafafa;
-        }
+        /* SECCIÓN FLOTA (CARRUSEL) */
+        .fleet-section { padding: 80px 20px; background-color: #fafafa; }
+        .slider-container { position: relative; max-width: 800px; margin: 0 auto; overflow: hidden; padding-bottom: 40px; }
+        .slider-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
+        .slider-slide { min-width: 100%; box-sizing: border-box; padding: 10px; }
 
-        .slider-container {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            overflow: hidden;
-            padding-bottom: 40px; 
-        }
+        .vehicle-card-clean { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.08); display: flex; flex-direction: column; height: 100%; border: 1px solid #eee; }
+        .image-container-clean { position: relative; width: 100%; }
+        .vehicle-img-clean { width: 100%; height: 450px; object-fit: cover; border-bottom: 3px solid var(--gold); display: block; }
+        .card-content-clean { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; text-align: center; }
+        .vehicle-name-clean { font-size: 2rem; color: var(--black); margin: 0 0 10px 0; font-weight: 600; font-family: var(--font-title); }
+        .vehicle-desc-clean { font-size: 1.1rem; color: #666; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+        .vehicle-capacity-clean { display: inline-block; background: var(--light-gray); padding: 8px 20px; border-radius: 50px; font-size: 0.9rem; color: #555; font-weight: 600; margin-bottom: 25px; }
 
-        .slider-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            width: 100%;
-        }
-
-        .slider-slide {
-            min-width: 100%;
-            box-sizing: border-box;
-            padding: 10px;
-        }
-
-        .vehicle-card-clean {
-            background: #fff;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            border: 1px solid #eee;
-        }
-
-        .image-container-clean {
-            position: relative;
-            width: 100%;
-        }
-
-        .vehicle-img-clean {
-            width: 100%;
-            height: 450px; /* Altura Desktop */
-            object-fit: cover;
-            border-bottom: 3px solid var(--gold);
-            display: block;
-        }
-
-        .card-content-clean {
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            text-align: center;
-        }
-
-        .vehicle-name-clean {
-            font-size: 2rem;
-            color: var(--black);
-            margin: 0 0 10px 0;
-            font-weight: 600;
-            font-family: var(--font-title);
-        }
-
-        .vehicle-desc-clean {
-            font-size: 1.1rem;
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .vehicle-capacity-clean {
-            display: inline-block;
-            background: var(--light-gray);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            color: #555;
-            font-weight: 600;
-            margin-bottom: 25px;
-        }
-
-        .btn-reservar-clean {
-            display: inline-block;
-            background-color: var(--black);
-            color: var(--white);
-            padding: 15px 0;
-            width: 100%;
-            border-radius: 8px;
-            text-transform: uppercase;
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            transition: background 0.3s;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-        }
-
+        .btn-reservar-clean { display: inline-block; background-color: var(--black); color: var(--white); padding: 15px 0; width: 100%; border-radius: 8px; text-transform: uppercase; font-size: 1rem; font-weight: 500; letter-spacing: 1px; transition: background 0.3s; text-decoration: none; cursor: pointer; border: none; }
         .btn-reservar-clean:hover { background-color: var(--gold); }
 
-        .slider-btn {
-            position: absolute;
-            top: 45%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--navy-bg);
-            border: none;
-            width: 60px; height: 60px;
-            border-radius: 50%;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 10;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: 0.3s;
-            display: flex; align-items: center; justify-content: center;
-        }
+        .slider-btn { position: absolute; top: 45%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.9); color: var(--navy-bg); border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 24px; cursor: pointer; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; display: flex; align-items: center; justify-content: center; }
         .slider-btn:hover { background: var(--navy-bg); color: var(--gold); }
         .slider-btn.prev { left: 20px; }
         .slider-btn.next { right: 20px; }
 
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-        }
-        .slider-dot {
-            width: 12px; height: 12px;
-            background: #ccc;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: 0.3s;
-            border: none;
-            padding: 0;
-        }
+        .slider-dots { display: flex; justify-content: center; gap: 10px; position: absolute; bottom: 0; left: 0; width: 100%; }
+        .slider-dot { width: 12px; height: 12px; background: #ccc; border-radius: 50%; cursor: pointer; transition: 0.3s; border: none; padding: 0; }
         .slider-dot.active { background: var(--navy-bg); width: 30px; border-radius: 10px; }
 
         /* FOOTER */
