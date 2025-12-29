@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Transfers Riviera | Transporte VIP & Reservas</title>
-    
+    <title>Luxury Transfers | Transporte VIP</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* =========================================
-           ESTILOS BLOQUE 1: BASE Y HERO VIP
-           ========================================= */
+        /* ============================================================
+           ESTILOS CODIGO 1 (HERO VIP) 
+           ============================================================ */
         :root {
             --gold: #D4AF37;
             --gold-hover: #b5952f;
@@ -19,14 +18,6 @@
             --dark-gray: #222;
             --white: #fff;
             --light-bg: #f9f9f9;
-            /* Colores Bloque 2 */
-            --primary-blue: #003580; 
-            --action-green: #00a651; 
-            --action-green-hover: #008c44; 
-            --highlight-yellow: #febb02; 
-            --text-dark: #1a1a1a; 
-            --text-gray: #555; 
-            --bg-light: #f2f2f2; 
         }
 
         body {
@@ -92,10 +83,10 @@
             border: 2px solid var(--gold); 
         }
 
-        /* =========================================
-           ESTILOS BLOQUE 2: CALCULADORA PROFESIONAL
-           ========================================= */
-        .seccion-calculadora {
+        /* ============================================================
+           ESTILOS CODIGO 2 (FORMULARIO PROFESIONAL)
+           ============================================================ */
+        .seccion-reserva {
             position: relative;
             background: url('https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?q=80&w=2069&auto=format&fit=crop') no-repeat center center fixed;
             background-size: cover;
@@ -104,13 +95,24 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            padding: 80px 0; /* Espacio para que no se pegue al hero */
+            padding: 100px 0;
         }
 
+        :root { 
+            --primary-blue: #003580; 
+            --action-green: #00a651; 
+            --action-green-hover: #008c44; 
+            --highlight-yellow: #febb02; 
+            --text-dark: #1a1a1a; 
+            --text-gray: #555; 
+            --bg-light: #f2f2f2; 
+            --white-f: #ffffff; 
+        }
+        
         .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 53, 128, 0.5); z-index: 1; }
         .main-container { position: relative; z-index: 10; width: 95%; max-width: 1100px; padding: 20px 0; }
         
-        h1.form-title { color: var(--white); text-align: center; text-shadow: 0 4px 10px rgba(0,0,0,0.5); font-size: 32px; margin-bottom: 25px; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase; }
+        .reserva-h1 { color: var(--white-f); text-align: center; text-shadow: 0 4px 10px rgba(0,0,0,0.5); font-size: 32px; margin-bottom: 25px; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase; }
         
         .search-box-container { background-color: var(--highlight-yellow); padding: 4px; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); margin-bottom: 20px; }
         .search-box-inner { background-color: var(--primary-blue); padding: 25px; border-radius: 9px; color: white; }
@@ -122,46 +124,51 @@
         
         .direction-tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
         .tab-btn { background: transparent; border: 2px solid rgba(255,255,255,0.3); color: white; padding: 12px 20px; border-radius: 50px; cursor: pointer; font-size: 13px; font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center; white-space: nowrap; }
-        .tab-btn.active { background: var(--white); color: var(--primary-blue); border-color: var(--white); font-weight: 800; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transform: translateY(-2px); }
+        .tab-btn.active { background: var(--white-f); color: var(--primary-blue); border-color: var(--white-f); font-weight: 800; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transform: translateY(-2px); }
 
         .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2); }
-        .input-wrapper { background: var(--white); padding: 12px 15px; display: flex; flex-direction: column; justify-content: center; position: relative; border-radius: 8px; transition: 0.2s; }
+        .input-wrapper { background: var(--white-f); padding: 12px 15px; display: flex; flex-direction: column; justify-content: center; position: relative; border-radius: 8px; transition: 0.2s; }
         .input-wrapper label { font-size: 10px; color: #555; font-weight: 800; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .input-wrapper input, .input-wrapper select, .input-wrapper textarea { border: none; outline: none; width: 100%; font-size: 15px; font-weight: 600; color: var(--text-dark); background: transparent; font-family: 'Montserrat', sans-serif; }
+        .input-wrapper input, .input-wrapper select, .input-wrapper textarea { border: none; outline: none; width: 100%; font-size: 15px; font-weight: 600; color: var(--text-dark); background: transparent; font-family: 'Montserrat', sans-serif; padding: 0; }
         
+        .contact-section { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; }
+        .flight-fields-container { grid-column: 1 / -1; display: contents; }
+        
+        .terms-container { grid-column: 1 / -1; display: flex; align-items: center; margin-top: 10px; font-size: 13px; color: white; gap: 10px; justify-content: center; }
+        .terms-container input { width: 18px; height: 18px; accent-color: var(--highlight-yellow); cursor: pointer; }
+        .terms-link { color: var(--highlight-yellow); text-decoration: underline; cursor: pointer; font-weight: 700; }
+
         .btn-cotizar { grid-column: 1 / -1; background-color: var(--action-green); color: white; font-size: 18px; font-weight: 800; border: none; padding: 18px; border-radius: 8px; cursor: pointer; margin-top: 15px; transition: all 0.2s; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 5px 0 #007a3d; width: 100%; }
         .btn-cotizar:hover { background-color: var(--action-green-hover); transform: translateY(2px); box-shadow: 0 3px 0 #007a3d; }
 
-        /* HEADER DE RESULTADOS */
+        /* TARJETAS Y RESULTADOS */
         #resultados { margin-top: 30px; display: none; width: 100%; }
         .ruta-header { background: rgba(0, 0, 0, 0.6); color: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; text-align: center; font-size: 16px; font-weight: 600; border-left: 5px solid var(--highlight-yellow); }
-
-        /* TARJETAS */
-        .tarjeta { background: var(--white); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; flex-wrap: wrap; gap: 25px; border: 1px solid #f0f0f0; }
-        .tarjeta-img { flex: 0 0 220px; display: flex; align-items: center; justify-content: center; }
-        .tarjeta-img img { width: 100%; height: auto; max-height: 140px; }
+        .tarjeta { background: var(--white-f); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; flex-wrap: wrap; gap: 25px; border: 1px solid #f0f0f0; overflow: hidden; animation: fadeIn 0.5s ease-in-out; transition: transform 0.3s, box-shadow 0.3s; }
+        .tarjeta-img { flex: 0 0 220px; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 12px; padding: 10px; border: 1px solid #f5f5f5; }
+        .tarjeta-img img { width: 100%; height: auto; object-fit: contain; max-height: 140px; }
         .tarjeta-info { flex: 1; display: flex; flex-direction: column; justify-content: center; min-width: 280px; }
         .tarjeta-price { flex: 0 0 180px; text-align: right; display: flex; flex-direction: column; justify-content: center; border-left: 2px solid #f5f5f5; padding-left: 25px; }
-        .price-current { font-size: 32px; font-weight: 900; color: var(--action-green); margin-bottom: 10px; }
-        .btn-reservar { background-color: var(--action-green); color: white; padding: 14px 20px; border-radius: 8px; font-weight: 800; border:none; cursor: pointer; width: 100%; }
+        .price-current { font-size: 32px; font-weight: 900; color: var(--action-green); margin-bottom: 10px; letter-spacing: -1px; line-height: 1; }
+        .btn-reservar { background-color: var(--action-green); color: white; text-decoration: none; padding: 14px 20px; border-radius: 8px; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; cursor: pointer; border:none; text-transform: uppercase; width: 100%; }
 
         /* MODALES */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .modal-box { background: white; width: 90%; max-width: 450px; padding: 40px 30px; border-radius: 20px; text-align: center; position: relative; max-height: 90vh; overflow-y: auto; }
-        .modal-btn { padding: 16px; border-radius: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 15px; color: white; margin-bottom: 10px; }
-        .btn-wa { background: #25d366; font-size: 18px; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 1000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        .modal-box { background: white; width: 90%; max-width: 450px; padding: 40px 30px; border-radius: 20px; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.5); position: relative; max-height: 90vh; overflow-y: auto; }
+        .modal-btn { padding: 16px; border-radius: 10px; text-decoration: none; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 15px; color: white; font-size: 16px; transition: 0.2s; border: none; cursor: pointer; }
+        .btn-wa { background: #25d366; }
+        .btn-wa i { font-size: 32px; }
 
-        .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); z-index: 3000; display: none; align-items: center; justify-content: center; flex-direction: column; }
-        .spinner { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--action-green); border-radius: 50%; animation: spin 1s linear infinite; }
+        .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); z-index: 2000; display: none; align-items: center; justify-content: center; flex-direction: column; }
+        .spinner { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--action-green); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* RESPONSIVE (Combinado) */
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.3rem; }
             .hero { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg'); }
-            .form-grid { grid-template-columns: 1fr; }
-            .tarjeta { flex-direction: column; }
-            .tarjeta-price { border-left: none; border-top: 1px solid #eee; padding-top: 20px; text-align: left; }
+            .form-grid, .contact-section { grid-template-columns: 1fr; background: transparent; padding: 0; gap: 12px; border: none; }
+            .tarjeta { flex-direction: column; text-align: left; padding: 20px; gap: 15px; }
+            .tarjeta-price { border-left: none; padding-left: 0; border-top: 1px solid #eee; padding-top: 20px; text-align: left; flex-direction: row; align-items: center; justify-content: space-between; flex: auto; }
         }
     </style>
 </head>
@@ -189,50 +196,50 @@
         </div>
     </section>
 
-    <section id="cotizar" class="seccion-calculadora">
+    <section id="cotizar" class="seccion-reserva">
         <div class="overlay"></div>
 
         <div class="loading-overlay" id="loadingOverlay">
             <div class="spinner"></div>
-            <p style="margin-top: 15px; font-weight: 700; color: #333;">GENERANDO RESERVA...</p>
+            <p style="margin-top: 15px; font-weight: 700; color: #333; font-size: 14px;">GENERANDO RESERVA...</p>
         </div>
 
         <div class="modal-overlay" id="modalTyC">
             <div class="modal-box">
+                <button onclick="cerrarTyC()" style="position:absolute; top:15px; right:20px; border:none; background:transparent; cursor:pointer;">Cerrar X</button>
                 <h2 style="color:var(--primary-blue)">Términos y Condiciones</h2>
-                <div style="text-align:left; font-size:13px; max-height:300px; overflow-y:auto; padding:10px;">
-                    <p>Al reservar con Luxury Transfers Riviera, aceptas nuestras políticas de cancelación (24h de antelación para reembolso) y tiempos de espera en aeropuerto (60 min).</p>
+                <div style="text-align:left; font-size:13px; color:#444;">
+                    <p>Políticas de cancelación, tiempos de espera y cuidados del vehículo.</p>
                 </div>
-                <button class="btn-reservar" onclick="cerrarTyC()" style="margin-top:20px;">ACEPTO</button>
+                <button class="btn-reservar" onclick="cerrarTyC()" style="margin-top:20px;">HE LEÍDO Y ACEPTO</button>
             </div>
         </div>
 
         <div class="modal-overlay" id="modalConfirmacion">
             <div class="modal-box">
-                <div style="font-size:50px; color:var(--action-green)"><i class="fas fa-check-circle"></i></div>
-                <h2 id="modalTitle">¡Solicitud Recibida!</h2>
-                <p>Tu código: <strong id="codigoDisplay" style="color:var(--primary-blue)">LTR-0000</strong></p>
-                <p id="modalText">Un asesor te contactará pronto.</p>
+                <h2 style="color:var(--primary-blue)" id="modalTitle">¡Solicitud Recibida!</h2>
+                <div id="codigoDisplay" style="background:#ecfdf5; border:2px dashed #00a651; padding:15px; font-size:28px; font-weight:900; margin:15px 0;">LTR-????</div>
+                <p id="modalText">Un asesor te contactará lo más breve posible para finalizar tu reserva.</p>
                 <div class="modal-actions">
-                    <a href="#" target="_blank" class="modal-btn btn-wa" id="btnWhatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="#" target="_blank" class="modal-btn btn-wa" id="btnWhatsapp"><i class="fab fa-whatsapp"></i> Confirmar por WhatsApp</a>
                 </div>
-                <button onclick="cerrarModal()" style="border:none; background:none; cursor:pointer; color:#888;">Cerrar</button>
+                <button onclick="cerrarModal()" style="margin-top:15px; border:none; background:none; cursor:pointer; color:#888;">Cerrar</button>
             </div>
         </div>
 
         <div class="main-container">
-            <h1 class="form-title"><i class="fas fa-plane-departure"></i> Luxury Transfers Riviera</h1>
+            <h1 class="reserva-h1"><i class="fas fa-plane-departure"></i> Luxury Transfers Riviera</h1>
 
             <div class="search-box-container">
                 <div class="search-box-inner">
+                    
                     <div class="options-bar">
-                        <div class="radio-group">
+                        <div class="radio-group" id="radioTipoViaje">
                             <label class="radio-label"><input type="radio" name="tipoViaje" value="SENCILLO" checked onchange="updateTipoServicio('SENCILLO')"> Solo Ida</label>
                             <label class="radio-label"><input type="radio" name="tipoViaje" value="REDONDO" onchange="updateTipoServicio('REDONDO')"> Ida y Vuelta</label>
                         </div>
-                        <select id="moneda" onchange="limpiarResultados()" style="padding:8px; border-radius:5px; font-weight:bold;">
-                            <option value="MXN">MXN ($)</option>
-                            <option value="USD">USD ($)</option>
+                        <select id="moneda" onchange="limpiarResultados()" style="padding:10px; border-radius:8px; font-weight:700;">
+                            <option value="MXN">MXN ($)</option><option value="USD">USD ($)</option>
                         </select>
                         <select id="tipoServicio" style="display:none;"><option value="SENCILLO">Sencillo</option><option value="REDONDO">Redondo</option></select>
                     </div>
@@ -248,22 +255,41 @@
                         <div class="input-wrapper" id="divDestinoInput"><label id="labelDestino">Destino</label><input type="text" id="destino" placeholder="¿A qué hotel vas?"></div>
                         <div class="input-wrapper"><label>Fecha</label><input type="date" id="fechaIda"></div>
                         <div class="input-wrapper"><label>Hora</label><input type="time" id="horaIda"></div>
-                        
                         <div class="input-wrapper" id="divFechaVuelta" style="display:none;"><label>Fecha Vuelta</label><input type="date" id="fechaVuelta"></div>
                         <div class="input-wrapper" id="divHoraVuelta" style="display:none;"><label>Hora Vuelta</label><input type="time" id="horaVuelta"></div>
 
-                        <div class="input-wrapper"><label>Pasajeros</label>
+                        <div class="input-wrapper">
+                            <label>Pasajeros</label>
                             <select id="pasajeros">
-                                <option value="1">1-3</option><option value="8">4-8</option><option value="15">9-15</option>
+                                <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option>
                             </select>
                         </div>
 
-                        <div class="input-wrapper" style="grid-column: 1 / -1;"><input type="text" id="nombreCliente" placeholder="Nombre Completo"></div>
-                        <div class="input-wrapper"><input type="tel" id="telefonoCliente" placeholder="Teléfono"></div>
-                        <div class="input-wrapper"><input type="email" id="emailCliente" placeholder="Correo"></div>
-                        
-                        <div style="grid-column: 1/-1; color:white; font-size:12px; text-align:center;">
-                            <input type="checkbox" id="termsCheck"> Acepto <span onclick="abrirTyC()" style="text-decoration:underline; cursor:pointer;">Términos</span>
+                        <div class="contact-section" id="seccionContacto">
+                            <div class="input-wrapper" style="grid-column: 1 / -1;"><label style="color:var(--action-green); font-weight:900; font-size: 11px;">TUS DATOS DE CONTACTO:</label></div>
+                            <div class="input-wrapper"><label>Nombre Completo</label><input type="text" id="nombreCliente" placeholder="Tu nombre"></div>
+                            <div class="input-wrapper"><label>Teléfono</label><input type="tel" id="telefonoCliente" placeholder="Ej: +52 987 654 3210"></div>
+                            <div class="input-wrapper"><label>Correo Electrónico</label><input type="email" id="emailCliente" placeholder="correo@ejemplo.com"></div>
+
+                            <div id="divVueloInfo" class="flight-fields-container">
+                                <div class="input-wrapper"><label>Aerolínea (Opcional)</label><input type="text" id="aerolinea" placeholder="Ej: Volaris"></div>
+                                <div class="input-wrapper"><label>No. Vuelo (Opcional)</label><input type="text" id="numVuelo" placeholder="Ej: Y4 123"></div>
+                            </div>
+
+                            <div class="input-wrapper" id="divItinerario" style="grid-column: 1 / -1; display: none;">
+                                <label style="color: #003580;">¿Qué lugares quieres visitar? / Itinerario</label>
+                                <textarea id="itinerarioCliente" rows="2" placeholder="Ej: Ir a Tulum Ruinas..."></textarea>
+                            </div>
+
+                            <div class="input-wrapper" style="grid-column: 1 / -1;">
+                                <label>Notas / Equipaje / Sillas de Bebé</label>
+                                <textarea id="notasCliente" rows="2" placeholder="Ej: Llevamos 4 maletas grandes, necesitamos silla de bebé..."></textarea>
+                            </div>
+
+                            <div class="terms-container">
+                                <input type="checkbox" id="termsCheck">
+                                <span>He leído y acepto los <span class="terms-link" onclick="abrirTyC()">Términos y Condiciones</span></span>
+                            </div>
                         </div>
 
                         <button class="btn-cotizar" id="btnAccion" onclick="cotizar()">Buscar Precios</button>
@@ -283,9 +309,9 @@
         function cerrarModal() { document.getElementById('modalConfirmacion').style.display = 'none'; }
         function limpiarResultados() { document.getElementById('resultados').style.display = 'none'; }
 
-        function updateTipoServicio(val) {
-            document.getElementById('tipoServicio').value = val;
-            const show = val === 'REDONDO' ? 'flex' : 'none';
+        function updateTipoServicio(valor) {
+            document.getElementById('tipoServicio').value = valor;
+            const show = (valor === 'REDONDO') ? 'flex' : 'none';
             document.getElementById('divFechaVuelta').style.display = show;
             document.getElementById('divHoraVuelta').style.display = show;
         }
@@ -293,31 +319,24 @@
         function setDireccion(modo) {
             direccionMode = modo;
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            const origen = document.getElementById('origen');
-            const destino = document.getElementById('destino');
-
             if(modo === 'desdeAero') {
-                origen.value = "Aeropuerto Internacional de Cancún"; origen.readOnly = true;
-                destino.value = ""; destino.placeholder = "¿A qué hotel vas?";
+                document.getElementById('origen').value = "Aeropuerto Internacional de Cancún";
                 document.getElementById('btnDesdeAero').classList.add('active');
             } else if(modo === 'haciaAero') {
-                destino.value = "Aeropuerto Internacional de Cancún"; destino.readOnly = true;
-                origen.value = ""; origen.placeholder = "¿Dónde te recogemos?";
+                document.getElementById('destino').value = "Aeropuerto Internacional de Cancún";
                 document.getElementById('btnHaciaAero').classList.add('active');
             }
         }
 
         function cotizar() {
-            if(!document.getElementById('termsCheck').checked) { alert("Acepta los términos"); return; }
-            const zona = "PLAYA DEL CARMEN"; // Simplificado para este ejemplo
-            const moneda = document.getElementById('moneda').value;
-            const res = document.getElementById('resultados');
-            res.style.display = 'block';
-            res.innerHTML = `<div class="ruta-header">Resultados para tu destino</div>
+            if(!document.getElementById('termsCheck').checked) { alert("Debes aceptar términos."); return; }
+            document.getElementById('resultados').style.display = 'block';
+            document.getElementById('resultados').innerHTML = `
+                <div class="ruta-header">Resultados para tu destino</div>
                 <div class="tarjeta">
                     <div class="tarjeta-img"><img src="https://i.imgur.com/8EOh4DB.png"></div>
-                    <div class="tarjeta-info"><h3>VAN STANDARD</h3><p>Hasta 8 pasajeros</p></div>
-                    <div class="tarjeta-price"><div class="price-current">$1440 ${moneda}</div>
+                    <div class="tarjeta-info"><h3>VAN STANDARD</h3><p>Capacidad: 1-8 Pax</p></div>
+                    <div class="tarjeta-price"><div class="price-current">$1,440 MXN</div>
                     <button class="btn-reservar" onclick="enviarReserva()">RESERVAR</button></div>
                 </div>`;
         }
@@ -325,8 +344,6 @@
         function enviarReserva() {
             const codigo = "LTR-" + Math.floor(1000 + Math.random() * 9000);
             document.getElementById('loadingOverlay').style.display = 'flex';
-            
-            // Simulación de envío
             setTimeout(() => {
                 document.getElementById('loadingOverlay').style.display = 'none';
                 document.getElementById('codigoDisplay').innerText = codigo;
