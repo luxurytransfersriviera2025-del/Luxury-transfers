@@ -67,9 +67,8 @@
         .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
         .nav-links a:hover { color: var(--gold); }
 
-        /* HERO SECTION (TU IMAGEN NUEVA AQUÍ) */
+        /* HERO SECTION (IMAGEN CORREGIDA) */
         .hero {
-            /* IMAGEN ACTUALIZADA CON TU ENLACE DE IMGUR */
             background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://i.imgur.com/3JAl89S.jpeg');
             background-size: cover; background-position: center center;
             height: 100vh;
@@ -118,7 +117,6 @@
             .logo-icon { height: 30px; }
 
             .hero {
-                /* Fondo móvil original */
                 background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg');
                 background-position: center center;
                 height: 100vh;
@@ -259,16 +257,19 @@
         }
 
         /* ==========================================================================
-           3. ESTILOS SERVICIOS + FLOTA
+           3. ESTILOS NUEVOS (SERVICIOS + FLOTA) - AÑADIDOS AL FINAL
            ========================================================================== */
-        /* SECCIÓN SERVICIOS */
+        /* --- SECCIÓN SERVICIOS (MODIFICADO A NEGRO) --- */
         .section-wrapper { padding: 80px 20px; text-align: center; background-color: white; }
         .section-header { text-align: center; margin-bottom: 40px; }
         .section-header h2 { font-family: var(--font-title); font-size: 42px; color: var(--navy-bg); font-weight: 700; margin-bottom: 10px; letter-spacing: -1px; }
         .section-header p { color: #666; font-size: 16px; max-width: 700px; margin: 0 auto; }
 
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .service-card { background-color: var(--navy-bg); border: 1px solid var(--gold); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: all 0.4s ease; position: relative; display: flex; flex-direction: column; }
+        
+        /* CAMBIO DE COLOR AQUÍ */
+        .service-card { background-color: var(--black); border: 1px solid var(--gold); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: all 0.4s ease; position: relative; display: flex; flex-direction: column; }
+        
         .service-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3); border-color: var(--gold-hover); }
         .service-img { height: 220px; width: 100%; object-fit: cover; mask-image: linear-gradient(to bottom, black 70%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%); }
         .service-info { padding: 10px 30px 40px 30px; text-align: center; margin-top: -20px; position: relative; z-index: 2; }
@@ -276,34 +277,156 @@
         .service-title { font-family: var(--font-title); font-size: 26px; color: var(--white); margin-bottom: 15px; font-weight: 700; }
         .service-desc { font-size: 14px; color: #cbd5e1; line-height: 1.6; font-weight: 400; }
 
-        /* SECCIÓN FLOTA (CARRUSEL) */
-        .fleet-section { padding: 80px 20px; background-color: #fafafa; }
-        .slider-container { position: relative; max-width: 800px; margin: 0 auto; overflow: hidden; padding-bottom: 40px; }
-        .slider-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
-        .slider-slide { min-width: 100%; box-sizing: border-box; padding: 10px; }
+        /* --- SECCIÓN FLOTA (CARRUSEL) --- */
+        .fleet-section {
+            padding: 80px 20px;
+            background-color: #fafafa;
+        }
 
-        .vehicle-card-clean { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.08); display: flex; flex-direction: column; height: 100%; border: 1px solid #eee; }
-        .image-container-clean { position: relative; width: 100%; }
-        .vehicle-img-clean { width: 100%; height: 450px; object-fit: cover; border-bottom: 3px solid var(--gold); display: block; }
-        .card-content-clean { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; text-align: center; }
-        .vehicle-name-clean { font-size: 2rem; color: var(--black); margin: 0 0 10px 0; font-weight: 600; font-family: var(--font-title); }
-        .vehicle-desc-clean { font-size: 1.1rem; color: #666; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
-        .vehicle-capacity-clean { display: inline-block; background: var(--light-gray); padding: 8px 20px; border-radius: 50px; font-size: 0.9rem; color: #555; font-weight: 600; margin-bottom: 25px; }
+        .slider-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding-bottom: 40px; 
+        }
 
-        .btn-reservar-clean { display: inline-block; background-color: var(--black); color: var(--white); padding: 15px 0; width: 100%; border-radius: 8px; text-transform: uppercase; font-size: 1rem; font-weight: 500; letter-spacing: 1px; transition: background 0.3s; text-decoration: none; cursor: pointer; border: none; }
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .slider-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        .vehicle-card-clean {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid #eee;
+        }
+
+        .image-container-clean {
+            position: relative;
+            width: 100%;
+        }
+
+        .vehicle-img-clean {
+            width: 100%;
+            height: 450px; /* Altura Desktop */
+            object-fit: cover;
+            border-bottom: 3px solid var(--gold);
+            display: block;
+        }
+
+        .card-content-clean {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .vehicle-name-clean {
+            font-size: 2rem;
+            color: var(--black);
+            margin: 0 0 10px 0;
+            font-weight: 600;
+            font-family: var(--font-title);
+        }
+
+        .vehicle-desc-clean {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .vehicle-capacity-clean {
+            display: inline-block;
+            background: var(--light-gray);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .btn-reservar-clean {
+            display: inline-block;
+            background-color: var(--black);
+            color: var(--white);
+            padding: 15px 0;
+            width: 100%;
+            border-radius: 8px;
+            text-transform: uppercase;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+        }
+
         .btn-reservar-clean:hover { background-color: var(--gold); }
 
-        .slider-btn { position: absolute; top: 45%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.9); color: var(--navy-bg); border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 24px; cursor: pointer; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; display: flex; align-items: center; justify-content: center; }
+        .slider-btn {
+            position: absolute;
+            top: 45%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--navy-bg);
+            border: none;
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            display: flex; align-items: center; justify-content: center;
+        }
         .slider-btn:hover { background: var(--navy-bg); color: var(--gold); }
         .slider-btn.prev { left: 20px; }
         .slider-btn.next { right: 20px; }
 
-        .slider-dots { display: flex; justify-content: center; gap: 10px; position: absolute; bottom: 0; left: 0; width: 100%; }
-        .slider-dot { width: 12px; height: 12px; background: #ccc; border-radius: 50%; cursor: pointer; transition: 0.3s; border: none; padding: 0; }
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+        .slider-dot {
+            width: 12px; height: 12px;
+            background: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+            padding: 0;
+        }
         .slider-dot.active { background: var(--navy-bg); width: 30px; border-radius: 10px; }
 
-        /* FOOTER */
-        footer { background: var(--navy-bg); color: #94a3b8; padding: 40px 20px; text-align: center; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); }
+        /* FOOTER (MODIFICADO A NEGRO Y BLANCO) */
+        footer { 
+            background: var(--black); 
+            color: var(--white); 
+            padding: 40px 20px; text-align: center; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); 
+        }
 
         /* Responsive extra para lo nuevo */
         @media (max-width: 768px) {
