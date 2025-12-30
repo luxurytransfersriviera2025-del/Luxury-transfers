@@ -33,9 +33,8 @@
             --font-title: 'Playfair Display', serif;
             --light-gray: #f4f4f4;
 
-            /* NUEVAS VARIABLES PARA ALTURA DE HEADER */
-            --header-height-desktop: 62px; /* 60px altura + 2px borde */
-            --header-height-mobile: 105px; /* Altura aproximada en móvil */
+            /* Variable dinámica para el menú (se ajusta sola con JS) */
+            --header-height: 60px; 
         }
 
         html {
@@ -56,8 +55,8 @@
             padding: 10px 0;
             position: fixed; width: 100%; top: 0; z-index: 9999;
             border-bottom: 2px solid var(--gold);
-            height: 60px; /* Altura fija para control en desktop */
             display: flex; align-items: center;
+            /* La altura es automática según el contenido */
         }
 
         .nav-container {
@@ -78,10 +77,9 @@
         .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; cursor: pointer; }
         .nav-links a:hover { color: var(--gold); }
 
-        /* --- SOLUCIÓN CORREGIDA PARA EL SCROLL --- */
-        /* Usamos la altura EXACTA del header en desktop */
+        /* SOLUCIÓN PERFECTA: El scroll se detiene EXACTAMENTE donde termina el menú */
         #seccion-calculadora, #servicios, #flota {
-            scroll-margin-top: var(--header-height-desktop);
+            scroll-margin-top: var(--header-height);
         }
 
         /* HERO SECTION */
@@ -123,21 +121,15 @@
             background-color: var(--gold-hover); transform: translateY(-3px); border-color: var(--gold-hover);
         }
 
-        /* MEDIA QUERIES (Versión Móvil) */
+        /* MEDIA QUERIES HERO (Versión Móvil) */
         @media (max-width: 768px) {
-            header { padding: 15px 0; height: auto; /* Altura automática en móvil */ }
+            header { padding: 15px 0; }
             .nav-container { flex-direction: column; gap: 15px; }
             .nav-links { gap: 20px; } 
             .nav-links a { font-size: 0.8rem; }
             
             .logo { font-size: 1.2rem; letter-spacing: 1px; }
             .logo-icon { height: 30px; }
-            
-            /* --- SOLUCIÓN CORREGIDA PARA EL SCROLL MÓVIL --- */
-            /* Usamos la altura aproximada más precisa para móvil */
-            #seccion-calculadora, #servicios, #flota {
-                scroll-margin-top: var(--header-height-mobile);
-            }
 
             .hero {
                 background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg');
@@ -200,7 +192,7 @@
             text-transform: none;
             display: block;
             margin-top: 5px;
-            color: #555; 
+            color: #555; /* Gris, no dorado */
         }
         
         .search-box-container { 
@@ -379,17 +371,17 @@
         .btn-reservar-clean { display: inline-block; background-color: var(--black); color: var(--white); padding: 15px 0; width: 100%; border-radius: 8px; text-transform: uppercase; font-size: 1rem; font-weight: 500; letter-spacing: 1px; transition: background 0.3s; text-decoration: none; cursor: pointer; border: none; }
         .btn-reservar-clean:hover { background-color: var(--gold); }
 
-        /* ESTILOS DEL BOTÓN DEL CARRUSEL */
+        /* ESTILOS DEL BOTÓN DEL CARRUSEL CORREGIDOS */
         .slider-btn { 
             position: absolute; top: 45%; transform: translateY(-50%); 
             background: rgba(255, 255, 255, 0.9); /* Normal: Fondo Blanco */
             color: var(--black); /* Normal: Flecha negra */
             border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 24px; cursor: pointer; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; display: flex; align-items: center; justify-content: center; 
         }
-        /* Hover con fondo negro y flecha blanca */
+        /* CORRECCIÓN HOVER: Fondo negro, flecha BLANCA */
         .slider-btn:hover { 
-            background: var(--black); /* Hover: Fondo negro */
-            color: var(--white); /* Hover: Flecha BLANCA */
+            background: var(--black); 
+            color: var(--white); 
         }
         .slider-btn.prev { left: 20px; }
         .slider-btn.next { right: 20px; }
@@ -752,6 +744,19 @@
     const imgUrlSprinter = "https://i.imgur.com/BffyPRe.png";
     const imgUrlSuburban = "https://i.imgur.com/95X8eqt.png"; 
 
+    // --- SCRIPT NUEVO: AJUSTE AUTOMÁTICO DEL MENÚ (CERO ESPACIOS) ---
+    function adjustScrollMargin() {
+        const header = document.querySelector('header');
+        if(header) {
+            const height = header.offsetHeight; // Mide la altura exacta
+            document.documentElement.style.setProperty('--header-height', height + 'px');
+        }
+    }
+    // Se ejecuta al cargar y al redimensionar la pantalla
+    window.addEventListener('load', adjustScrollMargin);
+    window.addEventListener('resize', adjustScrollMargin);
+    // ---------------------------------------------------------------
+
     // --- DICCIONARIO DE TRADUCCIÓN COMPLETO ---
     const translations = {
         es: {
@@ -925,6 +930,9 @@
 
         // INICIAR CARRUSEL DE LA FLOTA
         initSlider();
+        
+        // Ejecutar ajuste de scroll
+        adjustScrollMargin();
     };
 
     // --- LOGICA DEL CARRUSEL DE FLOTA ---
