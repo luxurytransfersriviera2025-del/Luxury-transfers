@@ -55,7 +55,6 @@
             justify-content: space-between; align-items: center; padding: 0 20px;
         }
 
-        /* LOGO AHORA ES UN LINK (CURSOR POINTER) */
         .logo {
             font-size: 1.4rem; font-weight: 700; text-transform: uppercase;
             letter-spacing: 2px; color: var(--gold); display: flex;
@@ -76,8 +75,12 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            color: white;
+            font-size: 0.85rem;
         }
-        .lang-selector:hover { border-color: var(--gold); }
+        .lang-option { cursor: pointer; font-weight: 400; opacity: 0.6; transition: 0.3s; }
+        .lang-option:hover { opacity: 1; color: var(--gold); }
+        .lang-option.active { font-weight: 800; opacity: 1; color: var(--white); border-bottom: 1px solid var(--gold); }
 
         /* HERO SECTION */
         .hero {
@@ -206,7 +209,6 @@
         
         .direction-tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
         
-        /* BOTONES TABS CORREGIDOS */
         .tab-btn { 
             background: #fff; 
             border: 1px solid #ccc; 
@@ -395,27 +397,33 @@
                 Luxury Transfers
             </a>
             <nav class="nav-links">
-                <a href="#seccion-calculadora" class="nav-link">Cotizar</a>
-                <a href="#servicios" class="nav-link">Servicios</a>
-                <a href="#flota" class="nav-link">Flota</a>
-                <a href="#" class="nav-link lang-selector"><i class="fas fa-globe"></i> ES | EN</a>
+                <a href="#seccion-calculadora" class="nav-link" id="nav-cotizar">Cotizar</a>
+                <a href="#servicios" class="nav-link" id="nav-servicios">Servicios</a>
+                <a href="#flota" class="nav-link" id="nav-flota">Flota</a>
+                <div class="lang-selector">
+                    <i class="fas fa-globe"></i> 
+                    <span class="lang-option active" onclick="setLang('es')">ES</span> | 
+                    <span class="lang-option" onclick="setLang('en')">EN</span>
+                </div>
             </nav>
         </div>
     </header>
 
     <section id="inicio" class="hero">
         <div class="hero-content">
-            <h1>Viaja con Exclusividad<br>en la Riviera Maya</h1>
+            <h1 id="hero-title">Viaja con Exclusividad<br>en la Riviera Maya</h1>
             
-            <p>Es Seguridad, es Confort, es Exclusividad. Es Luxury Transfers Riviera.</p>
+            <p id="hero-subtitle">Es Seguridad, es Confort, es Exclusividad. Es Luxury Transfers Riviera.</p>
             
-            <a href="#seccion-calculadora" class="btn-cta">COTIZAR AHORA</a>
+            <a href="#seccion-calculadora" class="btn-cta" id="hero-btn">COTIZAR AHORA</a>
         </div>
     </section>
 
 
     <section id="seccion-calculadora">
-        <div class="overlay" style="display:none;"></div> <div class="loading-overlay" id="loadingOverlay">
+        <div class="overlay" style="display:none;"></div> 
+
+        <div class="loading-overlay" id="loadingOverlay">
             <div class="spinner"></div>
             <p style="margin-top: 15px; font-weight: 700; color: #333; font-size: 14px;">GENERANDO RESERVA...</p>
         </div>
@@ -481,8 +489,8 @@
 
         <div class="main-container-calc">
             <h1 class="title-calc">
-                <i class="fas fa-map-marker-alt"></i> Reserva tu Transporte Privado
-                <span style="font-size: 18px; font-weight: 400; text-transform: none; display: block; margin-top: 5px;">Cotiza y asegura tu traslado al instante</span>
+                <i class="fas fa-map-marker-alt"></i> <span id="calc-title">Reserva tu Transporte Privado</span>
+                <span id="calc-subtitle" style="font-size: 18px; font-weight: 400; text-transform: none; display: block; margin-top: 5px;">Cotiza y asegura tu traslado al instante</span>
             </h1>
 
             <div class="search-box-container">
@@ -490,8 +498,8 @@
                     
                     <div class="options-bar">
                         <div class="radio-group" id="radioTipoViaje">
-                            <label class="radio-label"><input type="radio" name="tipoViaje" value="SENCILLO" checked onchange="updateTipoServicio('SENCILLO')"> Solo Ida</label>
-                            <label class="radio-label"><input type="radio" name="tipoViaje" value="REDONDO" onchange="updateTipoServicio('REDONDO')"> Ida y Vuelta</label>
+                            <label class="radio-label"><input type="radio" name="tipoViaje" value="SENCILLO" checked onchange="updateTipoServicio('SENCILLO')"> <span id="label-sencillo">Solo Ida</span></label>
+                            <label class="radio-label"><input type="radio" name="tipoViaje" value="REDONDO" onchange="updateTipoServicio('REDONDO')"> <span id="label-redondo">Ida y Vuelta</span></label>
                         </div>
                         <select id="tipoServicio" style="display:none;"><option value="SENCILLO">Sencillo</option><option value="REDONDO">Redondo</option></select>
                         <div style="width: 120px;">
@@ -502,9 +510,9 @@
                     </div>
 
                     <div class="direction-tabs">
-                        <div class="tab-btn active" id="btnDesdeAero" onclick="setDireccion('desdeAero')"><i class="fas fa-plane-arrival"></i> Desde Aeropuerto</div>
-                        <div class="tab-btn" id="btnHaciaAero" onclick="setDireccion('haciaAero')"><i class="fas fa-plane-departure"></i> Hacia Aeropuerto</div>
-                        <div class="tab-btn" id="btnPersonalizado" onclick="setDireccion('personalizado')"><i class="fas fa-map-marked-alt"></i> Personalizado</div>
+                        <div class="tab-btn active" id="btnDesdeAero" onclick="setDireccion('desdeAero')"><i class="fas fa-plane-arrival"></i> <span id="tab-desde">Desde Aeropuerto</span></div>
+                        <div class="tab-btn" id="btnHaciaAero" onclick="setDireccion('haciaAero')"><i class="fas fa-plane-departure"></i> <span id="tab-hacia">Hacia Aeropuerto</span></div>
+                        <div class="tab-btn" id="btnPersonalizado" onclick="setDireccion('personalizado')"><i class="fas fa-map-marked-alt"></i> <span id="tab-perso">Personalizado</span></div>
                     </div>
 
                     <div class="form-grid">
@@ -532,27 +540,27 @@
                             </select>
                         </div>
 
-                        <div class="input-wrapper" style="flex: 0.6;"><label>Fecha</label><input type="date" id="fechaIda"></div>
-                        <div class="input-wrapper" style="flex: 0.4;"><label>Hora</label><input type="time" id="horaIda"></div>
+                        <div class="input-wrapper" style="flex: 0.6;"><label id="label-fecha">Fecha</label><input type="date" id="fechaIda"></div>
+                        <div class="input-wrapper" style="flex: 0.4;"><label id="label-hora">Hora</label><input type="time" id="horaIda"></div>
                         <div class="input-wrapper" id="divFechaVuelta" style="display:none; flex: 0.6;"><label>Fecha Vuelta</label><input type="date" id="fechaVuelta"></div>
                         <div class="input-wrapper" id="divHoraVuelta" style="display:none; flex: 0.4;"><label>Hora</label><input type="time" id="horaVuelta"></div>
 
                         <div class="input-wrapper" style="flex: 0.4;">
-                            <label>Pasajeros</label>
+                            <label id="label-pax">Pasajeros</label>
                             <select id="pasajeros">
                                 <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option>
                             </select>
                         </div>
 
                         <div class="contact-section" id="seccionContacto">
-                            <div class="input-wrapper" style="grid-column: 1 / -1;"><label style="color:var(--action-green); font-weight:900; font-size: 11px;">TUS DATOS DE CONTACTO:</label></div>
-                            <div class="input-wrapper"><label>Nombre Completo</label><input type="text" id="nombreCliente" placeholder="Tu nombre"></div>
-                            <div class="input-wrapper"><label>Teléfono</label><input type="tel" id="telefonoCliente" placeholder="Ej: +52 987 654 3210"></div>
+                            <div class="input-wrapper" style="grid-column: 1 / -1;"><label style="color:var(--action-green); font-weight:900; font-size: 11px;" id="label-contact">TUS DATOS DE CONTACTO:</label></div>
+                            <div class="input-wrapper"><label id="label-nombre">Nombre Completo</label><input type="text" id="nombreCliente" placeholder="Tu nombre"></div>
+                            <div class="input-wrapper"><label id="label-tel">Teléfono</label><input type="tel" id="telefonoCliente" placeholder="Ej: +52 987 654 3210"></div>
                             <div class="input-wrapper"><label>Correo Electrónico</label><input type="email" id="emailCliente" placeholder="correo@ejemplo.com"></div>
 
                             <div id="divVueloInfo" class="flight-fields-container">
-                                <div class="input-wrapper"><label>Aerolínea (Opcional)</label><input type="text" id="aerolinea" placeholder="Ej: Volaris"></div>
-                                <div class="input-wrapper"><label>No. Vuelo (Opcional)</label><input type="text" id="numVuelo" placeholder="Ej: Y4 123"></div>
+                                <div class="input-wrapper"><label id="label-aerolinea">Aerolínea (Opcional)</label><input type="text" id="aerolinea" placeholder="Ej: Volaris"></div>
+                                <div class="input-wrapper"><label id="label-vuelo">No. Vuelo (Opcional)</label><input type="text" id="numVuelo" placeholder="Ej: Y4 123"></div>
                             </div>
 
                             <div class="input-wrapper" id="divItinerario" style="grid-column: 1 / -1; display: none;">
@@ -561,13 +569,13 @@
                             </div>
 
                             <div class="input-wrapper" style="grid-column: 1 / -1;">
-                                <label>Notas / Equipaje / Sillas de Bebé</label>
+                                <label id="label-notas">Notas / Equipaje / Sillas de Bebé</label>
                                 <textarea id="notasCliente" rows="2" placeholder="Ej: Llevamos 4 maletas grandes, necesitamos silla de bebé..."></textarea>
                             </div>
 
                             <div class="terms-container">
                                 <input type="checkbox" id="termsCheck">
-                                <span>He leído y acepto los <span class="terms-link" onclick="abrirTyC()">Términos y Condiciones</span></span>
+                                <span id="label-terms">He leído y acepto los <span class="terms-link" onclick="abrirTyC()">Términos y Condiciones</span></span>
                             </div>
                         </div>
 
@@ -582,8 +590,8 @@
 
     <section id="servicios" class="section-wrapper">
         <div class="section-header">
-            <h2>Nuestros Servicios</h2>
-            <p>Soluciones de transporte exclusivas diseñadas para superar tus expectativas.</p>
+            <h2 id="servicios-title">Nuestros Servicios</h2>
+            <p id="servicios-subtitle">Soluciones de transporte exclusivas diseñadas para superar tus expectativas.</p>
         </div>
         <div class="services-grid">
             <div class="service-card"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=400&fit=crop" class="service-img" alt="Airport"><div class="service-info"><div class="service-icon"><i class="fas fa-plane-departure"></i></div><div class="service-title">Aeropuerto</div><div class="service-desc">Transfer premium desde y hacia los aeropuertos de Cancún, Tulum y Mérida con monitoreo de vuelo.</div></div></div>
@@ -595,8 +603,8 @@
 
     <section id="flota" class="fleet-section">
         <div class="section-header">
-            <h2>Nuestra Flota Premium</h2>
-            <p>Selecciona el vehículo ideal para tu viaje</p>
+            <h2 id="flota-title">Nuestra Flota Premium</h2>
+            <p id="flota-subtitle">Selecciona el vehículo ideal para tu viaje</p>
         </div>
 
         <div class="slider-container">
@@ -689,6 +697,109 @@
     const imgUrlTransporter = "https://i.imgur.com/8EOh4DB.png";
     const imgUrlSprinter = "https://i.imgur.com/BffyPRe.png";
     const imgUrlSuburban = "https://i.imgur.com/95X8eqt.png"; 
+
+    // --- DICCIONARIO DE TRADUCCIÓN ---
+    const translations = {
+        es: {
+            navCotizar: "Cotizar", navServicios: "Servicios", navFlota: "Flota",
+            heroTitle: "Viaja con Exclusividad<br>en la Riviera Maya",
+            heroSubtitle: "Es Seguridad, es Confort, es Exclusividad. Es Luxury Transfers Riviera.",
+            heroBtn: "COTIZAR AHORA",
+            calcTitle: "Reserva tu Transporte Privado",
+            calcSubtitle: "Cotiza y asegura tu traslado al instante",
+            labelSencillo: "Solo Ida", labelRedondo: "Ida y Vuelta",
+            tabDesde: "Desde Aeropuerto", tabHacia: "Hacia Aeropuerto", tabPerso: "Personalizado",
+            labelDestino: "Destino", labelOrigen: "Recogida", labelFecha: "Fecha", labelHora: "Hora", labelPax: "Pasajeros",
+            labelContact: "TUS DATOS DE CONTACTO:", labelNombre: "Nombre Completo", labelTel: "Teléfono",
+            labelAerolinea: "Aerolínea (Opcional)", labelVuelo: "No. Vuelo (Opcional)",
+            labelNotas: "Notas / Equipaje / Sillas de Bebé",
+            labelTerms: 'He leído y acepto los <span class="terms-link" onclick="abrirTyC()">Términos y Condiciones</span>',
+            btnAccion: "Buscar Precios",
+            serviciosTitle: "Nuestros Servicios",
+            serviciosSubtitle: "Soluciones de transporte exclusivas diseñadas para superar tus expectativas.",
+            flotaTitle: "Nuestra Flota Premium",
+            flotaSubtitle: "Selecciona el vehículo ideal para tu viaje"
+        },
+        en: {
+            navCotizar: "Quote", navServicios: "Services", navFlota: "Fleet",
+            heroTitle: "Travel with Exclusivity<br>in the Riviera Maya",
+            heroSubtitle: "It is Security, Comfort, Exclusivity. It is Luxury Transfers Riviera.",
+            heroBtn: "QUOTE NOW",
+            calcTitle: "Book your Private Transport",
+            calcSubtitle: "Quote and secure your transfer instantly",
+            labelSencillo: "One Way", labelRedondo: "Round Trip",
+            tabDesde: "From Airport", tabHacia: "To Airport", tabPerso: "Custom",
+            labelDestino: "Destination", labelOrigen: "Pick-up", labelFecha: "Date", labelHora: "Time", labelPax: "Passengers",
+            labelContact: "YOUR CONTACT DETAILS:", labelNombre: "Full Name", labelTel: "Phone",
+            labelAerolinea: "Airline (Optional)", labelVuelo: "Flight No. (Optional)",
+            labelNotas: "Notes / Luggage / Baby Seats",
+            labelTerms: 'I have read and agree to the <span class="terms-link" onclick="abrirTyC()">Terms & Conditions</span>',
+            btnAccion: "Search Prices",
+            serviciosTitle: "Our Services",
+            serviciosSubtitle: "Exclusive transport solutions designed to exceed your expectations.",
+            flotaTitle: "Our Premium Fleet",
+            flotaSubtitle: "Select the ideal vehicle for your trip"
+        }
+    };
+
+    function setLang(lang) {
+        // Actualizar visual del selector
+        document.querySelectorAll('.lang-option').forEach(el => el.classList.remove('active'));
+        document.querySelector(`.lang-option[onclick="setLang('${lang}')"]`).classList.add('active');
+
+        const t = translations[lang];
+
+        // Header
+        document.getElementById('nav-cotizar').innerText = t.navCotizar;
+        document.getElementById('nav-servicios').innerText = t.navServicios;
+        document.getElementById('nav-flota').innerText = t.navFlota;
+
+        // Hero
+        document.getElementById('hero-title').innerHTML = t.heroTitle;
+        document.getElementById('hero-subtitle').innerText = t.heroSubtitle;
+        document.getElementById('hero-btn').innerText = t.heroBtn;
+
+        // Calculadora
+        document.getElementById('calc-title').innerText = t.calcTitle;
+        document.getElementById('calc-subtitle').innerText = t.calcSubtitle;
+        document.getElementById('label-sencillo').innerText = t.labelSencillo;
+        document.getElementById('label-redondo').innerText = t.labelRedondo;
+        document.getElementById('tab-desde').innerText = t.tabDesde;
+        document.getElementById('tab-hacia').innerText = t.tabHacia;
+        document.getElementById('tab-perso').innerText = t.tabPerso;
+        
+        // Labels form
+        // Nota: para inputs con placeholder, cambiamos el placeholder
+        if(lang === 'en') {
+            document.getElementById('destino').placeholder = "Where are you going?";
+            document.getElementById('origen').placeholder = "Pick-up Location";
+            document.getElementById('nombreCliente').placeholder = "Your Name";
+        } else {
+            document.getElementById('destino').placeholder = "¿A qué hotel vas?";
+            document.getElementById('origen').placeholder = "Lugar de Recogida";
+            document.getElementById('nombreCliente').placeholder = "Tu nombre";
+        }
+
+        document.getElementById('labelDestino').innerText = t.labelDestino;
+        document.getElementById('labelOrigen').innerText = t.labelOrigen;
+        document.getElementById('label-fecha').innerText = t.labelFecha;
+        document.getElementById('label-hora').innerText = t.labelHora;
+        document.getElementById('label-pax').innerText = t.labelPax;
+        document.getElementById('label-contact').innerText = t.labelContact;
+        document.getElementById('label-nombre').innerText = t.labelNombre;
+        document.getElementById('label-tel').innerText = t.labelTel;
+        document.getElementById('label-aerolinea').innerText = t.labelAerolinea;
+        document.getElementById('label-vuelo').innerText = t.labelVuelo;
+        document.getElementById('label-notas').innerText = t.labelNotas;
+        document.getElementById('label-terms').innerHTML = t.labelTerms;
+        document.getElementById('btnAccion').innerText = t.btnAccion;
+
+        // Secciones
+        document.getElementById('servicios-title').innerText = t.serviciosTitle;
+        document.getElementById('servicios-subtitle').innerText = t.serviciosSubtitle;
+        document.getElementById('flota-title').innerText = t.flotaTitle;
+        document.getElementById('flota-subtitle').innerText = t.flotaSubtitle;
+    }
 
     // --- BLOQUEO DE FECHAS PASADAS Y CARGA DEL SLIDER ---
     window.onload = function() {
