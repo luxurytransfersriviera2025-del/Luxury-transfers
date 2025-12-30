@@ -14,7 +14,7 @@
            ========================================================================== */
         :root {
             /* Variables Hero/Header */
-            --gold: #D4AF37;
+            --gold: #D4AF37; /* Tono Café/Dorado */
             --gold-hover: #b5952f;
             --black: #0a0a0a;
             --dark-gray: #222;
@@ -29,7 +29,7 @@
             --bg-light: #f2f2f2; 
 
             /* Variables Servicios/Flota */
-            --navy-bg: #002855;
+            --navy-bg: #002855; /* Azul Oscuro para botones activos */
             --font-title: 'Playfair Display', serif;
             --light-gray: #f4f4f4;
         }
@@ -58,13 +58,13 @@
         .logo {
             font-size: 1.4rem; font-weight: 700; text-transform: uppercase;
             letter-spacing: 2px; color: var(--gold); display: flex;
-            align-items: center; gap: 12px; cursor: pointer;
+            align-items: center; gap: 12px;
         }
 
         .logo-icon { height: 35px; width: auto; }
         
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; cursor: pointer; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
         .nav-links a:hover { color: var(--gold); }
 
         /* HERO SECTION */
@@ -150,7 +150,7 @@
            ========================================================================== */
         #seccion-calculadora { 
             position: relative;
-            background-color: #f4f4f4; 
+            background-color: var(--navy-bg); 
             min-height: 100vh; 
             display: flex; align-items: center; justify-content: center; flex-direction: column; 
             padding: 50px 0;
@@ -171,6 +171,9 @@
             line-height: 1.2;
         }
         
+        /* CORRECCIÓN DE FONDO SECCIÓN: Debe ser claro para que el título azul se vea */
+        #seccion-calculadora { background-color: #f4f4f4; } 
+
         .search-box-container { 
             background-color: transparent; 
             padding: 0; 
@@ -179,21 +182,25 @@
             margin-bottom: 20px; 
         }
         
+        /* AQUI ESTÁ EL BORDE COLOR CAFÉ/DORADO QUE PEDISTE */
         .search-box-inner { 
             background-color: #ffffff; 
             padding: 30px; 
             border-radius: 12px; 
             color: var(--text-dark); 
-            border: 3px solid var(--gold); 
+            border: 3px solid var(--gold); /* Borde color Café/Dorado */
         }
         
         .options-bar { display: flex; justify-content: space-between; margin-bottom: 20px; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 15px; }
         .radio-group { display: flex; gap: 20px; }
+        
         .radio-label { display: flex; align-items: center; cursor: pointer; font-size: 14px; font-weight: 700; color: var(--navy-bg); } 
         .radio-label input { margin-right: 8px; accent-color: var(--navy-bg); width: 18px; height: 18px; }
         
         .direction-tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
         
+        /* CORRECCIÓN DE LOS BOTONES TABS */
+        /* Estado inactivo */
         .tab-btn { 
             background: #fff; 
             border: 1px solid #ccc; 
@@ -206,9 +213,10 @@
             transition: 0.3s; 
             display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center; white-space: nowrap; 
         }
+        /* Estado ACTIVO (CORREGIDO A AZUL MARINO) */
         .tab-btn.active { 
-            background-color: var(--navy-bg) !important; 
-            color: #ffffff !important; 
+            background-color: var(--navy-bg) !important; /* Azul oscuro fuerte */
+            color: #ffffff !important; /* Letras blancas */
             border-color: var(--navy-bg) !important; 
             font-weight: 800; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
@@ -314,7 +322,7 @@
         .section-wrapper { padding: 80px 20px; text-align: center; background-color: white; }
         .section-header { text-align: center; margin-bottom: 40px; }
         
-        /* TITULO SERVICIOS EN AZUL */
+        /* CAMBIO: TITULO SERVICIOS EN AZUL (SOLICITUD) */
         .section-header h2 { font-family: var(--font-title); font-size: 42px; color: var(--primary-blue); font-weight: 700; margin-bottom: 10px; letter-spacing: -1px; }
         
         .section-header p { color: #666; font-size: 16px; max-width: 700px; margin: 0 auto; }
@@ -355,7 +363,7 @@
         .slider-dots { display: flex; justify-content: center; gap: 10px; position: absolute; bottom: 0; left: 0; width: 100%; }
         .slider-dot { width: 12px; height: 12px; background: #ccc; border-radius: 50%; cursor: pointer; transition: 0.3s; border: none; padding: 0; }
         
-        /* BOLITAS DE CARRUSEL EN NEGRO */
+        /* CAMBIO: BOLITAS DE CARRUSEL EN NEGRO (SOLICITUD) */
         .slider-dot.active { background: var(--black); width: 30px; border-radius: 10px; }
 
         /* FOOTER (NEGRO Y BLANCO) */
@@ -377,37 +385,32 @@
 
     <header>
         <div class="nav-container">
-            <a href="#inicio" class="logo">
+            <div class="logo">
                 <img src="https://i.imgur.com/lS3Crlx.png" alt="Icono Luxury" class="logo-icon">
                 Luxury Transfers
-            </a>
+            </div>
             <nav class="nav-links">
-                <a href="#seccion-calculadora" class="nav-link" id="nav-cotizar">Cotizar</a>
-                <a href="#servicios" class="nav-link" id="nav-servicios">Servicios</a>
-                <a href="#flota" class="nav-link" id="nav-flota">Flota</a>
-                
-                <a href="javascript:void(0)" class="nav-link" onclick="toggleLanguage()" id="lang-btn">
-                    <i class="fas fa-globe"></i> Idioma
-                </a>
+                <a href="#inicio">Inicio</a>
+                <a href="#seccion-calculadora">Cotizar</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#flota">Flota</a>
             </nav>
         </div>
     </header>
 
     <section id="inicio" class="hero">
         <div class="hero-content">
-            <h1 id="hero-title">Viaja con Exclusividad<br>en la Riviera Maya</h1>
+            <h1>Viaja con Exclusividad<br>en la Riviera Maya</h1>
             
-            <p id="hero-subtitle">Es Seguridad, es Confort, es Exclusividad. Es Luxury Transfers Riviera.</p>
+            <p>Es Seguridad, es Confort, es Exclusividad. Es Luxury Transfers Riviera.</p>
             
-            <a href="#seccion-calculadora" class="btn-cta" id="hero-btn">COTIZAR AHORA</a>
+            <a href="#seccion-calculadora" class="btn-cta">COTIZAR AHORA</a>
         </div>
     </section>
 
 
     <section id="seccion-calculadora">
-        <div class="overlay" style="display:none;"></div> 
-
-        <div class="loading-overlay" id="loadingOverlay">
+        <div class="overlay" style="display:none;"></div> <div class="loading-overlay" id="loadingOverlay">
             <div class="spinner"></div>
             <p style="margin-top: 15px; font-weight: 700; color: #333; font-size: 14px;">GENERANDO RESERVA...</p>
         </div>
@@ -473,8 +476,8 @@
 
         <div class="main-container-calc">
             <h1 class="title-calc">
-                <i class="fas fa-map-marker-alt"></i> <span id="calc-title">Reserva tu Transporte Privado</span>
-                <span id="calc-subtitle" style="font-size: 18px; font-weight: 400; text-transform: none; display: block; margin-top: 5px;">Cotiza y asegura tu traslado al instante</span>
+                <i class="fas fa-map-marker-alt"></i> Reserva tu Transporte Privado
+                <span style="font-size: 18px; font-weight: 400; text-transform: none; display: block; margin-top: 5px;">Cotiza y asegura tu traslado al instante</span>
             </h1>
 
             <div class="search-box-container">
@@ -482,8 +485,8 @@
                     
                     <div class="options-bar">
                         <div class="radio-group" id="radioTipoViaje">
-                            <label class="radio-label"><input type="radio" name="tipoViaje" value="SENCILLO" checked onchange="updateTipoServicio('SENCILLO')"> <span id="label-sencillo">Solo Ida</span></label>
-                            <label class="radio-label"><input type="radio" name="tipoViaje" value="REDONDO" onchange="updateTipoServicio('REDONDO')"> <span id="label-redondo">Ida y Vuelta</span></label>
+                            <label class="radio-label"><input type="radio" name="tipoViaje" value="SENCILLO" checked onchange="updateTipoServicio('SENCILLO')"> Solo Ida</label>
+                            <label class="radio-label"><input type="radio" name="tipoViaje" value="REDONDO" onchange="updateTipoServicio('REDONDO')"> Ida y Vuelta</label>
                         </div>
                         <select id="tipoServicio" style="display:none;"><option value="SENCILLO">Sencillo</option><option value="REDONDO">Redondo</option></select>
                         <div style="width: 120px;">
@@ -494,9 +497,9 @@
                     </div>
 
                     <div class="direction-tabs">
-                        <div class="tab-btn active" id="btnDesdeAero" onclick="setDireccion('desdeAero')"><i class="fas fa-plane-arrival"></i> <span id="tab-desde">Desde Aeropuerto</span></div>
-                        <div class="tab-btn" id="btnHaciaAero" onclick="setDireccion('haciaAero')"><i class="fas fa-plane-departure"></i> <span id="tab-hacia">Hacia Aeropuerto</span></div>
-                        <div class="tab-btn" id="btnPersonalizado" onclick="setDireccion('personalizado')"><i class="fas fa-map-marked-alt"></i> <span id="tab-perso">Personalizado</span></div>
+                        <div class="tab-btn active" id="btnDesdeAero" onclick="setDireccion('desdeAero')"><i class="fas fa-plane-arrival"></i> Desde Aeropuerto</div>
+                        <div class="tab-btn" id="btnHaciaAero" onclick="setDireccion('haciaAero')"><i class="fas fa-plane-departure"></i> Hacia Aeropuerto</div>
+                        <div class="tab-btn" id="btnPersonalizado" onclick="setDireccion('personalizado')"><i class="fas fa-map-marked-alt"></i> Personalizado</div>
                     </div>
 
                     <div class="form-grid">
@@ -524,27 +527,27 @@
                             </select>
                         </div>
 
-                        <div class="input-wrapper" style="flex: 0.6;"><label id="label-fecha">Fecha</label><input type="date" id="fechaIda"></div>
-                        <div class="input-wrapper" style="flex: 0.4;"><label id="label-hora">Hora</label><input type="time" id="horaIda"></div>
+                        <div class="input-wrapper" style="flex: 0.6;"><label>Fecha</label><input type="date" id="fechaIda"></div>
+                        <div class="input-wrapper" style="flex: 0.4;"><label>Hora</label><input type="time" id="horaIda"></div>
                         <div class="input-wrapper" id="divFechaVuelta" style="display:none; flex: 0.6;"><label>Fecha Vuelta</label><input type="date" id="fechaVuelta"></div>
                         <div class="input-wrapper" id="divHoraVuelta" style="display:none; flex: 0.4;"><label>Hora</label><input type="time" id="horaVuelta"></div>
 
                         <div class="input-wrapper" style="flex: 0.4;">
-                            <label id="label-pax">Pasajeros</label>
+                            <label>Pasajeros</label>
                             <select id="pasajeros">
                                 <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option>
                             </select>
                         </div>
 
                         <div class="contact-section" id="seccionContacto">
-                            <div class="input-wrapper" style="grid-column: 1 / -1;"><label style="color:var(--action-green); font-weight:900; font-size: 11px;" id="label-contact">TUS DATOS DE CONTACTO:</label></div>
-                            <div class="input-wrapper"><label id="label-nombre">Nombre Completo</label><input type="text" id="nombreCliente" placeholder="Tu nombre"></div>
-                            <div class="input-wrapper"><label id="label-tel">Teléfono</label><input type="tel" id="telefonoCliente" placeholder="Ej: +52 987 654 3210"></div>
+                            <div class="input-wrapper" style="grid-column: 1 / -1;"><label style="color:var(--action-green); font-weight:900; font-size: 11px;">TUS DATOS DE CONTACTO:</label></div>
+                            <div class="input-wrapper"><label>Nombre Completo</label><input type="text" id="nombreCliente" placeholder="Tu nombre"></div>
+                            <div class="input-wrapper"><label>Teléfono</label><input type="tel" id="telefonoCliente" placeholder="Ej: +52 987 654 3210"></div>
                             <div class="input-wrapper"><label>Correo Electrónico</label><input type="email" id="emailCliente" placeholder="correo@ejemplo.com"></div>
 
                             <div id="divVueloInfo" class="flight-fields-container">
-                                <div class="input-wrapper"><label id="label-aerolinea">Aerolínea (Opcional)</label><input type="text" id="aerolinea" placeholder="Ej: Volaris"></div>
-                                <div class="input-wrapper"><label id="label-vuelo">No. Vuelo (Opcional)</label><input type="text" id="numVuelo" placeholder="Ej: Y4 123"></div>
+                                <div class="input-wrapper"><label>Aerolínea (Opcional)</label><input type="text" id="aerolinea" placeholder="Ej: Volaris"></div>
+                                <div class="input-wrapper"><label>No. Vuelo (Opcional)</label><input type="text" id="numVuelo" placeholder="Ej: Y4 123"></div>
                             </div>
 
                             <div class="input-wrapper" id="divItinerario" style="grid-column: 1 / -1; display: none;">
@@ -553,13 +556,13 @@
                             </div>
 
                             <div class="input-wrapper" style="grid-column: 1 / -1;">
-                                <label id="label-notas">Notas / Equipaje / Sillas de Bebé</label>
+                                <label>Notas / Equipaje / Sillas de Bebé</label>
                                 <textarea id="notasCliente" rows="2" placeholder="Ej: Llevamos 4 maletas grandes, necesitamos silla de bebé..."></textarea>
                             </div>
 
                             <div class="terms-container">
                                 <input type="checkbox" id="termsCheck">
-                                <span id="label-terms">He leído y acepto los <span class="terms-link" onclick="abrirTyC()">Términos y Condiciones</span></span>
+                                <span>He leído y acepto los <span class="terms-link" onclick="abrirTyC()">Términos y Condiciones</span></span>
                             </div>
                         </div>
 
@@ -574,8 +577,8 @@
 
     <section id="servicios" class="section-wrapper">
         <div class="section-header">
-            <h2 id="servicios-title">Nuestros Servicios</h2>
-            <p id="servicios-subtitle">Soluciones de transporte exclusivas diseñadas para superar tus expectativas.</p>
+            <h2>Nuestros Servicios</h2>
+            <p>Soluciones de transporte exclusivas diseñadas para superar tus expectativas.</p>
         </div>
         <div class="services-grid">
             <div class="service-card"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=400&fit=crop" class="service-img" alt="Airport"><div class="service-info"><div class="service-icon"><i class="fas fa-plane-departure"></i></div><div class="service-title">Aeropuerto</div><div class="service-desc">Transfer premium desde y hacia los aeropuertos de Cancún, Tulum y Mérida con monitoreo de vuelo.</div></div></div>
@@ -587,8 +590,8 @@
 
     <section id="flota" class="fleet-section">
         <div class="section-header">
-            <h2 id="flota-title">Nuestra Flota Premium</h2>
-            <p id="flota-subtitle">Selecciona el vehículo ideal para tu viaje</p>
+            <h2>Nuestra Flota Premium</h2>
+            <p>Selecciona el vehículo ideal para tu viaje</p>
         </div>
 
         <div class="slider-container">
@@ -681,115 +684,6 @@
     const imgUrlTransporter = "https://i.imgur.com/8EOh4DB.png";
     const imgUrlSprinter = "https://i.imgur.com/BffyPRe.png";
     const imgUrlSuburban = "https://i.imgur.com/95X8eqt.png"; 
-
-    // --- DICCIONARIO DE TRADUCCIÓN ---
-    const translations = {
-        es: {
-            navCotizar: "Cotizar", navServicios: "Servicios", navFlota: "Flota",
-            heroTitle: "Viaja con Exclusividad<br>en la Riviera Maya",
-            heroSubtitle: "Es Seguridad, es Confort, es Exclusividad. Es Luxury Transfers Riviera.",
-            heroBtn: "COTIZAR AHORA",
-            calcTitle: "Reserva tu Transporte Privado",
-            calcSubtitle: "Cotiza y asegura tu traslado al instante",
-            labelSencillo: "Solo Ida", labelRedondo: "Ida y Vuelta",
-            tabDesde: "Desde Aeropuerto", tabHacia: "Hacia Aeropuerto", tabPerso: "Personalizado",
-            labelDestino: "Destino", labelOrigen: "Recogida", labelFecha: "Fecha", labelHora: "Hora", labelPax: "Pasajeros",
-            labelContact: "TUS DATOS DE CONTACTO:", labelNombre: "Nombre Completo", labelTel: "Teléfono",
-            labelAerolinea: "Aerolínea (Opcional)", labelVuelo: "No. Vuelo (Opcional)",
-            labelNotas: "Notas / Equipaje / Sillas de Bebé",
-            labelTerms: 'He leído y acepto los <span class="terms-link" onclick="abrirTyC()">Términos y Condiciones</span>',
-            btnAccion: "Buscar Precios",
-            serviciosTitle: "Nuestros Servicios",
-            serviciosSubtitle: "Soluciones de transporte exclusivas diseñadas para superar tus expectativas.",
-            flotaTitle: "Nuestra Flota Premium",
-            flotaSubtitle: "Selecciona el vehículo ideal para tu viaje"
-        },
-        en: {
-            navCotizar: "Quote", navServicios: "Services", navFlota: "Fleet",
-            heroTitle: "Travel with Exclusivity<br>in the Riviera Maya",
-            heroSubtitle: "It is Security, Comfort, Exclusivity. It is Luxury Transfers Riviera.",
-            heroBtn: "QUOTE NOW",
-            calcTitle: "Book your Private Transport",
-            calcSubtitle: "Quote and secure your transfer instantly",
-            labelSencillo: "One Way", labelRedondo: "Round Trip",
-            tabDesde: "From Airport", tabHacia: "To Airport", tabPerso: "Custom",
-            labelDestino: "Destination", labelOrigen: "Pick-up", labelFecha: "Date", labelHora: "Time", labelPax: "Passengers",
-            labelContact: "YOUR CONTACT DETAILS:", labelNombre: "Full Name", labelTel: "Phone",
-            labelAerolinea: "Airline (Optional)", labelVuelo: "Flight No. (Optional)",
-            labelNotas: "Notes / Luggage / Baby Seats",
-            labelTerms: 'I have read and agree to the <span class="terms-link" onclick="abrirTyC()">Terms & Conditions</span>',
-            btnAccion: "Search Prices",
-            serviciosTitle: "Our Services",
-            serviciosSubtitle: "Exclusive transport solutions designed to exceed your expectations.",
-            flotaTitle: "Our Premium Fleet",
-            flotaSubtitle: "Select the ideal vehicle for your trip"
-        }
-    };
-
-    let currentLang = 'es'; // Estado inicial
-
-    function toggleLanguage() {
-        const newLang = currentLang === 'es' ? 'en' : 'es';
-        setLang(newLang);
-    }
-
-    function setLang(lang) {
-        currentLang = lang;
-        const t = translations[lang];
-
-        // Header
-        document.getElementById('nav-cotizar').innerText = t.navCotizar;
-        document.getElementById('nav-servicios').innerText = t.navServicios;
-        document.getElementById('nav-flota').innerText = t.navFlota;
-
-        // BOTON IDIOMA CAMBIA DE NOMBRE (SOLICITUD: IDIOMA vs LANGUAGE)
-        const btnText = lang === 'es' ? '<i class="fas fa-globe"></i> Idioma' : '<i class="fas fa-globe"></i> Language';
-        document.getElementById('lang-btn').innerHTML = btnText;
-
-        // Hero
-        document.getElementById('hero-title').innerHTML = t.heroTitle;
-        document.getElementById('hero-subtitle').innerText = t.heroSubtitle;
-        document.getElementById('hero-btn').innerText = t.heroBtn;
-
-        // Calculadora
-        document.getElementById('calc-title').innerText = t.calcTitle;
-        document.getElementById('calc-subtitle').innerText = t.calcSubtitle;
-        document.getElementById('label-sencillo').innerText = t.labelSencillo;
-        document.getElementById('label-redondo').innerText = t.labelRedondo;
-        document.getElementById('tab-desde').innerText = t.tabDesde;
-        document.getElementById('tab-hacia').innerText = t.tabHacia;
-        document.getElementById('tab-perso').innerText = t.tabPerso;
-        
-        if(lang === 'en') {
-            document.getElementById('destino').placeholder = "Where are you going?";
-            document.getElementById('origen').placeholder = "Pick-up Location";
-            document.getElementById('nombreCliente').placeholder = "Your Name";
-        } else {
-            document.getElementById('destino').placeholder = "¿A qué hotel vas?";
-            document.getElementById('origen').placeholder = "Lugar de Recogida";
-            document.getElementById('nombreCliente').placeholder = "Tu nombre";
-        }
-
-        document.getElementById('labelDestino').innerText = t.labelDestino;
-        document.getElementById('labelOrigen').innerText = t.labelOrigen;
-        document.getElementById('label-fecha').innerText = t.labelFecha;
-        document.getElementById('label-hora').innerText = t.labelHora;
-        document.getElementById('label-pax').innerText = t.labelPax;
-        document.getElementById('label-contact').innerText = t.labelContact;
-        document.getElementById('label-nombre').innerText = t.labelNombre;
-        document.getElementById('label-tel').innerText = t.labelTel;
-        document.getElementById('label-aerolinea').innerText = t.labelAerolinea;
-        document.getElementById('label-vuelo').innerText = t.labelVuelo;
-        document.getElementById('label-notas').innerText = t.labelNotas;
-        document.getElementById('label-terms').innerHTML = t.labelTerms;
-        document.getElementById('btnAccion').innerText = t.btnAccion;
-
-        // Secciones
-        document.getElementById('servicios-title').innerText = t.serviciosTitle;
-        document.getElementById('servicios-subtitle').innerText = t.serviciosSubtitle;
-        document.getElementById('flota-title').innerText = t.flotaTitle;
-        document.getElementById('flota-subtitle').innerText = t.flotaSubtitle;
-    }
 
     // --- BLOQUEO DE FECHAS PASADAS Y CARGA DEL SLIDER ---
     window.onload = function() {
