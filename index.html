@@ -104,9 +104,16 @@
             display: block;
             font-size: 0.85rem;
             text-align: left;
+            transition: 0.3s;
         }
 
-        .dropdown-content a:hover { background-color: var(--navy-bg); color: var(--gold); }
+        /* CAMBIO 1: HOVER MENU IDIOMA (Fondo Blanco, Letras Negras) */
+        .dropdown-content a:hover { 
+            background-color: var(--white); 
+            color: var(--black); 
+            font-weight: 700;
+        }
+        
         .show { display: block; animation: fadeIn 0.3s; }
 
         /* HERO SECTION */
@@ -148,41 +155,44 @@
             background-color: var(--gold-hover); transform: translateY(-3px); border-color: var(--gold-hover);
         }
 
-        /* MEDIA QUERIES (MÓVIL) - CORRECCIÓN HEADER */
+        /* MEDIA QUERIES - CAMBIO 2: HEADER MÓVIL RESTAURADO Y AJUSTADO */
         @media (max-width: 768px) {
             header { 
-                padding: 5px 0; /* Header ultra delgado */
+                padding: 10px 0; /* Padding estándar, no tan delgado */
             }
             .nav-container { 
                 flex-direction: column; 
-                gap: 5px; 
+                gap: 12px; 
             }
+            
+            /* TAMAÑOS RESTAURADOS (Grandes y Legibles) */
             .logo { 
-                font-size: 1rem; 
+                font-size: 1.3rem; /* Tamaño bueno */
                 letter-spacing: 1px; 
             }
             .logo-icon { 
-                height: 25px; 
+                height: 32px; 
             }
             
+            /* AJUSTE PARA QUE QUEPAN EN UNA LÍNEA (2da línea del header) */
             .nav-links { 
-                gap: 8px; 
+                gap: 12px; /* Espacio justo para que entren */
                 flex-wrap: wrap; 
                 justify-content: center; 
                 width: 100%;
+                align-items: center;
             }
             
             .nav-links a { 
-                font-size: 0.75rem; /* Letra un poco más chica para que quepan */
+                font-size: 0.85rem; /* Letra legible, no pequeña */
             }
 
-            /* Botón idioma integrado y pequeño */
+            /* Botón idioma integrado en la línea */
             .dropbtn {
-                padding: 4px 10px;
-                font-size: 0.7rem;
-                border-radius: 12px;
-                border: 1px solid rgba(255,255,255,0.5);
-                margin-left: 5px;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+                border-radius: 15px;
+                margin-left: 5px; /* Pequeña separación */
             }
 
             .hero {
@@ -192,7 +202,7 @@
             }
 
             .hero-content {
-                height: 85vh; width: 100%; margin-top: 80px; padding-bottom: 20px;
+                height: 85vh; width: 100%; margin-top: 110px; padding-bottom: 20px;
                 display: flex; flex-direction: column;
             }
 
@@ -228,7 +238,7 @@
         .main-container-calc { position: relative; z-index: 10; width: 95%; max-width: 1100px; padding: 10px 0; }
         
         .title-calc { 
-            color: var(--gold); /* TÍTULO EN DORADO */
+            color: var(--gold); 
             text-align: center; 
             font-size: 32px; 
             margin-bottom: 10px;
@@ -238,7 +248,6 @@
             line-height: 1.2;
         }
 
-        /* CORRECCIÓN: SUBTÍTULO EN COLOR ORIGINAL (GRIS/NEGRO) */
         #calc-subtitle {
             color: #444; 
             font-size: 18px; 
@@ -368,7 +377,7 @@
         .section-header h2 { 
             font-family: var(--font-title); 
             font-size: 42px; 
-            color: var(--gold); /* TITULO DORADO */
+            color: var(--gold); 
             font-weight: 700; 
             margin-bottom: 10px; 
             letter-spacing: -1px; 
@@ -404,8 +413,29 @@
         .btn-reservar-clean { display: inline-block; background-color: var(--black); color: var(--white); padding: 15px 0; width: 100%; border-radius: 8px; text-transform: uppercase; font-size: 1rem; font-weight: 500; letter-spacing: 1px; transition: background 0.3s; text-decoration: none; cursor: pointer; border: none; }
         .btn-reservar-clean:hover { background-color: var(--gold); }
 
-        .slider-btn { position: absolute; top: 45%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.9); color: var(--navy-bg); border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 24px; cursor: pointer; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; display: flex; align-items: center; justify-content: center; }
-        .slider-btn:hover { background: var(--navy-bg); color: var(--gold); }
+        /* CAMBIO 3: FLECHAS CARRUSEL */
+        .slider-btn { 
+            position: absolute; 
+            top: 45%; 
+            transform: translateY(-50%); 
+            background: var(--white); /* NORMAL: BLANCO */
+            color: var(--black);      /* NORMAL: FLECHA NEGRA */
+            border: none; 
+            width: 60px; height: 60px; 
+            border-radius: 50%; 
+            font-size: 24px; 
+            cursor: pointer; 
+            z-index: 10; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+            transition: 0.3s; 
+            display: flex; align-items: center; justify-content: center; 
+        }
+        
+        .slider-btn:hover { 
+            background: var(--black); /* HOVER: NEGRO */
+            color: var(--white);      /* HOVER: FLECHA BLANCA */
+        }
+        
         .slider-btn.prev { left: 20px; }
         .slider-btn.next { right: 20px; }
 
@@ -743,7 +773,7 @@
             btnCall: "Llama ahora", btnWa: "Confirmar por WhatsApp", btnMail: "Enviar Correo",
             tycTitle: "Términos y Condiciones", tycBtn: "HE LEÍDO Y ACEPTO",
             tycContent: `<p>Al reservar con Luxury Transfers Riviera, aceptas lo siguiente:</p>
-                    <h4>1. Cancelaciones y Reembolsos</h4><ul><li>Cancelaciones con 24 horas de antelación: Reembolso del 100%.</li><li>Cancelaciones con menos de 24 horas: No aplica reembolso (Cargo por No-Show).</li></ul>
+                    <h4>1. Cancellations and Refunds</h4><ul><li>Cancellations 24 hours in advance: 100% Refund.</li><li>Cancellations less than 24 hours: No refund (No-Show Charge).</li></ul>
                     <h4>2. Tiempos de Espera</h4><ul><li><strong>Aeropuerto:</strong> Monitoreamos tu vuelo. El chofer espera hasta 60 min después del aterrizaje.</li><li><strong>Hotel/Airbnb:</strong> Tolerancia máxima de 15 minutos en el lobby.</li></ul>
                     <h4>3. Limpieza y Daños</h4><ul><li>Si un pasajero ensucia el vehículo (vómito, alimentos, arena excesiva) se cobrará una cuota de limpieza de $2,500 MXN.</li></ul>
                     <h4>4. Equipaje y Objetos</h4><ul><li>No nos hacemos responsables por objetos olvidados. Revisa tus pertenencias antes de bajar.</li></ul>
