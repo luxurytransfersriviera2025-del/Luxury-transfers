@@ -34,6 +34,10 @@
             --light-gray: #f4f4f4;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0; padding: 0; color: var(--dark-gray); background-color: var(--white);
@@ -48,11 +52,14 @@
             padding: 10px 0;
             position: fixed; width: 100%; top: 0; z-index: 9999;
             border-bottom: 2px solid var(--gold);
+            height: 60px; /* Altura fija para control */
+            display: flex; align-items: center;
         }
 
         .nav-container {
             max-width: 1200px; margin: 0 auto; display: flex;
             justify-content: space-between; align-items: center; padding: 0 20px;
+            width: 100%;
         }
 
         .logo {
@@ -66,6 +73,11 @@
         .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; cursor: pointer; }
         .nav-links a:hover { color: var(--gold); }
+
+        /* SOLUCIÓN 3: SCROLL MARGIN PARA QUE EL HEADER NO TAPE LOS TÍTULOS */
+        #seccion-calculadora, #servicios, #flota {
+            scroll-margin-top: 90px; /* Ajusta este valor si tu header cambia de altura */
+        }
 
         /* HERO SECTION */
         .hero {
@@ -108,13 +120,18 @@
 
         /* MEDIA QUERIES HERO (Versión Móvil) */
         @media (max-width: 768px) {
-            header { padding: 15px 0; }
+            header { padding: 15px 0; height: auto; }
             .nav-container { flex-direction: column; gap: 15px; }
             .nav-links { gap: 20px; } 
             .nav-links a { font-size: 0.8rem; }
             
             .logo { font-size: 1.2rem; letter-spacing: 1px; }
             .logo-icon { height: 30px; }
+            
+            /* Ajuste de scroll margin para móvil */
+            #seccion-calculadora, #servicios, #flota {
+                scroll-margin-top: 140px; /* Mayor margen en móvil por el header más alto */
+            }
 
             .hero {
                 background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg');
@@ -153,7 +170,6 @@
             background-color: #f4f4f4; 
             min-height: 100vh; 
             display: flex; align-items: center; justify-content: center; flex-direction: column; 
-            /* AJUSTE: Reducido el padding superior para eliminar espacio vacío */
             padding: 30px 0 50px 0;
             z-index: 1;
         }
@@ -162,8 +178,7 @@
         .main-container-calc { position: relative; z-index: 10; width: 95%; max-width: 1100px; padding: 20px 0; }
         
         .title-calc { 
-            /* AJUSTE: Color cambiado a Dorado */
-            color: var(--gold); 
+            color: var(--gold); /* Título principal en Dorado */
             text-align: center; 
             font-size: 32px; 
             margin-bottom: 25px; 
@@ -171,6 +186,16 @@
             letter-spacing: -0.5px; 
             text-transform: uppercase; 
             line-height: 1.2;
+        }
+
+        /* CORRECCIÓN 1: Subtítulo NO dorado */
+        #calc-subtitle {
+            font-size: 18px;
+            font-weight: 400; /* No negrita */
+            text-transform: none;
+            display: block;
+            margin-top: 5px;
+            color: #555; /* Color gris oscuro */
         }
         
         .search-box-container { 
@@ -312,14 +337,11 @@
         /* ==========================================================================
            3. ESTILOS SERVICIOS + FLOTA
            ========================================================================== */
-        /* SECCIÓN SERVICIOS (NEGRO) */
-        /* AJUSTE: Reducido el padding superior */
+        /* SECCIÓN SERVICIOS */
         .section-wrapper { padding: 30px 20px 80px 20px; text-align: center; background-color: white; }
-        /* AJUSTE: Reducido margen */
         .section-header { text-align: center; margin-bottom: 25px; }
         
-        /* TITULO SERVICIOS EN DORADO */
-        /* AJUSTE: Color cambiado a Dorado */
+        /* TÍTULO SERVICIOS EN DORADO */
         .section-header h2 { font-family: var(--font-title); font-size: 42px; color: var(--gold); font-weight: 700; margin-bottom: 10px; letter-spacing: -1px; }
         
         .section-header p { color: #666; font-size: 16px; max-width: 700px; margin: 0 auto; }
@@ -336,7 +358,6 @@
         .service-desc { font-size: 14px; color: #cbd5e1; line-height: 1.6; font-weight: 400; }
 
         /* SECCIÓN FLOTA (CARRUSEL) */
-        /* AJUSTE: Reducido el padding superior */
         .fleet-section { padding: 30px 20px 80px 20px; background-color: #fafafa; }
         .slider-container { position: relative; max-width: 800px; margin: 0 auto; overflow: hidden; padding-bottom: 40px; }
         .slider-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
@@ -353,16 +374,17 @@
         .btn-reservar-clean { display: inline-block; background-color: var(--black); color: var(--white); padding: 15px 0; width: 100%; border-radius: 8px; text-transform: uppercase; font-size: 1rem; font-weight: 500; letter-spacing: 1px; transition: background 0.3s; text-decoration: none; cursor: pointer; border: none; }
         .btn-reservar-clean:hover { background-color: var(--gold); }
 
-        /* AJUSTE: Flechas Carrusel */
+        /* ESTILOS DEL BOTÓN DEL CARRUSEL CORREGIDOS */
         .slider-btn { 
             position: absolute; top: 45%; transform: translateY(-50%); 
             background: rgba(255, 255, 255, 0.9); /* Normal: Fondo Blanco */
             color: var(--black); /* Normal: Flecha negra */
             border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 24px; cursor: pointer; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; display: flex; align-items: center; justify-content: center; 
         }
+        /* CORRECCIÓN 2: Hover con fondo negro y flecha blanca */
         .slider-btn:hover { 
             background: var(--black); /* Hover: Fondo negro */
-            color: var(--black); /* Hover: Flecha negra (tal cual solicitado) */
+            color: var(--white); /* Hover: Flecha BLANCA */
         }
         .slider-btn.prev { left: 20px; }
         .slider-btn.next { right: 20px; }
@@ -489,7 +511,7 @@
         <div class="main-container-calc">
             <h1 class="title-calc">
                 <i class="fas fa-map-marker-alt"></i> <span id="calc-title">Reserva tu Transporte Privado</span>
-                <span id="calc-subtitle" style="font-size: 18px; font-weight: 400; text-transform: none; display: block; margin-top: 5px;">Cotiza y asegura tu traslado al instante</span>
+                <span id="calc-subtitle">Cotiza y asegura tu traslado al instante</span>
             </h1>
 
             <div class="search-box-container">
