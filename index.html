@@ -13,17 +13,22 @@
            1. ESTILOS BASE Y VARIABLES
            ========================================================================== */
         :root {
+            /* Variables Hero/Header */
             --gold: #D4AF37;
             --gold-hover: #b5952f;
             --black: #0a0a0a;
             --dark-gray: #222;
             --white: #fff;
+            
+            /* Variables Calculadora */
             --primary-blue: #003580; 
             --action-green: #00a651; 
             --action-green-hover: #008c44; 
             --highlight-yellow: #febb02; 
             --text-dark: #1a1a1a; 
             --bg-light: #f2f2f2; 
+
+            /* Variables Servicios/Flota */
             --navy-bg: #002855;
             --font-title: 'Playfair Display', serif;
             --light-gray: #f4f4f4;
@@ -43,7 +48,6 @@
             padding: 10px 0;
             position: fixed; width: 100%; top: 0; z-index: 9999;
             border-bottom: 2px solid var(--gold);
-            transition: all 0.3s ease;
         }
 
         .nav-container {
@@ -62,59 +66,6 @@
         .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; cursor: pointer; }
         .nav-links a:hover { color: var(--gold); }
-
-        /* --- ESTILOS DEL DROPDOWN DE IDIOMA --- */
-        .dropdown { position: relative; display: inline-block; }
-        
-        .dropbtn {
-            background-color: transparent;
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.3);
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            display: flex; align-items: center; gap: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
-        }
-        .dropbtn:hover { border-color: var(--gold); color: var(--gold); }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: var(--black);
-            min-width: 120px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
-            z-index: 1;
-            border-radius: 8px;
-            border: 1px solid var(--gold);
-            margin-top: 5px;
-            overflow: hidden;
-        }
-
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            font-size: 0.85rem;
-            text-align: left;
-            transition: 0.3s;
-        }
-
-        /* CAMBIO 1: HOVER MENU IDIOMA (Fondo Blanco, Letras Negras) */
-        .dropdown-content a:hover { 
-            background-color: var(--white); 
-            color: var(--black); 
-            font-weight: 700;
-        }
-        
-        .show { display: block; animation: fadeIn 0.3s; }
 
         /* HERO SECTION */
         .hero {
@@ -155,54 +106,35 @@
             background-color: var(--gold-hover); transform: translateY(-3px); border-color: var(--gold-hover);
         }
 
-        /* MEDIA QUERIES - CAMBIO 2: HEADER MÓVIL RESTAURADO Y AJUSTADO */
+        /* MEDIA QUERIES HERO (Versión Móvil) */
         @media (max-width: 768px) {
-            header { 
-                padding: 10px 0; /* Padding estándar, no tan delgado */
-            }
-            .nav-container { 
-                flex-direction: column; 
-                gap: 12px; 
-            }
+            header { padding: 10px 0; } /* Ajustado padding */
+            .nav-container { flex-direction: column; gap: 10px; } /* Menos espacio entre logo y links */
             
-            /* TAMAÑOS RESTAURADOS (Grandes y Legibles) */
-            .logo { 
-                font-size: 1.3rem; /* Tamaño bueno */
-                letter-spacing: 1px; 
-            }
-            .logo-icon { 
-                height: 32px; 
-            }
-            
-            /* AJUSTE PARA QUE QUEPAN EN UNA LÍNEA (2da línea del header) */
+            /* CORRECCIÓN 2: HEADER MÓVIL (Idioma al lado de Flota) */
             .nav-links { 
-                gap: 12px; /* Espacio justo para que entren */
-                flex-wrap: wrap; 
-                justify-content: center; 
+                gap: 15px; 
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
                 width: 100%;
-                align-items: center;
+            } 
+            .nav-links a { 
+                font-size: 0.75rem; /* Letra ajustada para que quepan los 4 en una linea */
             }
             
-            .nav-links a { 
-                font-size: 0.85rem; /* Letra legible, no pequeña */
-            }
-
-            /* Botón idioma integrado en la línea */
-            .dropbtn {
-                padding: 6px 12px;
-                font-size: 0.8rem;
-                border-radius: 15px;
-                margin-left: 5px; /* Pequeña separación */
-            }
+            .logo { font-size: 1.2rem; letter-spacing: 1px; }
+            .logo-icon { height: 30px; }
 
             .hero {
                 background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg');
+                background-position: center center;
                 height: 100vh;
                 align-items: flex-start;
             }
 
             .hero-content {
-                height: 85vh; width: 100%; margin-top: 110px; padding-bottom: 20px;
+                height: 85vh; width: 100%; margin-top: 100px; padding-bottom: 20px;
                 display: flex; flex-direction: column;
             }
 
@@ -212,51 +144,41 @@
             }
 
             .btn-cta {
-                order: 2; margin-top: 180px; margin-bottom: 0; align-self: center;
+                order: 2; margin-top: 190px; margin-bottom: 0; align-self: center;
                 width: auto; font-size: 0.9rem; padding: 15px 40px;
             }
 
             .hero-content p {
                 order: 3; margin-top: auto; font-size: 1rem; line-height: 1.4;
-                padding: 0 15px 40px 15px; width: 100%; box-sizing: border-box;
+                text-shadow: 0 2px 5px rgba(0,0,0,1); padding: 0 15px; padding-bottom: 40px;
+                width: 100%; box-sizing: border-box; background: none;
             }
         }
 
         /* ==========================================================================
-           2. ESTILOS CALCULADORA
+           2. ESTILOS CALCULADORA (ENCAPSULADA)
            ========================================================================== */
         #seccion-calculadora { 
             position: relative;
             background-color: #f4f4f4; 
             min-height: 100vh; 
             display: flex; align-items: center; justify-content: center; flex-direction: column; 
-            padding: 30px 0;
+            padding: 50px 0;
             z-index: 1;
         }
         
-        .overlay { display: none; }
-        .main-container-calc { position: relative; z-index: 10; width: 95%; max-width: 1100px; padding: 10px 0; }
+        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 53, 128, 0.5); z-index: 1; }
+        .main-container-calc { position: relative; z-index: 10; width: 95%; max-width: 1100px; padding: 20px 0; }
         
         .title-calc { 
-            color: var(--gold); 
+            color: var(--primary-blue); 
             text-align: center; 
             font-size: 32px; 
-            margin-bottom: 10px;
+            margin-bottom: 25px; 
             font-weight: 800; 
             letter-spacing: -0.5px; 
             text-transform: uppercase; 
             line-height: 1.2;
-        }
-
-        #calc-subtitle {
-            color: #444; 
-            font-size: 18px; 
-            font-weight: 500; 
-            text-transform: none; 
-            display: block; 
-            margin-top: 5px;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 0;
         }
         
         .search-box-container { 
@@ -283,24 +205,39 @@
         .direction-tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
         
         .tab-btn { 
-            background: #fff; border: 1px solid #ccc; color: #555; 
-            padding: 12px 20px; border-radius: 50px; cursor: pointer; 
-            font-size: 13px; font-weight: 600; transition: 0.3s; 
+            background: #fff; 
+            border: 1px solid #ccc; 
+            color: #555; 
+            padding: 12px 20px; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            font-size: 13px; 
+            font-weight: 600; 
+            transition: 0.3s; 
             display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center; white-space: nowrap; 
         }
         .tab-btn.active { 
-            background-color: var(--navy-bg) !important; color: #ffffff !important; 
-            border-color: var(--navy-bg) !important; font-weight: 800; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2); transform: translateY(-2px); 
+            background-color: var(--navy-bg) !important; 
+            color: #ffffff !important; 
+            border-color: var(--navy-bg) !important; 
+            font-weight: 800; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+            transform: translateY(-2px); 
         }
         .tab-btn:hover { background: #f0f0f0; }
 
         .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; background: transparent; padding: 0; border: none; }
         
         .input-wrapper { 
-            background: #fff; padding: 10px 15px; 
-            display: flex; flex-direction: column; justify-content: center; 
-            position: relative; border-radius: 8px; border: 1px solid #ccc; transition: 0.2s; 
+            background: #fff; 
+            padding: 10px 15px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            position: relative; 
+            border-radius: 8px; 
+            border: 1px solid #ccc; 
+            transition: 0.2s; 
         }
         .input-wrapper:focus-within { box-shadow: 0 0 0 2px rgba(0, 40, 85, 0.2); border-color: var(--navy-bg); }
         .input-wrapper label { font-size: 11px; color: var(--navy-bg); font-weight: 800; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -368,20 +305,27 @@
         @keyframes slideUp { from {transform: translateY(50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
+        /* Media Queries Calculadora */
+        @media (max-width: 768px) { 
+            .form-grid, .contact-section { grid-template-columns: 1fr; background: transparent; padding: 0; gap: 12px; border: none; } 
+            .input-wrapper { border-radius: 10px !important; box-shadow: 0 2px 5px rgba(0,0,0,0.05); } 
+            .direction-tabs { flex-direction: column; gap: 8px; } 
+            .tab-btn { justify-content: center; padding: 14px; } 
+            .tarjeta { flex-direction: column; text-align: left; padding: 20px; gap: 15px; } 
+            .tarjeta-img { width: 100%; height: 180px; flex: auto; border:none; padding:0; background: #f9f9f9; } 
+            .tarjeta-price { border-left: none; padding-left: 0; border-top: 1px solid #eee; padding-top: 20px; text-align: left; flex-direction: row; align-items: center; justify-content: space-between; flex: auto; } 
+            .btn-reservar { width: auto; padding: 12px 25px; margin-top: 0; }
+        }
+
         /* ==========================================================================
            3. ESTILOS SERVICIOS + FLOTA
            ========================================================================== */
-        .section-wrapper { padding: 40px 20px; text-align: center; background-color: white; }
-        .section-header { text-align: center; margin-bottom: 25px; }
+        /* SECCIÓN SERVICIOS (NEGRO) */
+        .section-wrapper { padding: 80px 20px; text-align: center; background-color: white; }
+        .section-header { text-align: center; margin-bottom: 40px; }
         
-        .section-header h2 { 
-            font-family: var(--font-title); 
-            font-size: 42px; 
-            color: var(--gold); 
-            font-weight: 700; 
-            margin-bottom: 10px; 
-            letter-spacing: -1px; 
-        }
+        /* TITULO SERVICIOS EN AZUL */
+        .section-header h2 { font-family: var(--font-title); font-size: 42px; color: var(--primary-blue); font-weight: 700; margin-bottom: 10px; letter-spacing: -1px; }
         
         .section-header p { color: #666; font-size: 16px; max-width: 700px; margin: 0 auto; }
 
@@ -397,8 +341,11 @@
         .service-desc { font-size: 14px; color: #cbd5e1; line-height: 1.6; font-weight: 400; }
 
         /* SECCIÓN FLOTA (CARRUSEL) */
-        .fleet-section { padding: 40px 20px; background-color: #fafafa; }
-        .slider-container { position: relative; max-width: 800px; margin: 0 auto; overflow: hidden; padding-bottom: 40px; }
+        .fleet-section { padding: 80px 20px; background-color: #fafafa; }
+        
+        /* CORRECCIÓN 1: ANCHO DEL CARRUSEL (De 800px a 1200px para que se vean bien las fotos en Desktop) */
+        .slider-container { position: relative; max-width: 1200px; margin: 0 auto; overflow: hidden; padding-bottom: 40px; }
+        
         .slider-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
         .slider-slide { min-width: 100%; box-sizing: border-box; padding: 10px; }
 
@@ -413,42 +360,29 @@
         .btn-reservar-clean { display: inline-block; background-color: var(--black); color: var(--white); padding: 15px 0; width: 100%; border-radius: 8px; text-transform: uppercase; font-size: 1rem; font-weight: 500; letter-spacing: 1px; transition: background 0.3s; text-decoration: none; cursor: pointer; border: none; }
         .btn-reservar-clean:hover { background-color: var(--gold); }
 
-        /* CAMBIO 3: FLECHAS CARRUSEL */
-        .slider-btn { 
-            position: absolute; 
-            top: 45%; 
-            transform: translateY(-50%); 
-            background: var(--white); /* NORMAL: BLANCO */
-            color: var(--black);      /* NORMAL: FLECHA NEGRA */
-            border: none; 
-            width: 60px; height: 60px; 
-            border-radius: 50%; 
-            font-size: 24px; 
-            cursor: pointer; 
-            z-index: 10; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-            transition: 0.3s; 
-            display: flex; align-items: center; justify-content: center; 
-        }
-        
-        .slider-btn:hover { 
-            background: var(--black); /* HOVER: NEGRO */
-            color: var(--white);      /* HOVER: FLECHA BLANCA */
-        }
-        
+        .slider-btn { position: absolute; top: 45%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.9); color: var(--navy-bg); border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 24px; cursor: pointer; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; display: flex; align-items: center; justify-content: center; }
+        .slider-btn:hover { background: var(--navy-bg); color: var(--gold); }
         .slider-btn.prev { left: 20px; }
         .slider-btn.next { right: 20px; }
 
         .slider-dots { display: flex; justify-content: center; gap: 10px; position: absolute; bottom: 0; left: 0; width: 100%; }
         .slider-dot { width: 12px; height: 12px; background: #ccc; border-radius: 50%; cursor: pointer; transition: 0.3s; border: none; padding: 0; }
         
+        /* BOLITAS DE CARRUSEL EN NEGRO */
         .slider-dot.active { background: var(--black); width: 30px; border-radius: 10px; }
 
-        /* FOOTER */
+        /* FOOTER (NEGRO Y BLANCO) */
         footer { 
             background: var(--black); 
             color: var(--white); 
             padding: 40px 20px; text-align: center; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); 
+        }
+
+        /* Responsive extra para lo nuevo */
+        @media (max-width: 768px) {
+            .vehicle-img-clean { height: 250px; }
+            .slider-btn { width: 40px; height: 40px; font-size: 16px; top: 40%; }
+            .vehicle-name-clean { font-size: 1.6rem; }
         }
     </style>
 </head>
@@ -465,15 +399,9 @@
                 <a href="#servicios" class="nav-link" id="nav-servicios">Servicios</a>
                 <a href="#flota" class="nav-link" id="nav-flota">Flota</a>
                 
-                <div class="dropdown">
-                    <button onclick="toggleLangMenu()" class="dropbtn" id="lang-btn-text">
-                        <i class="fas fa-globe"></i> Idioma <i class="fas fa-chevron-down" style="font-size:0.7em;"></i>
-                    </button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <a href="javascript:void(0)" onclick="selectLang('es')">Español</a>
-                        <a href="javascript:void(0)" onclick="selectLang('en')">English</a>
-                    </div>
-                </div>
+                <a href="javascript:void(0)" class="nav-link" onclick="toggleLanguage()" id="lang-btn">
+                    <i class="fas fa-globe"></i> Idioma
+                </a>
             </nav>
         </div>
     </header>
@@ -482,7 +410,7 @@
         <div class="hero-content">
             <h1 id="hero-title">Viaja con Exclusividad<br>en la Riviera Maya</h1>
             
-            <p id="hero-desc">Es Seguridad, es Confort, es Exclusividad. Es Luxury Transfers Riviera.</p>
+            <p id="hero-subtitle">Es Seguridad, es Confort, es Exclusividad. Es Luxury Transfers Riviera.</p>
             
             <a href="#seccion-calculadora" class="btn-cta" id="hero-btn">COTIZAR AHORA</a>
         </div>
@@ -500,28 +428,58 @@
         <div class="modal-overlay" id="modalTyC">
             <div class="modal-box">
                 <button class="modal-top-close" onclick="cerrarTyC()">Cerrar <i class="fas fa-times"></i></button>
-                <h2 class="modal-title" id="tyc-title">Términos y Condiciones</h2>
-                <div class="tyc-content" id="tyc-text">
+                <h2 class="modal-title" style="font-size: 22px;">Términos y Condiciones</h2>
+                <div class="tyc-content">
                     <p>Al reservar con Luxury Transfers Riviera, aceptas lo siguiente:</p>
                     <h4>1. Cancelaciones y Reembolsos</h4>
-                    <ul><li>Cancelaciones con 24 horas de antelación: Reembolso del 100%.</li></ul>
-                    </div>
-                <button class="btn-reservar" onclick="cerrarTyC()" style="margin-top: 20px;" id="tyc-btn-close">HE LEÍDO Y ACEPTO</button>
+                    <ul>
+                        <li>Cancelaciones con 24 horas de antelación: Reembolso del 100%.</li>
+                        <li>Cancelaciones con menos de 24 horas: No aplica reembolso (Cargo por No-Show).</li>
+                    </ul>
+                    <h4>2. Tiempos de Espera</h4>
+                    <ul>
+                        <li><strong>Aeropuerto:</strong> Monitoreamos tu vuelo. El chofer espera hasta 60 min después del aterrizaje.</li>
+                        <li><strong>Hotel/Airbnb:</strong> Tolerancia máxima de 15 minutos en el lobby.</li>
+                    </ul>
+                    <h4>3. Limpieza y Daños</h4>
+                    <ul><li>Si un pasajero ensucia el vehículo (vómito, alimentos, arena excesiva) se cobrará una cuota de limpieza de $2,500 MXN.</li></ul>
+                    <h4>4. Equipaje y Objetos</h4>
+                    <ul><li>No nos hacemos responsables por objetos olvidados. Revisa tus pertenencias antes de bajar.</li></ul>
+                    <h4 style="color:#d32f2f;">5. Eximición por Tráfico y Fuerza Mayor</h4>
+                    <ul><li>La empresa <strong>NO se hace responsable</strong> por vuelos perdidos o retrasos derivados de: tráfico pesado, accidentes carreteros, manifestaciones, obras viales o condiciones climáticas severas. Sugerimos anticipar su salida.</li></ul>
+                    <h4>6. Fallas Mecánicas</h4>
+                    <ul><li>En el improbable caso de falla mecánica, la empresa se compromete a enviar una unidad de sustitución para completar el traslado. Esto no es motivo de reembolso total.</li></ul>
+                    <h4>7. Vehículos e Imágenes</h4>
+                    <ul><li>Las imágenes mostradas son <strong>ilustrativas y de referencia</strong>. La marca, modelo o color del vehículo puede variar, garantizando siempre la misma categoría.</li></ul>
+                </div>
+                <button class="btn-reservar" onclick="cerrarTyC()" style="margin-top: 20px;">HE LEÍDO Y ACEPTO</button>
             </div>
         </div>
 
         <div class="modal-overlay" id="modalConfirmacion">
             <div class="modal-box">
                 <button class="modal-top-close" onclick="cerrarModal()">Cerrar <i class="fas fa-times"></i></button>
+
                 <div class="modal-icon"><i class="fas fa-check-circle"></i></div>
-                <h2 class="modal-title" id="conf-title">¡Solicitud Recibida!</h2>
-                <p style="margin:0; font-size:11px; color:#888; text-transform: uppercase; font-weight:700; letter-spacing: 1px;" id="conf-code-label">Tu código de referencia es:</p>
+                <h2 class="modal-title" id="modalTitle">¡Solicitud Recibida!</h2>
+                
+                <p style="margin:0; font-size:11px; color:#888; text-transform: uppercase; font-weight:700; letter-spacing: 1px;">Tu código de referencia es:</p>
                 <div id="codigoDisplay" class="codigo-reserva">LTR-????</div>
-                <p class="modal-text" id="conf-msg">Hemos recibido tu solicitud. Un asesor te contactará lo más breve posible para finalizar tu reserva.</p>
+
+                <p class="modal-text" id="modalText">
+                    Hemos recibido tu solicitud. Un asesor te contactará lo más breve posible para finalizar tu reserva.
+                </p>
+
+                <div style="background-color: #fff4e5; border-left: 4px solid #ff9800; padding: 10px; margin-bottom: 20px; text-align: left; font-size: 13px; color: #663c00;">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>IMPORTANTE:</strong><br>
+                    Te hemos enviado un correo con los <strong>detalles de tu solicitud</strong>. <br>
+                    <span style="text-decoration: underline; font-weight: 800;">Por favor revisa tu carpeta de SPAM o "Correo no deseado"</span> si no lo ves en tu bandeja de entrada.
+                </div>
+                
                 <div class="modal-actions">
-                    <a href="tel:+529842411158" class="modal-btn btn-call"><i class="fas fa-phone"></i> <span id="btn-call-txt">Llama ahora</span></a>
-                    <a href="#" target="_blank" class="modal-btn btn-wa" id="btnWhatsapp"><i class="fab fa-whatsapp"></i> <span id="btn-wa-txt">Confirmar por WhatsApp</span></a>
-                    <a href="#" class="modal-btn btn-mail" id="btnMail"><i class="fas fa-envelope"></i> <span id="btn-mail-txt">Enviar Correo</span></a>
+                    <a href="tel:+529842411158" class="modal-btn btn-call"><i class="fas fa-phone"></i> Llama ahora</a>
+                    <a href="#" target="_blank" class="modal-btn btn-wa" id="btnWhatsapp"><i class="fab fa-whatsapp"></i> Confirmar por WhatsApp</a>
+                    <a href="#" class="modal-btn btn-mail" id="btnMail"><i class="fas fa-envelope"></i> Enviar Correo</a>
                 </div>
             </div>
         </div>
@@ -529,7 +487,7 @@
         <div class="main-container-calc">
             <h1 class="title-calc">
                 <i class="fas fa-map-marker-alt"></i> <span id="calc-title">Reserva tu Transporte Privado</span>
-                <span id="calc-subtitle">Cotiza y asegura tu traslado al instante</span>
+                <span id="calc-subtitle" style="font-size: 18px; font-weight: 400; text-transform: none; display: block; margin-top: 5px;">Cotiza y asegura tu traslado al instante</span>
             </h1>
 
             <div class="search-box-container">
@@ -557,11 +515,11 @@
                     <div class="form-grid">
                         
                         <div class="input-wrapper" id="divSubtipoServicio" style="display:none; grid-column: 1 / -1; background-color: #e3f2fd;">
-                            <label style="color: #003580;" id="label-special">Tipo de Servicio Especial:</label>
+                            <label style="color: #003580;">Tipo de Servicio Especial:</label>
                             <select id="subtipoPersonalizado" onchange="ajustarCamposPersonalizados()">
-                                <option value="HOTEL_A_HOTEL" id="opt-hotel">📍 Traslado a Hotel / Airbnb</option>
-                                <option value="TOUR" id="opt-tour">🎢 Traslado a Tours (Parques/Ruinas)</option>
-                                <option value="HORAS" id="opt-horas">⏳ Servicio por Horas (Disposición)</option>
+                                <option value="HOTEL_A_HOTEL">📍 Traslado a Hotel / Airbnb</option>
+                                <option value="TOUR">🎢 Traslado a Tours (Parques/Ruinas)</option>
+                                <option value="HORAS" id="optHoras">⏳ Servicio por Horas (Disposición)</option>
                             </select>
                         </div>
 
@@ -573,7 +531,7 @@
 
                         <div class="input-wrapper" id="divDestinoInput"><label id="labelDestino">Destino</label><input type="text" id="destino" placeholder="¿A qué hotel vas?"></div>
                         <div class="input-wrapper" id="divHorasInput" style="display:none;">
-                            <label id="label-duracion">Duración Requerida</label>
+                            <label>Duración Requerida</label>
                             <select id="horasSeleccionadas">
                                 <option value="2 Horas">2 Horas</option><option value="4 Horas">4 Horas</option><option value="6 Horas">6 Horas</option><option value="8 Horas">8 Horas</option><option value="Mas de 8 Horas">Más de 8 Horas</option>
                             </select>
@@ -581,8 +539,8 @@
 
                         <div class="input-wrapper" style="flex: 0.6;"><label id="label-fecha">Fecha</label><input type="date" id="fechaIda"></div>
                         <div class="input-wrapper" style="flex: 0.4;"><label id="label-hora">Hora</label><input type="time" id="horaIda"></div>
-                        <div class="input-wrapper" id="divFechaVuelta" style="display:none; flex: 0.6;"><label id="label-fecha-vuelta">Fecha Vuelta</label><input type="date" id="fechaVuelta"></div>
-                        <div class="input-wrapper" id="divHoraVuelta" style="display:none; flex: 0.4;"><label id="label-hora-vuelta">Hora</label><input type="time" id="horaVuelta"></div>
+                        <div class="input-wrapper" id="divFechaVuelta" style="display:none; flex: 0.6;"><label>Fecha Vuelta</label><input type="date" id="fechaVuelta"></div>
+                        <div class="input-wrapper" id="divHoraVuelta" style="display:none; flex: 0.4;"><label>Hora</label><input type="time" id="horaVuelta"></div>
 
                         <div class="input-wrapper" style="flex: 0.4;">
                             <label id="label-pax">Pasajeros</label>
@@ -595,7 +553,7 @@
                             <div class="input-wrapper" style="grid-column: 1 / -1;"><label style="color:var(--action-green); font-weight:900; font-size: 11px;" id="label-contact">TUS DATOS DE CONTACTO:</label></div>
                             <div class="input-wrapper"><label id="label-nombre">Nombre Completo</label><input type="text" id="nombreCliente" placeholder="Tu nombre"></div>
                             <div class="input-wrapper"><label id="label-tel">Teléfono</label><input type="tel" id="telefonoCliente" placeholder="Ej: +52 987 654 3210"></div>
-                            <div class="input-wrapper"><label id="label-email">Correo Electrónico</label><input type="email" id="emailCliente" placeholder="correo@ejemplo.com"></div>
+                            <div class="input-wrapper"><label>Correo Electrónico</label><input type="email" id="emailCliente" placeholder="correo@ejemplo.com"></div>
 
                             <div id="divVueloInfo" class="flight-fields-container">
                                 <div class="input-wrapper"><label id="label-aerolinea">Aerolínea (Opcional)</label><input type="text" id="aerolinea" placeholder="Ej: Volaris"></div>
@@ -603,7 +561,7 @@
                             </div>
 
                             <div class="input-wrapper" id="divItinerario" style="grid-column: 1 / -1; display: none;">
-                                <label style="color: #003580;" id="label-itinerario">¿Qué lugares quieres visitar? / Itinerario</label>
+                                <label style="color: #003580;">¿Qué lugares quieres visitar? / Itinerario</label>
                                 <textarea id="itinerarioCliente" rows="2" placeholder="Ej: Ir a Tulum Ruinas, luego un cenote y terminar a comer en..."></textarea>
                             </div>
 
@@ -633,10 +591,10 @@
             <p id="servicios-subtitle">Soluciones de transporte exclusivas diseñadas para superar tus expectativas.</p>
         </div>
         <div class="services-grid">
-            <div class="service-card"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=400&fit=crop" class="service-img" alt="Airport"><div class="service-info"><div class="service-icon"><i class="fas fa-plane-departure"></i></div><div class="service-title" id="serv-1-title">Aeropuerto</div><div class="service-desc" id="serv-1-desc">Transfer premium desde y hacia los aeropuertos de Cancún, Tulum y Mérida con monitoreo de vuelo.</div></div></div>
-            <div class="service-card"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" class="service-img" alt="Hotel"><div class="service-info"><div class="service-icon"><i class="fas fa-building"></i></div><div class="service-title" id="serv-2-title">Hoteles</div><div class="service-desc" id="serv-2-desc">Traslados directos y exclusivos a cualquier hotel, resort o Airbnb en la Riviera Maya.</div></div></div>
-            <div class="service-card"><img src="https://images.unsplash.com/photo-1518638150340-f706e86654de?w=600&h=400&fit=crop" class="service-img" alt="Tours"><div class="service-info"><div class="service-icon"><i class="fas fa-globe-americas"></i></div><div class="service-title" id="serv-3-title">Tours</div><div class="service-desc" id="serv-3-desc">¿Quieres visitar Chichén Itzá o Xcaret? Te llevamos con un servicio privado y flexible.</div></div></div>
-            <div class="service-card"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&h=400&fit=crop" class="service-img" alt="Hourly"><div class="service-info"><div class="service-icon"><i class="fas fa-clock"></i></div><div class="service-title" id="serv-4-title">Por Horas</div><div class="service-desc" id="serv-4-desc">Disponibilidad total del vehículo y chofer por horas para eventos especiales, cenas o reuniones.</div></div></div>
+            <div class="service-card"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=400&fit=crop" class="service-img" alt="Airport"><div class="service-info"><div class="service-icon"><i class="fas fa-plane-departure"></i></div><div class="service-title">Aeropuerto</div><div class="service-desc">Transfer premium desde y hacia los aeropuertos de Cancún, Tulum y Mérida con monitoreo de vuelo.</div></div></div>
+            <div class="service-card"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" class="service-img" alt="Hotel"><div class="service-info"><div class="service-icon"><i class="fas fa-building"></i></div><div class="service-title">Hoteles</div><div class="service-desc">Traslados directos y exclusivos a cualquier hotel, resort o Airbnb en la Riviera Maya.</div></div></div>
+            <div class="service-card"><img src="https://images.unsplash.com/photo-1518638150340-f706e86654de?w=600&h=400&fit=crop" class="service-img" alt="Tours"><div class="service-info"><div class="service-icon"><i class="fas fa-globe-americas"></i></div><div class="service-title">Tours</div><div class="service-desc">¿Quieres visitar Chichén Itzá o Xcaret? Te llevamos con un servicio privado y flexible.</div></div></div>
+            <div class="service-card"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&h=400&fit=crop" class="service-img" alt="Hourly"><div class="service-info"><div class="service-icon"><i class="fas fa-clock"></i></div><div class="service-title">Por Horas</div><div class="service-desc">Disponibilidad total del vehículo y chofer por horas para eventos especiales, cenas o reuniones.</div></div></div>
         </div>
     </section>
 
@@ -655,10 +613,10 @@
                             <img src="https://imgur.com/sVAYDET.jpg" alt="Sedán Ejecutivo" class="vehicle-img-clean">
                         </div>
                         <div class="card-content-clean">
-                            <h3 class="vehicle-name-clean" id="fleet-1-title">Sedán Ejecutivo</h3>
-                            <p class="vehicle-desc-clean" id="fleet-1-desc">Viaja ligero y con total comodidad. Ideal para parejas o viajeros de negocios que buscan un traslado privado y eficiente.</p>
+                            <h3 class="vehicle-name-clean">Sedán Ejecutivo</h3>
+                            <p class="vehicle-desc-clean">Viaja ligero y con total comodidad. Ideal para parejas o viajeros de negocios que buscan un traslado privado y eficiente.</p>
                             <div><span class="vehicle-capacity-clean"><i class="fas fa-user"></i> 1-3 Pax</span></div>
-                            <a href="#seccion-calculadora" class="btn-reservar-clean" id="fleet-btn-1">Cotizar Ahora</a>
+                            <a href="#seccion-calculadora" class="btn-reservar-clean">Cotizar Ahora</a>
                         </div>
                     </div>
                 </div>
@@ -669,10 +627,10 @@
                             <img src="https://imgur.com/3RPB7mA.jpg" alt="Luxury SUV" class="vehicle-img-clean">
                         </div>
                         <div class="card-content-clean">
-                            <h3 class="vehicle-name-clean" id="fleet-2-title">Luxury SUV</h3>
-                            <p class="vehicle-desc-clean" id="fleet-2-desc">Exclusividad y potencia desde tu llegada. El recibimiento perfecto en el aeropuerto para ejecutivos y familias VIP.</p>
+                            <h3 class="vehicle-name-clean">Luxury SUV</h3>
+                            <p class="vehicle-desc-clean">Exclusividad y potencia desde tu llegada. El recibimiento perfecto en el aeropuerto para ejecutivos y familias VIP.</p>
                             <div><span class="vehicle-capacity-clean"><i class="fas fa-star"></i> 1-5 Pax</span></div>
-                            <a href="#seccion-calculadora" class="btn-reservar-clean" id="fleet-btn-2">Cotizar Ahora</a>
+                            <a href="#seccion-calculadora" class="btn-reservar-clean">Cotizar Ahora</a>
                         </div>
                     </div>
                 </div>
@@ -683,10 +641,10 @@
                             <img src="https://imgur.com/QcQgVO9.jpg" alt="Van Ejecutiva" class="vehicle-img-clean">
                         </div>
                         <div class="card-content-clean">
-                            <h3 class="vehicle-name-clean" id="fleet-3-title">Van Ejecutiva</h3>
-                            <p class="vehicle-desc-clean" id="fleet-3-desc">Espacio inteligente y confort total. La opción ideal para familias o grupos de amigos que buscan viajar juntos con seguridad.</p>
+                            <h3 class="vehicle-name-clean">Van Ejecutiva</h3>
+                            <p class="vehicle-desc-clean">Espacio inteligente y confort total. La opción ideal para familias o grupos de amigos que buscan viajar juntos con seguridad.</p>
                             <div><span class="vehicle-capacity-clean"><i class="fas fa-users"></i> 1-8 Pax</span></div>
-                            <a href="#seccion-calculadora" class="btn-reservar-clean" id="fleet-btn-3">Cotizar Ahora</a>
+                            <a href="#seccion-calculadora" class="btn-reservar-clean">Cotizar Ahora</a>
                         </div>
                     </div>
                 </div>
@@ -697,10 +655,10 @@
                             <img src="https://imgur.com/3cMDA8m.jpg" alt="Sprinter" class="vehicle-img-clean">
                         </div>
                         <div class="card-content-clean">
-                            <h3 class="vehicle-name-clean" id="fleet-4-title">Sprinter</h3>
-                            <p class="vehicle-desc-clean" id="fleet-4-desc">Ideal para bodas, eventos o familias numerosas. Viajen todos juntos, seguros y con aire acondicionado de primera.</p>
+                            <h3 class="vehicle-name-clean">Sprinter</h3>
+                            <p class="vehicle-desc-clean">Ideal para bodas, eventos o familias numerosas. Viajen todos juntos, seguros y con aire acondicionado de primera.</p>
                             <div><span class="vehicle-capacity-clean"><i class="fas fa-bus"></i> 1-15 Pax</span></div>
-                            <a href="#seccion-calculadora" class="btn-reservar-clean" id="fleet-btn-4">Cotizar Ahora</a>
+                            <a href="#seccion-calculadora" class="btn-reservar-clean">Cotizar Ahora</a>
                         </div>
                     </div>
                 </div>
@@ -733,128 +691,73 @@
     const imgUrlSprinter = "https://i.imgur.com/BffyPRe.png";
     const imgUrlSuburban = "https://i.imgur.com/95X8eqt.png"; 
 
-    /* --- TRADUCCIONES COMPLETAS (100%) --- */
+    /* --- DICCIONARIO DE TRADUCCIÓN --- */
     const translations = {
         es: {
-            navCotizar: "Cotizar", navServicios: "Servicios", navFlota: "Flota", langBtn: '<i class="fas fa-globe"></i> Idioma <i class="fas fa-chevron-down" style="font-size:0.7em;"></i>',
+            navCotizar: "Cotizar", navServicios: "Servicios", navFlota: "Flota",
             heroTitle: "Viaja con Exclusividad<br>en la Riviera Maya",
-            heroDesc: "Es Seguridad, es Confort, es Exclusividad. Es Luxury Transfers Riviera.",
+            heroSubtitle: "Es Seguridad, es Confort, es Exclusividad. Es Luxury Transfers Riviera.",
             heroBtn: "COTIZAR AHORA",
             calcTitle: "Reserva tu Transporte Privado",
             calcSubtitle: "Cotiza y asegura tu traslado al instante",
             labelSencillo: "Solo Ida", labelRedondo: "Ida y Vuelta",
             tabDesde: "Desde Aeropuerto", tabHacia: "Hacia Aeropuerto", tabPerso: "Personalizado",
-            labelSpecial: "Tipo de Servicio Especial:",
-            optHotel: "📍 Traslado a Hotel / Airbnb", optTour: "🎢 Traslado a Tours (Parques/Ruinas)", optHoras: "⏳ Servicio por Horas (Disposición)",
-            labelDestino: "Destino", labelOrigen: "Recogida", labelFecha: "Fecha", labelHora: "Hora", labelFechaV: "Fecha Vuelta", labelHoraV: "Hora", labelPax: "Pasajeros",
-            labelDuracion: "Duración Requerida",
-            labelContact: "TUS DATOS DE CONTACTO:", labelNombre: "Nombre Completo", labelTel: "Teléfono", labelEmail: "Correo Electrónico",
+            labelDestino: "Destino", labelOrigen: "Recogida", labelFecha: "Fecha", labelHora: "Hora", labelPax: "Pasajeros",
+            labelContact: "TUS DATOS DE CONTACTO:", labelNombre: "Nombre Completo", labelTel: "Teléfono",
             labelAerolinea: "Aerolínea (Opcional)", labelVuelo: "No. Vuelo (Opcional)",
-            labelItinerario: "¿Qué lugares quieres visitar? / Itinerario",
             labelNotas: "Notas / Equipaje / Sillas de Bebé",
             labelTerms: 'He leído y acepto los <span class="terms-link" onclick="abrirTyC()">Términos y Condiciones</span>',
             btnAccion: "Buscar Precios",
             serviciosTitle: "Nuestros Servicios",
             serviciosSubtitle: "Soluciones de transporte exclusivas diseñadas para superar tus expectativas.",
-            serv1Title: "Aeropuerto", serv1Desc: "Transfer premium desde y hacia los aeropuertos de Cancún, Tulum y Mérida con monitoreo de vuelo.",
-            serv2Title: "Hoteles", serv2Desc: "Traslados directos y exclusivos a cualquier hotel, resort o Airbnb en la Riviera Maya.",
-            serv3Title: "Tours", serv3Desc: "¿Quieres visitar Chichén Itzá o Xcaret? Te llevamos con un servicio privado y flexible.",
-            serv4Title: "Por Horas", serv4Desc: "Disponibilidad total del vehículo y chofer por horas para eventos especiales, cenas o reuniones.",
             flotaTitle: "Nuestra Flota Premium",
-            flotaSubtitle: "Selecciona el vehículo ideal para tu viaje",
-            fleet1Title: "Sedán Ejecutivo", fleet1Desc: "Viaja ligero y con total comodidad. Ideal para parejas o viajeros de negocios que buscan un traslado privado y eficiente.",
-            fleet2Title: "Luxury SUV", fleet2Desc: "Exclusividad y potencia desde tu llegada. El recibimiento perfecto en el aeropuerto para ejecutivos y familias VIP.",
-            fleet3Title: "Van Ejecutiva", fleet3Desc: "Espacio inteligente y confort total. La opción ideal para familias o grupos de amigos que buscan viajar juntos con seguridad.",
-            fleet4Title: "Sprinter", fleet4Desc: "Ideal para bodas, eventos o familias numerosas. Viajen todos juntos, seguros y con aire acondicionado de primera.",
-            fleetBtn: "Cotizar Ahora",
-            footerText: "<p>&copy; 2025 Luxury Transfers Riviera. Todos los derechos reservados.</p>",
-            phDestino: "¿A qué hotel vas?", phOrigen: "Lugar de Recogida", phNombre: "Tu nombre", phEmail: "correo@ejemplo.com", phItin: "Ej: Ir a Tulum Ruinas...", phNotas: "Ej: Llevamos 4 maletas...",
-            modalConfTitle: "¡Solicitud Recibida!", modalConfCode: "Tu código de referencia es:", modalConfMsg: "Hemos recibido tu solicitud. Un asesor te contactará lo más breve posible para finalizar tu reserva.",
-            btnCall: "Llama ahora", btnWa: "Confirmar por WhatsApp", btnMail: "Enviar Correo",
-            tycTitle: "Términos y Condiciones", tycBtn: "HE LEÍDO Y ACEPTO",
-            tycContent: `<p>Al reservar con Luxury Transfers Riviera, aceptas lo siguiente:</p>
-                    <h4>1. Cancellations and Refunds</h4><ul><li>Cancellations 24 hours in advance: 100% Refund.</li><li>Cancellations less than 24 hours: No refund (No-Show Charge).</li></ul>
-                    <h4>2. Tiempos de Espera</h4><ul><li><strong>Aeropuerto:</strong> Monitoreamos tu vuelo. El chofer espera hasta 60 min después del aterrizaje.</li><li><strong>Hotel/Airbnb:</strong> Tolerancia máxima de 15 minutos en el lobby.</li></ul>
-                    <h4>3. Limpieza y Daños</h4><ul><li>Si un pasajero ensucia el vehículo (vómito, alimentos, arena excesiva) se cobrará una cuota de limpieza de $2,500 MXN.</li></ul>
-                    <h4>4. Equipaje y Objetos</h4><ul><li>No nos hacemos responsables por objetos olvidados. Revisa tus pertenencias antes de bajar.</li></ul>
-                    <h4 style="color:#d32f2f;">5. Eximición por Tráfico y Fuerza Mayor</h4><ul><li>La empresa <strong>NO se hace responsable</strong> por vuelos perdidos o retrasos derivados de: tráfico pesado, accidentes carreteros, manifestaciones, obras viales o condiciones climáticas severas. Sugerimos anticipar su salida.</li></ul>`
+            flotaSubtitle: "Selecciona el vehículo ideal para tu viaje"
         },
         en: {
-            navCotizar: "Quote", navServicios: "Services", navFlota: "Fleet", langBtn: '<i class="fas fa-globe"></i> Language <i class="fas fa-chevron-down" style="font-size:0.7em;"></i>',
+            navCotizar: "Quote", navServicios: "Services", navFlota: "Fleet",
             heroTitle: "Travel with Exclusivity<br>in the Riviera Maya",
-            heroDesc: "It is Security, Comfort, Exclusivity. It is Luxury Transfers Riviera.",
+            heroSubtitle: "It is Security, Comfort, Exclusivity. It is Luxury Transfers Riviera.",
             heroBtn: "QUOTE NOW",
             calcTitle: "Book your Private Transport",
             calcSubtitle: "Quote and secure your transfer instantly",
             labelSencillo: "One Way", labelRedondo: "Round Trip",
             tabDesde: "From Airport", tabHacia: "To Airport", tabPerso: "Custom",
-            labelSpecial: "Special Service Type:",
-            optHotel: "📍 Transfer to Hotel / Airbnb", optTour: "🎢 Transfer to Tours (Parks/Ruins)", optHoras: "⏳ Hourly Service (At Disposal)",
-            labelDestino: "Destination", labelOrigen: "Pick-up", labelFecha: "Date", labelHora: "Time", labelFechaV: "Return Date", labelHoraV: "Time", labelPax: "Passengers",
-            labelDuracion: "Duration Required",
-            labelContact: "YOUR CONTACT DETAILS:", labelNombre: "Full Name", labelTel: "Phone", labelEmail: "Email Address",
+            labelDestino: "Destination", labelOrigen: "Pick-up", labelFecha: "Date", labelHora: "Time", labelPax: "Passengers",
+            labelContact: "YOUR CONTACT DETAILS:", labelNombre: "Full Name", labelTel: "Phone",
             labelAerolinea: "Airline (Optional)", labelVuelo: "Flight No. (Optional)",
-            labelItinerario: "Where do you want to visit? / Itinerary",
             labelNotas: "Notes / Luggage / Baby Seats",
             labelTerms: 'I have read and agree to the <span class="terms-link" onclick="abrirTyC()">Terms & Conditions</span>',
             btnAccion: "Search Prices",
             serviciosTitle: "Our Services",
             serviciosSubtitle: "Exclusive transport solutions designed to exceed your expectations.",
-            serv1Title: "Airport", serv1Desc: "Premium transfer to and from Cancun, Tulum and Merida airports with flight monitoring.",
-            serv2Title: "Hotels", serv2Desc: "Direct and exclusive transfers to any hotel, resort or Airbnb in the Riviera Maya.",
-            serv3Title: "Tours", serv3Desc: "Want to visit Chichen Itza or Xcaret? We take you with a private and flexible service.",
-            serv4Title: "Hourly", serv4Desc: "Total availability of vehicle and chauffeur by the hour for special events, dinners or meetings.",
             flotaTitle: "Our Premium Fleet",
-            flotaSubtitle: "Select the ideal vehicle for your trip",
-            fleet1Title: "Executive Sedan", fleet1Desc: "Travel light and with total comfort. Ideal for couples or business travelers looking for an efficient private transfer.",
-            fleet2Title: "Luxury SUV", fleet2Desc: "Exclusivity and power upon arrival. The perfect airport welcome for VIP executives and families.",
-            fleet3Title: "Executive Van", fleet3Desc: "Smart space and total comfort. The ideal option for families or groups of friends looking to travel together safely.",
-            fleet4Title: "Sprinter", fleet4Desc: "Ideal for weddings, events or large families. Travel all together, safe and with premium air conditioning.",
-            fleetBtn: "Quote Now",
-            footerText: "<p>&copy; 2025 Luxury Transfers Riviera. All rights reserved.</p>",
-            phDestino: "Where are you going?", phOrigen: "Pick-up Location", phNombre: "Your Name", phEmail: "email@example.com", phItin: "Ex: Go to Tulum Ruins...", phNotas: "Ex: We have 4 large bags...",
-            modalConfTitle: "Request Received!", modalConfCode: "Your reference code is:", modalConfMsg: "We have received your request. An advisor will contact you shortly to finalize your reservation.",
-            btnCall: "Call Now", btnWa: "Confirm via WhatsApp", btnMail: "Send Email",
-            tycTitle: "Terms & Conditions", tycBtn: "I HAVE READ AND AGREE",
-            tycContent: `<p>By booking with Luxury Transfers Riviera, you agree to the following:</p>
-                    <h4>1. Cancellations and Refunds</h4><ul><li>Cancellations 24 hours in advance: 100% Refund.</li><li>Cancellations less than 24 hours: No refund (No-Show Charge).</li></ul>
-                    <h4>2. Waiting Times</h4><ul><li><strong>Airport:</strong> We monitor your flight. Driver waits up to 60 mins after landing.</li><li><strong>Hotel/Airbnb:</strong> Max tolerance of 15 minutes at lobby.</li></ul>
-                    <h4>3. Cleaning and Damages</h4><ul><li>If a passenger soils the vehicle (vomit, food, excessive sand) a cleaning fee of $2,500 MXN will apply.</li></ul>
-                    <h4>4. Luggage and Items</h4><ul><li>We are not responsible for forgotten items. Check your belongings before leaving.</li></ul>
-                    <h4 style="color:#d32f2f;">5. Traffic and Force Majeure</h4><ul><li>The company is <strong>NOT responsible</strong> for missed flights or delays due to: heavy traffic, road accidents, protests, road works or severe weather. We suggest departing early.</li></ul>`
+            flotaSubtitle: "Select the ideal vehicle for your trip"
         }
     };
 
-    let currentLang = 'es';
+    let currentLang = 'es'; // Estado inicial
 
-    function toggleLangMenu() {
-        document.getElementById("myDropdown").classList.toggle("show");
+    function toggleLanguage() {
+        const newLang = currentLang === 'es' ? 'en' : 'es';
+        setLang(newLang);
     }
 
-    // Cierra el menú si se da clic fuera
-    window.onclick = function(event) {
-      if (!event.target.matches('.dropbtn') && !event.target.closest('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        for (var i = 0; i < dropdowns.length; i++) {
-          var openDropdown = dropdowns[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
-        }
-      }
-    }
-
-    function selectLang(lang) {
+    function setLang(lang) {
         currentLang = lang;
         const t = translations[lang];
 
-        // Header & Hero
+        // Header
         document.getElementById('nav-cotizar').innerText = t.navCotizar;
         document.getElementById('nav-servicios').innerText = t.navServicios;
         document.getElementById('nav-flota').innerText = t.navFlota;
-        document.getElementById('lang-btn-text').innerHTML = t.langBtn; // Actualiza botón menú
+
+        // BOTON IDIOMA CAMBIA DE NOMBRE (SOLICITUD: IDIOMA vs LANGUAGE)
+        const btnText = lang === 'es' ? '<i class="fas fa-globe"></i> Idioma' : '<i class="fas fa-globe"></i> Language';
+        document.getElementById('lang-btn').innerHTML = btnText;
+
+        // Hero
         document.getElementById('hero-title').innerHTML = t.heroTitle;
-        document.getElementById('hero-desc').innerText = t.heroDesc;
+        document.getElementById('hero-subtitle').innerText = t.heroSubtitle;
         document.getElementById('hero-btn').innerText = t.heroBtn;
 
         // Calculadora
@@ -865,83 +768,39 @@
         document.getElementById('tab-desde').innerText = t.tabDesde;
         document.getElementById('tab-hacia').innerText = t.tabHacia;
         document.getElementById('tab-perso').innerText = t.tabPerso;
-        document.getElementById('label-special').innerText = t.labelSpecial;
-        document.getElementById('opt-hotel').innerText = t.optHotel;
-        document.getElementById('opt-tour').innerText = t.optTour;
-        document.getElementById('opt-horas').innerText = t.optHoras;
         
+        if(lang === 'en') {
+            document.getElementById('destino').placeholder = "Where are you going?";
+            document.getElementById('origen').placeholder = "Pick-up Location";
+            document.getElementById('nombreCliente').placeholder = "Your Name";
+        } else {
+            document.getElementById('destino').placeholder = "¿A qué hotel vas?";
+            document.getElementById('origen').placeholder = "Lugar de Recogida";
+            document.getElementById('nombreCliente').placeholder = "Tu nombre";
+        }
+
         document.getElementById('labelDestino').innerText = t.labelDestino;
         document.getElementById('labelOrigen').innerText = t.labelOrigen;
         document.getElementById('label-fecha').innerText = t.labelFecha;
         document.getElementById('label-hora').innerText = t.labelHora;
-        document.getElementById('label-fecha-vuelta').innerText = t.labelFechaV;
-        document.getElementById('label-hora-vuelta').innerText = t.labelHoraV;
         document.getElementById('label-pax').innerText = t.labelPax;
-        document.getElementById('label-duracion').innerText = t.labelDuracion;
         document.getElementById('label-contact').innerText = t.labelContact;
         document.getElementById('label-nombre').innerText = t.labelNombre;
         document.getElementById('label-tel').innerText = t.labelTel;
-        document.getElementById('label-email').innerText = t.labelEmail;
         document.getElementById('label-aerolinea').innerText = t.labelAerolinea;
         document.getElementById('label-vuelo').innerText = t.labelVuelo;
-        document.getElementById('label-itinerario').innerText = t.labelItinerario;
         document.getElementById('label-notas').innerText = t.labelNotas;
         document.getElementById('label-terms').innerHTML = t.labelTerms;
         document.getElementById('btnAccion').innerText = t.btnAccion;
 
-        // Placeholders
-        document.getElementById('destino').placeholder = t.phDestino;
-        document.getElementById('origen').placeholder = t.phOrigen;
-        document.getElementById('nombreCliente').placeholder = t.phNombre;
-        document.getElementById('emailCliente').placeholder = t.phEmail;
-        document.getElementById('itinerarioCliente').placeholder = t.phItin;
-        document.getElementById('notasCliente').placeholder = t.phNotas;
-
-        // Servicios
+        // Secciones
         document.getElementById('servicios-title').innerText = t.serviciosTitle;
         document.getElementById('servicios-subtitle').innerText = t.serviciosSubtitle;
-        document.getElementById('serv-1-title').innerText = t.serv1Title;
-        document.getElementById('serv-1-desc').innerText = t.serv1Desc;
-        document.getElementById('serv-2-title').innerText = t.serv2Title;
-        document.getElementById('serv-2-desc').innerText = t.serv2Desc;
-        document.getElementById('serv-3-title').innerText = t.serv3Title;
-        document.getElementById('serv-3-desc').innerText = t.serv3Desc;
-        document.getElementById('serv-4-title').innerText = t.serv4Title;
-        document.getElementById('serv-4-desc').innerText = t.serv4Desc;
-
-        // Flota
         document.getElementById('flota-title').innerText = t.flotaTitle;
         document.getElementById('flota-subtitle').innerText = t.flotaSubtitle;
-        document.getElementById('fleet-1-title').innerText = t.fleet1Title;
-        document.getElementById('fleet-1-desc').innerText = t.fleet1Desc;
-        document.getElementById('fleet-2-title').innerText = t.fleet2Title;
-        document.getElementById('fleet-2-desc').innerText = t.fleet2Desc;
-        document.getElementById('fleet-3-title').innerText = t.fleet3Title;
-        document.getElementById('fleet-3-desc').innerText = t.fleet3Desc;
-        document.getElementById('fleet-4-title').innerText = t.fleet4Title;
-        document.getElementById('fleet-4-desc').innerText = t.fleet4Desc;
-        document.getElementById('fleet-btn-1').innerText = t.fleetBtn;
-        document.getElementById('fleet-btn-2').innerText = t.fleetBtn;
-        document.getElementById('fleet-btn-3').innerText = t.fleetBtn;
-        document.getElementById('fleet-btn-4').innerText = t.fleetBtn;
-
-        // Footer & Modals
-        document.getElementById('footer-text').innerHTML = t.footerText;
-        document.getElementById('conf-title').innerText = t.modalConfTitle;
-        document.getElementById('conf-code-label').innerText = t.modalConfCode;
-        document.getElementById('conf-msg').innerText = t.modalConfMsg;
-        document.getElementById('btn-call-txt').innerText = t.btnCall;
-        document.getElementById('btn-wa-txt').innerText = t.btnWa;
-        document.getElementById('btn-mail-txt').innerText = t.btnMail;
-        document.getElementById('tyc-title').innerText = t.tycTitle;
-        document.getElementById('tyc-text').innerHTML = t.tycContent;
-        document.getElementById('tyc-btn-close').innerText = t.tycBtn;
-
-        // Cierra el menu
-        document.getElementById("myDropdown").classList.remove("show");
     }
 
-    // --- BLOQUEO DE FECHAS Y CARGA ---
+    // --- BLOQUEO DE FECHAS PASADAS Y CARGA DEL SLIDER ---
     window.onload = function() {
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('fechaIda').setAttribute('min', today);
@@ -949,9 +808,12 @@
         document.getElementById('fechaIda').addEventListener('change', function() {
             document.getElementById('fechaVuelta').setAttribute('min', this.value);
         });
+
+        // INICIAR CARRUSEL DE LA FLOTA
         initSlider();
     };
 
+    // --- LOGICA DEL CARRUSEL DE FLOTA ---
     function initSlider() {
         const track = document.querySelector('.slider-track');
         const slides = Array.from(document.querySelectorAll('.slider-slide'));
@@ -961,25 +823,43 @@
         let currentIndex = 0;
 
         function updateSlider() {
+            // Mover el track
             const width = slides[0].getBoundingClientRect().width;
             track.style.transform = `translateX(-${width * currentIndex}px)`;
+            
+            // Actualizar dots
             dots.forEach(d => d.classList.remove('active'));
             dots[currentIndex].classList.add('active');
         }
 
         nextBtn.addEventListener('click', () => {
-            if (currentIndex < slides.length - 1) { currentIndex++; updateSlider(); }
-            else { currentIndex = 0; updateSlider(); }
+            if (currentIndex < slides.length - 1) {
+                currentIndex++;
+                updateSlider();
+            } else {
+                currentIndex = 0; // Loop al inicio
+                updateSlider();
+            }
         });
 
         prevBtn.addEventListener('click', () => {
-            if (currentIndex > 0) { currentIndex--; updateSlider(); }
-            else { currentIndex = slides.length - 1; updateSlider(); }
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            } else {
+                currentIndex = slides.length - 1; // Loop al final
+                updateSlider();
+            }
         });
 
         dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => { currentIndex = index; updateSlider(); });
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                updateSlider();
+            });
         });
+
+        // Responsive resize fix
         window.addEventListener('resize', updateSlider);
     }
 
