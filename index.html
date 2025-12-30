@@ -32,6 +32,10 @@
             --navy-bg: #002855;
             --font-title: 'Playfair Display', serif;
             --light-gray: #f4f4f4;
+
+            /* NUEVAS VARIABLES PARA ALTURA DE HEADER */
+            --header-height-desktop: 62px; /* 60px altura + 2px borde */
+            --header-height-mobile: 105px; /* Altura aproximada en móvil */
         }
 
         html {
@@ -52,7 +56,7 @@
             padding: 10px 0;
             position: fixed; width: 100%; top: 0; z-index: 9999;
             border-bottom: 2px solid var(--gold);
-            height: 60px; /* Altura fija para control */
+            height: 60px; /* Altura fija para control en desktop */
             display: flex; align-items: center;
         }
 
@@ -74,9 +78,10 @@
         .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; cursor: pointer; }
         .nav-links a:hover { color: var(--gold); }
 
-        /* SOLUCIÓN 3: SCROLL MARGIN PARA QUE EL HEADER NO TAPE LOS TÍTULOS */
+        /* --- SOLUCIÓN CORREGIDA PARA EL SCROLL --- */
+        /* Usamos la altura EXACTA del header en desktop */
         #seccion-calculadora, #servicios, #flota {
-            scroll-margin-top: 90px; /* Ajusta este valor si tu header cambia de altura */
+            scroll-margin-top: var(--header-height-desktop);
         }
 
         /* HERO SECTION */
@@ -118,9 +123,9 @@
             background-color: var(--gold-hover); transform: translateY(-3px); border-color: var(--gold-hover);
         }
 
-        /* MEDIA QUERIES HERO (Versión Móvil) */
+        /* MEDIA QUERIES (Versión Móvil) */
         @media (max-width: 768px) {
-            header { padding: 15px 0; height: auto; }
+            header { padding: 15px 0; height: auto; /* Altura automática en móvil */ }
             .nav-container { flex-direction: column; gap: 15px; }
             .nav-links { gap: 20px; } 
             .nav-links a { font-size: 0.8rem; }
@@ -128,9 +133,10 @@
             .logo { font-size: 1.2rem; letter-spacing: 1px; }
             .logo-icon { height: 30px; }
             
-            /* Ajuste de scroll margin para móvil */
+            /* --- SOLUCIÓN CORREGIDA PARA EL SCROLL MÓVIL --- */
+            /* Usamos la altura aproximada más precisa para móvil */
             #seccion-calculadora, #servicios, #flota {
-                scroll-margin-top: 140px; /* Mayor margen en móvil por el header más alto */
+                scroll-margin-top: var(--header-height-mobile);
             }
 
             .hero {
@@ -178,7 +184,7 @@
         .main-container-calc { position: relative; z-index: 10; width: 95%; max-width: 1100px; padding: 20px 0; }
         
         .title-calc { 
-            color: var(--gold); /* Título principal en Dorado */
+            color: var(--gold); 
             text-align: center; 
             font-size: 32px; 
             margin-bottom: 25px; 
@@ -188,14 +194,13 @@
             line-height: 1.2;
         }
 
-        /* CORRECCIÓN 1: Subtítulo NO dorado */
         #calc-subtitle {
             font-size: 18px;
-            font-weight: 400; /* No negrita */
+            font-weight: 400;
             text-transform: none;
             display: block;
             margin-top: 5px;
-            color: #555; /* Color gris oscuro */
+            color: #555; 
         }
         
         .search-box-container { 
@@ -374,14 +379,14 @@
         .btn-reservar-clean { display: inline-block; background-color: var(--black); color: var(--white); padding: 15px 0; width: 100%; border-radius: 8px; text-transform: uppercase; font-size: 1rem; font-weight: 500; letter-spacing: 1px; transition: background 0.3s; text-decoration: none; cursor: pointer; border: none; }
         .btn-reservar-clean:hover { background-color: var(--gold); }
 
-        /* ESTILOS DEL BOTÓN DEL CARRUSEL CORREGIDOS */
+        /* ESTILOS DEL BOTÓN DEL CARRUSEL */
         .slider-btn { 
             position: absolute; top: 45%; transform: translateY(-50%); 
             background: rgba(255, 255, 255, 0.9); /* Normal: Fondo Blanco */
             color: var(--black); /* Normal: Flecha negra */
             border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 24px; cursor: pointer; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; display: flex; align-items: center; justify-content: center; 
         }
-        /* CORRECCIÓN 2: Hover con fondo negro y flecha blanca */
+        /* Hover con fondo negro y flecha blanca */
         .slider-btn:hover { 
             background: var(--black); /* Hover: Fondo negro */
             color: var(--white); /* Hover: Flecha BLANCA */
