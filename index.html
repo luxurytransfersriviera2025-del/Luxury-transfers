@@ -64,23 +64,8 @@
         .logo-icon { height: 35px; width: auto; }
         
         .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; cursor: pointer; }
         .nav-links a:hover { color: var(--gold); }
-
-        /* ESTILO PARA EL SELECTOR DE IDIOMA */
-        .lang-selector {
-            border: 1px solid rgba(255,255,255,0.3);
-            padding: 5px 15px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: white;
-            font-size: 0.85rem;
-        }
-        .lang-option { cursor: pointer; font-weight: 400; opacity: 0.6; transition: 0.3s; }
-        .lang-option:hover { opacity: 1; color: var(--gold); }
-        .lang-option.active { font-weight: 800; opacity: 1; color: var(--white); border-bottom: 1px solid var(--gold); }
 
         /* HERO SECTION */
         .hero {
@@ -165,7 +150,7 @@
            ========================================================================== */
         #seccion-calculadora { 
             position: relative;
-            background-color: #f4f4f4; /* FONDO CLARO */
+            background-color: #f4f4f4; 
             min-height: 100vh; 
             display: flex; align-items: center; justify-content: center; flex-direction: column; 
             padding: 50px 0;
@@ -400,11 +385,10 @@
                 <a href="#seccion-calculadora" class="nav-link" id="nav-cotizar">Cotizar</a>
                 <a href="#servicios" class="nav-link" id="nav-servicios">Servicios</a>
                 <a href="#flota" class="nav-link" id="nav-flota">Flota</a>
-                <div class="lang-selector">
-                    <i class="fas fa-globe"></i> 
-                    <span class="lang-option active" onclick="setLang('es')">ES</span> | 
-                    <span class="lang-option" onclick="setLang('en')">EN</span>
-                </div>
+                
+                <a href="javascript:void(0)" class="nav-link" onclick="toggleLanguage()" id="lang-btn">
+                    <i class="fas fa-globe"></i> Idioma
+                </a>
             </nav>
         </div>
     </header>
@@ -742,17 +726,25 @@
         }
     };
 
-    function setLang(lang) {
-        // Actualizar visual del selector
-        document.querySelectorAll('.lang-option').forEach(el => el.classList.remove('active'));
-        document.querySelector(`.lang-option[onclick="setLang('${lang}')"]`).classList.add('active');
+    let currentLang = 'es'; // Estado inicial
 
+    function toggleLanguage() {
+        const newLang = currentLang === 'es' ? 'en' : 'es';
+        setLang(newLang);
+    }
+
+    function setLang(lang) {
+        currentLang = lang;
         const t = translations[lang];
 
         // Header
         document.getElementById('nav-cotizar').innerText = t.navCotizar;
         document.getElementById('nav-servicios').innerText = t.navServicios;
         document.getElementById('nav-flota').innerText = t.navFlota;
+
+        // BOTON IDIOMA CAMBIA DE NOMBRE (SOLICITUD: IDIOMA vs LANGUAGE)
+        const btnText = lang === 'es' ? '<i class="fas fa-globe"></i> Idioma' : '<i class="fas fa-globe"></i> Language';
+        document.getElementById('lang-btn').innerHTML = btnText;
 
         // Hero
         document.getElementById('hero-title').innerHTML = t.heroTitle;
@@ -768,8 +760,6 @@
         document.getElementById('tab-hacia').innerText = t.tabHacia;
         document.getElementById('tab-perso').innerText = t.tabPerso;
         
-        // Labels form
-        // Nota: para inputs con placeholder, cambiamos el placeholder
         if(lang === 'en') {
             document.getElementById('destino').placeholder = "Where are you going?";
             document.getElementById('origen').placeholder = "Pick-up Location";
