@@ -43,7 +43,6 @@
             padding: 10px 0;
             position: fixed; width: 100%; top: 0; z-index: 9999;
             border-bottom: 2px solid var(--gold);
-            transition: 0.3s;
         }
 
         .nav-container {
@@ -63,20 +62,20 @@
         .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; cursor: pointer; }
         .nav-links a:hover { color: var(--gold); }
 
-        /* --- ESTILOS DEL DROPDOWN DE IDIOMA (Mejorado) --- */
+        /* --- ESTILOS DEL DROPDOWN DE IDIOMA --- */
         .dropdown { position: relative; display: inline-block; }
         
         .dropbtn {
             background-color: transparent;
             color: white;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem; /* Letra un poco más chica para elegancia */
+            font-size: 0.9rem;
             font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.5); /* Borde sutil tipo pastilla */
-            padding: 6px 15px; /* Padding ajustado */
-            border-radius: 50px; /* Borde redondo (Pill shape) */
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 8px 15px;
+            border-radius: 20px;
             cursor: pointer;
-            display: flex; align-items: center; gap: 6px;
+            display: flex; align-items: center; gap: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: 0.3s;
@@ -91,9 +90,9 @@
             min-width: 120px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
             z-index: 1;
-            border-radius: 10px;
+            border-radius: 8px;
             border: 1px solid var(--gold);
-            margin-top: 8px;
+            margin-top: 5px;
             overflow: hidden;
         }
 
@@ -148,31 +147,15 @@
             background-color: var(--gold-hover); transform: translateY(-3px); border-color: var(--gold-hover);
         }
 
-        /* --- MEDIA QUERIES (AJUSTADO PARA QUE SE VEA BIEN EN MÓVIL) --- */
+        /* MEDIA QUERIES */
         @media (max-width: 768px) {
-            header { padding: 10px 0; } /* Header más delgado */
-            
-            .nav-container { 
-                flex-direction: column; 
-                gap: 10px; /* Menos espacio entre logo y links */
-            }
+            header { padding: 15px 0; }
+            .nav-container { flex-direction: column; gap: 15px; }
+            .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; } 
+            .nav-links a { font-size: 0.8rem; }
             
             .logo { font-size: 1.2rem; letter-spacing: 1px; }
-            .logo-icon { height: 28px; } /* Icono un poco más pequeño */
-
-            .nav-links { 
-                gap: 15px; /* Espacio entre palabras reducido */
-                flex-wrap: wrap; 
-                justify-content: center;
-            } 
-            
-            .nav-links a { font-size: 0.75rem; } /* Letra un poco más fina */
-            
-            /* Ajuste del botón de idioma en móvil para que no sea gigante */
-            .dropbtn {
-                padding: 5px 12px;
-                font-size: 0.75rem; 
-            }
+            .logo-icon { height: 30px; }
 
             .hero {
                 background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg');
@@ -409,7 +392,7 @@
                 
                 <div class="dropdown">
                     <button onclick="toggleLangMenu()" class="dropbtn" id="lang-btn-text">
-                        <i class="fas fa-globe"></i> <span id="current-lang-text">Idioma</span> <i class="fas fa-chevron-down" style="font-size:0.7em;"></i>
+                        <i class="fas fa-globe"></i> Idioma <i class="fas fa-chevron-down" style="font-size:0.7em;"></i>
                     </button>
                     <div id="myDropdown" class="dropdown-content">
                         <a href="javascript:void(0)" onclick="selectLang('es')">Español</a>
@@ -678,7 +661,7 @@
     /* --- TRADUCCIONES COMPLETAS (100%) --- */
     const translations = {
         es: {
-            navCotizar: "Cotizar", navServicios: "Servicios", navFlota: "Flota", langBtn: 'Idioma',
+            navCotizar: "Cotizar", navServicios: "Servicios", navFlota: "Flota", langBtn: '<i class="fas fa-globe"></i> Idioma <i class="fas fa-chevron-down" style="font-size:0.7em;"></i>',
             heroTitle: "Viaja con Exclusividad<br>en la Riviera Maya",
             heroDesc: "Es Seguridad, es Confort, es Exclusividad. Es Luxury Transfers Riviera.",
             heroBtn: "COTIZAR AHORA",
@@ -722,7 +705,7 @@
                     <h4 style="color:#d32f2f;">5. Eximición por Tráfico y Fuerza Mayor</h4><ul><li>La empresa <strong>NO se hace responsable</strong> por vuelos perdidos o retrasos derivados de: tráfico pesado, accidentes carreteros, manifestaciones, obras viales o condiciones climáticas severas. Sugerimos anticipar su salida.</li></ul>`
         },
         en: {
-            navCotizar: "Quote", navServicios: "Services", navFlota: "Fleet", langBtn: 'Language',
+            navCotizar: "Quote", navServicios: "Services", navFlota: "Fleet", langBtn: '<i class="fas fa-globe"></i> Language <i class="fas fa-chevron-down" style="font-size:0.7em;"></i>',
             heroTitle: "Travel with Exclusivity<br>in the Riviera Maya",
             heroDesc: "It is Security, Comfort, Exclusivity. It is Luxury Transfers Riviera.",
             heroBtn: "QUOTE NOW",
@@ -794,7 +777,7 @@
         document.getElementById('nav-cotizar').innerText = t.navCotizar;
         document.getElementById('nav-servicios').innerText = t.navServicios;
         document.getElementById('nav-flota').innerText = t.navFlota;
-        document.getElementById('current-lang-text').innerText = t.langBtn; // Actualiza botón menú
+        document.getElementById('lang-btn-text').innerHTML = t.langBtn; // Actualiza botón menú
         document.getElementById('hero-title').innerHTML = t.heroTitle;
         document.getElementById('hero-desc').innerText = t.heroDesc;
         document.getElementById('hero-btn').innerText = t.heroBtn;
@@ -1111,4 +1094,254 @@
 
         const email = document.getElementById('emailCliente').value;
         const hora = document.getElementById('horaIda').value;
-        const fecha = document.getElementById('fechaIda').value
+        const fecha = document.getElementById('fechaIda').value;
+
+        if(email.length < 5) { alert("⚠️ Por favor escribe tu correo electrónico."); return; }
+        if(!fecha) { alert("⚠️ Selecciona una fecha."); return; }
+        if(!hora) { alert("⚠️ Selecciona la hora."); return; }
+
+        const nombre = document.getElementById('nombreCliente').value;
+        const tel = document.getElementById('telefonoCliente').value;
+        if(nombre.length < 2) { alert("Escribe tu nombre."); return; }
+        if(tel.length < 5) { alert("Escribe tu teléfono."); return; }
+
+        if (direccionMode === 'personalizado') {
+            const subtipo = document.getElementById('subtipoPersonalizado').value;
+            const subtipoTxt = document.getElementById('subtipoPersonalizado').options[document.getElementById('subtipoPersonalizado').selectedIndex].text;
+            let destinoFinal = (subtipo === 'HORAS') ? document.getElementById('horasSeleccionadas').value : document.getElementById('destino').value;
+
+            const codigoUnico = generarCodigo();
+            const datosCotizacion = {
+                esVenta: false,
+                codigo: codigoUnico,
+                nombre: nombre, telefono: tel, email: email,
+                tipoViaje: document.getElementById('tipoServicio').value + " - " + subtipoTxt,
+                origen: document.getElementById('origen').value, destino: destinoFinal,
+                fecha: fecha, hora: hora,
+                notas: document.getElementById('notasCliente').value, itinerario: document.getElementById('itinerarioCliente').value,
+                vehiculo: "Cotización Especial", precio: "Por Cotizar"
+            };
+            
+            document.getElementById('codigoDisplay').innerText = codigoUnico;
+            iniciarEnvio(datosCotizacion);
+            return;
+        }
+
+        const tipo = document.getElementById('tipoServicio').value;
+        const moneda = document.getElementById('moneda').value;
+        const pax = parseInt(document.getElementById('pasajeros').value);
+        
+        let lugarBusqueda = "";
+        let latBusqueda = 0;
+        let lonBusqueda = 0;
+        let cpBusqueda = "";
+
+        if (direccionMode === 'desdeAero') {
+            lugarBusqueda = document.getElementById('destino').value;
+            latBusqueda = parseFloat(document.getElementById('latitudDestino').value);
+            lonBusqueda = parseFloat(document.getElementById('longitudDestino').value);
+            cpBusqueda = document.getElementById('cpDestino').value;
+        } else {
+            lugarBusqueda = document.getElementById('origen').value;
+            latBusqueda = parseFloat(document.getElementById('latitudOrigen').value);
+            lonBusqueda = parseFloat(document.getElementById('longitudOrigen').value);
+            cpBusqueda = document.getElementById('cpOrigen').value;
+        }
+        
+        if (lugarBusqueda.length < 3) { alert("Indica el lugar."); return; }
+
+        let zonaDetectada = "";
+
+        if (!isNaN(latBusqueda) && !isNaN(lonBusqueda)) {
+            if (latBusqueda < 20.1215 && latBusqueda > 19.0 && lonBusqueda > -87.6) {
+                alert("📍 Zona de Terracería / Sian Ka'an detectada (Sur de Estrellita).\nPor las condiciones del camino, esta zona requiere cotización especial.\n\nPor favor usa el botón 'Servicio Personalizado'.");
+                return;
+            }
+            zonaDetectada = detectarZonaPorGPS(latBusqueda, lonBusqueda);
+        }
+
+        if (!zonaDetectada && cpBusqueda) {
+            zonaDetectada = detectarZonaPorCP(cpBusqueda);
+        }
+
+        if (!zonaDetectada) {
+            lugarBusqueda = lugarBusqueda.toUpperCase();
+            for (let z in diccionarioZonas) {
+                for (let i=0; i<diccionarioZonas[z].length; i++) {
+                    if (lugarBusqueda.includes(diccionarioZonas[z][i])) { zonaDetectada = z; break; }
+                }
+                if(zonaDetectada) break;
+            }
+        }
+
+        if (!zonaDetectada) { alert("Zona no detectada o requiere cotización especial. Usa Servicio Personalizado."); return; }
+
+        let db;
+        if (moneda === 'MXN' && tipo === 'SENCILLO') db = tarifasSencilloMXN;
+        else if (moneda === 'USD' && tipo === 'SENCILLO') db = tarifasSencilloUSD;
+        else if (moneda === 'MXN' && tipo === 'REDONDO') db = tarifasRedondoMXN;
+        else if (moneda === 'USD' && tipo === 'REDONDO') db = tarifasRedondoUSD;
+
+        const p = db[zonaDetectada];
+        const divRes = document.getElementById('resultados');
+        divRes.innerHTML = "";
+        
+        let rutaLabel = "";
+        if(direccionMode === 'desdeAero') rutaLabel = "Aeropuerto Cancún <i class='fas fa-arrow-right'></i> " + document.getElementById('destino').value;
+        else rutaLabel = document.getElementById('origen').value + " <i class='fas fa-arrow-right'></i> Aeropuerto Cancún";
+        
+        divRes.innerHTML = `<div class="ruta-header">Resultados para: ${rutaLabel}</div>`;
+
+        if(pax<=3) divRes.innerHTML+=crearCard("STANDARD SEDAN","1-3 Pax",p.standart,moneda,zonaDetectada,imgUrlErtiga, rutaLabel);
+        else if(pax<=8) divRes.innerHTML+=crearCard("VAN STANDARD","1-8 Pax",p.standart,moneda,zonaDetectada,imgUrlTransporter, rutaLabel);
+        
+        if(pax<=15 && p.small) divRes.innerHTML+=crearCard("SMALL GROUP VAN","Hasta 15 Pax",p.small,moneda,zonaDetectada,imgUrlSprinter, rutaLabel);
+        if(pax<=5 && p.luxury) divRes.innerHTML+=crearCard("LUXURY SUV","1-5 Pax",p.luxury,moneda,zonaDetectada,imgUrlSuburban, rutaLabel);
+
+        divRes.style.display = 'block';
+        divRes.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function crearCard(veh, cap, precio, moneda, zona, img, rutaLabel) {
+        const tipo = document.getElementById('tipoServicio').value;
+        const pAlto = Math.round(precio * 1.30);
+        const dataObj = JSON.stringify({ esVenta: true, vehiculo: veh, precio: "$" + precio + " " + moneda, zona: zona }).replace(/"/g, "&quot;");
+        
+        let tipoTexto = (tipo === 'SENCILLO') ? "Solo Ida" : "Ida y Vuelta";
+        let iconoTipo = (tipo === 'SENCILLO') ? "fa-arrow-right" : "fa-exchange-alt";
+
+        let rutaSimple = rutaLabel.replace(/<[^>]*>?/gm, ' -> ');
+
+        return `
+        <div class="tarjeta">
+            <div class="tarjeta-img"><img src="${img}" alt="${veh}"></div>
+            <div class="tarjeta-info">
+                <h3>${veh}</h3>
+                <div class="tarjeta-route-display">${rutaLabel}</div>
+                <div class="tarjeta-specs">
+                    <div class="spec-row"><i class="fas fa-user-friends"></i> <span>${cap}</span></div>
+                    <div class="spec-row"><i class="fas ${iconoTipo}"></i> <span>${tipoTexto}</span></div>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature-tag"><i class="fas fa-plane-arrival"></i> Monitoreo de Vuelo</div>
+                    <div class="feature-tag"><i class="fas fa-snowflake"></i> Aire Acondicionado</div>
+                    <div class="feature-tag"><i class="fas fa-shield-alt"></i> Seguro de Viajero</div>
+                    <div class="feature-tag"><i class="fas fa-car"></i> 100% Privado</div>
+                    <div class="feature-tag"><i class="fas fa-ban"></i> Sin Cargos Ocultos</div>
+                </div>
+            </div>
+            <div class="tarjeta-price">
+                <div class="price-container">
+                    <span class="price-old">$${pAlto}</span>
+                    <span class="price-current">$${precio} ${moneda}</span>
+                </div>
+                <button class="btn-reservar" onclick="prepararVenta(${dataObj})">RESERVAR <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>`;
+    }
+
+    function prepararVenta(datosCard) {
+        const codigoUnico = generarCodigo();
+        const datosVenta = {
+            esVenta: true,
+            codigo: codigoUnico,
+            nombre: document.getElementById('nombreCliente').value,
+            telefono: document.getElementById('telefonoCliente').value,
+            email: document.getElementById('emailCliente').value,
+            tipoViaje: document.getElementById('tipoServicio').value,
+            origen: document.getElementById('origen').value,
+            destino: document.getElementById('destino').value,
+            fecha: document.getElementById('fechaIda').value,
+            hora: document.getElementById('horaIda').value,
+            notas: document.getElementById('notasCliente').value,
+            vuelo: document.getElementById('aerolinea').value + ' ' + document.getElementById('numVuelo').value,
+            vehiculo: datosCard.vehiculo,
+            precio: datosCard.precio,
+            zona: datosCard.zona
+        };
+        
+        document.getElementById('codigoDisplay').innerText = codigoUnico;
+        iniciarEnvio(datosVenta);
+    }
+
+    function iniciarEnvio(data) {
+        if(SCRIPT_URL.includes("PEGAR")) { alert("Falta configurar la URL del Script."); return; }
+        document.getElementById('loadingOverlay').style.display = 'flex';
+
+        const pax = document.getElementById('pasajeros').value;
+        
+        // --- TEXTO WHATSAPP LIMPIO ---
+        let saludo = data.esVenta ? "Hola, quiero *CONFIRMAR* el siguiente servicio:" : "Hola, quiero *COTIZAR* el siguiente servicio:";
+        
+        let baseText = `${saludo}%0A%0A*CÓDIGO:* ${data.codigo}%0A*TIPO:* ${data.tipoViaje}%0A*VEHÍCULO:* ${data.vehiculo}%0A*ORIGEN:* ${data.origen}%0A*DESTINO:* ${data.destino}%0A*FECHA:* ${data.fecha} - *HORA:* ${data.hora}%0A*PASAJEROS:* ${pax}`;
+
+        if(data.precio && data.precio !== "Por Cotizar") {
+            baseText += `%0A*PRECIO WEB:* ${data.precio}`;
+        }
+
+        baseText += `%0A%0A*Mi Nombre:* ${data.nombre}`;
+        
+        const subject = encodeURIComponent("Solicitud " + data.codigo + " - " + data.nombre);
+        const mailBody = encodeURIComponent(baseText.replace(/%0A/g, "\n").replace(/\*/g, "")); 
+
+        document.getElementById('btnWhatsapp').href = `https://wa.me/529842411158?text=${baseText}`;
+        document.getElementById('btnMail').href = `mailto:reservas@luxurytransfersriviera.com.mx?subject=${subject}&body=${mailBody}`;
+
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        })
+        .then(() => {
+            document.getElementById('loadingOverlay').style.display = 'none';
+            if(data.esVenta) {
+                document.getElementById('modalTitle').innerText = "¡Reserva Recibida!";
+                document.getElementById('modalText').innerHTML = "Hemos recibido tu solicitud. Un asesor te contactará lo más breve posible para finalizar tu reserva.";
+            } else {
+                document.getElementById('modalTitle').innerText = "¡Solicitud Enviada!";
+                document.getElementById('modalText').innerHTML = "Hemos recibido tu solicitud. Un asesor te contactará lo más breve posible para darte un precio.";
+            }
+            document.getElementById('modalConfirmacion').style.display = 'flex';
+        })
+        .catch(e => {
+            console.error(e);
+            alert("Error al enviar. Intenta por WhatsApp.");
+            document.getElementById('loadingOverlay').style.display = 'none';
+        });
+    }
+
+    function cerrarModal() { document.getElementById('modalConfirmacion').style.display = 'none'; }
+    
+    function initAutocomplete() {
+        const bounds = new google.maps.LatLngBounds(new google.maps.LatLng(17.9, -91.5), new google.maps.LatLng(21.8, -86.5));
+        const opts = { bounds: bounds, strictBounds: true, componentRestrictions: { country: "mx" }, fields: ["name", "geometry", "address_components"], types: ["establishment", "geocode"] };
+        
+        const autoOrigen = new google.maps.places.Autocomplete(document.getElementById('origen'), opts);
+        const autoDestino = new google.maps.places.Autocomplete(document.getElementById('destino'), opts);
+
+        function extraerDatos(place, tipo) {
+            if (place.geometry) {
+                document.getElementById('latitud' + tipo).value = place.geometry.location.lat();
+                document.getElementById('longitud' + tipo).value = place.geometry.location.lng();
+            }
+            let cpEncontrado = "";
+            if (place.address_components) {
+                for (let i = 0; i < place.address_components.length; i++) {
+                    const types = place.address_components[i].types;
+                    if (types.includes("postal_code")) {
+                        cpEncontrado = place.address_components[i].long_name;
+                        break;
+                    }
+                }
+            }
+            document.getElementById('cp' + tipo).value = cpEncontrado;
+        }
+
+        autoOrigen.addListener('place_changed', function() { extraerDatos(autoOrigen.getPlace(), "Origen"); });
+        autoDestino.addListener('place_changed', function() { extraerDatos(autoDestino.getPlace(), "Destino"); });
+    }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdK5yLQ20SQrLc_0rOuo7oxxHVQ233Bh0&libraries=places&callback=initAutocomplete" async defer></script>
+</body>
+</html>
