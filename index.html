@@ -387,7 +387,7 @@
                 <a href="#flota" class="nav-link" id="nav-flota">Flota</a>
                 
                 <a href="javascript:void(0)" class="nav-link" onclick="toggleLanguage()" id="lang-btn">
-                    <i class="fas fa-globe"></i> Idioma
+                    <i class="fas fa-globe"></i> English
                 </a>
             </nav>
         </div>
@@ -578,10 +578,38 @@
             <p id="servicios-subtitle">Soluciones de transporte exclusivas diseñadas para superar tus expectativas.</p>
         </div>
         <div class="services-grid">
-            <div class="service-card"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=400&fit=crop" class="service-img" alt="Airport"><div class="service-info"><div class="service-icon"><i class="fas fa-plane-departure"></i></div><div class="service-title">Aeropuerto</div><div class="service-desc">Transfer premium desde y hacia los aeropuertos de Cancún, Tulum y Mérida con monitoreo de vuelo.</div></div></div>
-            <div class="service-card"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" class="service-img" alt="Hotel"><div class="service-info"><div class="service-icon"><i class="fas fa-building"></i></div><div class="service-title">Hoteles</div><div class="service-desc">Traslados directos y exclusivos a cualquier hotel, resort o Airbnb en la Riviera Maya.</div></div></div>
-            <div class="service-card"><img src="https://images.unsplash.com/photo-1518638150340-f706e86654de?w=600&h=400&fit=crop" class="service-img" alt="Tours"><div class="service-info"><div class="service-icon"><i class="fas fa-globe-americas"></i></div><div class="service-title">Tours</div><div class="service-desc">¿Quieres visitar Chichén Itzá o Xcaret? Te llevamos con un servicio privado y flexible.</div></div></div>
-            <div class="service-card"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&h=400&fit=crop" class="service-img" alt="Hourly"><div class="service-info"><div class="service-icon"><i class="fas fa-clock"></i></div><div class="service-title">Por Horas</div><div class="service-desc">Disponibilidad total del vehículo y chofer por horas para eventos especiales, cenas o reuniones.</div></div></div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=400&fit=crop" class="service-img" alt="Airport">
+                <div class="service-info">
+                    <div class="service-icon"><i class="fas fa-plane-departure"></i></div>
+                    <div class="service-title" id="serv-title-1">Aeropuerto</div>
+                    <div class="service-desc" id="serv-desc-1">Transfer premium desde y hacia los aeropuertos de Cancún, Tulum y Mérida con monitoreo de vuelo.</div>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" class="service-img" alt="Hotel">
+                <div class="service-info">
+                    <div class="service-icon"><i class="fas fa-building"></i></div>
+                    <div class="service-title" id="serv-title-2">Hoteles</div>
+                    <div class="service-desc" id="serv-desc-2">Traslados directos y exclusivos a cualquier hotel, resort o Airbnb en la Riviera Maya.</div>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1518638150340-f706e86654de?w=600&h=400&fit=crop" class="service-img" alt="Tours">
+                <div class="service-info">
+                    <div class="service-icon"><i class="fas fa-globe-americas"></i></div>
+                    <div class="service-title" id="serv-title-3">Tours</div>
+                    <div class="service-desc" id="serv-desc-3">¿Quieres visitar Chichén Itzá o Xcaret? Te llevamos con un servicio privado y flexible.</div>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&h=400&fit=crop" class="service-img" alt="Hourly">
+                <div class="service-info">
+                    <div class="service-icon"><i class="fas fa-clock"></i></div>
+                    <div class="service-title" id="serv-title-4">Por Horas</div>
+                    <div class="service-desc" id="serv-desc-4">Disponibilidad total del vehículo y chofer por horas para eventos especiales, cenas o reuniones.</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -602,9 +630,9 @@
                         </div>
                         <div class="card-content-clean">
                             <h3 class="vehicle-name-clean">Sedán Ejecutivo</h3>
-                            <p class="vehicle-desc-clean">Viaja ligero y con total comodidad. Ideal para parejas o viajeros de negocios que buscan un traslado privado y eficiente.</p>
+                            <p class="vehicle-desc-clean" id="fleet-desc-1">Viaja ligero y con total comodidad. Ideal para parejas o viajeros de negocios que buscan un traslado privado y eficiente.</p>
                             <div><span class="vehicle-capacity-clean"><i class="fas fa-user"></i> 1-3 Pax</span></div>
-                            <a href="#seccion-calculadora" class="btn-reservar-clean">Cotizar Ahora</a>
+                            <a href="#seccion-calculadora" class="btn-reservar-clean" id="btn-quote-1">Cotizar Ahora</a>
                         </div>
                     </div>
                 </div>
@@ -616,9 +644,9 @@
                         </div>
                         <div class="card-content-clean">
                             <h3 class="vehicle-name-clean">Luxury SUV</h3>
-                            <p class="vehicle-desc-clean">Exclusividad y potencia desde tu llegada. El recibimiento perfecto en el aeropuerto para ejecutivos y familias VIP.</p>
+                            <p class="vehicle-desc-clean" id="fleet-desc-2">Exclusividad y potencia desde tu llegada. El recibimiento perfecto en el aeropuerto para ejecutivos y familias VIP.</p>
                             <div><span class="vehicle-capacity-clean"><i class="fas fa-star"></i> 1-5 Pax</span></div>
-                            <a href="#seccion-calculadora" class="btn-reservar-clean">Cotizar Ahora</a>
+                            <a href="#seccion-calculadora" class="btn-reservar-clean" id="btn-quote-2">Cotizar Ahora</a>
                         </div>
                     </div>
                 </div>
@@ -630,9 +658,9 @@
                         </div>
                         <div class="card-content-clean">
                             <h3 class="vehicle-name-clean">Van Ejecutiva</h3>
-                            <p class="vehicle-desc-clean">Espacio inteligente y confort total. La opción ideal para familias o grupos de amigos que buscan viajar juntos con seguridad.</p>
+                            <p class="vehicle-desc-clean" id="fleet-desc-3">Espacio inteligente y confort total. La opción ideal para familias o grupos de amigos que buscan viajar juntos con seguridad.</p>
                             <div><span class="vehicle-capacity-clean"><i class="fas fa-users"></i> 1-8 Pax</span></div>
-                            <a href="#seccion-calculadora" class="btn-reservar-clean">Cotizar Ahora</a>
+                            <a href="#seccion-calculadora" class="btn-reservar-clean" id="btn-quote-3">Cotizar Ahora</a>
                         </div>
                     </div>
                 </div>
@@ -644,9 +672,9 @@
                         </div>
                         <div class="card-content-clean">
                             <h3 class="vehicle-name-clean">Sprinter</h3>
-                            <p class="vehicle-desc-clean">Ideal para bodas, eventos o familias numerosas. Viajen todos juntos, seguros y con aire acondicionado de primera.</p>
+                            <p class="vehicle-desc-clean" id="fleet-desc-4">Ideal para bodas, eventos o familias numerosas. Viajen todos juntos, seguros y con aire acondicionado de primera.</p>
                             <div><span class="vehicle-capacity-clean"><i class="fas fa-bus"></i> 1-15 Pax</span></div>
-                            <a href="#seccion-calculadora" class="btn-reservar-clean">Cotizar Ahora</a>
+                            <a href="#seccion-calculadora" class="btn-reservar-clean" id="btn-quote-4">Cotizar Ahora</a>
                         </div>
                     </div>
                 </div>
@@ -682,7 +710,7 @@
     const imgUrlSprinter = "https://i.imgur.com/BffyPRe.png";
     const imgUrlSuburban = "https://i.imgur.com/95X8eqt.png"; 
 
-    // --- DICCIONARIO DE TRADUCCIÓN ---
+    // --- DICCIONARIO DE TRADUCCIÓN COMPLETO ---
     const translations = {
         es: {
             navCotizar: "Cotizar", navServicios: "Servicios", navFlota: "Flota",
@@ -702,7 +730,20 @@
             serviciosTitle: "Nuestros Servicios",
             serviciosSubtitle: "Soluciones de transporte exclusivas diseñadas para superar tus expectativas.",
             flotaTitle: "Nuestra Flota Premium",
-            flotaSubtitle: "Selecciona el vehículo ideal para tu viaje"
+            flotaSubtitle: "Selecciona el vehículo ideal para tu viaje",
+            
+            // TRADUCCIONES DE SERVICIOS AGREGADAS
+            servTitle1: "Aeropuerto", servDesc1: "Transfer premium desde y hacia los aeropuertos de Cancún, Tulum y Mérida con monitoreo de vuelo.",
+            servTitle2: "Hoteles", servDesc2: "Traslados directos y exclusivos a cualquier hotel, resort o Airbnb en la Riviera Maya.",
+            servTitle3: "Tours", servDesc3: "¿Quieres visitar Chichén Itzá o Xcaret? Te llevamos con un servicio privado y flexible.",
+            servTitle4: "Por Horas", servDesc4: "Disponibilidad total del vehículo y chofer por horas para eventos especiales, cenas o reuniones.",
+
+            // TRADUCCIONES DE FLOTA AGREGADAS
+            fleetDesc1: "Viaja ligero y con total comodidad. Ideal para parejas o viajeros de negocios que buscan un traslado privado y eficiente.",
+            fleetDesc2: "Exclusividad y potencia desde tu llegada. El recibimiento perfecto en el aeropuerto para ejecutivos y familias VIP.",
+            fleetDesc3: "Espacio inteligente y confort total. La opción ideal para familias o grupos de amigos que buscan viajar juntos con seguridad.",
+            fleetDesc4: "Ideal para bodas, eventos o familias numerosas. Viajen todos juntos, seguros y con aire acondicionado de primera.",
+            btnQuote: "Cotizar Ahora"
         },
         en: {
             navCotizar: "Quote", navServicios: "Services", navFlota: "Fleet",
@@ -722,13 +763,27 @@
             serviciosTitle: "Our Services",
             serviciosSubtitle: "Exclusive transport solutions designed to exceed your expectations.",
             flotaTitle: "Our Premium Fleet",
-            flotaSubtitle: "Select the ideal vehicle for your trip"
+            flotaSubtitle: "Select the ideal vehicle for your trip",
+
+            // TRADUCCIONES DE SERVICIOS
+            servTitle1: "Airport", servDesc1: "Premium transfers to/from Cancun, Tulum, and Merida airports with flight monitoring.",
+            servTitle2: "Hotels", servDesc2: "Direct and exclusive transfers to any hotel, resort, or Airbnb in the Riviera Maya.",
+            servTitle3: "Tours", servDesc3: "Want to visit Chichen Itza or Xcaret? We take you with private and flexible service.",
+            servTitle4: "Hourly", servDesc4: "Total vehicle and chauffeur availability by the hour for special events, dinners, or meetings.",
+
+            // TRADUCCIONES DE FLOTA
+            fleetDesc1: "Travel light and in total comfort. Ideal for couples or business travelers seeking a private and efficient transfer.",
+            fleetDesc2: "Exclusivity and power upon arrival. The perfect airport welcome for executives and VIP families.",
+            fleetDesc3: "Smart space and total comfort. The ideal option for families or groups of friends looking to travel together safely.",
+            fleetDesc4: "Ideal for weddings, events, or large families. Travel all together, safely, and with top-notch air conditioning.",
+            btnQuote: "Quote Now"
         }
     };
 
     let currentLang = 'es'; // Estado inicial
 
     function toggleLanguage() {
+        // Si es ES cambia a EN, si es EN cambia a ES
         const newLang = currentLang === 'es' ? 'en' : 'es';
         setLang(newLang);
     }
@@ -737,14 +792,19 @@
         currentLang = lang;
         const t = translations[lang];
 
+        // LOGICA DEL BOTON: Muestra el idioma AL QUE VAS A CAMBIAR
+        // Si estoy en Español, el boton dice "English" (para cambiar a ingles)
+        // Si estoy en Ingles, el boton dice "Español" (para cambiar a español)
+        const btnText = lang === 'es' 
+            ? '<i class="fas fa-globe"></i> English' 
+            : '<i class="fas fa-globe"></i> Español';
+        
+        document.getElementById('lang-btn').innerHTML = btnText;
+
         // Header
         document.getElementById('nav-cotizar').innerText = t.navCotizar;
         document.getElementById('nav-servicios').innerText = t.navServicios;
         document.getElementById('nav-flota').innerText = t.navFlota;
-
-        // BOTON IDIOMA CAMBIA DE NOMBRE (SOLICITUD: IDIOMA vs LANGUAGE)
-        const btnText = lang === 'es' ? '<i class="fas fa-globe"></i> Idioma' : '<i class="fas fa-globe"></i> Language';
-        document.getElementById('lang-btn').innerHTML = btnText;
 
         // Hero
         document.getElementById('hero-title').innerHTML = t.heroTitle;
@@ -784,11 +844,29 @@
         document.getElementById('label-terms').innerHTML = t.labelTerms;
         document.getElementById('btnAccion').innerText = t.btnAccion;
 
-        // Secciones
+        // Secciones Generales
         document.getElementById('servicios-title').innerText = t.serviciosTitle;
         document.getElementById('servicios-subtitle').innerText = t.serviciosSubtitle;
         document.getElementById('flota-title').innerText = t.flotaTitle;
         document.getElementById('flota-subtitle').innerText = t.flotaSubtitle;
+
+        // Textos de Servicios Individuales
+        document.getElementById('serv-title-1').innerText = t.servTitle1; document.getElementById('serv-desc-1').innerText = t.servDesc1;
+        document.getElementById('serv-title-2').innerText = t.servTitle2; document.getElementById('serv-desc-2').innerText = t.servDesc2;
+        document.getElementById('serv-title-3').innerText = t.servTitle3; document.getElementById('serv-desc-3').innerText = t.servDesc3;
+        document.getElementById('serv-title-4').innerText = t.servTitle4; document.getElementById('serv-desc-4').innerText = t.servDesc4;
+
+        // Textos de Flota Individuales
+        document.getElementById('fleet-desc-1').innerText = t.fleetDesc1;
+        document.getElementById('fleet-desc-2').innerText = t.fleetDesc2;
+        document.getElementById('fleet-desc-3').innerText = t.fleetDesc3;
+        document.getElementById('fleet-desc-4').innerText = t.fleetDesc4;
+        
+        // Botones de cotizar en la flota
+        document.getElementById('btn-quote-1').innerText = t.btnQuote;
+        document.getElementById('btn-quote-2').innerText = t.btnQuote;
+        document.getElementById('btn-quote-3').innerText = t.btnQuote;
+        document.getElementById('btn-quote-4').innerText = t.btnQuote;
     }
 
     // --- BLOQUEO DE FECHAS PASADAS Y CARGA DEL SLIDER ---
@@ -799,6 +877,9 @@
         document.getElementById('fechaIda').addEventListener('change', function() {
             document.getElementById('fechaVuelta').setAttribute('min', this.value);
         });
+
+        // Aseguramos que el botón empiece bien (Inglés visible porque estamos en Español)
+        setLang('es');
 
         // INICIAR CARRUSEL DE LA FLOTA
         initSlider();
