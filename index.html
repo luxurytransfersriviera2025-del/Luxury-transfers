@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxury Transfers Riviera | Transporte VIP</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
     <style>
@@ -31,9 +31,9 @@
             /* Variables Servicios/Flota */
             --navy-bg: #002855;
             
-            /* CAMBIO DE TIPOGRAFÍA EN VARIABLES */
-            --font-title: 'Cinzel', serif; /* Títulos Premium */
-            --font-body: 'Raleway', sans-serif; /* Texto Elegante */
+            /* TIPOGRAFÍA PROFESIONAL */
+            --font-title: 'Montserrat', sans-serif; /* Títulos Fuertes y Limpios */
+            --font-body: 'Open Sans', sans-serif;   /* Lectura fácil y profesional */
             
             --light-gray: #f4f4f4;
 
@@ -46,7 +46,6 @@
         }
 
         body {
-            /* CAMBIO: Usar Raleway en todo el cuerpo */
             font-family: var(--font-body);
             margin: 0; padding: 0; color: var(--dark-gray); background-color: var(--white);
             overflow-x: hidden;
@@ -70,10 +69,9 @@
         }
 
         .logo {
-            /* CAMBIO: Logo con fuente Cinzel */
             font-family: var(--font-title);
-            font-size: 1.4rem; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 2px; color: var(--gold); display: flex;
+            font-size: 1.4rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 1px; color: var(--gold); display: flex;
             align-items: center; gap: 12px; cursor: pointer;
         }
 
@@ -82,11 +80,11 @@
         .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { 
             color: var(--white); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; cursor: pointer; 
-            font-family: var(--font-body);
+            font-family: var(--font-title);
         }
         .nav-links a:hover { color: var(--gold); }
 
-        /* AJUSTE DE SCROLL */
+        /* AJUSTE DE SCROLL (Misma solución que funcionó) */
         #seccion-calculadora, #servicios, #flota {
             scroll-margin-top: calc(var(--header-height) - 25px);
         }
@@ -108,15 +106,15 @@
         }
 
         .hero-content h1 {
-            order: 1; font-size: 3.8rem; margin-bottom: 20px;
-            line-height: 1.2; font-weight: 700; text-transform: uppercase;
+            order: 1; font-size: 3.5rem; margin-bottom: 20px;
+            line-height: 1.1; font-weight: 900; text-transform: uppercase;
             text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
-            /* CAMBIO: Título Hero con Cinzel */
             font-family: var(--font-title);
+            letter-spacing: -1px; /* Hace que se vea más compacto y moderno */
         }
 
         .hero-content p {
-            order: 2; font-size: 1.3rem; margin-bottom: 40px;
+            order: 2; font-size: 1.4rem; margin-bottom: 40px;
             font-weight: 400; text-shadow: 1px 1px 8px rgba(0,0,0,0.8);
             max-width: 800px;
             font-family: var(--font-body);
@@ -129,7 +127,7 @@
             display: inline-block; box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
             border: 2px solid var(--gold); 
             cursor: pointer;
-            font-family: var(--font-body);
+            font-family: var(--font-title);
         }
         .btn-cta:hover {
             background-color: var(--gold-hover); transform: translateY(-3px); border-color: var(--gold-hover);
@@ -142,7 +140,7 @@
             .nav-links { gap: 20px; } 
             .nav-links a { font-size: 0.8rem; }
             
-            .logo { font-size: 1.2rem; letter-spacing: 1px; }
+            .logo { font-size: 1.2rem; letter-spacing: 0.5px; }
             .logo-icon { height: 30px; }
 
             .hero {
@@ -158,8 +156,9 @@
             }
 
             .hero-content h1 {
-                order: 1; font-size: 2.3rem; margin-bottom: 0; white-space: normal;
+                order: 1; font-size: 2.2rem; margin-bottom: 0; white-space: normal;
                 text-shadow: 0 2px 15px rgba(0,0,0,0.9);
+                letter-spacing: 0;
             }
 
             .btn-cta {
@@ -194,11 +193,10 @@
             text-align: center; 
             font-size: 32px; 
             margin-bottom: 25px; 
-            font-weight: 700; 
+            font-weight: 800; 
             letter-spacing: -0.5px; 
             text-transform: uppercase; 
             line-height: 1.2;
-            /* CAMBIO: Fuente Cinzel */
             font-family: var(--font-title);
         }
 
@@ -209,7 +207,6 @@
             display: block;
             margin-top: 5px;
             color: #555; 
-            /* CAMBIO: Subtítulo en Raleway */
             font-family: var(--font-body);
         }
         
@@ -231,7 +228,7 @@
         
         .options-bar { display: flex; justify-content: space-between; margin-bottom: 20px; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 15px; }
         .radio-group { display: flex; gap: 20px; }
-        .radio-label { display: flex; align-items: center; cursor: pointer; font-size: 14px; font-weight: 700; color: var(--navy-bg); } 
+        .radio-label { display: flex; align-items: center; cursor: pointer; font-size: 14px; font-weight: 700; color: var(--navy-bg); font-family: var(--font-title); } 
         .radio-label input { margin-right: 8px; accent-color: var(--navy-bg); width: 18px; height: 18px; }
         
         .direction-tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
@@ -247,6 +244,7 @@
             font-weight: 600; 
             transition: 0.3s; 
             display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center; white-space: nowrap; 
+            font-family: var(--font-body);
         }
         .tab-btn.active { 
             background-color: var(--navy-bg) !important; 
@@ -272,9 +270,7 @@
             transition: 0.2s; 
         }
         .input-wrapper:focus-within { box-shadow: 0 0 0 2px rgba(0, 40, 85, 0.2); border-color: var(--navy-bg); }
-        .input-wrapper label { font-size: 11px; color: var(--navy-bg); font-weight: 800; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
-        
-        /* CAMBIO: Asegurar fuente Raleway en inputs */
+        .input-wrapper label { font-size: 11px; color: var(--navy-bg); font-weight: 800; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--font-title); }
         .input-wrapper input, .input-wrapper select, .input-wrapper textarea { 
             border: none; outline: none; width: 100%; font-size: 15px; font-weight: 600; 
             color: #333; background: transparent; font-family: var(--font-body); padding: 0; 
@@ -283,15 +279,15 @@
         .contact-section { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin-top: 20px; border-top: 1px dashed #ddd; padding-top: 25px; }
         .flight-fields-container { grid-column: 1 / -1; display: contents; }
         
-        .terms-container { grid-column: 1 / -1; display: flex; align-items: center; margin-top: 10px; font-size: 13px; color: #555; gap: 10px; justify-content: center; }
+        .terms-container { grid-column: 1 / -1; display: flex; align-items: center; margin-top: 10px; font-size: 13px; color: #555; gap: 10px; justify-content: center; font-family: var(--font-body); }
         .terms-container input { width: 18px; height: 18px; accent-color: var(--navy-bg); cursor: pointer; }
         .terms-link { color: var(--navy-bg); text-decoration: underline; cursor: pointer; font-weight: 700; }
 
-        .btn-cotizar { grid-column: 1 / -1; background-color: var(--action-green); color: white; font-size: 18px; font-weight: 800; border: none; padding: 18px; border-radius: 8px; cursor: pointer; margin-top: 15px; transition: all 0.2s; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 5px 0 #007a3d; width: 100%; font-family: var(--font-body); }
+        .btn-cotizar { grid-column: 1 / -1; background-color: var(--action-green); color: white; font-size: 18px; font-weight: 800; border: none; padding: 18px; border-radius: 8px; cursor: pointer; margin-top: 15px; transition: all 0.2s; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 5px 0 #007a3d; width: 100%; font-family: var(--font-title); }
         .btn-cotizar:hover { background-color: var(--action-green-hover); transform: translateY(2px); box-shadow: 0 3px 0 #007a3d; }
         
         #resultados { margin-top: 30px; display: none; width: 100%; }
-        .ruta-header { background: var(--navy-bg); color: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; text-align: center; font-size: 16px; font-weight: 600; border-left: 5px solid var(--highlight-yellow); animation: fadeIn 0.5s ease-in-out; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .ruta-header { background: var(--navy-bg); color: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; text-align: center; font-size: 16px; font-weight: 600; border-left: 5px solid var(--highlight-yellow); animation: fadeIn 0.5s ease-in-out; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-family: var(--font-body); }
         .ruta-header i { color: var(--highlight-yellow); margin: 0 10px; }
 
         .tarjeta { background: var(--white); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; flex-wrap: wrap; gap: 25px; border: 1px solid #f0f0f0; overflow: hidden; animation: fadeIn 0.5s ease-in-out; transition: transform 0.3s, box-shadow 0.3s; }
@@ -300,17 +296,17 @@
         .tarjeta-img img { width: 100%; height: auto; object-fit: contain; max-height: 140px; }
         .tarjeta-info { flex: 1; display: flex; flex-direction: column; justify-content: center; min-width: 280px; }
         .tarjeta-info h3 { margin: 0 0 8px 0; font-size: 22px; color: var(--text-dark); text-transform: uppercase; letter-spacing: -0.5px; font-weight: 900; font-family: var(--font-title); }
-        .tarjeta-route-display { font-size: 12px; color: var(--primary-blue); font-weight: 700; margin-bottom: 12px; background: #eef2ff; padding: 8px 12px; border-radius: 6px; display: inline-block; border: 1px solid #dbeafe; }
-        .tarjeta-specs { margin-bottom: 15px; font-size: 14px; color: #555; display: flex; flex-direction: column; gap: 6px; font-weight: 500; }
+        .tarjeta-route-display { font-size: 12px; color: var(--primary-blue); font-weight: 700; margin-bottom: 12px; background: #eef2ff; padding: 8px 12px; border-radius: 6px; display: inline-block; border: 1px solid #dbeafe; font-family: var(--font-body); }
+        .tarjeta-specs { margin-bottom: 15px; font-size: 14px; color: #555; display: flex; flex-direction: column; gap: 6px; font-weight: 500; font-family: var(--font-body); }
         .spec-row { display: flex; align-items: center; gap: 10px; }
         .spec-row i { color: var(--primary-blue); width: 20px; text-align: center; font-size: 16px; }
         .feature-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 5px; }
-        .feature-tag { background: #f8fafc; color: #475569; font-size: 11px; padding: 6px 12px; border-radius: 20px; display: flex; align-items: center; gap: 6px; font-weight: 600; border: 1px solid #e2e8f0; }
+        .feature-tag { background: #f8fafc; color: #475569; font-size: 11px; padding: 6px 12px; border-radius: 20px; display: flex; align-items: center; gap: 6px; font-weight: 600; border: 1px solid #e2e8f0; font-family: var(--font-body); }
         .feature-tag i { color: var(--action-green); font-size: 12px; }
         .tarjeta-price { flex: 0 0 180px; text-align: right; display: flex; flex-direction: column; justify-content: center; border-left: 2px solid #f5f5f5; padding-left: 25px; }
-        .price-old { font-size: 14px; color: #bbb; text-decoration: line-through; margin-bottom: 2px; font-weight: 600; }
-        .price-current { font-size: 32px; font-weight: 900; color: var(--action-green); margin-bottom: 10px; letter-spacing: -1px; line-height: 1; font-family: var(--font-body); }
-        .btn-reservar { background-color: var(--action-green); color: white; text-decoration: none; padding: 14px 20px; border-radius: 8px; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; margin-top: 5px; cursor: pointer; border:none; text-transform: uppercase; letter-spacing: 0.5px; width: 100%; box-shadow: 0 4px 10px rgba(0,166,81,0.2); font-family: var(--font-body); }
+        .price-old { font-size: 14px; color: #bbb; text-decoration: line-through; margin-bottom: 2px; font-weight: 600; font-family: var(--font-body); }
+        .price-current { font-size: 32px; font-weight: 900; color: var(--action-green); margin-bottom: 10px; letter-spacing: -1px; line-height: 1; font-family: var(--font-title); }
+        .btn-reservar { background-color: var(--action-green); color: white; text-decoration: none; padding: 14px 20px; border-radius: 8px; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; margin-top: 5px; cursor: pointer; border:none; text-transform: uppercase; letter-spacing: 0.5px; width: 100%; box-shadow: 0 4px 10px rgba(0,166,81,0.2); font-family: var(--font-title); }
         .btn-reservar:hover { background-color: var(--action-green-hover); box-shadow: 0 8px 20px rgba(0,166,81,0.4); transform: translateY(-2px); }
         
         /* MODALES */
@@ -320,13 +316,13 @@
         .modal-top-close:hover { color: #333; }
         .modal-icon { font-size: 70px; color: var(--action-green); margin-bottom: 20px; }
         .modal-title { font-size: 28px; color: var(--primary-blue); margin-bottom: 10px; font-weight: 900; letter-spacing: -1px; font-family: var(--font-title); }
-        .modal-text { font-size: 15px; color: #666; line-height: 1.6; margin-bottom: 20px; }
+        .modal-text { font-size: 15px; color: #666; line-height: 1.6; margin-bottom: 20px; font-family: var(--font-body); }
         
-        .tyc-content { text-align: left; font-size: 13px; color: #444; line-height: 1.5; margin-top: 15px; }
+        .tyc-content { text-align: left; font-size: 13px; color: #444; line-height: 1.5; margin-top: 15px; font-family: var(--font-body); }
         .tyc-content h4 { color: var(--primary-blue); margin-bottom: 5px; margin-top: 15px; font-size: 14px; }
         .tyc-content ul { padding-left: 20px; margin: 0; }
         
-        .codigo-reserva { background-color: #ecfdf5; border: 2px dashed #00a651; color: #003580; padding: 15px; font-size: 28px; font-weight: 900; letter-spacing: 3px; border-radius: 12px; margin: 10px 0 25px 0; display: inline-block; width: 100%; box-sizing: border-box; }
+        .codigo-reserva { background-color: #ecfdf5; border: 2px dashed #00a651; color: #003580; padding: 15px; font-size: 28px; font-weight: 900; letter-spacing: 3px; border-radius: 12px; margin: 10px 0 25px 0; display: inline-block; width: 100%; box-sizing: border-box; font-family: var(--font-title); }
         
         .modal-actions { display: flex; flex-direction: column; gap: 12px; }
         .modal-btn { padding: 16px; border-radius: 10px; text-decoration: none; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 15px; color: white; font-size: 16px; transition: 0.2s; border: none; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-family: var(--font-body); }
@@ -391,7 +387,7 @@
         .vehicle-desc-clean { font-size: 1.1rem; color: #666; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; font-family: var(--font-body); }
         .vehicle-capacity-clean { display: inline-block; background: var(--light-gray); padding: 8px 20px; border-radius: 50px; font-size: 0.9rem; color: #555; font-weight: 600; margin-bottom: 25px; }
 
-        .btn-reservar-clean { display: inline-block; background-color: var(--black); color: var(--white); padding: 15px 0; width: 100%; border-radius: 8px; text-transform: uppercase; font-size: 1rem; font-weight: 500; letter-spacing: 1px; transition: background 0.3s; text-decoration: none; cursor: pointer; border: none; font-family: var(--font-body); }
+        .btn-reservar-clean { display: inline-block; background-color: var(--black); color: var(--white); padding: 15px 0; width: 100%; border-radius: 8px; text-transform: uppercase; font-size: 1rem; font-weight: 500; letter-spacing: 1px; transition: background 0.3s; text-decoration: none; cursor: pointer; border: none; font-family: var(--font-title); }
         .btn-reservar-clean:hover { background-color: var(--gold); }
 
         /* ESTILOS DEL BOTÓN DEL CARRUSEL CORREGIDOS */
