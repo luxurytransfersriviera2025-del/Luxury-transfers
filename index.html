@@ -33,7 +33,7 @@
             --font-title: 'Playfair Display', serif;
             --light-gray: #f4f4f4;
 
-            /* Variable dinámica para el menú (se ajusta sola con JS) */
+            /* Variable dinámica para el menú */
             --header-height: 60px; 
         }
 
@@ -53,10 +53,9 @@
         header {
             background-color: rgba(10, 10, 10, 0.95);
             padding: 10px 0;
-            position: fixed; width: 100%; top: 0; z-index: 9999;
+            position: fixed; width: 100%; top: 0; z-index: 1000; /* Z-index estándar */
             border-bottom: 2px solid var(--gold);
             display: flex; align-items: center;
-            /* La altura es automática según el contenido */
         }
 
         .nav-container {
@@ -77,8 +76,7 @@
         .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; cursor: pointer; }
         .nav-links a:hover { color: var(--gold); }
 
-        /* --- AJUSTE FINAL DE SCROLL --- */
-        /* Restamos 25px a la altura del header para que el título suba y elimine el espacio vacío */
+        /* AJUSTE DE SCROLL */
         #seccion-calculadora, #servicios, #flota {
             scroll-margin-top: calc(var(--header-height) - 25px);
         }
@@ -91,6 +89,7 @@
             display: flex; align-items: center; justify-content: center;
             text-align: center; color: var(--white); padding: 0 20px;
             position: relative;
+            z-index: 1;
         }
 
         .hero-content {
@@ -291,9 +290,29 @@
         .btn-reservar { background-color: var(--action-green); color: white; text-decoration: none; padding: 14px 20px; border-radius: 8px; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; margin-top: 5px; cursor: pointer; border:none; text-transform: uppercase; letter-spacing: 0.5px; width: 100%; box-shadow: 0 4px 10px rgba(0,166,81,0.2); }
         .btn-reservar:hover { background-color: var(--action-green-hover); box-shadow: 0 8px 20px rgba(0,166,81,0.4); transform: translateY(-2px); }
         
-        /* MODALES */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 10000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .modal-box { background: white; width: 90%; max-width: 450px; padding: 40px 30px; border-radius: 20px; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.5); position: relative; animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); max-height: 90vh; overflow-y: auto; }
+        /* MODALES CORREGIDOS */
+        .modal-overlay { 
+            position: fixed; 
+            top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0, 0, 0, 0.8); 
+            z-index: 20000; /* Z-Index MUY alto, mayor que el header */
+            display: none; 
+            align-items: center; 
+            justify-content: center; 
+            backdrop-filter: blur(5px); 
+        }
+        .modal-box { 
+            background: white; 
+            width: 90%; max-width: 450px; 
+            padding: 40px 30px; 
+            border-radius: 20px; 
+            text-align: center; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5); 
+            position: relative; 
+            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            max-height: 90vh; 
+            overflow-y: auto; 
+        }
         .modal-top-close { position: absolute; top: 15px; right: 20px; border: none; background: transparent; color: #aaa; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; font-family: 'Montserrat', sans-serif; }
         .modal-top-close:hover { color: #333; }
         .modal-icon { font-size: 70px; color: var(--action-green); margin-bottom: 20px; }
@@ -314,7 +333,16 @@
         .btn-call { background: var(--primary-blue); }
         .btn-mail { background: #333; }
         
-        .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); z-index: 20000; display: none; align-items: center; justify-content: center; flex-direction: column; }
+        .loading-overlay { 
+            position: fixed; 
+            top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(255, 255, 255, 0.95); 
+            z-index: 20000; /* Z-Index MUY alto */
+            display: none; 
+            align-items: center; 
+            justify-content: center; 
+            flex-direction: column; 
+        }
         .spinner { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--action-green); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
         
         @keyframes slideUp { from {transform: translateY(50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
@@ -441,70 +469,6 @@
 
     <section id="seccion-calculadora">
         <div class="overlay" style="display:none;"></div> 
-
-        <div class="loading-overlay" id="loadingOverlay">
-            <div class="spinner"></div>
-            <p style="margin-top: 15px; font-weight: 700; color: #333; font-size: 14px;">GENERANDO RESERVA...</p>
-        </div>
-
-        <div class="modal-overlay" id="modalTyC">
-            <div class="modal-box">
-                <button class="modal-top-close" onclick="cerrarTyC()">Cerrar <i class="fas fa-times"></i></button>
-                <h2 class="modal-title" style="font-size: 22px;">Términos y Condiciones</h2>
-                <div class="tyc-content">
-                    <p>Al reservar con Luxury Transfers Riviera, aceptas lo siguiente:</p>
-                    <h4>1. Cancelaciones y Reembolsos</h4>
-                    <ul>
-                        <li>Cancelaciones con 24 horas de antelación: Reembolso del 100%.</li>
-                        <li>Cancelaciones con menos de 24 horas: No aplica reembolso (Cargo por No-Show).</li>
-                    </ul>
-                    <h4>2. Tiempos de Espera</h4>
-                    <ul>
-                        <li><strong>Aeropuerto:</strong> Monitoreamos tu vuelo. El chofer espera hasta 60 min después del aterrizaje.</li>
-                        <li><strong>Hotel/Airbnb:</strong> Tolerancia máxima de 15 minutos en el lobby.</li>
-                    </ul>
-                    <h4>3. Limpieza y Daños</h4>
-                    <ul><li>Si un pasajero ensucia el vehículo (vómito, alimentos, arena excesiva) se cobrará una cuota de limpieza de $2,500 MXN.</li></ul>
-                    <h4>4. Equipaje y Objetos</h4>
-                    <ul><li>No nos hacemos responsables por objetos olvidados. Revisa tus pertenencias antes de bajar.</li></ul>
-                    <h4 style="color:#d32f2f;">5. Eximición por Tráfico y Fuerza Mayor</h4>
-                    <ul><li>La empresa <strong>NO se hace responsable</strong> por vuelos perdidos o retrasos derivados de: tráfico pesado, accidentes carreteros, manifestaciones, obras viales o condiciones climáticas severas. Sugerimos anticipar su salida.</li></ul>
-                    <h4>6. Fallas Mecánicas</h4>
-                    <ul><li>En el improbable caso de falla mecánica, la empresa se compromete a enviar una unidad de sustitución para completar el traslado. Esto no es motivo de reembolso total.</li></ul>
-                    <h4>7. Vehículos e Imágenes</h4>
-                    <ul><li>Las imágenes mostradas son <strong>ilustrativas y de referencia</strong>. La marca, modelo o color del vehículo puede variar, garantizando siempre la misma categoría.</li></ul>
-                </div>
-                <button class="btn-reservar" onclick="cerrarTyC()" style="margin-top: 20px;">HE LEÍDO Y ACEPTO</button>
-            </div>
-        </div>
-
-        <div class="modal-overlay" id="modalConfirmacion">
-            <div class="modal-box">
-                <button class="modal-top-close" onclick="cerrarModal()">Cerrar <i class="fas fa-times"></i></button>
-
-                <div class="modal-icon"><i class="fas fa-check-circle"></i></div>
-                <h2 class="modal-title" id="modalTitle">¡Solicitud Recibida!</h2>
-                
-                <p style="margin:0; font-size:11px; color:#888; text-transform: uppercase; font-weight:700; letter-spacing: 1px;">Tu código de referencia es:</p>
-                <div id="codigoDisplay" class="codigo-reserva">LTR-????</div>
-
-                <p class="modal-text" id="modalText">
-                    Hemos recibido tu solicitud. Un asesor te contactará lo más breve posible para finalizar tu reserva.
-                </p>
-
-                <div style="background-color: #fff4e5; border-left: 4px solid #ff9800; padding: 10px; margin-bottom: 20px; text-align: left; font-size: 13px; color: #663c00;">
-                    <i class="fas fa-exclamation-triangle"></i> <strong>IMPORTANTE:</strong><br>
-                    Te hemos enviado un correo con los <strong>detalles de tu solicitud</strong>. <br>
-                    <span style="text-decoration: underline; font-weight: 800;">Por favor revisa tu carpeta de SPAM o "Correo no deseado"</span> si no lo ves en tu bandeja de entrada.
-                </div>
-                
-                <div class="modal-actions">
-                    <a href="tel:+529842411158" class="modal-btn btn-call"><i class="fas fa-phone"></i> Llama ahora</a>
-                    <a href="#" target="_blank" class="modal-btn btn-wa" id="btnWhatsapp"><i class="fab fa-whatsapp"></i> Confirmar por WhatsApp</a>
-                    <a href="#" class="modal-btn btn-mail" id="btnMail"><i class="fas fa-envelope"></i> Enviar Correo</a>
-                </div>
-            </div>
-        </div>
 
         <div class="main-container-calc">
             <h1 class="title-calc">
@@ -731,6 +695,69 @@
 
     <footer><p>&copy; 2025 Luxury Transfers Riviera. Todos los derechos reservados.</p></footer>
 
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p style="margin-top: 15px; font-weight: 700; color: #333; font-size: 14px;">GENERANDO RESERVA...</p>
+    </div>
+
+    <div class="modal-overlay" id="modalTyC">
+        <div class="modal-box">
+            <button class="modal-top-close" onclick="cerrarTyC()">Cerrar <i class="fas fa-times"></i></button>
+            <h2 class="modal-title" style="font-size: 22px;">Términos y Condiciones</h2>
+            <div class="tyc-content">
+                <p>Al reservar con Luxury Transfers Riviera, aceptas lo siguiente:</p>
+                <h4>1. Cancelaciones y Reembolsos</h4>
+                <ul>
+                    <li>Cancelaciones con 24 horas de antelación: Reembolso del 100%.</li>
+                    <li>Cancelaciones con menos de 24 horas: No aplica reembolso (Cargo por No-Show).</li>
+                </ul>
+                <h4>2. Tiempos de Espera</h4>
+                <ul>
+                    <li><strong>Aeropuerto:</strong> Monitoreamos tu vuelo. El chofer espera hasta 60 min después del aterrizaje.</li>
+                    <li><strong>Hotel/Airbnb:</strong> Tolerancia máxima de 15 minutos en el lobby.</li>
+                </ul>
+                <h4>3. Limpieza y Daños</h4>
+                <ul><li>Si un pasajero ensucia el vehículo (vómito, alimentos, arena excesiva) se cobrará una cuota de limpieza de $2,500 MXN.</li></ul>
+                <h4>4. Equipaje y Objetos</h4>
+                <ul><li>No nos hacemos responsables por objetos olvidados. Revisa tus pertenencias antes de bajar.</li></ul>
+                <h4 style="color:#d32f2f;">5. Eximición por Tráfico y Fuerza Mayor</h4>
+                <ul><li>La empresa <strong>NO se hace responsable</strong> por vuelos perdidos o retrasos derivados de: tráfico pesado, accidentes carreteros, manifestaciones, obras viales o condiciones climáticas severas. Sugerimos anticipar su salida.</li></ul>
+                <h4>6. Fallas Mecánicas</h4>
+                <ul><li>En el improbable caso de falla mecánica, la empresa se compromete a enviar una unidad de sustitución para completar el traslado. Esto no es motivo de reembolso total.</li></ul>
+                <h4>7. Vehículos e Imágenes</h4>
+                <ul><li>Las imágenes mostradas son <strong>ilustrativas y de referencia</strong>. La marca, modelo o color del vehículo puede variar, garantizando siempre la misma categoría.</li></ul>
+            </div>
+            <button class="btn-reservar" onclick="cerrarTyC()" style="margin-top: 20px;">HE LEÍDO Y ACEPTO</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modalConfirmacion">
+        <div class="modal-box">
+            <button class="modal-top-close" onclick="cerrarModal()">Cerrar <i class="fas fa-times"></i></button>
+
+            <div class="modal-icon"><i class="fas fa-check-circle"></i></div>
+            <h2 class="modal-title" id="modalTitle">¡Solicitud Recibida!</h2>
+            
+            <p style="margin:0; font-size:11px; color:#888; text-transform: uppercase; font-weight:700; letter-spacing: 1px;">Tu código de referencia es:</p>
+            <div id="codigoDisplay" class="codigo-reserva">LTR-????</div>
+
+            <p class="modal-text" id="modalText">
+                Hemos recibido tu solicitud. Un asesor te contactará lo más breve posible para finalizar tu reserva.
+            </p>
+
+            <div style="background-color: #fff4e5; border-left: 4px solid #ff9800; padding: 10px; margin-bottom: 20px; text-align: left; font-size: 13px; color: #663c00;">
+                <i class="fas fa-exclamation-triangle"></i> <strong>IMPORTANTE:</strong><br>
+                Te hemos enviado un correo con los <strong>detalles de tu solicitud</strong>. <br>
+                <span style="text-decoration: underline; font-weight: 800;">Por favor revisa tu carpeta de SPAM o "Correo no deseado"</span> si no lo ves en tu bandeja de entrada.
+            </div>
+            
+            <div class="modal-actions">
+                <a href="tel:+529842411158" class="modal-btn btn-call"><i class="fas fa-phone"></i> Llama ahora</a>
+                <a href="#" target="_blank" class="modal-btn btn-wa" id="btnWhatsapp"><i class="fab fa-whatsapp"></i> Confirmar por WhatsApp</a>
+                <a href="#" class="modal-btn btn-mail" id="btnMail"><i class="fas fa-envelope"></i> Enviar Correo</a>
+            </div>
+        </div>
+    </div>
 
     <script>
     // ============================================
