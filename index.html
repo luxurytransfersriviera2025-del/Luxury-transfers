@@ -29,7 +29,7 @@
             --light-gray: #f4f4f4;
 
             /* TIPOGRAFÍAS */
-            --font-hero: 'Montserrat', sans-serif; /* REGRESAMOS A MONTSERRAT (Solidez) */
+            --font-hero: 'Montserrat', sans-serif; 
             --font-title: 'Montserrat', sans-serif;
             --font-body: 'Open Sans', sans-serif;
             
@@ -78,7 +78,7 @@
             scroll-margin-top: calc(var(--header-height) - 25px);
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION (Escritorio) */
         .hero {
             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://i.imgur.com/3JAl89S.jpeg');
             background-size: cover; background-position: center center; height: 100vh;
@@ -94,7 +94,7 @@
 
         .hero-content h1 {
             order: 1; 
-            font-family: var(--font-hero); /* Montserrat Bold */
+            font-family: var(--font-hero); 
             font-size: 3.5rem; 
             margin-bottom: 20px; 
             line-height: 1.1;
@@ -126,7 +126,6 @@
             .logo { font-size: 1.2rem; letter-spacing: 0.5px; } .logo-icon { height: 30px; }
 
             .hero {
-                /* Imagen de fondo */
                 background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg');
                 background-position: center center;
                 height: 100vh;
@@ -134,13 +133,13 @@
             }
 
             .hero-content {
-                height: 90vh; /* Altura completa disponible */
+                height: 90vh; 
                 width: 100%; 
-                margin-top: 110px; /* Espacio para el header */
+                margin-top: 100px; /* Espacio para el header */
                 padding-bottom: 20px; 
                 display: flex; 
                 flex-direction: column;
-                justify-content: flex-start; /* Alineación superior para controlar con margenes */
+                justify-content: flex-start; 
             }
 
             .hero-content h1 {
@@ -152,35 +151,34 @@
                 letter-spacing: 0;
             }
 
-            /* AJUSTE RECTÁNGULO VERDE (Descripción) */
+            /* AJUSTE DESCRIPCIÓN: Subida + 3 Líneas + Fondo Transparente */
             .hero-content p {
                 order: 2;
-                /* Margin-top controla qué tan abajo inicia respecto al título. 
-                   Al quitar 'auto', ya no se va al fondo, sino que flota más arriba (zona parabrisas) */
-                margin-top: 50px; 
-                margin-bottom: 25px; 
+                margin-top: 20px; /* Más arriba, pegado al título */
+                margin-bottom: 0; 
                 
-                font-size: 1rem; 
-                line-height: 1.5; 
+                /* Ajuste para 3 líneas */
+                font-size: 0.85rem; /* Letra un poco más chica */
+                line-height: 1.4; 
+                
                 text-shadow: none; 
                 
-                /* Fondo negro opaco para lectura perfecta */
-                background-color: rgba(0, 0, 0, 0.7); 
-                padding: 15px; 
+                /* Fondo negro MÁS transparente (0.4) para ver la imagen de atrás */
+                background-color: rgba(0, 0, 0, 0.4); 
+                padding: 10px; /* Menos padding para ahorrar espacio */
                 border-radius: 15px;
                 
-                width: 90%; 
+                width: 95%; /* Más ancho para que el texto quepa en 3 líneas */
                 box-sizing: border-box; 
             }
 
-            /* AJUSTE RECTÁNGULO ROJO (Botón) */
+            /* AJUSTE BOTÓN: Abajo en la llanta */
             .btn-cta {
                 order: 3; 
-                margin-top: 0; 
-                /* Margin-bottom 0 asegura que siga el flujo natural después de la descripción, cayendo en la zona de la llanta */
-                margin-bottom: 0; 
+                margin-top: auto; /* Empuja el botón hacia abajo */
+                margin-bottom: 60px; /* Lo levanta para quedar a la altura de la llanta (Línea Roja) */
                 align-self: center; 
-                width: 90%; /* Botón grande y ancho */
+                width: 90%; 
                 font-size: 1.1rem; 
                 padding: 20px 0; 
             }
@@ -1214,14 +1212,22 @@
         divRes.innerHTML = "";
         
         let rutaLabel = "";
-        if(direccionMode === 'desdeAero') rutaLabel = "Aeropuerto Cancún <i class='fas fa-arrow-right'></i> " + document.getElementById('destino').value;
-        else rutaLabel = document.getElementById('origen').value + " <i class='fas fa-arrow-right'></i> Aeropuerto Cancún";
+        
+        // --- LOGICA DE TRADUCCIÓN DE RUTA (AEROPUERTO CANCUN -> CANCUN AIRPORT) ---
+        let aeroName = currentLang === 'en' ? airportNameEN : "Aeropuerto Cancún";
+
+        if(direccionMode === 'desdeAero') rutaLabel = `${aeroName} <i class='fas fa-arrow-right'></i> ${document.getElementById('destino').value}`;
+        else rutaLabel = `${document.getElementById('origen').value} <i class='fas fa-arrow-right'></i> ${aeroName}`;
         
         const t = translations[currentLang];
         divRes.innerHTML = `<div class="ruta-header">${t.resultsFor}: ${rutaLabel}</div>`;
+
+        // --- LOGICA DE TRADUCCIÓN "HASTA 15 PAX" ---
+        let cap15 = currentLang === 'en' ? "Up to 15 Pax" : "Hasta 15 Pax";
+
         if(pax<=3) divRes.innerHTML+=crearCard("STANDARD SEDAN","1-3 Pax",p.standart,moneda,zonaDetectada,imgUrlErtiga, rutaLabel);
         else if(pax<=8) divRes.innerHTML+=crearCard("VAN STANDARD","1-8 Pax",p.standart,moneda,zonaDetectada,imgUrlTransporter, rutaLabel);
-        if(pax<=15 && p.small) divRes.innerHTML+=crearCard("SMALL GROUP VAN","Hasta 15 Pax",p.small,moneda,zonaDetectada,imgUrlSprinter, rutaLabel);
+        if(pax<=15 && p.small) divRes.innerHTML+=crearCard("SMALL GROUP VAN", cap15, p.small,moneda,zonaDetectada,imgUrlSprinter, rutaLabel);
         if(pax<=5 && p.luxury) divRes.innerHTML+=crearCard("LUXURY SUV","1-5 Pax",p.luxury,moneda,zonaDetectada,imgUrlSuburban, rutaLabel);
         divRes.style.display = 'block';
         divRes.scrollIntoView({ behavior: 'smooth', block: 'start' });
