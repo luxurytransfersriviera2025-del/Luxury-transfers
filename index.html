@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxury Transfers Riviera | Transporte VIP</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
     <style>
@@ -28,10 +28,10 @@
             --navy-bg: #002855;
             --light-gray: #f4f4f4;
 
-            /* TIPOGRAFÍAS MEJORADAS */
-            --font-hero: 'Playfair Display', serif; /* Título de Lujo (Nuevo) */
-            --font-title: 'Montserrat', sans-serif; /* Subtítulos e Interfaz */
-            --font-body: 'Open Sans', sans-serif;   /* Lectura */
+            /* TIPOGRAFÍAS */
+            --font-hero: 'Montserrat', sans-serif; /* Regresamos a Montserrat para el Hero */
+            --font-title: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
             
             --header-height: 60px; 
         }
@@ -78,7 +78,7 @@
             scroll-margin-top: calc(var(--header-height) - 25px);
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION (Escritorio) */
         .hero {
             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://i.imgur.com/3JAl89S.jpeg');
             background-size: cover; background-position: center center; height: 100vh;
@@ -92,17 +92,16 @@
             display: flex; flex-direction: column; align-items: center;
         }
 
-        /* CAMBIO 1: Tipografía Hero cambiada a Playfair Display */
         .hero-content h1 {
             order: 1; 
-            font-family: var(--font-hero); /* Fuente de Lujo */
-            font-size: 3.8rem; 
+            font-family: var(--font-hero); /* Montserrat Bold */
+            font-size: 3.5rem; 
             margin-bottom: 20px; 
-            line-height: 1.2; 
-            font-weight: 700; 
+            line-height: 1.1;
+            font-weight: 900; 
             text-transform: uppercase;
             text-shadow: 2px 2px 15px rgba(0,0,0,0.8); 
-            letter-spacing: 1px; /* Más espacio entre letras para que no se vea pegado */
+            letter-spacing: -1px;
         }
 
         .hero-content p {
@@ -118,6 +117,70 @@
             cursor: pointer; font-family: var(--font-title);
         }
         .btn-cta:hover { background-color: var(--gold-hover); transform: translateY(-3px); border-color: var(--gold-hover); }
+
+        /* --- MEDIA QUERIES HERO (MÓVIL - AJUSTES SOLICITADOS) --- */
+        @media (max-width: 768px) {
+            header { padding: 15px 0; }
+            .nav-container { flex-direction: column; gap: 15px; }
+            .nav-links { gap: 20px; } .nav-links a { font-size: 0.8rem; }
+            .logo { font-size: 1.2rem; letter-spacing: 0.5px; } .logo-icon { height: 30px; }
+
+            .hero {
+                /* Imagen de fondo original */
+                background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg');
+                background-position: center center;
+                height: 100vh;
+                align-items: flex-start;
+            }
+
+            .hero-content {
+                height: 90vh; /* Usamos casi toda la altura */
+                width: 100%; 
+                margin-top: 100px; 
+                padding-bottom: 20px; 
+                display: flex; 
+                flex-direction: column;
+                justify-content: flex-start; /* Alineamos contenido arriba... */
+            }
+
+            .hero-content h1 {
+                order: 1; 
+                font-size: 2.2rem; 
+                margin-bottom: 0; 
+                white-space: normal; 
+                text-shadow: 0 2px 15px rgba(0,0,0,0.9); 
+                letter-spacing: 0;
+            }
+
+            /* AJUSTE DESCRIPCIÓN: FONDO NEGRO Y POSICIÓN BAJA (Línea Verde) */
+            .hero-content p {
+                order: 2;
+                margin-top: auto; /* Esto empuja el texto hacia abajo */
+                margin-bottom: 20px; /* Espacio antes del botón */
+                font-size: 1rem; 
+                line-height: 1.5; 
+                text-shadow: none; /* Quitamos sombra porque ya tiene fondo */
+                
+                /* Fondo negro semitransparente para leer bien */
+                background-color: rgba(0, 0, 0, 0.65); 
+                padding: 15px; 
+                border-radius: 15px;
+                
+                width: 90%; /* Un poco de margen a los lados */
+                box-sizing: border-box; 
+            }
+
+            /* AJUSTE BOTÓN: MÁS GRANDE Y ABAJO (Línea Roja) */
+            .btn-cta {
+                order: 3; 
+                margin-top: 0; 
+                margin-bottom: 40px; /* Lo sube un poco desde el borde inferior para quedar en la llanta */
+                align-self: center; 
+                width: 90%; /* Botón ancho, fácil de presionar */
+                font-size: 1.1rem; /* Letra más grande */
+                padding: 20px 0; /* Botón más alto */
+            }
+        }
 
         /* CALCULADORA */
         #seccion-calculadora { 
@@ -339,18 +402,6 @@
 
         /* Media Queries Generales */
         @media (max-width: 768px) { 
-            header { padding: 15px 0; }
-            .nav-container { flex-direction: column; gap: 15px; }
-            .nav-links { gap: 20px; } .nav-links a { font-size: 0.8rem; }
-            .logo { font-size: 1.2rem; letter-spacing: 0.5px; } .logo-icon { height: 30px; }
-            .hero { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg'); background-position: center center; height: 100vh; align-items: flex-start; }
-            .hero-content { height: 85vh; width: 100%; margin-top: 100px; padding-bottom: 20px; display: flex; flex-direction: column; }
-            /* AJUSTE CAMBIO 1: Tipografía en Hero Móvil */
-            .hero-content h1 { order: 1; font-size: 2.2rem; margin-bottom: 0; white-space: normal; text-shadow: 0 2px 15px rgba(0,0,0,0.9); letter-spacing: 0; font-family: var(--font-hero); }
-            /* CAMBIO 2: Orden y espaciado móvil para Descripción antes de Botón */
-            .hero-content p { order: 2; margin-top: 20px; margin-bottom: 30px; font-size: 1rem; line-height: 1.4; text-shadow: 0 2px 5px rgba(0,0,0,1); padding: 0 15px; width: 100%; box-sizing: border-box; background: none; }
-            .btn-cta { order: 3; margin-top: 0; margin-bottom: 0; align-self: center; width: auto; font-size: 0.9rem; padding: 15px 40px; }
-            
             .form-grid, .contact-section { grid-template-columns: 1fr; background: transparent; padding: 0; gap: 12px; border: none; } 
             .input-wrapper { border-radius: 10px !important; box-shadow: 0 2px 5px rgba(0,0,0,0.05); } 
             .direction-tabs { flex-direction: column; gap: 8px; } .tab-btn { justify-content: center; padding: 14px; } 
