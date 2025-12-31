@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxury Transfers Riviera | Transporte VIP</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
     <style>
@@ -28,8 +28,10 @@
             --navy-bg: #002855;
             --light-gray: #f4f4f4;
 
-            --font-title: 'Montserrat', sans-serif;
-            --font-body: 'Open Sans', sans-serif;
+            /* TIPOGRAFÍAS MEJORADAS */
+            --font-hero: 'Playfair Display', serif; /* Título de Lujo (Nuevo) */
+            --font-title: 'Montserrat', sans-serif; /* Subtítulos e Interfaz */
+            --font-body: 'Open Sans', sans-serif;   /* Lectura */
             
             --header-height: 60px; 
         }
@@ -90,22 +92,26 @@
             display: flex; flex-direction: column; align-items: center;
         }
 
+        /* CAMBIO 1: Tipografía Hero cambiada a Playfair Display */
         .hero-content h1 {
-            order: 1; font-size: 3.2rem; margin-bottom: 20px; line-height: 1.1;
-            font-weight: 900; text-transform: uppercase;
-            text-shadow: 2px 2px 15px rgba(0,0,0,0.8); font-family: var(--font-title); letter-spacing: -1px;
+            order: 1; 
+            font-family: var(--font-hero); /* Fuente de Lujo */
+            font-size: 3.8rem; 
+            margin-bottom: 20px; 
+            line-height: 1.2; 
+            font-weight: 700; 
+            text-transform: uppercase;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.8); 
+            letter-spacing: 1px; /* Más espacio entre letras para que no se vea pegado */
         }
 
         .hero-content p {
-            order: 2; font-size: 1.3rem; margin-bottom: 40px; font-weight: 400;
+            order: 2; font-size: 1.4rem; margin-bottom: 40px; font-weight: 400;
             text-shadow: 1px 1px 8px rgba(0,0,0,0.8); max-width: 800px; font-family: var(--font-body);
         }
 
-        /* BOTÓN COTIZAR AHORA (WEB Y MÓVIL) */
         .btn-cta {
-            order: 3; 
-            background-color: var(--gold); /* Fondo Dorado/Mostaza */
-            color: var(--black); /* Letras Negras */
+            order: 3; background-color: var(--gold); color: var(--black);
             padding: 18px 50px; border-radius: 50px; font-weight: 800; font-size: 1rem;
             text-transform: uppercase; letter-spacing: 2px; display: inline-block;
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4); border: 2px solid var(--gold);
@@ -339,9 +345,12 @@
             .logo { font-size: 1.2rem; letter-spacing: 0.5px; } .logo-icon { height: 30px; }
             .hero { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg'); background-position: center center; height: 100vh; align-items: flex-start; }
             .hero-content { height: 85vh; width: 100%; margin-top: 100px; padding-bottom: 20px; display: flex; flex-direction: column; }
-            .hero-content h1 { order: 1; font-size: 2.2rem; margin-bottom: 0; white-space: normal; text-shadow: 0 2px 15px rgba(0,0,0,0.9); letter-spacing: 0; }
-            .btn-cta { order: 2; margin-top: 40px; margin-bottom: 0; align-self: center; width: auto; font-size: 0.9rem; padding: 15px 40px; }
-            .hero-content p { order: 3; margin-top: auto; font-size: 1rem; line-height: 1.4; text-shadow: 0 2px 5px rgba(0,0,0,1); padding: 0 15px; padding-bottom: 40px; width: 100%; box-sizing: border-box; background: none; }
+            /* AJUSTE CAMBIO 1: Tipografía en Hero Móvil */
+            .hero-content h1 { order: 1; font-size: 2.2rem; margin-bottom: 0; white-space: normal; text-shadow: 0 2px 15px rgba(0,0,0,0.9); letter-spacing: 0; font-family: var(--font-hero); }
+            /* CAMBIO 2: Orden y espaciado móvil para Descripción antes de Botón */
+            .hero-content p { order: 2; margin-top: 20px; margin-bottom: 30px; font-size: 1rem; line-height: 1.4; text-shadow: 0 2px 5px rgba(0,0,0,1); padding: 0 15px; width: 100%; box-sizing: border-box; background: none; }
+            .btn-cta { order: 3; margin-top: 0; margin-bottom: 0; align-self: center; width: auto; font-size: 0.9rem; padding: 15px 40px; }
+            
             .form-grid, .contact-section { grid-template-columns: 1fr; background: transparent; padding: 0; gap: 12px; border: none; } 
             .input-wrapper { border-radius: 10px !important; box-shadow: 0 2px 5px rgba(0,0,0,0.05); } 
             .direction-tabs { flex-direction: column; gap: 8px; } .tab-btn { justify-content: center; padding: 14px; } 
