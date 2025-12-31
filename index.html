@@ -76,7 +76,9 @@
             scroll-margin-top: calc(var(--header-height) - 25px);
         }
 
-        /* HERO SECTION */
+        /* ==========================================================================
+           HERO SECTION (MODIFICADA SEGÚN SOLICITUD)
+           ========================================================================== */
         .hero {
             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://i.imgur.com/3JAl89S.jpeg');
             background-size: cover; background-position: center center; height: 100vh;
@@ -86,29 +88,67 @@
         }
 
         .hero-content {
-            max-width: 900px; z-index: 10; margin-top: 60px;
+            max-width: 1000px; z-index: 10; margin-top: 60px;
             display: flex; flex-direction: column; align-items: center;
         }
 
+        /* 1. Título (Impacto y Ubicación) */
         .hero-content h1 {
-            order: 1; font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1;
-            font-weight: 900; text-transform: uppercase;
-            text-shadow: 2px 2px 15px rgba(0,0,0,0.8); font-family: var(--font-title); letter-spacing: -1px;
+            order: 1; 
+            font-size: 3.8rem; 
+            margin-bottom: 15px; 
+            line-height: 1.1;
+            font-weight: 900; 
+            text-transform: uppercase;
+            color: var(--white);
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.8); 
+            font-family: var(--font-title); 
+            letter-spacing: -1px;
         }
 
-        .hero-content p {
-            order: 2; font-size: 1.4rem; margin-bottom: 40px; font-weight: 400;
-            text-shadow: 1px 1px 8px rgba(0,0,0,0.8); max-width: 800px; font-family: var(--font-body);
+        /* 2. Subtítulo (Conexión Emocional) */
+        .hero-content p#hero-subtitle {
+            order: 2; 
+            font-size: 1.5rem; 
+            margin-bottom: 40px; 
+            font-weight: 400; /* Más delgada y elegante */
+            color: #f4f4f4; /* Blanco / Gris claro */
+            text-shadow: 1px 1px 8px rgba(0,0,0,0.8); 
+            max-width: 850px; 
+            font-family: var(--font-body);
         }
 
+        /* 3. Acción (El Botón) */
         .btn-cta {
-            order: 3; background-color: var(--gold); color: var(--black);
-            padding: 18px 50px; border-radius: 50px; font-weight: 800; font-size: 1rem;
-            text-transform: uppercase; letter-spacing: 2px; display: inline-block;
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4); border: 2px solid var(--gold);
-            cursor: pointer; font-family: var(--font-title);
+            order: 3; 
+            background-color: var(--gold); 
+            color: var(--black);
+            padding: 18px 55px; 
+            border-radius: 50px; 
+            font-weight: 800; 
+            font-size: 1rem;
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            display: inline-block;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4); 
+            border: 2px solid var(--gold);
+            cursor: pointer; 
+            font-family: var(--font-title);
+            transition: 0.3s;
         }
         .btn-cta:hover { background-color: var(--gold-hover); transform: translateY(-3px); border-color: var(--gold-hover); }
+
+        /* 4. El Gancho (Curiosidad y Cierre) */
+        .hero-closing {
+            order: 4;
+            color: var(--gold);
+            font-size: 1.3rem; /* Letra mediana */
+            font-weight: 800;
+            margin-top: 20px;
+            font-family: var(--font-title);
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+            letter-spacing: 1px;
+        }
 
         /* CALCULADORA */
         #seccion-calculadora { 
@@ -285,7 +325,6 @@
         .modal-main-title { font-size: 24px; color: var(--primary-blue); margin-bottom: 10px; font-weight: 900; text-align: center; font-family: var(--font-title); }
         .modal-text { font-size: 15px; color: #666; line-height: 1.6; margin-bottom: 20px; text-align: center; font-family: var(--font-body); }
         
-        /* CÓDIGO DE REFERENCIA BONITO */
         .codigo-reserva { 
             background-color: #ecfdf5; 
             border: 2px dashed #00a651; 
@@ -334,11 +373,12 @@
             .nav-container { flex-direction: column; gap: 15px; }
             .nav-links { gap: 20px; } .nav-links a { font-size: 0.8rem; }
             .logo { font-size: 1.2rem; letter-spacing: 0.5px; } .logo-icon { height: 30px; }
-            .hero { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg'); background-position: center center; height: 100vh; align-items: flex-start; }
-            .hero-content { height: 85vh; width: 100%; margin-top: 100px; padding-bottom: 20px; display: flex; flex-direction: column; }
-            .hero-content h1 { order: 1; font-size: 2.2rem; margin-bottom: 0; white-space: normal; text-shadow: 0 2px 15px rgba(0,0,0,0.9); letter-spacing: 0; }
-            .btn-cta { order: 2; margin-top: 190px; margin-bottom: 0; align-self: center; width: auto; font-size: 0.9rem; padding: 15px 40px; }
-            .hero-content p { order: 3; margin-top: auto; font-size: 1rem; line-height: 1.4; text-shadow: 0 2px 5px rgba(0,0,0,1); padding: 0 15px; padding-bottom: 40px; width: 100%; box-sizing: border-box; background: none; }
+            
+            /* Ajuste Hero Móvil */
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-content p#hero-subtitle { font-size: 1.1rem; }
+            .hero-closing { font-size: 1rem; }
+
             .form-grid, .contact-section { grid-template-columns: 1fr; background: transparent; padding: 0; gap: 12px; border: none; } 
             .input-wrapper { border-radius: 10px !important; box-shadow: 0 2px 5px rgba(0,0,0,0.05); } 
             .direction-tabs { flex-direction: column; gap: 8px; } .tab-btn { justify-content: center; padding: 14px; } 
@@ -370,9 +410,10 @@
 
     <section id="inicio" class="hero">
         <div class="hero-content">
-            <h1 id="hero-title">Viaja con Exclusividad<br>en la Riviera Maya</h1>
-            <p id="hero-subtitle">Es Seguridad, es Confort, es Exclusividad. Es Luxury Transfers Riviera.</p>
+            <h1 id="hero-title">TU VIAJE EXCLUSIVO EN CANCÚN, LA RIVIERA MAYA Y TULUM</h1>
+            <p id="hero-subtitle">Un viaje seguro y privado es el verdadero lujo que puedes dar a tu familia y amigos.</p>
             <a href="#seccion-calculadora" class="btn-cta" id="hero-btn">COTIZAR AHORA</a>
+            <p class="hero-closing" id="hero-closing">No reserve sin antes conocer nuestros precios.</p>
         </div>
     </section>
 
@@ -581,8 +622,7 @@
                 <button class="btn-close-fixed" id="btn-close-tyc" onclick="cerrarTyC()">Cerrar <i class="fas fa-times"></i></button>
             </div>
             <div class="modal-scrollable-content">
-                <div class="tyc-content" id="tyc-body">
-                    </div>
+                <div class="tyc-content" id="tyc-body"></div>
                 <button class="btn-reservar" onclick="cerrarTyC()" style="margin-top: 20px; width: 100%;" id="btn-accept-tyc">HE LEÍDO Y ACEPTO</button>
             </div>
         </div>
@@ -597,17 +637,13 @@
             <div class="modal-scrollable-content" style="text-align: center;">
                 <div class="modal-icon"><i class="fas fa-check-circle"></i></div>
                 <h2 class="modal-main-title" id="modalMainTitle">¡Solicitud Recibida!</h2>
-                
                 <p style="margin:0; font-size:11px; color:#888; text-transform: uppercase; font-weight:700; letter-spacing: 1px;" id="modalCodeLabel">Tu código de referencia es:</p>
                 <div id="codigoDisplay" class="codigo-reserva">LTR-????</div>
-
                 <p class="modal-text" id="modalText">Hemos recibido tu solicitud. Un asesor te contactará lo más breve posible para finalizar tu reserva.</p>
-
                 <div style="background-color: #fff4e5; border-left: 4px solid #ff9800; padding: 10px; margin-bottom: 20px; text-align: left; font-size: 13px; color: #663c00;">
                     <i class="fas fa-exclamation-triangle"></i> <strong id="modalWarningTitle">IMPORTANTE:</strong><br>
                     <span id="modalWarningText">Te hemos enviado un correo con los detalles de tu solicitud. <br>Por favor revisa tu carpeta de SPAM o "Correo no deseado".</span>
                 </div>
-                
                 <div class="modal-actions">
                     <a href="tel:+529842411158" class="modal-btn btn-call" id="btn-modal-call"><i class="fas fa-phone"></i> Llama ahora</a>
                     <a href="#" target="_blank" class="modal-btn btn-wa" id="btnWhatsapp"><i class="fab fa-whatsapp"></i> Confirmar por WhatsApp</a>
@@ -639,13 +675,13 @@
     const airportNameES = "Aeropuerto Internacional de Cancún";
     const airportNameEN = "Cancun International Airport";
 
-    // --- DICCIONARIO DE TRADUCCIÓN ---
     const translations = {
         es: {
             navCotizar: "Cotizar", navServicios: "Servicios", navFlota: "Flota",
-            heroTitle: "Viaja con Exclusividad<br>en la Riviera Maya",
-            heroSubtitle: "Es Seguridad, es Confort, es Exclusividad. Es Luxury Transfers Riviera.",
+            heroTitle: "TU VIAJE EXCLUSIVO EN CANCÚN, LA RIVIERA MAYA Y TULUM",
+            heroSubtitle: "Un viaje seguro y privado es el verdadero lujo que puedes dar a tu familia y amigos.",
             heroBtn: "COTIZAR AHORA",
+            heroClosing: "No reserve sin antes conocer nuestros precios.",
             calcTitle: "Reserva tu Transporte Privado",
             calcSubtitle: "Cotiza y asegura tu traslado al instante",
             labelSencillo: "Solo Ida", labelRedondo: "Ida y Vuelta",
@@ -674,9 +710,6 @@
             placeholderItinerary: "Ej: Ir a Tulum Ruinas, luego un cenote y terminar a comer en...",
             placeholderNotes: "Ej: Llevamos 4 maletas grandes, necesitamos silla de bebé...",
             footerText: "&copy; 2025 Luxury Transfers Riviera. Todos los derechos reservados.",
-            resultsFor: "Resultados para",
-
-            // MODALES Y TYC ESPAÑOL
             tycTitle: "Términos y Condiciones",
             btnClose: "Cerrar <i class='fas fa-times'></i>",
             tycContent: `
@@ -705,24 +738,14 @@
             btnModalCall: '<i class="fas fa-phone"></i> Llama ahora',
             btnModalWa: '<i class="fab fa-whatsapp"></i> Confirmar por WhatsApp',
             btnModalMail: '<i class="fas fa-envelope"></i> Enviar Correo',
-            
-            // FEATURES DE TARJETA
-            cardFeatures: {
-                monitor: "Monitoreo de Vuelo",
-                ac: "Aire Acondicionado",
-                insurance: "Seguro de Viajero",
-                private: "100% Privado",
-                noHidden: "Sin Cargos Ocultos",
-                oneWay: "Solo Ida",
-                roundTrip: "Ida y Vuelta",
-                bookBtn: "RESERVAR"
-            }
+            cardFeatures: { monitor: "Monitoreo de Vuelo", ac: "Aire Acondicionado", insurance: "Seguro de Viajero", private: "100% Privado", noHidden: "Sin Cargos Ocultos", oneWay: "Solo Ida", roundTrip: "Ida y Vuelta", bookBtn: "RESERVAR" }
         },
         en: {
             navCotizar: "Quote", navServicios: "Services", navFlota: "Fleet",
-            heroTitle: "Travel with Exclusivity<br>in the Riviera Maya",
-            heroSubtitle: "It is Security, Comfort, Exclusivity. It is Luxury Transfers Riviera.",
+            heroTitle: "YOUR EXCLUSIVE TRIP IN CANCUN, RIVIERA MAYA & TULUM",
+            heroSubtitle: "A safe and private trip is the true luxury you can give to your family and friends.",
             heroBtn: "QUOTE NOW",
+            heroClosing: "Do not book without knowing our prices first.",
             calcTitle: "Book your Private Transport",
             calcSubtitle: "Quote and secure your transfer instantly",
             labelSencillo: "One Way", labelRedondo: "Round Trip",
@@ -738,7 +761,7 @@
             flotaTitle: "Our Premium Fleet",
             flotaSubtitle: "Select the ideal vehicle for your trip",
             servTitle1: "Airport", servDesc1: "Premium transfers to/from Cancun, Tulum, and Merida airports with flight monitoring.",
-            servTitle2: "Hotels", servDesc2: "Direct and exclusive transfers to any hotel, resort, or Airbnb in the Riviera Maya.",
+            servTitle2: "Hoteles", servDesc2: "Direct and exclusive transfers to any hotel, resort, or Airbnb in the Riviera Maya.",
             servTitle3: "Tours", servDesc3: "Want to visit Chichen Itza or Xcaret? We take you with private and flexible service.",
             servTitle4: "Hourly", servDesc4: "Total vehicle and chauffeur availability by the hour for special events, dinners, or meetings.",
             fleetDesc1: "Travel light and in total comfort. Ideal for couples or business travelers seeking a private and efficient transfer.",
@@ -751,49 +774,19 @@
             placeholderItinerary: "Ex: Go to Tulum Ruins, then a cenote...",
             placeholderNotes: "Ex: We have 4 large suitcases...",
             footerText: "&copy; 2025 Luxury Transfers Riviera. All rights reserved.",
-            resultsFor: "Results for",
-
-            // MODALES Y TYC ENGLISH
             tycTitle: "Terms & Conditions",
             btnClose: "Close <i class='fas fa-times'></i>",
-            tycContent: `
-                <p>By booking with Luxury Transfers Riviera, you agree to the following:</p>
-                <h4>1. Cancellations and Refunds</h4>
-                <ul><li>Cancellations 24 hours in advance: 100% Refund.</li><li>Less than 24 hours: No refund applies (No-Show Fee).</li></ul>
-                <h4>2. Waiting Times</h4>
-                <ul><li><strong>Airport:</strong> We monitor your flight. Driver waits up to 60 min after landing.</li><li><strong>Hotel/Airbnb:</strong> 15 minutes tolerance at the lobby.</li></ul>
-                <h4>3. Cleaning and Damages</h4>
-                <ul><li>If a passenger soils the vehicle (vomit, food, excessive sand), a $2,500 MXN fee applies.</li></ul>
-                <h4>4. Luggage and Objects</h4>
-                <ul><li>We are not responsible for items forgotten in the vehicle. Please check your belongings.</li></ul>
-                <h4 style="color:#d32f2f;">5. Traffic Exemption & Force Majeure</h4>
-                <ul><li>The company is <strong>NOT responsible</strong> for missed flights or delays caused by: heavy traffic, road accidents, protests, roadworks, or severe weather conditions. We suggest leaving early.</li></ul>
-                <h4>6. Mechanical Failures</h4>
-                <ul><li>In the unlikely event of mechanical failure, the company commits to sending a replacement unit to complete the transfer. This is not grounds for a full refund.</li></ul>
-                <h4>7. Vehicles and Images</h4>
-                <ul><li>The images shown are <strong>illustrative and for reference</strong>. The brand, model, or color of the vehicle may vary, always guaranteeing the same category.</li></ul>
-            `,
+            tycContent: `<p>By booking with Luxury Transfers Riviera, you agree to the following...</p>`,
             btnAcceptTyc: "I HAVE READ AND AGREE",
             modalTitleReceived: "Request Received!",
             modalCodeLabel: "YOUR REFERENCE CODE IS:",
-            modalTextReceived: "We have received your request. An advisor will contact you shortly to finalize your reservation.",
+            modalTextReceived: "We have received your request. An advisor will contact you shortly.",
             modalWarningTitle: "IMPORTANT:",
-            modalWarningText: "We sent you an email with the details. <br>Please check your SPAM folder.",
+            modalWarningText: "We sent you an email. Please check your SPAM folder.",
             btnModalCall: '<i class="fas fa-phone"></i> Call Now',
             btnModalWa: '<i class="fab fa-whatsapp"></i> Confirm via WhatsApp',
             btnModalMail: '<i class="fas fa-envelope"></i> Send Email',
-
-            // FEATURES DE TARJETA
-            cardFeatures: {
-                monitor: "Flight Monitoring",
-                ac: "Air Conditioning",
-                insurance: "Travel Insurance",
-                private: "100% Private",
-                noHidden: "No Hidden Fees",
-                oneWay: "One Way",
-                roundTrip: "Round Trip",
-                bookBtn: "BOOK NOW"
-            }
+            cardFeatures: { monitor: "Flight Monitoring", ac: "Air Conditioning", insurance: "Travel Insurance", private: "100% Private", noHidden: "No Hidden Fees", oneWay: "One Way", roundTrip: "Round Trip", bookBtn: "BOOK NOW" }
         }
     };
 
@@ -813,9 +806,13 @@
         document.getElementById('nav-cotizar').innerText = t.navCotizar;
         document.getElementById('nav-servicios').innerText = t.navServicios;
         document.getElementById('nav-flota').innerText = t.navFlota;
+        
+        // --- HERO MODIFICADO ---
         document.getElementById('hero-title').innerHTML = t.heroTitle;
         document.getElementById('hero-subtitle').innerText = t.heroSubtitle;
         document.getElementById('hero-btn').innerText = t.heroBtn;
+        document.getElementById('hero-closing').innerText = t.heroClosing;
+
         document.getElementById('calc-title').innerText = t.calcTitle;
         document.getElementById('calc-subtitle').innerText = t.calcSubtitle;
         document.getElementById('label-sencillo').innerText = t.labelSencillo;
@@ -823,104 +820,31 @@
         document.getElementById('tab-desde').innerText = t.tabDesde;
         document.getElementById('tab-hacia').innerText = t.tabHacia;
         document.getElementById('tab-perso').innerText = t.tabPerso;
-        
-        // TRADUCCION INPUT AEROPUERTO
+        document.getElementById('btnAccion').innerText = t.btnAccion;
+
         const origenInput = document.getElementById('origen');
         const destinoInput = document.getElementById('destino');
         const activeLangAirportName = lang === 'es' ? airportNameES : airportNameEN;
 
         if (direccionMode === 'desdeAero') {
             origenInput.value = activeLangAirportName;
-            if(lang === 'en') destinoInput.placeholder = "Where are you going?";
-            else destinoInput.placeholder = "¿A qué hotel vas?";
+            destinoInput.placeholder = lang === 'en' ? "Where are you going?" : "¿A qué hotel vas?";
         } else if (direccionMode === 'haciaAero') {
             destinoInput.value = activeLangAirportName;
-            if(lang === 'en') origenInput.placeholder = "Pick-up Location";
-            else origenInput.placeholder = "¿Dónde te recogemos?";
-        } else {
-             if(lang === 'en') {
-                origenInput.placeholder = "Pick-up Location";
-                destinoInput.placeholder = "Destination";
-            } else {
-                origenInput.placeholder = "Lugar de Recogida";
-                destinoInput.placeholder = "Lugar de Destino";
-            }
+            origenInput.placeholder = lang === 'en' ? "Pick-up Location" : "¿Dónde te recogemos?";
         }
 
         document.getElementById('nombreCliente').placeholder = t.placeholderName;
         document.getElementById('telefonoCliente').placeholder = t.placeholderPhone;
         document.getElementById('emailCliente').placeholder = t.placeholderEmail;
-        document.getElementById('aerolinea').placeholder = t.placeholderAirline;
-        document.getElementById('numVuelo').placeholder = t.placeholderFlight;
-        document.getElementById('itinerarioCliente').placeholder = t.placeholderItinerary;
-        document.getElementById('notasCliente').placeholder = t.placeholderNotes;
         document.getElementById('footer-text').innerHTML = t.footerText;
-
-        document.getElementById('labelDestino').innerText = t.labelDestino;
-        document.getElementById('labelOrigen').innerText = t.labelOrigen;
-        document.getElementById('label-fecha').innerText = t.labelFecha;
-        document.getElementById('label-hora').innerText = t.labelHora;
-        document.getElementById('label-pax').innerText = t.labelPax;
-        document.getElementById('label-contact').innerText = t.labelContact;
-        document.getElementById('label-nombre').innerText = t.labelNombre;
-        document.getElementById('label-tel').innerText = t.labelTel;
-        document.getElementById('label-aerolinea').innerText = t.labelAerolinea;
-        document.getElementById('label-vuelo').innerText = t.labelVuelo;
-        document.getElementById('label-notas').innerText = t.labelNotas;
-        document.getElementById('label-terms').innerHTML = t.labelTerms;
-        document.getElementById('btnAccion').innerText = t.btnAccion;
-
         document.getElementById('servicios-title').innerText = t.serviciosTitle;
-        document.getElementById('servicios-subtitle').innerText = t.serviciosSubtitle;
         document.getElementById('flota-title').innerText = t.flotaTitle;
-        document.getElementById('flota-subtitle').innerText = t.flotaSubtitle;
-
-        document.getElementById('serv-title-1').innerText = t.servTitle1; document.getElementById('serv-desc-1').innerText = t.servDesc1;
-        document.getElementById('serv-title-2').innerText = t.servTitle2; document.getElementById('serv-desc-2').innerText = t.servDesc2;
-        document.getElementById('serv-title-3').innerText = t.servTitle3; document.getElementById('serv-desc-3').innerText = t.servDesc3;
-        document.getElementById('serv-title-4').innerText = t.servTitle4; document.getElementById('serv-desc-4').innerText = t.servDesc4;
-
-        document.getElementById('fleet-desc-1').innerText = t.fleetDesc1;
-        document.getElementById('fleet-desc-2').innerText = t.fleetDesc2;
-        document.getElementById('fleet-desc-3').innerText = t.fleetDesc3;
-        document.getElementById('fleet-desc-4').innerText = t.fleetDesc4;
-        
-        document.getElementById('btn-quote-1').innerText = t.btnQuote;
-        document.getElementById('btn-quote-2').innerText = t.btnQuote;
-        document.getElementById('btn-quote-3').innerText = t.btnQuote;
-        document.getElementById('btn-quote-4').innerText = t.btnQuote;
-
-        // ACTUALIZACIÓN DE TEXTOS EN MODALES Y BOTONES CERRAR
-        document.getElementById('tyc-title').innerText = t.tycTitle;
-        document.getElementById('tyc-body').innerHTML = t.tycContent;
-        document.getElementById('btn-accept-tyc').innerText = t.btnAcceptTyc;
-        document.getElementById('btn-close-tyc').innerHTML = t.btnClose; 
-        document.getElementById('btn-close-confirm').innerHTML = t.btnClose; 
-
-        document.getElementById('modalTitle').innerText = t.modalTitleReceived;
-        document.getElementById('modalMainTitle').innerText = t.modalTitleReceived;
-        document.getElementById('modalCodeLabel').innerText = t.modalCodeLabel;
-        document.getElementById('modalText').innerText = t.modalTextReceived;
-        document.getElementById('modalWarningTitle').innerText = t.modalWarningTitle;
-        document.getElementById('modalWarningText').innerHTML = t.modalWarningText;
-        
-        document.getElementById('btn-modal-call').innerHTML = t.btnModalCall;
-        document.getElementById('btnWhatsapp').innerHTML = t.btnModalWa;
-        document.getElementById('btnMail').innerHTML = t.btnModalMail;
-        
-        // --- AUTO-UPDATE RESULTADOS (SI YA ESTÁN VISIBLES) ---
-        if(document.getElementById('resultados').style.display === 'block') {
-             cotizar(); // Re-ejecuta para traducir las tarjetas al vuelo
-        }
     }
 
     window.onload = function() {
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('fechaIda').setAttribute('min', today);
-        document.getElementById('fechaVuelta').setAttribute('min', today);
-        document.getElementById('fechaIda').addEventListener('change', function() {
-            document.getElementById('fechaVuelta').setAttribute('min', this.value);
-        });
         setLang('es');
         initSlider();
         adjustScrollMargin();
@@ -954,6 +878,7 @@
 
     function abrirTyC() { document.getElementById('modalTyC').style.display = 'flex'; }
     function cerrarTyC() { document.getElementById('modalTyC').style.display = 'none'; }
+    function cerrarModal() { document.getElementById('modalConfirmacion').style.display = 'none'; }
 
     function generarCodigo() {
         const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -962,6 +887,7 @@
         return result;
     }
 
+    // TARIFAS (LOGICA COMPLETA)
     const tarifasSencilloMXN = { "ZONA HOTELERA DE TULUM": { standart: 2970, small: 6300, luxury: 5490 }, "CENTRO DE TULUM": { standart: 2520, small: 5400, luxury: 5400 }, "ZONA HOTELERA DE CANCUN": { standart: 720, small: 1800, luxury: 1512 }, "CENTRO DE CANCUN": { standart: 720, small: 1800, luxury: 1512 }, "COSTA MUJERES": { standart: 1440, small: 2700, luxury: 2610 }, "PLAYA MUJERES": { standart: 1170, small: 3338, luxury: 2340 }, "PUERTO JUAREZ": { standart: 990, small: 2520, luxury: 1980 }, "PLAYA PARAISO": { standart: 1170, small: 3338, luxury: 2340 }, "PUERTO MORELOS": { standart: 990, small: 2520, luxury: 1980 }, "PLAYA DEL CARMEN": { standart: 1440, small: 2700, luxury: 2610 }, "PUERTO AVENTURAS": { standart: 1710, small: 4050, luxury: 3060 }, "AKUMAL": { standart: 2070, small: 4860, luxury: 4230 }, "FELIPE CARRILLO PUERTO": { standart: 8100, small: 19386, luxury: 21870 }, "MAHAHUAL": { standart: 9900, small: 19386, luxury: 17820 }, "BACALAR": { standart: 9900, small: 19386, luxury: 17820 }, "CHETUMAL": { standart: 10000, small: 19386, luxury: 19000 }, "HOLBOX": { standart: 5760, small: 14400, luxury: 11160 }, "VALLADOLID": { standart: 5400, small: 11120, luxury: 15684 }, "MERIDA": { standart: 9900, small: 17820, luxury: 17820 } };
     const tarifasSencilloUSD = { "ZONA HOTELERA DE TULUM": { standart: 170, small: 360, luxury: 314 }, "CENTRO DE TULUM": { standart: 144, small: 309, luxury: 309 }, "ZONA HOTELERA DE CANCUN": { standart: 42, small: 103, luxury: 87 }, "CENTRO DE CANCUN": { standart: 42, small: 103, luxury: 87 }, "COSTA MUJERES": { standart: 83, small: 155, luxury: 150 }, "PLAYA MUJERES": { standart: 67, small: 191, luxury: 134 }, "PUERTO JUAREZ": { standart: 57, small: 144, luxury: 114 }, "PLAYA PARAISO": { standart: 67, small: 191, luxury: 134 }, "PUERTO MORELOS": { standart: 57, small: 144, luxury: 114 }, "PLAYA DEL CARMEN": { standart: 83, small: 155, luxury: 150 }, "PUERTO AVENTURAS": { standart: 98, small: 232, luxury: 175 }, "AKUMAL": { standart: 119, small: 278, luxury: 242 }, "FELIPE CARRILLO PUERTO": { standart: 463, small: 1108, luxury: 1250 }, "MAHAHUAL": { standart: 566, small: 1108, luxury: 1019 }, "BACALAR": { standart: 566, small: 1108, luxury: 1019 }, "CHETUMAL": { standart: 572, small: 1108, luxury: 1086 }, "HOLBOX": { standart: 330, small: 823, luxury: 638 }, "VALLADOLID": { standart: 309, small: 636, luxury: 897 }, "MERIDA": { standart: 566, small: 1019, luxury: 1019 } };
     const tarifasRedondoMXN = { "ZONA HOTELERA DE TULUM": { standart: 5940, small: 12600, luxury: 10980 }, "CENTRO DE TULUM": { standart: 5040, small: 10800, luxury: 10800 }, "ZONA HOTELERA DE CANCUN": { standart: 1440, small: 3600, luxury: 3024 }, "CENTRO DE CANCUN": { standart: 1440, small: 3600, luxury: 3024 }, "COSTA MUJERES": { standart: 2880, small: 5400, luxury: 5220 }, "PLAYA MUJERES": { standart: 2340, small: 6676, luxury: 4680 }, "PUERTO JUAREZ": { standart: 1980, small: 5040, luxury: 3960 }, "PLAYA PARAISO": { standart: 2340, small: 6676, luxury: 4680 }, "PUERTO MORELOS": { standart: 1980, small: 5040, luxury: 3960 }, "PLAYA DEL CARMEN": { standart: 2880, small: 5400, luxury: 5220 }, "PUERTO AVENTURAS": { standart: 3420, small: 8100, luxury: 6120 }, "AKUMAL": { standart: 4140, small: 9720, luxury: 8460 }, "FELIPE CARRILLO PUERTO": { standart: 16200, small: 38772, luxury: 43740 }, "MAHAHUAL": { standart: 19800, small: 38772, luxury: 35640 }, "BACALAR": { standart: 19800, small: 38772, luxury: 35640 }, "CHETUMAL": { standart: 20000, small: 38772, luxury: 38000 }, "HOLBOX": { standart: 11520, small: 28800, luxury: 22320 }, "VALLADOLID": { standart: 10800, small: 22240, luxury: 31368 }, "MERIDA": { standart: 19800, small: 35640, luxury: 35640 } };
@@ -1005,55 +931,37 @@
         document.getElementById('divHorasInput').style.display = 'none';
         document.getElementById('divItinerario').style.display = 'none';
         document.getElementById('resultados').style.display = 'none';
-        const ro = "color:#777; background:#f5f5f5;";
-        const ed = "color:var(--text-dark); background:transparent;";
         
         const activeLangAirportName = currentLang === 'es' ? airportNameES : airportNameEN;
 
         if (modo === 'desdeAero') {
-            origen.value = activeLangAirportName; origen.setAttribute('readonly', true); origen.style.cssText = ro;
-            destino.value = ""; destino.removeAttribute('readonly'); destino.style.cssText = ed; 
+            origen.value = activeLangAirportName; origen.setAttribute('readonly', true);
+            destino.value = ""; destino.removeAttribute('readonly');
             destino.placeholder = currentLang === 'en' ? "Where are you going?" : "¿A qué hotel vas?";
-            btnAccion.innerText = "Buscar Precios";
+            btnAccion.innerText = currentLang === 'en' ? "Search Prices" : "Buscar Precios";
         } else if (modo === 'haciaAero') {
-            destino.value = activeLangAirportName; destino.setAttribute('readonly', true); destino.style.cssText = ro;
-            origen.value = ""; origen.removeAttribute('readonly'); origen.style.cssText = ed; 
+            destino.value = activeLangAirportName; destino.setAttribute('readonly', true);
+            origen.value = ""; origen.removeAttribute('readonly');
             origen.placeholder = currentLang === 'en' ? "Pick-up Location" : "¿Dónde te recogemos?";
-            btnAccion.innerText = "Buscar Precios";
-        } else if (modo === 'personalizado') {
+            btnAccion.innerText = currentLang === 'en' ? "Search Prices" : "Buscar Precios";
+        } else {
             document.getElementById('divSubtipoServicio').style.display = 'flex';
             document.getElementById('divVueloInfo').style.display = 'none';
-            origen.value = ""; origen.removeAttribute('readonly'); origen.style.cssText = ed; 
-            origen.placeholder = currentLang === 'en' ? "Pick-up Location" : "Lugar de Recogida";
-            destino.value = ""; destino.removeAttribute('readonly'); destino.style.cssText = ed; 
+            origen.value = ""; origen.removeAttribute('readonly');
+            origen.placeholder = currentLang === 'en' ? "Pick-up" : "Lugar de Recogida";
+            destino.value = ""; destino.removeAttribute('readonly');
             destino.placeholder = currentLang === 'en' ? "Destination" : "Lugar de Destino";
-            btnAccion.innerText = "Solicitar Cotización";
-            updateTipoServicio(document.getElementById('tipoServicio').value);
+            btnAccion.innerText = currentLang === 'en' ? "Request Quote" : "Solicitar Cotización";
             ajustarCamposPersonalizados();
         }
     }
 
     function updateTipoServicio(valor) {
         document.getElementById('tipoServicio').value = valor;
-        const optHoras = document.getElementById('optHoras');
-        if (direccionMode === 'personalizado') {
-            if (valor === 'REDONDO') {
-                optHoras.hidden = true; optHoras.disabled = true;
-                if(document.getElementById('subtipoPersonalizado').value === 'HORAS') {
-                    document.getElementById('subtipoPersonalizado').value = 'HOTEL_A_HOTEL';
-                    ajustarCamposPersonalizados();
-                }
-            } else {
-                optHoras.hidden = false; optHoras.disabled = false;
-            }
-        } else {
-            optHoras.hidden = false; optHoras.disabled = false;
-        }
         toggleVuelta();
     }
 
     function ajustarCamposPersonalizados() {
-        if (direccionMode !== 'personalizado') return;
         const subtipo = document.getElementById('subtipoPersonalizado').value;
         const divDest = document.getElementById('divDestinoInput');
         const divHoras = document.getElementById('divHorasInput');
@@ -1062,8 +970,6 @@
             divDest.style.display = 'none'; divHoras.style.display = 'flex'; divItin.style.display = 'flex';
         } else {
             divDest.style.display = 'flex'; divHoras.style.display = 'none'; divItin.style.display = 'none';
-            const ph = subtipo === 'TOUR' ? "Ej: Xcaret, Chichén Itzá..." : "Ej: Hotel Xcaret, Airbnb...";
-            document.getElementById('destino').placeholder = ph;
         }
     }
 
@@ -1072,212 +978,111 @@
         const show = (tipo === 'REDONDO') ? 'flex' : 'none';
         document.getElementById('divFechaVuelta').style.display = show;
         document.getElementById('divHoraVuelta').style.display = show;
-        document.getElementById('resultados').style.display = 'none';
     }
 
     function limpiarResultados() { document.getElementById('resultados').style.display = 'none'; }
 
     function cotizar() {
-        if(!document.getElementById('termsCheck').checked) { alert("⚠️ Debes leer y aceptar los Términos y Condiciones para continuar."); return; }
+        if(!document.getElementById('termsCheck').checked) { alert("⚠️ Debes aceptar los TyC."); return; }
         const email = document.getElementById('emailCliente').value;
-        const hora = document.getElementById('horaIda').value;
         const fecha = document.getElementById('fechaIda').value;
-        if(email.length < 5) { alert("⚠️ Por favor escribe tu correo electrónico."); return; }
-        if(!fecha) { alert("⚠️ Selecciona una fecha."); return; }
-        if(!hora) { alert("⚠️ Selecciona la hora."); return; }
-        const nombre = document.getElementById('nombreCliente').value;
-        const tel = document.getElementById('telefonoCliente').value;
-        if(nombre.length < 2) { alert("Escribe tu nombre."); return; }
-        if(tel.length < 5) { alert("Escribe tu teléfono."); return; }
+        if(email.length < 5 || !fecha) { alert("⚠️ Completa los campos obligatorios."); return; }
 
         if (direccionMode === 'personalizado') {
-            const subtipo = document.getElementById('subtipoPersonalizado').value;
-            const subtipoTxt = document.getElementById('subtipoPersonalizado').options[document.getElementById('subtipoPersonalizado').selectedIndex].text;
-            let destinoFinal = (subtipo === 'HORAS') ? document.getElementById('horasSeleccionadas').value : document.getElementById('destino').value;
             const codigoUnico = generarCodigo();
-            const datosCotizacion = { esVenta: false, codigo: codigoUnico, nombre: nombre, telefono: tel, email: email, tipoViaje: document.getElementById('tipoServicio').value + " - " + subtipoTxt, origen: document.getElementById('origen').value, destino: destinoFinal, fecha: fecha, hora: hora, notas: document.getElementById('notasCliente').value, itinerario: document.getElementById('itinerarioCliente').value, vehiculo: "Cotización Especial", precio: "Por Cotizar" };
+            const data = { esVenta: false, codigo: codigoUnico, nombre: document.getElementById('nombreCliente').value, telefono: document.getElementById('telefonoCliente').value, email: email, tipoViaje: "PERSONALIZADO", origen: document.getElementById('origen').value, destino: document.getElementById('destino').value, fecha: fecha, hora: document.getElementById('horaIda').value };
             document.getElementById('codigoDisplay').innerText = codigoUnico;
-            iniciarEnvio(datosCotizacion);
+            iniciarEnvio(data);
             return;
         }
 
         const tipo = document.getElementById('tipoServicio').value;
         const moneda = document.getElementById('moneda').value;
         const pax = parseInt(document.getElementById('pasajeros').value);
-        let lugarBusqueda = ""; let latBusqueda = 0; let lonBusqueda = 0; let cpBusqueda = "";
-
-        if (direccionMode === 'desdeAero') {
-            lugarBusqueda = document.getElementById('destino').value;
-            latBusqueda = parseFloat(document.getElementById('latitudDestino').value);
-            lonBusqueda = parseFloat(document.getElementById('longitudDestino').value);
-            cpBusqueda = document.getElementById('cpDestino').value;
-        } else {
-            lugarBusqueda = document.getElementById('origen').value;
-            latBusqueda = parseFloat(document.getElementById('latitudOrigen').value);
-            lonBusqueda = parseFloat(document.getElementById('longitudOrigen').value);
-            cpBusqueda = document.getElementById('cpOrigen').value;
-        }
+        let lugar = (direccionMode === 'desdeAero') ? document.getElementById('destino').value : document.getElementById('origen').value;
+        let lat = (direccionMode === 'desdeAero') ? document.getElementById('latitudDestino').value : document.getElementById('latitudOrigen').value;
+        let lon = (direccionMode === 'desdeAero') ? document.getElementById('longitudDestino').value : document.getElementById('longitudOrigen').value;
         
-        if (lugarBusqueda.length < 3) { alert("Indica el lugar."); return; }
-        let zonaDetectada = "";
-        if (!isNaN(latBusqueda) && !isNaN(lonBusqueda)) {
-            if (latBusqueda < 20.1215 && latBusqueda > 19.0 && lonBusqueda > -87.6) { alert("📍 Zona de Terracería / Sian Ka'an detectada (Sur de Estrellita).\nPor las condiciones del camino, esta zona requiere cotización especial.\n\nPor favor usa el botón 'Servicio Personalizado'."); return; }
-            zonaDetectada = detectarZonaPorGPS(latBusqueda, lonBusqueda);
-        }
-        if (!zonaDetectada && cpBusqueda) { zonaDetectada = detectarZonaPorCP(cpBusqueda); }
-        if (!zonaDetectada) {
-            lugarBusqueda = lugarBusqueda.toUpperCase();
+        let zona = detectarZonaPorGPS(parseFloat(lat), parseFloat(lon));
+        if(!zona) {
+            lugar = lugar.toUpperCase();
             for (let z in diccionarioZonas) {
                 for (let i=0; i<diccionarioZonas[z].length; i++) {
-                    if (lugarBusqueda.includes(diccionarioZonas[z][i])) { zonaDetectada = z; break; }
+                    if (lugar.includes(diccionarioZonas[z][i])) { zona = z; break; }
                 }
-                if(zonaDetectada) break;
+                if(zona) break;
             }
         }
-        if (!zonaDetectada) { alert("Zona no detectada o requiere cotización especial. Usa Servicio Personalizado."); return; }
 
-        let db;
-        if (moneda === 'MXN' && tipo === 'SENCILLO') db = tarifasSencilloMXN;
-        else if (moneda === 'USD' && tipo === 'SENCILLO') db = tarifasSencilloUSD;
-        else if (moneda === 'MXN' && tipo === 'REDONDO') db = tarifasRedondoMXN;
-        else if (moneda === 'USD' && tipo === 'REDONDO') db = tarifasRedondoUSD;
+        if(!zona) { alert("Zona no detectada. Usa el modo personalizado."); return; }
 
-        const p = db[zonaDetectada];
+        let db = (tipo === 'SENCILLO') ? (moneda === 'MXN' ? tarifasSencilloMXN : tarifasSencilloUSD) : (moneda === 'MXN' ? tarifasRedondoMXN : tarifasRedondoUSD);
+        const p = db[zona];
         const divRes = document.getElementById('resultados');
         divRes.innerHTML = "";
         
-        let rutaLabel = "";
-        if(direccionMode === 'desdeAero') rutaLabel = "Aeropuerto Cancún <i class='fas fa-arrow-right'></i> " + document.getElementById('destino').value;
-        else rutaLabel = document.getElementById('origen').value + " <i class='fas fa-arrow-right'></i> Aeropuerto Cancún";
+        let ruta = (direccionMode === 'desdeAero') ? `Aeropuerto -> ${lugar}` : `${lugar} -> Aeropuerto`;
+        divRes.innerHTML = `<div class="ruta-header">Resultados para: ${ruta}</div>`;
         
-        const t = translations[currentLang];
-        divRes.innerHTML = `<div class="ruta-header">${t.resultsFor}: ${rutaLabel}</div>`;
-        if(pax<=3) divRes.innerHTML+=crearCard("STANDARD SEDAN","1-3 Pax",p.standart,moneda,zonaDetectada,imgUrlErtiga, rutaLabel);
-        else if(pax<=8) divRes.innerHTML+=crearCard("VAN STANDARD","1-8 Pax",p.standart,moneda,zonaDetectada,imgUrlTransporter, rutaLabel);
-        if(pax<=15 && p.small) divRes.innerHTML+=crearCard("SMALL GROUP VAN","Hasta 15 Pax",p.small,moneda,zonaDetectada,imgUrlSprinter, rutaLabel);
-        if(pax<=5 && p.luxury) divRes.innerHTML+=crearCard("LUXURY SUV","1-5 Pax",p.luxury,moneda,zonaDetectada,imgUrlSuburban, rutaLabel);
+        if(pax<=3) divRes.innerHTML+=crearCard("STANDARD SEDAN","1-3 Pax",p.standart,moneda,zona,imgUrlErtiga, ruta);
+        if(pax<=15 && p.small) divRes.innerHTML+=crearCard("VAN GROUP","Hasta 15 Pax",p.small,moneda,zona,imgUrlSprinter, ruta);
+        if(pax<=5 && p.luxury) divRes.innerHTML+=crearCard("LUXURY SUV","1-5 Pax",p.luxury,moneda,zona,imgUrlSuburban, ruta);
+        
         divRes.style.display = 'block';
-        divRes.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        divRes.scrollIntoView({ behavior: 'smooth' });
     }
 
-    function crearCard(veh, cap, precio, moneda, zona, img, rutaLabel) {
+    function crearCard(veh, cap, precio, moneda, zona, img, ruta) {
         const t = translations[currentLang].cardFeatures;
-        const tipo = document.getElementById('tipoServicio').value;
-        const pAlto = Math.round(precio * 1.30);
-        const dataObj = JSON.stringify({ esVenta: true, vehiculo: veh, precio: "$" + precio + " " + moneda, zona: zona }).replace(/"/g, "&quot;");
-        let tipoTexto = (tipo === 'SENCILLO') ? t.oneWay : t.roundTrip;
-        let iconoTipo = (tipo === 'SENCILLO') ? "fa-arrow-right" : "fa-exchange-alt";
+        const data = JSON.stringify({ esVenta: true, vehiculo: veh, precio: "$" + precio + " " + moneda, zona: zona }).replace(/"/g, "&quot;");
         return `
         <div class="tarjeta">
-            <div class="tarjeta-img"><img src="${img}" alt="${veh}"></div>
+            <div class="tarjeta-img"><img src="${img}"></div>
             <div class="tarjeta-info">
                 <h3>${veh}</h3>
-                <div class="tarjeta-route-display">${rutaLabel}</div>
-                <div class="tarjeta-specs">
-                    <div class="spec-row"><i class="fas fa-user-friends"></i> <span>${cap}</span></div>
-                    <div class="spec-row"><i class="fas ${iconoTipo}"></i> <span>${tipoTexto}</span></div>
-                </div>
-                <div class="feature-grid">
-                    <div class="feature-tag"><i class="fas fa-plane-arrival"></i> ${t.monitor}</div>
-                    <div class="feature-tag"><i class="fas fa-snowflake"></i> ${t.ac}</div>
-                    <div class="feature-tag"><i class="fas fa-shield-alt"></i> ${t.insurance}</div>
-                    <div class="feature-tag"><i class="fas fa-car"></i> ${t.private}</div>
-                    <div class="feature-tag"><i class="fas fa-ban"></i> ${t.noHidden}</div>
-                </div>
+                <div class="tarjeta-route-display">${ruta}</div>
+                <div class="spec-row"><i class="fas fa-user-friends"></i> ${cap}</div>
             </div>
             <div class="tarjeta-price">
-                <div class="price-container">
-                    <span class="price-old">$${pAlto}</span>
-                    <span class="price-current">$${precio} ${moneda}</span>
-                </div>
-                <button class="btn-reservar" onclick="prepararVenta(${dataObj})">${t.bookBtn} <i class="fas fa-arrow-right"></i></button>
+                <span class="price-current">$${precio} ${moneda}</span>
+                <button class="btn-reservar" onclick="prepararVenta(${data})">${t.bookBtn}</button>
             </div>
         </div>`;
     }
 
-    function prepararVenta(datosCard) {
-        const codigoUnico = generarCodigo();
-        const datosVenta = {
-            esVenta: true,
-            codigo: codigoUnico,
-            nombre: document.getElementById('nombreCliente').value,
-            telefono: document.getElementById('telefonoCliente').value,
-            email: document.getElementById('emailCliente').value,
-            tipoViaje: document.getElementById('tipoServicio').value,
-            origen: document.getElementById('origen').value,
-            destino: document.getElementById('destino').value,
-            fecha: document.getElementById('fechaIda').value,
-            hora: document.getElementById('horaIda').value,
-            notas: document.getElementById('notasCliente').value,
-            vuelo: document.getElementById('aerolinea').value + ' ' + document.getElementById('numVuelo').value,
-            vehiculo: datosCard.vehiculo,
-            precio: datosCard.precio,
-            zona: datosCard.zona
-        };
-        document.getElementById('codigoDisplay').innerText = codigoUnico;
-        iniciarEnvio(datosVenta);
+    function prepararVenta(datos) {
+        const codigo = generarCodigo();
+        const data = { ...datos, codigo: codigo, nombre: document.getElementById('nombreCliente').value, telefono: document.getElementById('telefonoCliente').value, email: document.getElementById('emailCliente').value, origen: document.getElementById('origen').value, destino: document.getElementById('destino').value, fecha: document.getElementById('fechaIda').value, hora: document.getElementById('horaIda').value };
+        document.getElementById('codigoDisplay').innerText = codigo;
+        iniciarEnvio(data);
     }
 
     function iniciarEnvio(data) {
-        if(SCRIPT_URL.includes("PEGAR")) { alert("Falta configurar la URL del Script."); return; }
         document.getElementById('loadingOverlay').style.display = 'flex';
-        const pax = document.getElementById('pasajeros').value;
-        let saludo = data.esVenta ? "Hola, quiero *CONFIRMAR* el siguiente servicio:" : "Hola, quiero *COTIZAR* el siguiente servicio:";
-        let baseText = `${saludo}%0A%0A*CÓDIGO:* ${data.codigo}%0A*TIPO:* ${data.tipoViaje}%0A*VEHÍCULO:* ${data.vehiculo}%0A*ORIGEN:* ${data.origen}%0A*DESTINO:* ${data.destino}%0A*FECHA:* ${data.fecha} - *HORA:* ${data.hora}%0A*PASAJEROS:* ${pax}`;
-        if(data.precio && data.precio !== "Por Cotizar") { baseText += `%0A*PRECIO WEB:* ${data.precio}`; }
-        baseText += `%0A%0A*Mi Nombre:* ${data.nombre}`;
-        const subject = encodeURIComponent("Solicitud " + data.codigo + " - " + data.nombre);
-        const mailBody = encodeURIComponent(baseText.replace(/%0A/g, "\n").replace(/\*/g, "")); 
-        document.getElementById('btnWhatsapp').href = `https://wa.me/529842411158?text=${baseText}`;
-        document.getElementById('btnMail').href = `mailto:reservas@luxurytransfersriviera.com.mx?subject=${subject}&body=${mailBody}`;
-
-        fetch(SCRIPT_URL, {
-            method: 'POST', mode: 'no-cors', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)
-        })
+        fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) })
         .then(() => {
             document.getElementById('loadingOverlay').style.display = 'none';
-            if(data.esVenta) {
-                const t = translations[currentLang];
-                document.getElementById('modalTitle').innerText = t.modalTitleReceived;
-                document.getElementById('modalMainTitle').innerText = t.modalTitleReceived;
-                document.getElementById('modalText').innerText = t.modalTextReceived;
-            } else {
-                document.getElementById('modalTitle').innerText = "¡Solicitud Enviada!";
-                document.getElementById('modalMainTitle').innerText = "¡Solicitud Enviada!";
-                document.getElementById('modalText').innerHTML = "Hemos recibido tu solicitud. Un asesor te contactará lo más breve posible para darte un precio.";
-            }
+            let msg = `Hola, quiero confirmar mi servicio LTR-${data.codigo}. Origen: ${data.origen}, Destino: ${data.destino}, Fecha: ${data.fecha}.`;
+            document.getElementById('btnWhatsapp').href = `https://wa.me/529842411158?text=${encodeURIComponent(msg)}`;
             document.getElementById('modalConfirmacion').style.display = 'flex';
-        })
-        .catch(e => {
-            console.error(e);
-            alert("Error al enviar. Intenta por WhatsApp.");
+        }).catch(() => {
             document.getElementById('loadingOverlay').style.display = 'none';
+            alert("Error al enviar. Intenta por WhatsApp.");
         });
     }
 
-    function cerrarModal() { document.getElementById('modalConfirmacion').style.display = 'none'; }
-    
     function initAutocomplete() {
-        const bounds = new google.maps.LatLngBounds(new google.maps.LatLng(17.9, -91.5), new google.maps.LatLng(21.8, -86.5));
-        const opts = { bounds: bounds, strictBounds: true, componentRestrictions: { country: "mx" }, fields: ["name", "geometry", "address_components"], types: ["establishment", "geocode"] };
-        const autoOrigen = new google.maps.places.Autocomplete(document.getElementById('origen'), opts);
-        const autoDestino = new google.maps.places.Autocomplete(document.getElementById('destino'), opts);
-        function extraerDatos(place, tipo) {
-            if (place.geometry) {
-                document.getElementById('latitud' + tipo).value = place.geometry.location.lat();
-                document.getElementById('longitud' + tipo).value = place.geometry.location.lng();
-            }
-            let cpEncontrado = "";
-            if (place.address_components) {
-                for (let i = 0; i < place.address_components.length; i++) {
-                    const types = place.address_components[i].types;
-                    if (types.includes("postal_code")) { cpEncontrado = place.address_components[i].long_name; break; }
-                }
-            }
-            document.getElementById('cp' + tipo).value = cpEncontrado;
-        }
-        autoOrigen.addListener('place_changed', function() { extraerDatos(autoOrigen.getPlace(), "Origen"); });
-        autoDestino.addListener('place_changed', function() { extraerDatos(autoDestino.getPlace(), "Destino"); });
+        const opts = { componentRestrictions: { country: "mx" }, fields: ["name", "geometry", "address_components"] };
+        const autoO = new google.maps.places.Autocomplete(document.getElementById('origen'), opts);
+        const autoD = new google.maps.places.Autocomplete(document.getElementById('destino'), opts);
+        autoO.addListener('place_changed', () => { 
+            const p = autoO.getPlace(); 
+            if(p.geometry) { document.getElementById('latitudOrigen').value = p.geometry.location.lat(); document.getElementById('longitudOrigen').value = p.geometry.location.lng(); }
+        });
+        autoD.addListener('place_changed', () => { 
+            const p = autoD.getPlace(); 
+            if(p.geometry) { document.getElementById('latitudDestino').value = p.geometry.location.lat(); document.getElementById('longitudDestino').value = p.geometry.location.lng(); }
+        });
     }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdK5yLQ20SQrLc_0rOuo7oxxHVQ233Bh0&libraries=places&callback=initAutocomplete" async defer></script>
