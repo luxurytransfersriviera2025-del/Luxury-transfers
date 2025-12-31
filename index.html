@@ -246,13 +246,12 @@
         /* FOOTER */
         footer { background: var(--black); color: var(--white); padding: 40px 20px; text-align: center; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); }
 
-        /* MODALES (ESTRUCTURA CORREGIDA PARA SCROLL) */
+        /* MODALES */
         .modal-overlay { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0, 0, 0, 0.8); z-index: 20000; 
             display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); 
         }
-        
         .modal-box { 
             background: white; width: 90%; max-width: 450px; 
             max-height: 90vh; 
@@ -262,14 +261,18 @@
             overflow: hidden; 
             animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
         }
-
         .modal-header-fixed {
             padding: 15px 20px; border-bottom: 1px solid #eee;
             display: flex; justify-content: space-between; align-items: center;
             background: #fff; z-index: 10;
         }
         .modal-title-fixed { margin: 0; font-size: 18px; color: var(--primary-blue); font-weight: 800; font-family: var(--font-title); }
-        .btn-close-fixed { background: none; border: none; font-size: 16px; color: #888; cursor: pointer; font-weight: 700; font-family: var(--font-body); }
+        
+        .btn-close-fixed { 
+            background: none; border: none; font-size: 14px; 
+            color: #888; cursor: pointer; font-weight: 700; 
+            font-family: var(--font-body); display: flex; align-items: center; gap: 5px;
+        }
         .btn-close-fixed:hover { color: #333; }
 
         .modal-scrollable-content {
@@ -282,7 +285,24 @@
         .modal-main-title { font-size: 24px; color: var(--primary-blue); margin-bottom: 10px; font-weight: 900; text-align: center; font-family: var(--font-title); }
         .modal-text { font-size: 15px; color: #666; line-height: 1.6; margin-bottom: 20px; text-align: center; font-family: var(--font-body); }
         
-        /* RESTAURACIÓN DE BOTONES PROFESIONALES EN MODAL */
+        /* CÓDIGO DE REFERENCIA BONITO */
+        .codigo-reserva { 
+            background-color: #ecfdf5; 
+            border: 2px dashed #00a651; 
+            color: #003580; 
+            padding: 12px 20px; 
+            font-size: 24px; 
+            font-weight: 900; 
+            letter-spacing: 3px; 
+            border-radius: 12px; 
+            margin: 10px auto 25px auto; 
+            display: inline-block; 
+            box-sizing: border-box; 
+            font-family: var(--font-title);
+            width: auto;
+            max-width: 90%;
+        }
+        
         .modal-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
         
         .modal-btn { 
@@ -558,7 +578,7 @@
         <div class="modal-box">
             <div class="modal-header-fixed">
                 <h2 class="modal-title-fixed" id="tyc-title">Términos y Condiciones</h2>
-                <button class="btn-close-fixed" onclick="cerrarTyC()">Cerrar <i class="fas fa-times"></i></button>
+                <button class="btn-close-fixed" id="btn-close-tyc" onclick="cerrarTyC()">Cerrar <i class="fas fa-times"></i></button>
             </div>
             <div class="modal-scrollable-content">
                 <div class="tyc-content" id="tyc-body">
@@ -572,7 +592,7 @@
         <div class="modal-box">
             <div class="modal-header-fixed">
                 <h2 class="modal-title-fixed" id="modalTitle">¡Solicitud Recibida!</h2>
-                <button class="btn-close-fixed" onclick="cerrarModal()">Cerrar <i class="fas fa-times"></i></button>
+                <button class="btn-close-fixed" id="btn-close-confirm" onclick="cerrarModal()">Cerrar <i class="fas fa-times"></i></button>
             </div>
             <div class="modal-scrollable-content" style="text-align: center;">
                 <div class="modal-icon"><i class="fas fa-check-circle"></i></div>
@@ -654,6 +674,7 @@
             
             // MODALES Y TYC ESPAÑOL
             tycTitle: "Términos y Condiciones",
+            btnClose: "Cerrar <i class='fas fa-times'></i>",
             tycContent: `
                 <p>Al reservar con Luxury Transfers Riviera, aceptas lo siguiente:</p>
                 <h4>1. Cancelaciones y Reembolsos</h4>
@@ -670,10 +691,22 @@
             modalCodeLabel: "TU CÓDIGO DE REFERENCIA ES:",
             modalTextReceived: "Hemos recibido tu solicitud. Un asesor te contactará lo más breve posible para finalizar tu reserva.",
             modalWarningTitle: "IMPORTANTE:",
-            modalWarningText: "Te hemos enviado un correo con los detalles. Por favor revisa tu carpeta de SPAM.",
+            modalWarningText: "Te hemos enviado un correo con los detalles de tu solicitud. <br>Por favor revisa tu carpeta de SPAM o \"Correo no deseado\".",
             btnModalCall: '<i class="fas fa-phone"></i> Llama ahora',
             btnModalWa: '<i class="fab fa-whatsapp"></i> Confirmar por WhatsApp',
-            btnModalMail: '<i class="fas fa-envelope"></i> Enviar Correo'
+            btnModalMail: '<i class="fas fa-envelope"></i> Enviar Correo',
+            
+            // FEATURES DE TARJETA
+            cardFeatures: {
+                monitor: "Monitoreo de Vuelo",
+                ac: "Aire Acondicionado",
+                insurance: "Seguro de Viajero",
+                private: "100% Privado",
+                noHidden: "Sin Cargos Ocultos",
+                oneWay: "Solo Ida",
+                roundTrip: "Ida y Vuelta",
+                bookBtn: "RESERVAR"
+            }
         },
         en: {
             navCotizar: "Quote", navServicios: "Services", navFlota: "Fleet",
@@ -711,6 +744,7 @@
 
             // MODALES Y TYC ENGLISH
             tycTitle: "Terms & Conditions",
+            btnClose: "Close <i class='fas fa-times'></i>",
             tycContent: `
                 <p>By booking with Luxury Transfers Riviera, you agree to the following:</p>
                 <h4>1. Cancellations and Refunds</h4>
@@ -730,7 +764,19 @@
             modalWarningText: "We sent you an email with the details. Please check your SPAM folder.",
             btnModalCall: '<i class="fas fa-phone"></i> Call Now',
             btnModalWa: '<i class="fab fa-whatsapp"></i> Confirm via WhatsApp',
-            btnModalMail: '<i class="fas fa-envelope"></i> Send Email'
+            btnModalMail: '<i class="fas fa-envelope"></i> Send Email',
+
+            // FEATURES DE TARJETA
+            cardFeatures: {
+                monitor: "Flight Monitoring",
+                ac: "Air Conditioning",
+                insurance: "Travel Insurance",
+                private: "100% Private",
+                noHidden: "No Hidden Fees",
+                oneWay: "One Way",
+                roundTrip: "Round Trip",
+                bookBtn: "BOOK NOW"
+            }
         }
     };
 
@@ -812,17 +858,19 @@
         document.getElementById('btn-quote-3').innerText = t.btnQuote;
         document.getElementById('btn-quote-4').innerText = t.btnQuote;
 
-        // ACTUALIZACIÓN DE TEXTOS EN MODALES
+        // ACTUALIZACIÓN DE TEXTOS EN MODALES Y BOTONES CERRAR
         document.getElementById('tyc-title').innerText = t.tycTitle;
         document.getElementById('tyc-body').innerHTML = t.tycContent;
         document.getElementById('btn-accept-tyc').innerText = t.btnAcceptTyc;
+        document.getElementById('btn-close-tyc').innerHTML = t.btnClose; // Traducir botón cerrar
+        document.getElementById('btn-close-confirm').innerHTML = t.btnClose; // Traducir botón cerrar
 
         document.getElementById('modalTitle').innerText = t.modalTitleReceived;
         document.getElementById('modalMainTitle').innerText = t.modalTitleReceived;
         document.getElementById('modalCodeLabel').innerText = t.modalCodeLabel;
         document.getElementById('modalText').innerText = t.modalTextReceived;
         document.getElementById('modalWarningTitle').innerText = t.modalWarningTitle;
-        document.getElementById('modalWarningText').innerText = t.modalWarningText;
+        document.getElementById('modalWarningText').innerHTML = t.modalWarningText;
         
         document.getElementById('btn-modal-call').innerHTML = t.btnModalCall;
         document.getElementById('btnWhatsapp').innerHTML = t.btnModalWa;
@@ -1068,11 +1116,14 @@
     }
 
     function crearCard(veh, cap, precio, moneda, zona, img, rutaLabel) {
+        const t = translations[currentLang].cardFeatures;
         const tipo = document.getElementById('tipoServicio').value;
         const pAlto = Math.round(precio * 1.30);
         const dataObj = JSON.stringify({ esVenta: true, vehiculo: veh, precio: "$" + precio + " " + moneda, zona: zona }).replace(/"/g, "&quot;");
-        let tipoTexto = (tipo === 'SENCILLO') ? "Solo Ida" : "Ida y Vuelta";
+        
+        let tipoTexto = (tipo === 'SENCILLO') ? t.oneWay : t.roundTrip;
         let iconoTipo = (tipo === 'SENCILLO') ? "fa-arrow-right" : "fa-exchange-alt";
+
         return `
         <div class="tarjeta">
             <div class="tarjeta-img"><img src="${img}" alt="${veh}"></div>
@@ -1084,11 +1135,11 @@
                     <div class="spec-row"><i class="fas ${iconoTipo}"></i> <span>${tipoTexto}</span></div>
                 </div>
                 <div class="feature-grid">
-                    <div class="feature-tag"><i class="fas fa-plane-arrival"></i> Monitoreo de Vuelo</div>
-                    <div class="feature-tag"><i class="fas fa-snowflake"></i> Aire Acondicionado</div>
-                    <div class="feature-tag"><i class="fas fa-shield-alt"></i> Seguro de Viajero</div>
-                    <div class="feature-tag"><i class="fas fa-car"></i> 100% Privado</div>
-                    <div class="feature-tag"><i class="fas fa-ban"></i> Sin Cargos Ocultos</div>
+                    <div class="feature-tag"><i class="fas fa-plane-arrival"></i> ${t.monitor}</div>
+                    <div class="feature-tag"><i class="fas fa-snowflake"></i> ${t.ac}</div>
+                    <div class="feature-tag"><i class="fas fa-shield-alt"></i> ${t.insurance}</div>
+                    <div class="feature-tag"><i class="fas fa-car"></i> ${t.private}</div>
+                    <div class="feature-tag"><i class="fas fa-ban"></i> ${t.noHidden}</div>
                 </div>
             </div>
             <div class="tarjeta-price">
@@ -1096,7 +1147,7 @@
                     <span class="price-old">$${pAlto}</span>
                     <span class="price-current">$${precio} ${moneda}</span>
                 </div>
-                <button class="btn-reservar" onclick="prepararVenta(${dataObj})">RESERVAR <i class="fas fa-arrow-right"></i></button>
+                <button class="btn-reservar" onclick="prepararVenta(${dataObj})">${t.bookBtn} <i class="fas fa-arrow-right"></i></button>
             </div>
         </div>`;
     }
