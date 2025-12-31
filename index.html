@@ -13,37 +13,32 @@
            1. ESTILOS BASE Y VARIABLES
            ========================================================================== */
         :root {
-            /* Variables Hero/Header */
+            /* Variables de Color */
             --gold: #D4AF37;
             --gold-hover: #b5952f;
             --black: #0a0a0a;
             --dark-gray: #222;
             --white: #fff;
             
-            /* Variables Calculadora */
+            /* Colores Interfaz */
             --primary-blue: #003580; 
             --action-green: #00a651; 
             --action-green-hover: #008c44; 
             --highlight-yellow: #febb02; 
             --text-dark: #1a1a1a; 
             --bg-light: #f2f2f2; 
-
-            /* Variables Servicios/Flota */
             --navy-bg: #002855;
-            
-            /* TIPOGRAFÍA PROFESIONAL */
-            --font-title: 'Montserrat', sans-serif; /* Títulos Fuertes y Limpios */
-            --font-body: 'Open Sans', sans-serif;   /* Lectura fácil y profesional */
-            
             --light-gray: #f4f4f4;
 
-            /* Variable dinámica para el menú */
+            /* Tipografía */
+            --font-title: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            
+            /* Variable menú dinámico */
             --header-height: 60px; 
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: var(--font-body);
@@ -64,27 +59,24 @@
 
         .nav-container {
             max-width: 1200px; margin: 0 auto; display: flex;
-            justify-content: space-between; align-items: center; padding: 0 20px;
-            width: 100%;
+            justify-content: space-between; align-items: center; padding: 0 20px; width: 100%;
         }
 
         .logo {
-            font-family: var(--font-title);
-            font-size: 1.4rem; font-weight: 800; text-transform: uppercase;
-            letter-spacing: 1px; color: var(--gold); display: flex;
-            align-items: center; gap: 12px; cursor: pointer;
+            font-family: var(--font-title); font-size: 1.4rem; font-weight: 800; 
+            text-transform: uppercase; letter-spacing: 1px; color: var(--gold); 
+            display: flex; align-items: center; gap: 12px; cursor: pointer;
         }
-
         .logo-icon { height: 35px; width: auto; }
         
         .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { 
-            color: var(--white); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; cursor: pointer; 
-            font-family: var(--font-title);
+            color: var(--white); font-size: 0.85rem; text-transform: uppercase; 
+            letter-spacing: 1px; font-weight: 700; cursor: pointer; font-family: var(--font-title);
         }
         .nav-links a:hover { color: var(--gold); }
 
-        /* AJUSTE DE SCROLL (Misma solución que funcionó) */
+        /* AJUSTE SCROLL (Evita que el menú tape títulos) */
         #seccion-calculadora, #servicios, #flota {
             scroll-margin-top: calc(var(--header-height) - 25px);
         }
@@ -92,12 +84,10 @@
         /* HERO SECTION */
         .hero {
             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://i.imgur.com/3JAl89S.jpeg');
-            background-size: cover; background-position: center center;
-            height: 100vh;
+            background-size: cover; background-position: center center; height: 100vh;
             display: flex; align-items: center; justify-content: center;
             text-align: center; color: var(--white); padding: 0 20px;
-            position: relative;
-            z-index: 1;
+            position: relative; z-index: 1;
         }
 
         .hero-content {
@@ -106,124 +96,53 @@
         }
 
         .hero-content h1 {
-            order: 1; font-size: 3.5rem; margin-bottom: 20px;
-            line-height: 1.1; font-weight: 900; text-transform: uppercase;
-            text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
-            font-family: var(--font-title);
-            letter-spacing: -1px; /* Hace que se vea más compacto y moderno */
+            order: 1; font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1;
+            font-weight: 900; text-transform: uppercase;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.8); font-family: var(--font-title); letter-spacing: -1px;
         }
 
         .hero-content p {
-            order: 2; font-size: 1.4rem; margin-bottom: 40px;
-            font-weight: 400; text-shadow: 1px 1px 8px rgba(0,0,0,0.8);
-            max-width: 800px;
-            font-family: var(--font-body);
+            order: 2; font-size: 1.4rem; margin-bottom: 40px; font-weight: 400;
+            text-shadow: 1px 1px 8px rgba(0,0,0,0.8); max-width: 800px; font-family: var(--font-body);
         }
 
         .btn-cta {
             order: 3; background-color: var(--gold); color: var(--black);
-            padding: 18px 50px; border-radius: 50px; font-weight: 800;
-            font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;
-            display: inline-block; box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
-            border: 2px solid var(--gold); 
-            cursor: pointer;
-            font-family: var(--font-title);
+            padding: 18px 50px; border-radius: 50px; font-weight: 800; font-size: 1rem;
+            text-transform: uppercase; letter-spacing: 2px; display: inline-block;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4); border: 2px solid var(--gold);
+            cursor: pointer; font-family: var(--font-title);
         }
-        .btn-cta:hover {
-            background-color: var(--gold-hover); transform: translateY(-3px); border-color: var(--gold-hover);
-        }
+        .btn-cta:hover { background-color: var(--gold-hover); transform: translateY(-3px); border-color: var(--gold-hover); }
 
-        /* MEDIA QUERIES HERO (Versión Móvil) */
-        @media (max-width: 768px) {
-            header { padding: 15px 0; }
-            .nav-container { flex-direction: column; gap: 15px; }
-            .nav-links { gap: 20px; } 
-            .nav-links a { font-size: 0.8rem; }
-            
-            .logo { font-size: 1.2rem; letter-spacing: 0.5px; }
-            .logo-icon { height: 30px; }
-
-            .hero {
-                background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg');
-                background-position: center center;
-                height: 100vh;
-                align-items: flex-start;
-            }
-
-            .hero-content {
-                height: 85vh; width: 100%; margin-top: 100px; padding-bottom: 20px;
-                display: flex; flex-direction: column;
-            }
-
-            .hero-content h1 {
-                order: 1; font-size: 2.2rem; margin-bottom: 0; white-space: normal;
-                text-shadow: 0 2px 15px rgba(0,0,0,0.9);
-                letter-spacing: 0;
-            }
-
-            .btn-cta {
-                order: 2; margin-top: 190px; margin-bottom: 0; align-self: center;
-                width: auto; font-size: 0.9rem; padding: 15px 40px;
-            }
-
-            .hero-content p {
-                order: 3; margin-top: auto; font-size: 1rem; line-height: 1.4;
-                text-shadow: 0 2px 5px rgba(0,0,0,1); padding: 0 15px; padding-bottom: 40px;
-                width: 100%; box-sizing: border-box; background: none;
-            }
-        }
-
-        /* ==========================================================================
-           2. ESTILOS CALCULADORA (ENCAPSULADA)
-           ========================================================================== */
+        /* CALCULADORA */
         #seccion-calculadora { 
-            position: relative;
-            background-color: #f4f4f4; 
-            min-height: 100vh; 
-            display: flex; align-items: center; justify-content: center; flex-direction: column; 
-            padding: 30px 0 50px 0;
-            z-index: 1;
+            position: relative; background-color: #f4f4f4; min-height: 100vh;
+            display: flex; align-items: center; justify-content: center; flex-direction: column;
+            padding: 30px 0 50px 0; z-index: 1;
         }
         
-        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 53, 128, 0.5); z-index: 1; }
         .main-container-calc { position: relative; z-index: 10; width: 95%; max-width: 1100px; padding: 20px 0; }
         
         .title-calc { 
-            color: var(--gold); 
-            text-align: center; 
-            font-size: 32px; 
-            margin-bottom: 25px; 
-            font-weight: 800; 
-            letter-spacing: -0.5px; 
-            text-transform: uppercase; 
-            line-height: 1.2;
-            font-family: var(--font-title);
+            color: var(--gold); text-align: center; font-size: 32px; margin-bottom: 25px;
+            font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase;
+            line-height: 1.2; font-family: var(--font-title);
         }
 
         #calc-subtitle {
-            font-size: 18px;
-            font-weight: 400;
-            text-transform: none;
-            display: block;
-            margin-top: 5px;
-            color: #555; 
-            font-family: var(--font-body);
+            font-size: 18px; font-weight: 400; text-transform: none; display: block;
+            margin-top: 5px; color: #555; font-family: var(--font-body);
         }
         
         .search-box-container { 
-            background-color: transparent; 
-            padding: 0; 
-            border-radius: 12px; 
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15); 
-            margin-bottom: 20px; 
+            background-color: transparent; padding: 0; border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15); margin-bottom: 20px;
         }
         
         .search-box-inner { 
-            background-color: #ffffff; 
-            padding: 30px; 
-            border-radius: 12px; 
-            color: var(--text-dark); 
-            border: 3px solid var(--gold); 
+            background-color: #ffffff; padding: 30px; border-radius: 12px;
+            color: var(--text-dark); border: 3px solid var(--gold);
         }
         
         .options-bar { display: flex; justify-content: space-between; margin-bottom: 20px; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 15px; }
@@ -232,42 +151,24 @@
         .radio-label input { margin-right: 8px; accent-color: var(--navy-bg); width: 18px; height: 18px; }
         
         .direction-tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-        
         .tab-btn { 
-            background: #fff; 
-            border: 1px solid #ccc; 
-            color: #555; 
-            padding: 12px 20px; 
-            border-radius: 50px; 
-            cursor: pointer; 
-            font-size: 13px; 
-            font-weight: 600; 
-            transition: 0.3s; 
-            display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center; white-space: nowrap; 
-            font-family: var(--font-body);
+            background: #fff; border: 1px solid #ccc; color: #555; padding: 12px 20px;
+            border-radius: 50px; cursor: pointer; font-size: 13px; font-weight: 600;
+            transition: 0.3s; display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center; white-space: nowrap; font-family: var(--font-body);
         }
         .tab-btn.active { 
-            background-color: var(--navy-bg) !important; 
-            color: #ffffff !important; 
-            border-color: var(--navy-bg) !important; 
-            font-weight: 800; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
-            transform: translateY(-2px); 
+            background-color: var(--navy-bg) !important; color: #ffffff !important;
+            border-color: var(--navy-bg) !important; font-weight: 800;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); transform: translateY(-2px);
         }
         .tab-btn:hover { background: #f0f0f0; }
 
         .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; background: transparent; padding: 0; border: none; }
         
         .input-wrapper { 
-            background: #fff; 
-            padding: 10px 15px; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            position: relative; 
-            border-radius: 8px; 
-            border: 1px solid #ccc; 
-            transition: 0.2s; 
+            background: #fff; padding: 10px 15px; display: flex; flex-direction: column;
+            justify-content: center; position: relative; border-radius: 8px;
+            border: 1px solid #ccc; transition: 0.2s; 
         }
         .input-wrapper:focus-within { box-shadow: 0 0 0 2px rgba(0, 40, 85, 0.2); border-color: var(--navy-bg); }
         .input-wrapper label { font-size: 11px; color: var(--navy-bg); font-weight: 800; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--font-title); }
@@ -290,6 +191,7 @@
         .ruta-header { background: var(--navy-bg); color: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; text-align: center; font-size: 16px; font-weight: 600; border-left: 5px solid var(--highlight-yellow); animation: fadeIn 0.5s ease-in-out; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-family: var(--font-body); }
         .ruta-header i { color: var(--highlight-yellow); margin: 0 10px; }
 
+        /* TARJETAS RESULTADOS */
         .tarjeta { background: var(--white); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; flex-wrap: wrap; gap: 25px; border: 1px solid #f0f0f0; overflow: hidden; animation: fadeIn 0.5s ease-in-out; transition: transform 0.3s, box-shadow 0.3s; }
         .tarjeta:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
         .tarjeta-img { flex: 0 0 220px; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 12px; padding: 10px; border: 1px solid #f5f5f5; }
@@ -309,63 +211,13 @@
         .btn-reservar { background-color: var(--action-green); color: white; text-decoration: none; padding: 14px 20px; border-radius: 8px; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; margin-top: 5px; cursor: pointer; border:none; text-transform: uppercase; letter-spacing: 0.5px; width: 100%; box-shadow: 0 4px 10px rgba(0,166,81,0.2); font-family: var(--font-title); }
         .btn-reservar:hover { background-color: var(--action-green-hover); box-shadow: 0 8px 20px rgba(0,166,81,0.4); transform: translateY(-2px); }
         
-        /* MODALES */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .modal-box { background: white; width: 90%; max-width: 450px; padding: 40px 30px; border-radius: 20px; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.5); position: relative; animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); max-height: 90vh; overflow-y: auto; }
-        .modal-top-close { position: absolute; top: 15px; right: 20px; border: none; background: transparent; color: #aaa; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; font-family: var(--font-body); }
-        .modal-top-close:hover { color: #333; }
-        .modal-icon { font-size: 70px; color: var(--action-green); margin-bottom: 20px; }
-        .modal-title { font-size: 28px; color: var(--primary-blue); margin-bottom: 10px; font-weight: 900; letter-spacing: -1px; font-family: var(--font-title); }
-        .modal-text { font-size: 15px; color: #666; line-height: 1.6; margin-bottom: 20px; font-family: var(--font-body); }
-        
-        .tyc-content { text-align: left; font-size: 13px; color: #444; line-height: 1.5; margin-top: 15px; font-family: var(--font-body); }
-        .tyc-content h4 { color: var(--primary-blue); margin-bottom: 5px; margin-top: 15px; font-size: 14px; }
-        .tyc-content ul { padding-left: 20px; margin: 0; }
-        
-        .codigo-reserva { background-color: #ecfdf5; border: 2px dashed #00a651; color: #003580; padding: 15px; font-size: 28px; font-weight: 900; letter-spacing: 3px; border-radius: 12px; margin: 10px 0 25px 0; display: inline-block; width: 100%; box-sizing: border-box; font-family: var(--font-title); }
-        
-        .modal-actions { display: flex; flex-direction: column; gap: 12px; }
-        .modal-btn { padding: 16px; border-radius: 10px; text-decoration: none; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 15px; color: white; font-size: 16px; transition: 0.2s; border: none; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-family: var(--font-body); }
-        .modal-btn:hover { transform: translateY(-2px); opacity: 0.95; box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
-        .btn-wa { background: #25d366; font-size: 18px; padding: 18px; }
-        .btn-wa i { font-size: 32px; }
-        .btn-call { background: var(--primary-blue); }
-        .btn-mail { background: #333; }
-        
-        .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); z-index: 20000; display: none; align-items: center; justify-content: center; flex-direction: column; }
-        .spinner { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--action-green); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
-        
-        @keyframes slideUp { from {transform: translateY(50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
-        /* Media Queries Calculadora */
-        @media (max-width: 768px) { 
-            .form-grid, .contact-section { grid-template-columns: 1fr; background: transparent; padding: 0; gap: 12px; border: none; } 
-            .input-wrapper { border-radius: 10px !important; box-shadow: 0 2px 5px rgba(0,0,0,0.05); } 
-            .direction-tabs { flex-direction: column; gap: 8px; } 
-            .tab-btn { justify-content: center; padding: 14px; } 
-            .tarjeta { flex-direction: column; text-align: left; padding: 20px; gap: 15px; } 
-            .tarjeta-img { width: 100%; height: 180px; flex: auto; border:none; padding:0; background: #f9f9f9; } 
-            .tarjeta-price { border-left: none; padding-left: 0; border-top: 1px solid #eee; padding-top: 20px; text-align: left; flex-direction: row; align-items: center; justify-content: space-between; flex: auto; } 
-            .btn-reservar { width: auto; padding: 12px 25px; margin-top: 0; }
-        }
-
-        /* ==========================================================================
-           3. ESTILOS SERVICIOS + FLOTA
-           ========================================================================== */
         /* SECCIÓN SERVICIOS */
         .section-wrapper { padding: 30px 20px 80px 20px; text-align: center; background-color: white; }
         .section-header { text-align: center; margin-bottom: 25px; }
-        
-        /* TÍTULO SERVICIOS EN DORADO */
         .section-header h2 { font-family: var(--font-title); font-size: 42px; color: var(--gold); font-weight: 700; margin-bottom: 10px; letter-spacing: -1px; }
-        
         .section-header p { color: #666; font-size: 16px; max-width: 700px; margin: 0 auto; font-family: var(--font-body); }
-
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        
         .service-card { background-color: var(--black); border: 1px solid var(--gold); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: all 0.4s ease; position: relative; display: flex; flex-direction: column; }
-        
         .service-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3); border-color: var(--gold-hover); }
         .service-img { height: 220px; width: 100%; object-fit: cover; mask-image: linear-gradient(to bottom, black 70%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%); }
         .service-info { padding: 10px 30px 40px 30px; text-align: center; margin-top: -20px; position: relative; z-index: 2; }
@@ -378,7 +230,6 @@
         .slider-container { position: relative; max-width: 800px; margin: 0 auto; overflow: hidden; padding-bottom: 40px; }
         .slider-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
         .slider-slide { min-width: 100%; box-sizing: border-box; padding: 10px; }
-
         .vehicle-card-clean { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.08); display: flex; flex-direction: column; height: 100%; border: 1px solid #eee; }
         .image-container-clean { position: relative; width: 100%; }
         .vehicle-img-clean { width: 100%; height: 450px; object-fit: cover; border-bottom: 3px solid var(--gold); display: block; }
@@ -386,44 +237,84 @@
         .vehicle-name-clean { font-size: 2rem; color: var(--black); margin: 0 0 10px 0; font-weight: 600; font-family: var(--font-title); }
         .vehicle-desc-clean { font-size: 1.1rem; color: #666; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; font-family: var(--font-body); }
         .vehicle-capacity-clean { display: inline-block; background: var(--light-gray); padding: 8px 20px; border-radius: 50px; font-size: 0.9rem; color: #555; font-weight: 600; margin-bottom: 25px; }
-
         .btn-reservar-clean { display: inline-block; background-color: var(--black); color: var(--white); padding: 15px 0; width: 100%; border-radius: 8px; text-transform: uppercase; font-size: 1rem; font-weight: 500; letter-spacing: 1px; transition: background 0.3s; text-decoration: none; cursor: pointer; border: none; font-family: var(--font-title); }
         .btn-reservar-clean:hover { background-color: var(--gold); }
 
-        /* ESTILOS DEL BOTÓN DEL CARRUSEL CORREGIDOS */
-        .slider-btn { 
-            position: absolute; top: 45%; transform: translateY(-50%); 
-            background: rgba(255, 255, 255, 0.9); /* Normal: Fondo Blanco */
-            color: var(--black); /* Normal: Flecha negra */
-            border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 24px; cursor: pointer; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; display: flex; align-items: center; justify-content: center; 
-        }
-        /* CORRECCIÓN HOVER: Fondo negro, flecha BLANCA */
-        .slider-btn:hover { 
-            background: var(--black); 
-            color: var(--white); 
-        }
+        .slider-btn { position: absolute; top: 45%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.9); color: var(--black); border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 24px; cursor: pointer; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; display: flex; align-items: center; justify-content: center; }
+        .slider-btn:hover { background: var(--black); color: var(--white); }
         .slider-btn.prev { left: 20px; }
         .slider-btn.next { right: 20px; }
-
         .slider-dots { display: flex; justify-content: center; gap: 10px; position: absolute; bottom: 0; left: 0; width: 100%; }
         .slider-dot { width: 12px; height: 12px; background: #ccc; border-radius: 50%; cursor: pointer; transition: 0.3s; border: none; padding: 0; }
-        
-        /* BOLITAS DE CARRUSEL EN NEGRO */
         .slider-dot.active { background: var(--black); width: 30px; border-radius: 10px; }
 
-        /* FOOTER (NEGRO Y BLANCO) */
-        footer { 
-            background: var(--black); 
-            color: var(--white); 
-            padding: 40px 20px; text-align: center; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); 
-        }
+        /* FOOTER */
+        footer { background: var(--black); color: var(--white); padding: 40px 20px; text-align: center; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); }
 
-        /* Responsive extra para lo nuevo */
+        /* MEDIA QUERIES GENERALES */
         @media (max-width: 768px) {
+            header { padding: 15px 0; }
+            .nav-container { flex-direction: column; gap: 15px; }
+            .nav-links { gap: 20px; }
+            .nav-links a { font-size: 0.8rem; }
+            .logo { font-size: 1.2rem; letter-spacing: 0.5px; }
+            .logo-icon { height: 30px; }
             .vehicle-img-clean { height: 250px; }
             .slider-btn { width: 40px; height: 40px; font-size: 16px; top: 40%; }
             .vehicle-name-clean { font-size: 1.6rem; }
+            .modal-box { width: 95%; max-height: 95vh; }
         }
+
+        /* --- ESTILOS DE MODALES CORREGIDOS (FIXED HEADER + SCROLL BODY) --- */
+        .modal-overlay { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0, 0, 0, 0.8); z-index: 20000; /* Siempre encima */
+            display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); 
+        }
+        
+        /* Caja del modal con Flexbox para separar cabecera y cuerpo */
+        .modal-box { 
+            background: white; width: 90%; max-width: 450px; 
+            max-height: 90vh; /* Altura máxima del 90% de la pantalla */
+            border-radius: 20px; text-align: center; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5); 
+            display: flex; flex-direction: column; /* Estructura vertical */
+            overflow: hidden; /* Ocultar lo que sobra de la caja principal */
+            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+
+        /* Cabecera Fija del Modal (La X no se mueve) */
+        .modal-header-fixed {
+            padding: 15px 20px; border-bottom: 1px solid #eee;
+            display: flex; justify-content: space-between; align-items: center;
+            background: #fff; z-index: 10;
+        }
+        .modal-title-fixed { margin: 0; font-size: 18px; color: var(--primary-blue); font-weight: 800; font-family: var(--font-title); }
+        .btn-close-fixed { background: none; border: none; font-size: 16px; color: #888; cursor: pointer; font-weight: 700; font-family: var(--font-body); }
+        .btn-close-fixed:hover { color: #333; }
+
+        /* Cuerpo Scrolleable (Solo esto se mueve) */
+        .modal-scrollable-content {
+            padding: 20px; overflow-y: auto; /* Scroll vertical activado */
+            flex-grow: 1; /* Ocupa el espacio restante */
+            text-align: left;
+        }
+
+        /* Estilos internos del contenido */
+        .modal-icon { font-size: 60px; color: var(--action-green); margin: 10px 0; text-align: center; display: block; }
+        .modal-main-title { font-size: 24px; color: var(--primary-blue); margin-bottom: 10px; font-weight: 900; text-align: center; font-family: var(--font-title); }
+        .modal-text { font-size: 15px; color: #666; line-height: 1.6; margin-bottom: 20px; text-align: center; font-family: var(--font-body); }
+        
+        .tyc-content h4 { color: var(--primary-blue); margin-bottom: 5px; margin-top: 15px; font-size: 14px; }
+        .tyc-content ul { padding-left: 20px; margin: 0; font-size: 13px; color: #444; }
+        .tyc-content p { font-size: 13px; color: #444; }
+
+        .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); z-index: 20000; display: none; align-items: center; justify-content: center; flex-direction: column; }
+        .spinner { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--action-green); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        
+        @keyframes slideUp { from {transform: translateY(50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
     </style>
 </head>
 <body>
@@ -683,7 +574,7 @@
         </div>
     </section>
 
-    <footer><p>&copy; 2025 Luxury Transfers Riviera. Todos los derechos reservados.</p></footer>
+    <footer id="footer-text">&copy; 2025 Luxury Transfers Riviera. Todos los derechos reservados.</footer>
 
     <div class="loading-overlay" id="loadingOverlay">
         <div class="spinner"></div>
@@ -692,59 +583,69 @@
 
     <div class="modal-overlay" id="modalTyC">
         <div class="modal-box">
-            <button class="modal-top-close" onclick="cerrarTyC()">Cerrar <i class="fas fa-times"></i></button>
-            <h2 class="modal-title" style="font-size: 22px;">Términos y Condiciones</h2>
-            <div class="tyc-content">
-                <p>Al reservar con Luxury Transfers Riviera, aceptas lo siguiente:</p>
-                <h4>1. Cancelaciones y Reembolsos</h4>
-                <ul>
-                    <li>Cancelaciones con 24 horas de antelación: Reembolso del 100%.</li>
-                    <li>Cancelaciones con menos de 24 horas: No aplica reembolso (Cargo por No-Show).</li>
-                </ul>
-                <h4>2. Tiempos de Espera</h4>
-                <ul>
-                    <li><strong>Aeropuerto:</strong> Monitoreamos tu vuelo. El chofer espera hasta 60 min después del aterrizaje.</li>
-                    <li><strong>Hotel/Airbnb:</strong> Tolerancia máxima de 15 minutos en el lobby.</li>
-                </ul>
-                <h4>3. Limpieza y Daños</h4>
-                <ul><li>Si un pasajero ensucia el vehículo (vómito, alimentos, arena excesiva) se cobrará una cuota de limpieza de $2,500 MXN.</li></ul>
-                <h4>4. Equipaje y Objetos</h4>
-                <ul><li>No nos hacemos responsables por objetos olvidados. Revisa tus pertenencias antes de bajar.</li></ul>
-                <h4 style="color:#d32f2f;">5. Eximición por Tráfico y Fuerza Mayor</h4>
-                <ul><li>La empresa <strong>NO se hace responsable</strong> por vuelos perdidos o retrasos derivados de: tráfico pesado, accidentes carreteros, manifestaciones, obras viales o condiciones climáticas severas. Sugerimos anticipar su salida.</li></ul>
-                <h4>6. Fallas Mecánicas</h4>
-                <ul><li>En el improbable caso de falla mecánica, la empresa se compromete a enviar una unidad de sustitución para completar el traslado. Esto no es motivo de reembolso total.</li></ul>
-                <h4>7. Vehículos e Imágenes</h4>
-                <ul><li>Las imágenes mostradas son <strong>ilustrativas y de referencia</strong>. La marca, modelo o color del vehículo puede variar, garantizando siempre la misma categoría.</li></ul>
+            <div class="modal-header-fixed">
+                <h2 class="modal-title-fixed">Términos y Condiciones</h2>
+                <button class="btn-close-fixed" onclick="cerrarTyC()">Cerrar <i class="fas fa-times"></i></button>
             </div>
-            <button class="btn-reservar" onclick="cerrarTyC()" style="margin-top: 20px;">HE LEÍDO Y ACEPTO</button>
+            
+            <div class="modal-scrollable-content">
+                <div class="tyc-content">
+                    <p>Al reservar con Luxury Transfers Riviera, aceptas lo siguiente:</p>
+                    <h4>1. Cancelaciones y Reembolsos</h4>
+                    <ul>
+                        <li>Cancelaciones con 24 horas de antelación: Reembolso del 100%.</li>
+                        <li>Cancelaciones con menos de 24 horas: No aplica reembolso (Cargo por No-Show).</li>
+                    </ul>
+                    <h4>2. Tiempos de Espera</h4>
+                    <ul>
+                        <li><strong>Aeropuerto:</strong> Monitoreamos tu vuelo. El chofer espera hasta 60 min después del aterrizaje.</li>
+                        <li><strong>Hotel/Airbnb:</strong> Tolerancia máxima de 15 minutos en el lobby.</li>
+                    </ul>
+                    <h4>3. Limpieza y Daños</h4>
+                    <ul><li>Si un pasajero ensucia el vehículo (vómito, alimentos, arena excesiva) se cobrará una cuota de limpieza de $2,500 MXN.</li></ul>
+                    <h4>4. Equipaje y Objetos</h4>
+                    <ul><li>No nos hacemos responsables por objetos olvidados. Revisa tus pertenencias antes de bajar.</li></ul>
+                    <h4 style="color:#d32f2f;">5. Eximición por Tráfico y Fuerza Mayor</h4>
+                    <ul><li>La empresa <strong>NO se hace responsable</strong> por vuelos perdidos o retrasos derivados de: tráfico pesado, accidentes carreteros, manifestaciones, obras viales o condiciones climáticas severas. Sugerimos anticipar su salida.</li></ul>
+                    <h4>6. Fallas Mecánicas</h4>
+                    <ul><li>En el improbable caso de falla mecánica, la empresa se compromete a enviar una unidad de sustitución para completar el traslado. Esto no es motivo de reembolso total.</li></ul>
+                    <h4>7. Vehículos e Imágenes</h4>
+                    <ul><li>Las imágenes mostradas son <strong>ilustrativas y de referencia</strong>. La marca, modelo o color del vehículo puede variar, garantizando siempre la misma categoría.</li></ul>
+                </div>
+                <button class="btn-reservar" onclick="cerrarTyC()" style="margin-top: 20px; width: 100%;">HE LEÍDO Y ACEPTO</button>
+            </div>
         </div>
     </div>
 
     <div class="modal-overlay" id="modalConfirmacion">
         <div class="modal-box">
-            <button class="modal-top-close" onclick="cerrarModal()">Cerrar <i class="fas fa-times"></i></button>
-
-            <div class="modal-icon"><i class="fas fa-check-circle"></i></div>
-            <h2 class="modal-title" id="modalTitle">¡Solicitud Recibida!</h2>
-            
-            <p style="margin:0; font-size:11px; color:#888; text-transform: uppercase; font-weight:700; letter-spacing: 1px;">Tu código de referencia es:</p>
-            <div id="codigoDisplay" class="codigo-reserva">LTR-????</div>
-
-            <p class="modal-text" id="modalText">
-                Hemos recibido tu solicitud. Un asesor te contactará lo más breve posible para finalizar tu reserva.
-            </p>
-
-            <div style="background-color: #fff4e5; border-left: 4px solid #ff9800; padding: 10px; margin-bottom: 20px; text-align: left; font-size: 13px; color: #663c00;">
-                <i class="fas fa-exclamation-triangle"></i> <strong>IMPORTANTE:</strong><br>
-                Te hemos enviado un correo con los <strong>detalles de tu solicitud</strong>. <br>
-                <span style="text-decoration: underline; font-weight: 800;">Por favor revisa tu carpeta de SPAM o "Correo no deseado"</span> si no lo ves en tu bandeja de entrada.
+            <div class="modal-header-fixed">
+                <h2 class="modal-title-fixed">¡Solicitud Recibida!</h2>
+                <button class="btn-close-fixed" onclick="cerrarModal()">Cerrar <i class="fas fa-times"></i></button>
             </div>
-            
-            <div class="modal-actions">
-                <a href="tel:+529842411158" class="modal-btn btn-call"><i class="fas fa-phone"></i> Llama ahora</a>
-                <a href="#" target="_blank" class="modal-btn btn-wa" id="btnWhatsapp"><i class="fab fa-whatsapp"></i> Confirmar por WhatsApp</a>
-                <a href="#" class="modal-btn btn-mail" id="btnMail"><i class="fas fa-envelope"></i> Enviar Correo</a>
+
+            <div class="modal-scrollable-content" style="text-align: center;">
+                <div class="modal-icon"><i class="fas fa-check-circle"></i></div>
+                <h2 class="modal-main-title" id="modalTitle">¡Solicitud Recibida!</h2>
+                
+                <p style="margin:0; font-size:11px; color:#888; text-transform: uppercase; font-weight:700; letter-spacing: 1px;">Tu código de referencia es:</p>
+                <div id="codigoDisplay" class="codigo-reserva">LTR-????</div>
+
+                <p class="modal-text" id="modalText">
+                    Hemos recibido tu solicitud. Un asesor te contactará lo más breve posible para finalizar tu reserva.
+                </p>
+
+                <div style="background-color: #fff4e5; border-left: 4px solid #ff9800; padding: 10px; margin-bottom: 20px; text-align: left; font-size: 13px; color: #663c00;">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>IMPORTANTE:</strong><br>
+                    Te hemos enviado un correo con los <strong>detalles de tu solicitud</strong>. <br>
+                    <span style="text-decoration: underline; font-weight: 800;">Por favor revisa tu carpeta de SPAM o "Correo no deseado"</span> si no lo ves en tu bandeja de entrada.
+                </div>
+                
+                <div class="modal-actions">
+                    <a href="tel:+529842411158" class="modal-btn btn-call"><i class="fas fa-phone"></i> Llama ahora</a>
+                    <a href="#" target="_blank" class="modal-btn btn-wa" id="btnWhatsapp"><i class="fab fa-whatsapp"></i> Confirmar por WhatsApp</a>
+                    <a href="#" class="modal-btn btn-mail" id="btnMail"><i class="fas fa-envelope"></i> Enviar Correo</a>
+                </div>
             </div>
         </div>
     </div>
@@ -808,7 +709,17 @@
             fleetDesc2: "Exclusividad y potencia desde tu llegada. El recibimiento perfecto en el aeropuerto para ejecutivos y familias VIP.",
             fleetDesc3: "Espacio inteligente y confort total. La opción ideal para familias o grupos de amigos que buscan viajar juntos con seguridad.",
             fleetDesc4: "Ideal para bodas, eventos o familias numerosas. Viajen todos juntos, seguros y con aire acondicionado de primera.",
-            btnQuote: "Cotizar Ahora"
+            btnQuote: "Cotizar Ahora",
+
+            // TRADUCCIONES NUEVAS: PLACEHOLDERS Y FOOTER
+            placeholderName: "Tu nombre",
+            placeholderPhone: "Ej: +52 987 654 3210",
+            placeholderEmail: "correo@ejemplo.com",
+            placeholderAirline: "Ej: Volaris",
+            placeholderFlight: "Ej: Y4 123",
+            placeholderItinerary: "Ej: Ir a Tulum Ruinas, luego un cenote y terminar a comer en...",
+            placeholderNotes: "Ej: Llevamos 4 maletas grandes, necesitamos silla de bebé...",
+            footerText: "&copy; 2025 Luxury Transfers Riviera. Todos los derechos reservados."
         },
         en: {
             navCotizar: "Quote", navServicios: "Services", navFlota: "Fleet",
@@ -841,7 +752,17 @@
             fleetDesc2: "Exclusivity and power upon arrival. The perfect airport welcome for executives and VIP families.",
             fleetDesc3: "Smart space and total comfort. The ideal option for families or groups of friends looking to travel together safely.",
             fleetDesc4: "Ideal for weddings, events, or large families. Travel all together, safely, and with top-notch air conditioning.",
-            btnQuote: "Quote Now"
+            btnQuote: "Quote Now",
+
+            // TRADUCCIONES NUEVAS: PLACEHOLDERS Y FOOTER
+            placeholderName: "Your Name",
+            placeholderPhone: "Ex: +1 555 123 4567",
+            placeholderEmail: "email@example.com",
+            placeholderAirline: "Ex: Delta",
+            placeholderFlight: "Ex: AA 123",
+            placeholderItinerary: "Ex: Go to Tulum Ruins, then a cenote and finish eating at...",
+            placeholderNotes: "Ex: We have 4 large suitcases, need a baby seat...",
+            footerText: "&copy; 2025 Luxury Transfers Riviera. All rights reserved."
         }
     };
 
@@ -888,12 +809,22 @@
         if(lang === 'en') {
             document.getElementById('destino').placeholder = "Where are you going?";
             document.getElementById('origen').placeholder = "Pick-up Location";
-            document.getElementById('nombreCliente').placeholder = "Your Name";
         } else {
             document.getElementById('destino').placeholder = "¿A qué hotel vas?";
             document.getElementById('origen').placeholder = "Lugar de Recogida";
-            document.getElementById('nombreCliente').placeholder = "Tu nombre";
         }
+
+        // --- TRADUCCIÓN DE PLACEHOLDERS (NUEVO) ---
+        document.getElementById('nombreCliente').placeholder = t.placeholderName;
+        document.getElementById('telefonoCliente').placeholder = t.placeholderPhone;
+        document.getElementById('emailCliente').placeholder = t.placeholderEmail;
+        document.getElementById('aerolinea').placeholder = t.placeholderAirline;
+        document.getElementById('numVuelo').placeholder = t.placeholderFlight;
+        document.getElementById('itinerarioCliente').placeholder = t.placeholderItinerary;
+        document.getElementById('notasCliente').placeholder = t.placeholderNotes;
+        
+        // --- TRADUCCIÓN FOOTER (NUEVO) ---
+        document.getElementById('footer-text').innerHTML = t.footerText;
 
         document.getElementById('labelDestino').innerText = t.labelDestino;
         document.getElementById('labelOrigen').innerText = t.labelOrigen;
