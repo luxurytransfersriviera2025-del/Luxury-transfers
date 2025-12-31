@@ -28,8 +28,6 @@
             --navy-bg: #002855;
             --light-gray: #f4f4f4;
 
-            /* TIPOGRAFÍAS */
-            --font-hero: 'Montserrat', sans-serif; 
             --font-title: 'Montserrat', sans-serif;
             --font-body: 'Open Sans', sans-serif;
             
@@ -78,7 +76,7 @@
             scroll-margin-top: calc(var(--header-height) - 25px);
         }
 
-        /* HERO SECTION (Escritorio) */
+        /* HERO SECTION */
         .hero {
             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://i.imgur.com/3JAl89S.jpeg');
             background-size: cover; background-position: center center; height: 100vh;
@@ -93,15 +91,9 @@
         }
 
         .hero-content h1 {
-            order: 1; 
-            font-family: var(--font-hero); 
-            font-size: 3.5rem; 
-            margin-bottom: 20px; 
-            line-height: 1.1;
-            font-weight: 900; 
-            text-transform: uppercase;
-            text-shadow: 2px 2px 15px rgba(0,0,0,0.8); 
-            letter-spacing: -1px;
+            order: 1; font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1;
+            font-weight: 900; text-transform: uppercase;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.8); font-family: var(--font-title); letter-spacing: -1px;
         }
 
         .hero-content p {
@@ -118,7 +110,7 @@
         }
         .btn-cta:hover { background-color: var(--gold-hover); transform: translateY(-3px); border-color: var(--gold-hover); }
 
-        /* --- MEDIA QUERIES HERO (MÓVIL - AJUSTES EXACTOS) --- */
+        /* --- MEDIA QUERIES HERO (MÓVIL) --- */
         @media (max-width: 768px) {
             header { padding: 15px 0; }
             .nav-container { flex-direction: column; gap: 15px; }
@@ -133,50 +125,37 @@
             }
 
             .hero-content {
-                height: 90vh; 
-                width: 100%; 
-                margin-top: 100px; /* Espacio para el header */
-                padding-bottom: 20px; 
-                display: flex; 
-                flex-direction: column;
-                justify-content: flex-start; 
+                height: 90vh; width: 100%; margin-top: 100px; padding-bottom: 20px; 
+                display: flex; flex-direction: column; justify-content: flex-start; 
             }
 
             .hero-content h1 {
-                order: 1; 
-                font-size: 2.2rem; 
-                margin-bottom: 0; 
-                white-space: normal; 
-                text-shadow: 0 2px 15px rgba(0,0,0,0.9); 
-                letter-spacing: 0;
+                order: 1; font-size: 2.2rem; margin-bottom: 0; white-space: normal; 
+                text-shadow: 0 2px 15px rgba(0,0,0,0.9); letter-spacing: 0;
             }
 
-            /* AJUSTE DESCRIPCIÓN: Subida + 3 Líneas + Fondo Transparente */
+            /* AJUSTE 1: LETRA MÁS GRANDE + ZONA VERDE */
             .hero-content p {
                 order: 2;
-                margin-top: 20px; /* Más arriba, pegado al título */
-                margin-bottom: 0; 
-                
-                /* Ajuste para 3 líneas */
-                font-size: 0.85rem; /* Letra un poco más chica */
+                margin-top: 30px; /* Ubicación en zona verde */
+                margin-bottom: 20px; 
+                font-size: 1.15rem; /* AUMENTADO EL TAMAÑO PARA QUE SE LEA BIEN */
                 line-height: 1.4; 
-                
                 text-shadow: none; 
                 
-                /* Fondo negro MÁS transparente (0.4) para ver la imagen de atrás */
-                background-color: rgba(0, 0, 0, 0.4); 
-                padding: 10px; /* Menos padding para ahorrar espacio */
+                /* AJUSTE: Fondo más opaco */
+                background-color: rgba(0, 0, 0, 0.75); 
+                padding: 15px; 
                 border-radius: 15px;
                 
-                width: 95%; /* Más ancho para que el texto quepa en 3 líneas */
-                box-sizing: border-box; 
+                width: 90%; box-sizing: border-box; 
             }
 
-            /* AJUSTE BOTÓN: Abajo en la llanta */
+            /* AJUSTE 2: BOTÓN EN ZONA ROJA (LLANTAS) */
             .btn-cta {
                 order: 3; 
-                margin-top: auto; /* Empuja el botón hacia abajo */
-                margin-bottom: 60px; /* Lo levanta para quedar a la altura de la llanta (Línea Roja) */
+                margin-top: auto; 
+                margin-bottom: 20px; /* Bajado a la zona de llantas */
                 align-self: center; 
                 width: 90%; 
                 font-size: 1.1rem; 
@@ -469,7 +448,7 @@
                     </div>
                     <div class="form-grid">
                         <div class="input-wrapper" id="divSubtipoServicio" style="display:none; grid-column: 1 / -1; background-color: #e3f2fd;">
-                            <label style="color: #003580;">Tipo de Servicio Especial:</label>
+                            <label id="label-tipo-especial" style="color: #003580;">Tipo de Servicio Especial:</label>
                             <select id="subtipoPersonalizado" onchange="ajustarCamposPersonalizados()">
                                 <option value="HOTEL_A_HOTEL">📍 Traslado a Hotel / Airbnb</option>
                                 <option value="TOUR">🎢 Traslado a Tours (Parques/Ruinas)</option>
@@ -489,8 +468,8 @@
                         </div>
                         <div class="input-wrapper" style="flex: 0.6;"><label id="label-fecha">Fecha</label><input type="date" id="fechaIda"></div>
                         <div class="input-wrapper" style="flex: 0.4;"><label id="label-hora">Hora</label><input type="time" id="horaIda"></div>
-                        <div class="input-wrapper" id="divFechaVuelta" style="display:none; flex: 0.6;"><label>Fecha Vuelta</label><input type="date" id="fechaVuelta"></div>
-                        <div class="input-wrapper" id="divHoraVuelta" style="display:none; flex: 0.4;"><label>Hora</label><input type="time" id="horaVuelta"></div>
+                        <div class="input-wrapper" id="divFechaVuelta" style="display:none; flex: 0.6;"><label id="label-fecha-vuelta">Fecha Vuelta</label><input type="date" id="fechaVuelta"></div>
+                        <div class="input-wrapper" id="divHoraVuelta" style="display:none; flex: 0.4;"><label id="label-hora-vuelta">Hora</label><input type="time" id="horaVuelta"></div>
                         <div class="input-wrapper" style="flex: 0.4;">
                             <label id="label-pax">Pasajeros</label>
                             <select id="pasajeros">
@@ -501,7 +480,7 @@
                             <div class="input-wrapper" style="grid-column: 1 / -1;"><label style="color:var(--action-green); font-weight:900; font-size: 11px;" id="label-contact">TUS DATOS DE CONTACTO:</label></div>
                             <div class="input-wrapper"><label id="label-nombre">Nombre Completo</label><input type="text" id="nombreCliente" placeholder="Tu nombre"></div>
                             <div class="input-wrapper"><label id="label-tel">Teléfono</label><input type="tel" id="telefonoCliente" placeholder="Ej: +52 987 654 3210"></div>
-                            <div class="input-wrapper"><label>Correo Electrónico</label><input type="email" id="emailCliente" placeholder="correo@ejemplo.com"></div>
+                            <div class="input-wrapper"><label id="label-email">Correo Electrónico</label><input type="email" id="emailCliente" placeholder="correo@ejemplo.com"></div>
                             <div id="divVueloInfo" class="flight-fields-container">
                                 <div class="input-wrapper"><label id="label-aerolinea">Aerolínea (Opcional)</label><input type="text" id="aerolinea" placeholder="Ej: Volaris"></div>
                                 <div class="input-wrapper"><label id="label-vuelo">No. Vuelo (Opcional)</label><input type="text" id="numVuelo" placeholder="Ej: Y4 123"></div>
@@ -580,7 +559,7 @@
                     <div class="vehicle-card-clean">
                         <div class="image-container-clean"><img src="https://imgur.com/sVAYDET.jpg" alt="Sedán Ejecutivo" class="vehicle-img-clean"></div>
                         <div class="card-content-clean">
-                            <h3 class="vehicle-name-clean">Sedán Ejecutivo</h3>
+                            <h3 class="vehicle-name-clean" id="veh-title-1">Sedán Ejecutivo</h3>
                             <p class="vehicle-desc-clean" id="fleet-desc-1">Viaja ligero y con total comodidad. Ideal para parejas o viajeros de negocios que buscan un traslado privado y eficiente.</p>
                             <div><span class="vehicle-capacity-clean"><i class="fas fa-user"></i> 1-3 Pax</span></div>
                             <a href="#seccion-calculadora" class="btn-reservar-clean" id="btn-quote-1">Cotizar Ahora</a>
@@ -591,7 +570,7 @@
                     <div class="vehicle-card-clean">
                         <div class="image-container-clean"><img src="https://imgur.com/3RPB7mA.jpg" alt="Luxury SUV" class="vehicle-img-clean"></div>
                         <div class="card-content-clean">
-                            <h3 class="vehicle-name-clean">Luxury SUV</h3>
+                            <h3 class="vehicle-name-clean" id="veh-title-2">Luxury SUV</h3>
                             <p class="vehicle-desc-clean" id="fleet-desc-2">Exclusividad y potencia desde tu llegada. El recibimiento perfecto en el aeropuerto para ejecutivos y familias VIP.</p>
                             <div><span class="vehicle-capacity-clean"><i class="fas fa-star"></i> 1-5 Pax</span></div>
                             <a href="#seccion-calculadora" class="btn-reservar-clean" id="btn-quote-2">Cotizar Ahora</a>
@@ -602,7 +581,7 @@
                     <div class="vehicle-card-clean">
                         <div class="image-container-clean"><img src="https://imgur.com/QcQgVO9.jpg" alt="Van Ejecutiva" class="vehicle-img-clean"></div>
                         <div class="card-content-clean">
-                            <h3 class="vehicle-name-clean">Van Ejecutiva</h3>
+                            <h3 class="vehicle-name-clean" id="veh-title-3">Van Ejecutiva</h3>
                             <p class="vehicle-desc-clean" id="fleet-desc-3">Espacio inteligente y confort total. La opción ideal para familias o grupos de amigos que buscan viajar juntos con seguridad.</p>
                             <div><span class="vehicle-capacity-clean"><i class="fas fa-users"></i> 1-8 Pax</span></div>
                             <a href="#seccion-calculadora" class="btn-reservar-clean" id="btn-quote-3">Cotizar Ahora</a>
@@ -613,7 +592,7 @@
                     <div class="vehicle-card-clean">
                         <div class="image-container-clean"><img src="https://imgur.com/3cMDA8m.jpg" alt="Sprinter" class="vehicle-img-clean"></div>
                         <div class="card-content-clean">
-                            <h3 class="vehicle-name-clean">Sprinter</h3>
+                            <h3 class="vehicle-name-clean" id="veh-title-4">Sprinter</h3>
                             <p class="vehicle-desc-clean" id="fleet-desc-4">Ideal para bodas, eventos o familias numerosas. Viajen todos juntos, seguros y con aire acondicionado de primera.</p>
                             <div><span class="vehicle-capacity-clean"><i class="fas fa-bus"></i> 1-15 Pax</span></div>
                             <a href="#seccion-calculadora" class="btn-reservar-clean" id="btn-quote-4">Cotizar Ahora</a>
@@ -717,10 +696,18 @@
             tabDesde: "Desde Aeropuerto Cancún", tabHacia: "Hacia Aeropuerto Cancún", tabPerso: "Personalizado",
             labelDestino: "Destino", labelOrigen: "Recogida", labelFecha: "Fecha", labelHora: "Hora", labelPax: "Pasajeros",
             labelContact: "TUS DATOS DE CONTACTO:", labelNombre: "Nombre Completo", labelTel: "Teléfono",
+            labelEmail: "Correo Electrónico", 
+            labelSpecialType: "Tipo de Servicio Especial:",
+            optHotel: "📍 Traslado a Hotel / Airbnb",
+            optTour: "🎢 Traslado a Tours (Parques/Ruinas)",
+            optHours: "⏳ Servicio por Horas (Disposición)",
+            labelReturnDate: "Fecha Vuelta",
+            labelReturnTime: "Hora",
             labelAerolinea: "Aerolínea (Opcional)", labelVuelo: "No. Vuelo (Opcional)",
             labelNotas: "Notas / Equipaje / Sillas de Bebé",
             labelTerms: 'He leído y acepto los <span class="terms-link" onclick="abrirTyC()">Términos y Condiciones</span>',
             btnAccion: "Buscar Precios",
+            btnQuoteCustom: "Solicitar Cotización",
             serviciosTitle: "Nuestros Servicios",
             serviciosSubtitle: "Soluciones de transporte exclusivas diseñadas para superar tus expectativas.",
             flotaTitle: "Nuestra Flota Premium",
@@ -733,6 +720,7 @@
             fleetDesc2: "Exclusividad y potencia desde tu llegada. El recibimiento perfecto en el aeropuerto para ejecutivos y familias VIP.",
             fleetDesc3: "Espacio inteligente y confort total. La opción ideal para familias o grupos de amigos que buscan viajar juntos con seguridad.",
             fleetDesc4: "Ideal para bodas, eventos o familias numerosas. Viajen todos juntos, seguros y con aire acondicionado de primera.",
+            vehSedan: "Sedán Ejecutivo", vehVan: "Van Ejecutiva", vehSuv: "Luxury SUV", vehSprinter: "Sprinter",
             btnQuote: "Cotizar Ahora",
             placeholderName: "Tu nombre", placeholderPhone: "Ej: +52 987 654 3210", placeholderEmail: "correo@ejemplo.com",
             placeholderAirline: "Ej: Volaris", placeholderFlight: "Ej: Y4 123",
@@ -794,10 +782,18 @@
             tabDesde: "From Cancun Airport", tabHacia: "To Cancun Airport", tabPerso: "Custom",
             labelDestino: "Destination", labelOrigen: "Pick-up", labelFecha: "Date", labelHora: "Time", labelPax: "Passengers",
             labelContact: "YOUR CONTACT DETAILS:", labelNombre: "Full Name", labelTel: "Phone",
+            labelEmail: "Email Address",
+            labelSpecialType: "Special Service Type:",
+            optHotel: "📍 Transfer to Hotel / Airbnb",
+            optTour: "🎢 Transfer to Tours (Parks/Ruins)",
+            optHours: "⏳ Hourly Service (Disposal)",
+            labelReturnDate: "Return Date",
+            labelReturnTime: "Time",
             labelAerolinea: "Airline (Optional)", labelVuelo: "Flight No. (Optional)",
             labelNotas: "Notes / Luggage / Baby Seats",
             labelTerms: 'I have read and agree to the <span class="terms-link" onclick="abrirTyC()">Terms & Conditions</span>',
             btnAccion: "Search Prices",
+            btnQuoteCustom: "Request Quote",
             serviciosTitle: "Our Services",
             serviciosSubtitle: "Exclusive transport solutions designed to exceed your expectations.",
             flotaTitle: "Our Premium Fleet",
@@ -810,6 +806,7 @@
             fleetDesc2: "Exclusivity and power upon arrival. The perfect airport welcome for executives and VIP families.",
             fleetDesc3: "Smart space and total comfort. The ideal option for families or groups of friends looking to travel together safely.",
             fleetDesc4: "Ideal for weddings, events, or large families. Travel all together, safely, and with top-notch air conditioning.",
+            vehSedan: "Executive Sedan", vehVan: "Executive Van", vehSuv: "Luxury SUV", vehSprinter: "Sprinter",
             btnQuote: "Quote Now",
             placeholderName: "Your Name", placeholderPhone: "Ex: +1 555 123 4567", placeholderEmail: "email@example.com",
             placeholderAirline: "Ex: Delta", placeholderFlight: "Ex: AA 123",
@@ -929,11 +926,29 @@
         document.getElementById('label-contact').innerText = t.labelContact;
         document.getElementById('label-nombre').innerText = t.labelNombre;
         document.getElementById('label-tel').innerText = t.labelTel;
+        document.getElementById('label-email').innerText = t.labelEmail; // NUEVA TRADUCCIÓN
+        document.getElementById('label-tipo-especial').innerText = t.labelSpecialType; // NUEVA TRADUCCIÓN
+        
+        // ACTUALIZAR SELECT OPCIONES
+        const sel = document.getElementById('subtipoPersonalizado');
+        sel.options[0].text = t.optHotel;
+        sel.options[1].text = t.optTour;
+        sel.options[2].text = t.optHours;
+
+        document.getElementById('label-fecha-vuelta').innerText = t.labelReturnDate; // NUEVA TRADUCCIÓN
+        document.getElementById('label-hora-vuelta').innerText = t.labelReturnTime; // NUEVA TRADUCCIÓN
+
         document.getElementById('label-aerolinea').innerText = t.labelAerolinea;
         document.getElementById('label-vuelo').innerText = t.labelVuelo;
         document.getElementById('label-notas').innerText = t.labelNotas;
         document.getElementById('label-terms').innerHTML = t.labelTerms;
-        document.getElementById('btnAccion').innerText = t.btnAccion;
+        
+        // LÓGICA DE BOTÓN DINÁMICO
+        if(direccionMode === 'personalizado') {
+            document.getElementById('btnAccion').innerText = t.btnQuoteCustom;
+        } else {
+            document.getElementById('btnAccion').innerText = t.btnAccion;
+        }
 
         document.getElementById('servicios-title').innerText = t.serviciosTitle;
         document.getElementById('servicios-subtitle').innerText = t.serviciosSubtitle;
@@ -949,6 +964,12 @@
         document.getElementById('fleet-desc-2').innerText = t.fleetDesc2;
         document.getElementById('fleet-desc-3').innerText = t.fleetDesc3;
         document.getElementById('fleet-desc-4').innerText = t.fleetDesc4;
+        
+        // NUEVAS TRADUCCIONES VEHÍCULOS
+        document.getElementById('veh-title-1').innerText = t.vehSedan;
+        document.getElementById('veh-title-2').innerText = t.vehSuv;
+        document.getElementById('veh-title-3').innerText = t.vehVan;
+        document.getElementById('veh-title-4').innerText = t.vehSprinter;
         
         document.getElementById('btn-quote-1').innerText = t.btnQuote;
         document.getElementById('btn-quote-2').innerText = t.btnQuote;
