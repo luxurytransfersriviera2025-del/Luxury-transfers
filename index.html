@@ -28,6 +28,8 @@
             --navy-bg: #002855;
             --light-gray: #f4f4f4;
 
+            /* TIPOGRAFÍAS */
+            --font-hero: 'Montserrat', sans-serif;
             --font-title: 'Montserrat', sans-serif;
             --font-body: 'Open Sans', sans-serif;
             
@@ -91,9 +93,15 @@
         }
 
         .hero-content h1 {
-            order: 1; font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1;
-            font-weight: 900; text-transform: uppercase;
-            text-shadow: 2px 2px 15px rgba(0,0,0,0.8); font-family: var(--font-title); letter-spacing: -1px;
+            order: 1; 
+            font-family: var(--font-hero); 
+            font-size: 3.5rem; 
+            margin-bottom: 20px; 
+            line-height: 1.1;
+            font-weight: 900; 
+            text-transform: uppercase;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.8); 
+            letter-spacing: -1px;
         }
 
         .hero-content p {
@@ -110,7 +118,7 @@
         }
         .btn-cta:hover { background-color: var(--gold-hover); transform: translateY(-3px); border-color: var(--gold-hover); }
 
-        /* --- MEDIA QUERIES HERO (MÓVIL) --- */
+        /* --- MEDIA QUERIES HERO (MÓVIL - AJUSTE FINAL) --- */
         @media (max-width: 768px) {
             header { padding: 15px 0; }
             .nav-container { flex-direction: column; gap: 15px; }
@@ -118,6 +126,7 @@
             .logo { font-size: 1.2rem; letter-spacing: 0.5px; } .logo-icon { height: 30px; }
 
             .hero {
+                /* Fondo móvil */
                 background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg');
                 background-position: center center;
                 height: 100vh;
@@ -125,40 +134,52 @@
             }
 
             .hero-content {
-                height: 90vh; width: 100%; margin-top: 100px; padding-bottom: 20px; 
-                display: flex; flex-direction: column; justify-content: flex-start; 
+                height: 100vh; 
+                width: 100%; 
+                margin-top: 0; 
+                padding-top: 100px; /* Espacio para el header */
+                padding-bottom: 0;
+                display: flex; 
+                flex-direction: column;
+                justify-content: center; /* Centrado vertical general */
             }
 
             .hero-content h1 {
-                order: 1; font-size: 2.2rem; margin-bottom: 0; white-space: normal; 
-                text-shadow: 0 2px 15px rgba(0,0,0,0.9); letter-spacing: 0;
+                order: 1; 
+                font-size: 2.2rem; 
+                margin-bottom: 20px; 
+                white-space: normal; 
+                text-shadow: 0 2px 15px rgba(0,0,0,0.9); 
+                letter-spacing: 0;
             }
 
-            /* AJUSTE 1: LETRA MÁS GRANDE + ZONA VERDE */
+            /* AJUSTE DESCRIPCIÓN: ZONA VERDE */
             .hero-content p {
                 order: 2;
-                margin-top: 30px; /* Ubicación en zona verde */
-                margin-bottom: 20px; 
-                font-size: 1.15rem; /* AUMENTADO EL TAMAÑO PARA QUE SE LEA BIEN */
+                margin-top: 0; 
+                margin-bottom: 30px; 
+                font-size: 1.15rem; /* Letra legible */
                 line-height: 1.4; 
                 text-shadow: none; 
                 
-                /* AJUSTE: Fondo más opaco */
-                background-color: rgba(0, 0, 0, 0.75); 
+                /* AJUSTE 1: FONDO OPACO (0.85) PARA LEER BIEN */
+                background-color: rgba(0, 0, 0, 0.85); 
                 padding: 15px; 
                 border-radius: 15px;
                 
-                width: 90%; box-sizing: border-box; 
+                width: 90%; 
+                box-sizing: border-box;
+                align-self: center;
             }
 
-            /* AJUSTE 2: BOTÓN EN ZONA ROJA (LLANTAS) */
+            /* AJUSTE BOTÓN: ZONA ROJA (LLANTAS) */
             .btn-cta {
                 order: 3; 
-                margin-top: auto; 
-                margin-bottom: 20px; /* Bajado a la zona de llantas */
+                margin-top: 40px; /* Espacio extra para bajarlo a la llanta */
+                margin-bottom: 80px; /* Despegado del borde inferior */
                 align-self: center; 
                 width: 90%; 
-                font-size: 1.1rem; 
+                font-size: 1.2rem; 
                 padding: 20px 0; 
             }
         }
