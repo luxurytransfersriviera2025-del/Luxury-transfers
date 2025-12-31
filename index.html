@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxury Transfers Riviera | Transporte VIP</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
     <style>
@@ -30,7 +30,11 @@
 
             /* Variables Servicios/Flota */
             --navy-bg: #002855;
-            --font-title: 'Playfair Display', serif;
+            
+            /* CAMBIO DE TIPOGRAFÍA EN VARIABLES */
+            --font-title: 'Cinzel', serif; /* Títulos Premium */
+            --font-body: 'Raleway', sans-serif; /* Texto Elegante */
+            
             --light-gray: #f4f4f4;
 
             /* Variable dinámica para el menú */
@@ -42,7 +46,8 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            /* CAMBIO: Usar Raleway en todo el cuerpo */
+            font-family: var(--font-body);
             margin: 0; padding: 0; color: var(--dark-gray); background-color: var(--white);
             overflow-x: hidden;
         }
@@ -53,7 +58,7 @@
         header {
             background-color: rgba(10, 10, 10, 0.95);
             padding: 10px 0;
-            position: fixed; width: 100%; top: 0; z-index: 1000; /* Z-index estándar */
+            position: fixed; width: 100%; top: 0; z-index: 1000;
             border-bottom: 2px solid var(--gold);
             display: flex; align-items: center;
         }
@@ -65,6 +70,8 @@
         }
 
         .logo {
+            /* CAMBIO: Logo con fuente Cinzel */
+            font-family: var(--font-title);
             font-size: 1.4rem; font-weight: 700; text-transform: uppercase;
             letter-spacing: 2px; color: var(--gold); display: flex;
             align-items: center; gap: 12px; cursor: pointer;
@@ -73,7 +80,10 @@
         .logo-icon { height: 35px; width: auto; }
         
         .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; cursor: pointer; }
+        .nav-links a { 
+            color: var(--white); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; cursor: pointer; 
+            font-family: var(--font-body);
+        }
         .nav-links a:hover { color: var(--gold); }
 
         /* AJUSTE DE SCROLL */
@@ -99,14 +109,17 @@
 
         .hero-content h1 {
             order: 1; font-size: 3.8rem; margin-bottom: 20px;
-            line-height: 1.2; font-weight: 800; text-transform: uppercase;
+            line-height: 1.2; font-weight: 700; text-transform: uppercase;
             text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+            /* CAMBIO: Título Hero con Cinzel */
+            font-family: var(--font-title);
         }
 
         .hero-content p {
             order: 2; font-size: 1.3rem; margin-bottom: 40px;
             font-weight: 400; text-shadow: 1px 1px 8px rgba(0,0,0,0.8);
             max-width: 800px;
+            font-family: var(--font-body);
         }
 
         .btn-cta {
@@ -116,6 +129,7 @@
             display: inline-block; box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
             border: 2px solid var(--gold); 
             cursor: pointer;
+            font-family: var(--font-body);
         }
         .btn-cta:hover {
             background-color: var(--gold-hover); transform: translateY(-3px); border-color: var(--gold-hover);
@@ -180,10 +194,12 @@
             text-align: center; 
             font-size: 32px; 
             margin-bottom: 25px; 
-            font-weight: 800; 
+            font-weight: 700; 
             letter-spacing: -0.5px; 
             text-transform: uppercase; 
             line-height: 1.2;
+            /* CAMBIO: Fuente Cinzel */
+            font-family: var(--font-title);
         }
 
         #calc-subtitle {
@@ -192,7 +208,9 @@
             text-transform: none;
             display: block;
             margin-top: 5px;
-            color: #555; /* Gris, no dorado */
+            color: #555; 
+            /* CAMBIO: Subtítulo en Raleway */
+            font-family: var(--font-body);
         }
         
         .search-box-container { 
@@ -255,7 +273,12 @@
         }
         .input-wrapper:focus-within { box-shadow: 0 0 0 2px rgba(0, 40, 85, 0.2); border-color: var(--navy-bg); }
         .input-wrapper label { font-size: 11px; color: var(--navy-bg); font-weight: 800; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .input-wrapper input, .input-wrapper select, .input-wrapper textarea { border: none; outline: none; width: 100%; font-size: 15px; font-weight: 600; color: #333; background: transparent; font-family: 'Montserrat', sans-serif; padding: 0; }
+        
+        /* CAMBIO: Asegurar fuente Raleway en inputs */
+        .input-wrapper input, .input-wrapper select, .input-wrapper textarea { 
+            border: none; outline: none; width: 100%; font-size: 15px; font-weight: 600; 
+            color: #333; background: transparent; font-family: var(--font-body); padding: 0; 
+        }
         
         .contact-section { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin-top: 20px; border-top: 1px dashed #ddd; padding-top: 25px; }
         .flight-fields-container { grid-column: 1 / -1; display: contents; }
@@ -264,7 +287,7 @@
         .terms-container input { width: 18px; height: 18px; accent-color: var(--navy-bg); cursor: pointer; }
         .terms-link { color: var(--navy-bg); text-decoration: underline; cursor: pointer; font-weight: 700; }
 
-        .btn-cotizar { grid-column: 1 / -1; background-color: var(--action-green); color: white; font-size: 18px; font-weight: 800; border: none; padding: 18px; border-radius: 8px; cursor: pointer; margin-top: 15px; transition: all 0.2s; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 5px 0 #007a3d; width: 100%; }
+        .btn-cotizar { grid-column: 1 / -1; background-color: var(--action-green); color: white; font-size: 18px; font-weight: 800; border: none; padding: 18px; border-radius: 8px; cursor: pointer; margin-top: 15px; transition: all 0.2s; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 5px 0 #007a3d; width: 100%; font-family: var(--font-body); }
         .btn-cotizar:hover { background-color: var(--action-green-hover); transform: translateY(2px); box-shadow: 0 3px 0 #007a3d; }
         
         #resultados { margin-top: 30px; display: none; width: 100%; }
@@ -276,7 +299,7 @@
         .tarjeta-img { flex: 0 0 220px; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 12px; padding: 10px; border: 1px solid #f5f5f5; }
         .tarjeta-img img { width: 100%; height: auto; object-fit: contain; max-height: 140px; }
         .tarjeta-info { flex: 1; display: flex; flex-direction: column; justify-content: center; min-width: 280px; }
-        .tarjeta-info h3 { margin: 0 0 8px 0; font-size: 22px; color: var(--text-dark); text-transform: uppercase; letter-spacing: -0.5px; font-weight: 900; }
+        .tarjeta-info h3 { margin: 0 0 8px 0; font-size: 22px; color: var(--text-dark); text-transform: uppercase; letter-spacing: -0.5px; font-weight: 900; font-family: var(--font-title); }
         .tarjeta-route-display { font-size: 12px; color: var(--primary-blue); font-weight: 700; margin-bottom: 12px; background: #eef2ff; padding: 8px 12px; border-radius: 6px; display: inline-block; border: 1px solid #dbeafe; }
         .tarjeta-specs { margin-bottom: 15px; font-size: 14px; color: #555; display: flex; flex-direction: column; gap: 6px; font-weight: 500; }
         .spec-row { display: flex; align-items: center; gap: 10px; }
@@ -286,37 +309,17 @@
         .feature-tag i { color: var(--action-green); font-size: 12px; }
         .tarjeta-price { flex: 0 0 180px; text-align: right; display: flex; flex-direction: column; justify-content: center; border-left: 2px solid #f5f5f5; padding-left: 25px; }
         .price-old { font-size: 14px; color: #bbb; text-decoration: line-through; margin-bottom: 2px; font-weight: 600; }
-        .price-current { font-size: 32px; font-weight: 900; color: var(--action-green); margin-bottom: 10px; letter-spacing: -1px; line-height: 1; }
-        .btn-reservar { background-color: var(--action-green); color: white; text-decoration: none; padding: 14px 20px; border-radius: 8px; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; margin-top: 5px; cursor: pointer; border:none; text-transform: uppercase; letter-spacing: 0.5px; width: 100%; box-shadow: 0 4px 10px rgba(0,166,81,0.2); }
+        .price-current { font-size: 32px; font-weight: 900; color: var(--action-green); margin-bottom: 10px; letter-spacing: -1px; line-height: 1; font-family: var(--font-body); }
+        .btn-reservar { background-color: var(--action-green); color: white; text-decoration: none; padding: 14px 20px; border-radius: 8px; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; margin-top: 5px; cursor: pointer; border:none; text-transform: uppercase; letter-spacing: 0.5px; width: 100%; box-shadow: 0 4px 10px rgba(0,166,81,0.2); font-family: var(--font-body); }
         .btn-reservar:hover { background-color: var(--action-green-hover); box-shadow: 0 8px 20px rgba(0,166,81,0.4); transform: translateY(-2px); }
         
-        /* MODALES CORREGIDOS */
-        .modal-overlay { 
-            position: fixed; 
-            top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0, 0, 0, 0.8); 
-            z-index: 20000; /* Z-Index MUY alto, mayor que el header */
-            display: none; 
-            align-items: center; 
-            justify-content: center; 
-            backdrop-filter: blur(5px); 
-        }
-        .modal-box { 
-            background: white; 
-            width: 90%; max-width: 450px; 
-            padding: 40px 30px; 
-            border-radius: 20px; 
-            text-align: center; 
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5); 
-            position: relative; 
-            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            max-height: 90vh; 
-            overflow-y: auto; 
-        }
-        .modal-top-close { position: absolute; top: 15px; right: 20px; border: none; background: transparent; color: #aaa; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; font-family: 'Montserrat', sans-serif; }
+        /* MODALES */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        .modal-box { background: white; width: 90%; max-width: 450px; padding: 40px 30px; border-radius: 20px; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.5); position: relative; animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); max-height: 90vh; overflow-y: auto; }
+        .modal-top-close { position: absolute; top: 15px; right: 20px; border: none; background: transparent; color: #aaa; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; font-family: var(--font-body); }
         .modal-top-close:hover { color: #333; }
         .modal-icon { font-size: 70px; color: var(--action-green); margin-bottom: 20px; }
-        .modal-title { font-size: 28px; color: var(--primary-blue); margin-bottom: 10px; font-weight: 900; letter-spacing: -1px; }
+        .modal-title { font-size: 28px; color: var(--primary-blue); margin-bottom: 10px; font-weight: 900; letter-spacing: -1px; font-family: var(--font-title); }
         .modal-text { font-size: 15px; color: #666; line-height: 1.6; margin-bottom: 20px; }
         
         .tyc-content { text-align: left; font-size: 13px; color: #444; line-height: 1.5; margin-top: 15px; }
@@ -326,23 +329,14 @@
         .codigo-reserva { background-color: #ecfdf5; border: 2px dashed #00a651; color: #003580; padding: 15px; font-size: 28px; font-weight: 900; letter-spacing: 3px; border-radius: 12px; margin: 10px 0 25px 0; display: inline-block; width: 100%; box-sizing: border-box; }
         
         .modal-actions { display: flex; flex-direction: column; gap: 12px; }
-        .modal-btn { padding: 16px; border-radius: 10px; text-decoration: none; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 15px; color: white; font-size: 16px; transition: 0.2s; border: none; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .modal-btn { padding: 16px; border-radius: 10px; text-decoration: none; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 15px; color: white; font-size: 16px; transition: 0.2s; border: none; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-family: var(--font-body); }
         .modal-btn:hover { transform: translateY(-2px); opacity: 0.95; box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
         .btn-wa { background: #25d366; font-size: 18px; padding: 18px; }
         .btn-wa i { font-size: 32px; }
         .btn-call { background: var(--primary-blue); }
         .btn-mail { background: #333; }
         
-        .loading-overlay { 
-            position: fixed; 
-            top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(255, 255, 255, 0.95); 
-            z-index: 20000; /* Z-Index MUY alto */
-            display: none; 
-            align-items: center; 
-            justify-content: center; 
-            flex-direction: column; 
-        }
+        .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); z-index: 20000; display: none; align-items: center; justify-content: center; flex-direction: column; }
         .spinner { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--action-green); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
         
         @keyframes slideUp { from {transform: translateY(50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
@@ -370,7 +364,7 @@
         /* TÍTULO SERVICIOS EN DORADO */
         .section-header h2 { font-family: var(--font-title); font-size: 42px; color: var(--gold); font-weight: 700; margin-bottom: 10px; letter-spacing: -1px; }
         
-        .section-header p { color: #666; font-size: 16px; max-width: 700px; margin: 0 auto; }
+        .section-header p { color: #666; font-size: 16px; max-width: 700px; margin: 0 auto; font-family: var(--font-body); }
 
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
         
@@ -381,7 +375,7 @@
         .service-info { padding: 10px 30px 40px 30px; text-align: center; margin-top: -20px; position: relative; z-index: 2; }
         .service-icon { font-size: 40px; color: var(--gold); margin-bottom: 20px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .service-title { font-family: var(--font-title); font-size: 26px; color: var(--white); margin-bottom: 15px; font-weight: 700; }
-        .service-desc { font-size: 14px; color: #cbd5e1; line-height: 1.6; font-weight: 400; }
+        .service-desc { font-size: 14px; color: #cbd5e1; line-height: 1.6; font-weight: 400; font-family: var(--font-body); }
 
         /* SECCIÓN FLOTA (CARRUSEL) */
         .fleet-section { padding: 30px 20px 80px 20px; background-color: #fafafa; }
@@ -394,10 +388,10 @@
         .vehicle-img-clean { width: 100%; height: 450px; object-fit: cover; border-bottom: 3px solid var(--gold); display: block; }
         .card-content-clean { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; text-align: center; }
         .vehicle-name-clean { font-size: 2rem; color: var(--black); margin: 0 0 10px 0; font-weight: 600; font-family: var(--font-title); }
-        .vehicle-desc-clean { font-size: 1.1rem; color: #666; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+        .vehicle-desc-clean { font-size: 1.1rem; color: #666; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; font-family: var(--font-body); }
         .vehicle-capacity-clean { display: inline-block; background: var(--light-gray); padding: 8px 20px; border-radius: 50px; font-size: 0.9rem; color: #555; font-weight: 600; margin-bottom: 25px; }
 
-        .btn-reservar-clean { display: inline-block; background-color: var(--black); color: var(--white); padding: 15px 0; width: 100%; border-radius: 8px; text-transform: uppercase; font-size: 1rem; font-weight: 500; letter-spacing: 1px; transition: background 0.3s; text-decoration: none; cursor: pointer; border: none; }
+        .btn-reservar-clean { display: inline-block; background-color: var(--black); color: var(--white); padding: 15px 0; width: 100%; border-radius: 8px; text-transform: uppercase; font-size: 1rem; font-weight: 500; letter-spacing: 1px; transition: background 0.3s; text-decoration: none; cursor: pointer; border: none; font-family: var(--font-body); }
         .btn-reservar-clean:hover { background-color: var(--gold); }
 
         /* ESTILOS DEL BOTÓN DEL CARRUSEL CORREGIDOS */
