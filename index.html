@@ -77,9 +77,10 @@
         .nav-links a { color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; cursor: pointer; }
         .nav-links a:hover { color: var(--gold); }
 
-        /* SOLUCIÓN PERFECTA: El scroll se detiene EXACTAMENTE donde termina el menú */
+        /* --- AJUSTE FINAL DE SCROLL --- */
+        /* Restamos 25px a la altura del header para que el título suba y elimine el espacio vacío */
         #seccion-calculadora, #servicios, #flota {
-            scroll-margin-top: var(--header-height);
+            scroll-margin-top: calc(var(--header-height) - 25px);
         }
 
         /* HERO SECTION */
