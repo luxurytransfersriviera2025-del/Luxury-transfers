@@ -91,18 +91,21 @@
         }
 
         .hero-content h1 {
-            order: 1; font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1;
+            order: 1; font-size: 3.2rem; margin-bottom: 20px; line-height: 1.1;
             font-weight: 900; text-transform: uppercase;
             text-shadow: 2px 2px 15px rgba(0,0,0,0.8); font-family: var(--font-title); letter-spacing: -1px;
         }
 
         .hero-content p {
-            order: 2; font-size: 1.4rem; margin-bottom: 40px; font-weight: 400;
+            order: 2; font-size: 1.3rem; margin-bottom: 40px; font-weight: 400;
             text-shadow: 1px 1px 8px rgba(0,0,0,0.8); max-width: 800px; font-family: var(--font-body);
         }
 
+        /* BOTÓN COTIZAR AHORA (WEB Y MÓVIL) */
         .btn-cta {
-            order: 3; background-color: var(--gold); color: var(--black);
+            order: 3; 
+            background-color: var(--gold); /* Fondo Dorado/Mostaza */
+            color: var(--black); /* Letras Negras */
             padding: 18px 50px; border-radius: 50px; font-weight: 800; font-size: 1rem;
             text-transform: uppercase; letter-spacing: 2px; display: inline-block;
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4); border: 2px solid var(--gold);
@@ -337,7 +340,7 @@
             .hero { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg'); background-position: center center; height: 100vh; align-items: flex-start; }
             .hero-content { height: 85vh; width: 100%; margin-top: 100px; padding-bottom: 20px; display: flex; flex-direction: column; }
             .hero-content h1 { order: 1; font-size: 2.2rem; margin-bottom: 0; white-space: normal; text-shadow: 0 2px 15px rgba(0,0,0,0.9); letter-spacing: 0; }
-            .btn-cta { order: 2; margin-top: 190px; margin-bottom: 0; align-self: center; width: auto; font-size: 0.9rem; padding: 15px 40px; }
+            .btn-cta { order: 2; margin-top: 40px; margin-bottom: 0; align-self: center; width: auto; font-size: 0.9rem; padding: 15px 40px; }
             .hero-content p { order: 3; margin-top: auto; font-size: 1rem; line-height: 1.4; text-shadow: 0 2px 5px rgba(0,0,0,1); padding: 0 15px; padding-bottom: 40px; width: 100%; box-sizing: border-box; background: none; }
             .form-grid, .contact-section { grid-template-columns: 1fr; background: transparent; padding: 0; gap: 12px; border: none; } 
             .input-wrapper { border-radius: 10px !important; box-shadow: 0 2px 5px rgba(0,0,0,0.05); } 
@@ -370,8 +373,8 @@
 
     <section id="inicio" class="hero">
         <div class="hero-content">
-            <h1 id="hero-title">Viaja con Exclusividad<br>en la Riviera Maya</h1>
-            <p id="hero-subtitle">Es Seguridad, es Confort, es Exclusividad. Es Luxury Transfers Riviera.</p>
+            <h1 id="hero-title">TU VIAJE EXCLUSIVO EN CANCÚN, LA RIVIERA MAYA Y TULUM</h1>
+            <p id="hero-subtitle">Un viaje seguro y privado es el verdadero lujo que puedes dar a tu familia y amigos. Cotiza ahora y compruébalo.</p>
             <a href="#seccion-calculadora" class="btn-cta" id="hero-btn">COTIZAR AHORA</a>
         </div>
     </section>
@@ -643,8 +646,8 @@
     const translations = {
         es: {
             navCotizar: "Cotizar", navServicios: "Servicios", navFlota: "Flota",
-            heroTitle: "Viaja con Exclusividad<br>en la Riviera Maya",
-            heroSubtitle: "Es Seguridad, es Confort, es Exclusividad. Es Luxury Transfers Riviera.",
+            heroTitle: "TU VIAJE EXCLUSIVO EN CANCÚN, LA RIVIERA MAYA Y TULUM",
+            heroSubtitle: "Un viaje seguro y privado es el verdadero lujo que puedes dar a tu familia y amigos. Cotiza ahora y compruébalo.",
             heroBtn: "COTIZAR AHORA",
             calcTitle: "Reserva tu Transporte Privado",
             calcSubtitle: "Cotiza y asegura tu traslado al instante",
@@ -720,8 +723,8 @@
         },
         en: {
             navCotizar: "Quote", navServicios: "Services", navFlota: "Fleet",
-            heroTitle: "Travel with Exclusivity<br>in the Riviera Maya",
-            heroSubtitle: "It is Security, Comfort, Exclusivity. It is Luxury Transfers Riviera.",
+            heroTitle: "YOUR EXCLUSIVE TRIP IN CANCUN, RIVIERA MAYA AND TULUM",
+            heroSubtitle: "A safe and private trip is the true luxury you can give your family and friends. Quote now and see for yourself.",
             heroBtn: "QUOTE NOW",
             calcTitle: "Book your Private Transport",
             calcSubtitle: "Quote and secure your transfer instantly",
@@ -778,7 +781,7 @@
             modalCodeLabel: "YOUR REFERENCE CODE IS:",
             modalTextReceived: "We have received your request. An advisor will contact you shortly to finalize your reservation.",
             modalWarningTitle: "IMPORTANT:",
-            modalWarningText: "We sent you an email with the details. Please check your SPAM folder.",
+            modalWarningText: "We sent you an email with the details. <br>Please check your SPAM folder.",
             btnModalCall: '<i class="fas fa-phone"></i> Call Now',
             btnModalWa: '<i class="fab fa-whatsapp"></i> Confirm via WhatsApp',
             btnModalMail: '<i class="fas fa-envelope"></i> Send Email',
@@ -1147,7 +1150,8 @@
         divRes.innerHTML = "";
         
         let rutaLabel = "";
-        // VARIABLE DINÁMICA DE NOMBRE DE AEROPUERTO PARA RESULTADOS
+        
+        // --- LOGICA DE TRADUCCIÓN DE RUTA (AEROPUERTO CANCUN -> CANCUN AIRPORT) ---
         let aeroName = currentLang === 'en' ? airportNameEN : "Aeropuerto Cancún";
 
         if(direccionMode === 'desdeAero') rutaLabel = `${aeroName} <i class='fas fa-arrow-right'></i> ${document.getElementById('destino').value}`;
@@ -1156,7 +1160,7 @@
         const t = translations[currentLang];
         divRes.innerHTML = `<div class="ruta-header">${t.resultsFor}: ${rutaLabel}</div>`;
 
-        // LÓGICA PARA TEXTO "UP TO 15 PAX" DINÁMICO
+        // --- LOGICA DE TRADUCCIÓN "HASTA 15 PAX" ---
         let cap15 = currentLang === 'en' ? "Up to 15 Pax" : "Hasta 15 Pax";
 
         if(pax<=3) divRes.innerHTML+=crearCard("STANDARD SEDAN","1-3 Pax",p.standart,moneda,zonaDetectada,imgUrlErtiga, rutaLabel);
