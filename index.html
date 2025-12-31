@@ -28,8 +28,6 @@
             --navy-bg: #002855;
             --light-gray: #f4f4f4;
 
-            /* TIPOGRAFÍAS */
-            --font-hero: 'Montserrat', sans-serif;
             --font-title: 'Montserrat', sans-serif;
             --font-body: 'Open Sans', sans-serif;
             
@@ -93,15 +91,9 @@
         }
 
         .hero-content h1 {
-            order: 1; 
-            font-family: var(--font-hero); 
-            font-size: 3.5rem; 
-            margin-bottom: 20px; 
-            line-height: 1.1;
-            font-weight: 900; 
-            text-transform: uppercase;
-            text-shadow: 2px 2px 15px rgba(0,0,0,0.8); 
-            letter-spacing: -1px;
+            order: 1; font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1;
+            font-weight: 900; text-transform: uppercase;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.8); font-family: var(--font-title); letter-spacing: -1px;
         }
 
         .hero-content p {
@@ -118,7 +110,7 @@
         }
         .btn-cta:hover { background-color: var(--gold-hover); transform: translateY(-3px); border-color: var(--gold-hover); }
 
-        /* --- MEDIA QUERIES HERO (MÓVIL - AJUSTE FINAL) --- */
+        /* --- MEDIA QUERIES HERO (MÓVIL - CORRECCIÓN DEFINITIVA) --- */
         @media (max-width: 768px) {
             header { padding: 15px 0; }
             .nav-container { flex-direction: column; gap: 15px; }
@@ -126,7 +118,6 @@
             .logo { font-size: 1.2rem; letter-spacing: 0.5px; } .logo-icon { height: 30px; }
 
             .hero {
-                /* Fondo móvil */
                 background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg');
                 background-position: center center;
                 height: 100vh;
@@ -136,34 +127,33 @@
             .hero-content {
                 height: 100vh; 
                 width: 100%; 
-                margin-top: 0; 
-                padding-top: 100px; /* Espacio para el header */
-                padding-bottom: 0;
+                margin-top: 0; /* Reseteo */
+                padding-top: 130px; /* Bajamos el contenido para que no choque con el header */
                 display: flex; 
                 flex-direction: column;
-                justify-content: center; /* Centrado vertical general */
+                justify-content: flex-start; /* Alineación ARRIBA */
             }
 
             .hero-content h1 {
                 order: 1; 
                 font-size: 2.2rem; 
-                margin-bottom: 20px; 
+                margin-bottom: 15px; 
                 white-space: normal; 
                 text-shadow: 0 2px 15px rgba(0,0,0,0.9); 
                 letter-spacing: 0;
             }
 
-            /* AJUSTE DESCRIPCIÓN: ZONA VERDE */
+            /* CORRECCIÓN ZONA VERDE + TRANSPARENCIA */
             .hero-content p {
                 order: 2;
                 margin-top: 0; 
-                margin-bottom: 30px; 
-                font-size: 1.15rem; /* Letra legible */
+                margin-bottom: 20px; 
+                font-size: 1rem; /* Tamaño legible */
                 line-height: 1.4; 
                 text-shadow: none; 
                 
-                /* AJUSTE 1: FONDO OPACO (0.85) PARA LEER BIEN */
-                background-color: rgba(0, 0, 0, 0.85); 
+                /* Fondo negro AL 50% (0.5) para que SE VEA el coche de atrás */
+                background-color: rgba(0, 0, 0, 0.5); 
                 padding: 15px; 
                 border-radius: 15px;
                 
@@ -172,15 +162,15 @@
                 align-self: center;
             }
 
-            /* AJUSTE BOTÓN: ZONA ROJA (LLANTAS) */
+            /* CORRECCIÓN ZONA ROJA (SUBIR BOTÓN) */
             .btn-cta {
                 order: 3; 
-                margin-top: 40px; /* Espacio extra para bajarlo a la llanta */
-                margin-bottom: 80px; /* Despegado del borde inferior */
+                margin-top: 10px; /* Pegado a la descripción */
+                margin-bottom: 0; 
                 align-self: center; 
                 width: 90%; 
-                font-size: 1.2rem; 
-                padding: 20px 0; 
+                font-size: 1.1rem; 
+                padding: 18px 0; 
             }
         }
 
@@ -1137,6 +1127,13 @@
             btnAccion.innerText = "Solicitar Cotización";
             updateTipoServicio(document.getElementById('tipoServicio').value);
             ajustarCamposPersonalizados();
+        }
+        
+        // TRADUCCION DE BOTÓN AL CAMBIAR PESTAÑA
+        if(direccionMode !== 'personalizado') {
+            document.getElementById('btnAccion').innerText = translations[currentLang].btnAccion;
+        } else {
+            document.getElementById('btnAccion').innerText = translations[currentLang].btnQuoteCustom;
         }
     }
 
