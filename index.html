@@ -398,8 +398,8 @@
                         </div>
                     </div>
                     <div class="direction-tabs">
-                        <div class="tab-btn active" id="btnDesdeAero" onclick="setDireccion('desdeAero')"><i class="fas fa-plane-arrival"></i> <span id="tab-desde">Desde Aeropuerto</span></div>
-                        <div class="tab-btn" id="btnHaciaAero" onclick="setDireccion('haciaAero')"><i class="fas fa-plane-departure"></i> <span id="tab-hacia">Hacia Aeropuerto</span></div>
+                        <div class="tab-btn active" id="btnDesdeAero" onclick="setDireccion('desdeAero')"><i class="fas fa-plane-arrival"></i> <span id="tab-desde">Desde Aeropuerto Cancún</span></div>
+                        <div class="tab-btn" id="btnHaciaAero" onclick="setDireccion('haciaAero')"><i class="fas fa-plane-departure"></i> <span id="tab-hacia">Hacia Aeropuerto Cancún</span></div>
                         <div class="tab-btn" id="btnPersonalizado" onclick="setDireccion('personalizado')"><i class="fas fa-map-marked-alt"></i> <span id="tab-perso">Personalizado</span></div>
                     </div>
                     <div class="form-grid">
@@ -636,6 +636,9 @@
     window.addEventListener('load', adjustScrollMargin);
     window.addEventListener('resize', adjustScrollMargin);
 
+    const airportNameES = "Aeropuerto Internacional de Cancún";
+    const airportNameEN = "Cancun International Airport";
+
     // --- DICCIONARIO DE TRADUCCIÓN ---
     const translations = {
         es: {
@@ -646,7 +649,7 @@
             calcTitle: "Reserva tu Transporte Privado",
             calcSubtitle: "Cotiza y asegura tu traslado al instante",
             labelSencillo: "Solo Ida", labelRedondo: "Ida y Vuelta",
-            tabDesde: "Desde Aeropuerto", tabHacia: "Hacia Aeropuerto", tabPerso: "Personalizado",
+            tabDesde: "Desde Aeropuerto Cancún", tabHacia: "Hacia Aeropuerto Cancún", tabPerso: "Personalizado",
             labelDestino: "Destino", labelOrigen: "Recogida", labelFecha: "Fecha", labelHora: "Hora", labelPax: "Pasajeros",
             labelContact: "TUS DATOS DE CONTACTO:", labelNombre: "Nombre Completo", labelTel: "Teléfono",
             labelAerolinea: "Aerolínea (Opcional)", labelVuelo: "No. Vuelo (Opcional)",
@@ -678,13 +681,19 @@
             tycContent: `
                 <p>Al reservar con Luxury Transfers Riviera, aceptas lo siguiente:</p>
                 <h4>1. Cancelaciones y Reembolsos</h4>
-                <ul><li>Cancelaciones con 24 horas de antelación: Reembolso del 100%.</li><li>Cancelaciones con menos de 24 horas: No aplica reembolso.</li></ul>
+                <ul><li>Cancelaciones con 24 horas de antelación: Reembolso del 100%.</li><li>Cancelaciones con menos de 24 horas: No aplica reembolso (Cargo por No-Show).</li></ul>
                 <h4>2. Tiempos de Espera</h4>
-                <ul><li><strong>Aeropuerto:</strong> Monitoreamos tu vuelo. El chofer espera hasta 60 min.</li><li><strong>Hotel:</strong> Tolerancia de 15 minutos.</li></ul>
+                <ul><li><strong>Aeropuerto:</strong> Monitoreamos tu vuelo. El chofer espera hasta 60 min después del aterrizaje.</li><li><strong>Hotel/Airbnb:</strong> Tolerancia máxima de 15 minutos en el lobby.</li></ul>
                 <h4>3. Limpieza y Daños</h4>
-                <ul><li>Si un pasajero ensucia el vehículo se cobrará una cuota de $2,500 MXN.</li></ul>
+                <ul><li>Si un pasajero ensucia el vehículo (vómito, alimentos, arena excesiva) se cobrará una cuota de limpieza de $2,500 MXN.</li></ul>
                 <h4>4. Equipaje y Objetos</h4>
-                <ul><li>No nos hacemos responsables por objetos olvidados.</li></ul>
+                <ul><li>No nos hacemos responsables por objetos olvidados. Revisa tus pertenencias antes de bajar.</li></ul>
+                <h4 style="color:#d32f2f;">5. Eximición por Tráfico y Fuerza Mayor</h4>
+                <ul><li>La empresa <strong>NO se hace responsable</strong> por vuelos perdidos o retrasos derivados de: tráfico pesado, accidentes carreteros, manifestaciones, obras viales o condiciones climáticas severas. Sugerimos anticipar su salida.</li></ul>
+                <h4>6. Fallas Mecánicas</h4>
+                <ul><li>En el improbable caso de falla mecánica, la empresa se compromete a enviar una unidad de sustitución para completar el traslado. Esto no es motivo de reembolso total.</li></ul>
+                <h4>7. Vehículos e Imágenes</h4>
+                <ul><li>Las imágenes mostradas son <strong>ilustrativas y de referencia</strong>. La marca, modelo o color del vehículo puede variar, garantizando siempre la misma categoría.</li></ul>
             `,
             btnAcceptTyc: "HE LEÍDO Y ACEPTO",
             modalTitleReceived: "¡Solicitud Recibida!",
@@ -716,7 +725,7 @@
             calcTitle: "Book your Private Transport",
             calcSubtitle: "Quote and secure your transfer instantly",
             labelSencillo: "One Way", labelRedondo: "Round Trip",
-            tabDesde: "From Airport", tabHacia: "To Airport", tabPerso: "Custom",
+            tabDesde: "From Cancun Airport", tabHacia: "To Cancun Airport", tabPerso: "Custom",
             labelDestino: "Destination", labelOrigen: "Pick-up", labelFecha: "Date", labelHora: "Time", labelPax: "Passengers",
             labelContact: "YOUR CONTACT DETAILS:", labelNombre: "Full Name", labelTel: "Phone",
             labelAerolinea: "Airline (Optional)", labelVuelo: "Flight No. (Optional)",
@@ -748,20 +757,26 @@
             tycContent: `
                 <p>By booking with Luxury Transfers Riviera, you agree to the following:</p>
                 <h4>1. Cancellations and Refunds</h4>
-                <ul><li>Cancellations 24 hours in advance: 100% Refund.</li><li>Less than 24 hours: No refund applies.</li></ul>
+                <ul><li>Cancellations 24 hours in advance: 100% Refund.</li><li>Less than 24 hours: No refund applies (No-Show Fee).</li></ul>
                 <h4>2. Waiting Times</h4>
-                <ul><li><strong>Airport:</strong> We monitor your flight. Driver waits up to 60 min.</li><li><strong>Hotel:</strong> 15 minutes tolerance.</li></ul>
+                <ul><li><strong>Airport:</strong> We monitor your flight. Driver waits up to 60 min after landing.</li><li><strong>Hotel/Airbnb:</strong> 15 minutes tolerance at the lobby.</li></ul>
                 <h4>3. Cleaning and Damages</h4>
-                <ul><li>If a passenger soils the vehicle, a $2,500 MXN fee applies.</li></ul>
+                <ul><li>If a passenger soils the vehicle (vomit, food, excessive sand), a $2,500 MXN fee applies.</li></ul>
                 <h4>4. Luggage and Objects</h4>
-                <ul><li>We are not responsible for forgotten items.</li></ul>
+                <ul><li>We are not responsible for items forgotten in the vehicle. Please check your belongings.</li></ul>
+                <h4 style="color:#d32f2f;">5. Traffic Exemption & Force Majeure</h4>
+                <ul><li>The company is <strong>NOT responsible</strong> for missed flights or delays caused by: heavy traffic, road accidents, protests, roadworks, or severe weather conditions. We suggest leaving early.</li></ul>
+                <h4>6. Mechanical Failures</h4>
+                <ul><li>In the unlikely event of mechanical failure, the company commits to sending a replacement unit to complete the transfer. This is not grounds for a full refund.</li></ul>
+                <h4>7. Vehicles and Images</h4>
+                <ul><li>The images shown are <strong>illustrative and for reference</strong>. The brand, model, or color of the vehicle may vary, always guaranteeing the same category.</li></ul>
             `,
             btnAcceptTyc: "I HAVE READ AND AGREE",
             modalTitleReceived: "Request Received!",
             modalCodeLabel: "YOUR REFERENCE CODE IS:",
             modalTextReceived: "We have received your request. An advisor will contact you shortly to finalize your reservation.",
             modalWarningTitle: "IMPORTANT:",
-            modalWarningText: "We sent you an email with the details. Please check your SPAM folder.",
+            modalWarningText: "We sent you an email with the details. <br>Please check your SPAM folder.",
             btnModalCall: '<i class="fas fa-phone"></i> Call Now',
             btnModalWa: '<i class="fab fa-whatsapp"></i> Confirm via WhatsApp',
             btnModalMail: '<i class="fas fa-envelope"></i> Send Email',
@@ -807,12 +822,27 @@
         document.getElementById('tab-hacia').innerText = t.tabHacia;
         document.getElementById('tab-perso').innerText = t.tabPerso;
         
-        if(lang === 'en') {
-            document.getElementById('destino').placeholder = "Where are you going?";
-            document.getElementById('origen').placeholder = "Pick-up Location";
+        // TRADUCCION INPUT AEROPUERTO
+        const origenInput = document.getElementById('origen');
+        const destinoInput = document.getElementById('destino');
+        const activeLangAirportName = lang === 'es' ? airportNameES : airportNameEN;
+
+        if (direccionMode === 'desdeAero') {
+            origenInput.value = activeLangAirportName;
+            if(lang === 'en') destinoInput.placeholder = "Where are you going?";
+            else destinoInput.placeholder = "¿A qué hotel vas?";
+        } else if (direccionMode === 'haciaAero') {
+            destinoInput.value = activeLangAirportName;
+            if(lang === 'en') origenInput.placeholder = "Pick-up Location";
+            else origenInput.placeholder = "¿Dónde te recogemos?";
         } else {
-            document.getElementById('destino').placeholder = "¿A qué hotel vas?";
-            document.getElementById('origen').placeholder = "Lugar de Recogida";
+             if(lang === 'en') {
+                origenInput.placeholder = "Pick-up Location";
+                destinoInput.placeholder = "Destination";
+            } else {
+                origenInput.placeholder = "Lugar de Recogida";
+                destinoInput.placeholder = "Lugar de Destino";
+            }
         }
 
         document.getElementById('nombreCliente').placeholder = t.placeholderName;
@@ -862,8 +892,8 @@
         document.getElementById('tyc-title').innerText = t.tycTitle;
         document.getElementById('tyc-body').innerHTML = t.tycContent;
         document.getElementById('btn-accept-tyc').innerText = t.btnAcceptTyc;
-        document.getElementById('btn-close-tyc').innerHTML = t.btnClose; // Traducir botón cerrar
-        document.getElementById('btn-close-confirm').innerHTML = t.btnClose; // Traducir botón cerrar
+        document.getElementById('btn-close-tyc').innerHTML = t.btnClose; 
+        document.getElementById('btn-close-confirm').innerHTML = t.btnClose; 
 
         document.getElementById('modalTitle').innerText = t.modalTitleReceived;
         document.getElementById('modalMainTitle').innerText = t.modalTitleReceived;
@@ -970,19 +1000,26 @@
         document.getElementById('resultados').style.display = 'none';
         const ro = "color:#777; background:#f5f5f5;";
         const ed = "color:var(--text-dark); background:transparent;";
+        
+        const activeLangAirportName = currentLang === 'es' ? airportNameES : airportNameEN;
+
         if (modo === 'desdeAero') {
-            origen.value = "Aeropuerto Internacional de Cancún"; origen.setAttribute('readonly', true); origen.style.cssText = ro;
-            destino.value = ""; destino.removeAttribute('readonly'); destino.style.cssText = ed; destino.placeholder = "¿A qué hotel vas?";
+            origen.value = activeLangAirportName; origen.setAttribute('readonly', true); origen.style.cssText = ro;
+            destino.value = ""; destino.removeAttribute('readonly'); destino.style.cssText = ed; 
+            destino.placeholder = currentLang === 'en' ? "Where are you going?" : "¿A qué hotel vas?";
             btnAccion.innerText = "Buscar Precios";
         } else if (modo === 'haciaAero') {
-            destino.value = "Aeropuerto Internacional de Cancún"; destino.setAttribute('readonly', true); destino.style.cssText = ro;
-            origen.value = ""; origen.removeAttribute('readonly'); origen.style.cssText = ed; origen.placeholder = "¿Dónde te recogemos?";
+            destino.value = activeLangAirportName; destino.setAttribute('readonly', true); destino.style.cssText = ro;
+            origen.value = ""; origen.removeAttribute('readonly'); origen.style.cssText = ed; 
+            origen.placeholder = currentLang === 'en' ? "Pick-up Location" : "¿Dónde te recogemos?";
             btnAccion.innerText = "Buscar Precios";
         } else if (modo === 'personalizado') {
             document.getElementById('divSubtipoServicio').style.display = 'flex';
             document.getElementById('divVueloInfo').style.display = 'none';
-            origen.value = ""; origen.removeAttribute('readonly'); origen.style.cssText = ed; origen.placeholder = "Lugar de Recogida";
-            destino.value = ""; destino.removeAttribute('readonly'); destino.style.cssText = ed; destino.placeholder = "Lugar de Destino";
+            origen.value = ""; origen.removeAttribute('readonly'); origen.style.cssText = ed; 
+            origen.placeholder = currentLang === 'en' ? "Pick-up Location" : "Lugar de Recogida";
+            destino.value = ""; destino.removeAttribute('readonly'); destino.style.cssText = ed; 
+            destino.placeholder = currentLang === 'en' ? "Destination" : "Lugar de Destino";
             btnAccion.innerText = "Solicitar Cotización";
             updateTipoServicio(document.getElementById('tipoServicio').value);
             ajustarCamposPersonalizados();
@@ -1120,10 +1157,8 @@
         const tipo = document.getElementById('tipoServicio').value;
         const pAlto = Math.round(precio * 1.30);
         const dataObj = JSON.stringify({ esVenta: true, vehiculo: veh, precio: "$" + precio + " " + moneda, zona: zona }).replace(/"/g, "&quot;");
-        
         let tipoTexto = (tipo === 'SENCILLO') ? t.oneWay : t.roundTrip;
         let iconoTipo = (tipo === 'SENCILLO') ? "fa-arrow-right" : "fa-exchange-alt";
-
         return `
         <div class="tarjeta">
             <div class="tarjeta-img"><img src="${img}" alt="${veh}"></div>
