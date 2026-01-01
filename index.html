@@ -102,27 +102,26 @@
             text-shadow: 1px 1px 8px rgba(0,0,0,0.8); max-width: 800px; font-family: var(--font-body);
         }
 
-        /* --- ESTILOS DEL BOTÓN (MODIFICADO A PETICIÓN) --- */
+        /* --- ESTILOS DEL BOTÓN (MODIFICADO: HOVER BLANCO) --- */
         .btn-cta {
             order: 3; 
-            background-color: var(--gold); /* DORADO */
-            color: var(--black); /* TEXTO NEGRO */
+            background-color: var(--gold); 
+            color: var(--black); 
             padding: 18px 50px; border-radius: 50px; font-weight: 800; font-size: 1rem;
             text-transform: uppercase; letter-spacing: 2px; display: inline-block;
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4); border: 2px solid var(--gold);
             cursor: pointer; font-family: var(--font-title); transition: all 0.3s ease;
         }
         
-        /* HOVER: FONDO NEGRO, TEXTO BLANCO, BORDE BLANCO */
         .btn-cta:hover { 
             background-color: var(--black); 
-            color: var(--white);      /* <--- MODIFICADO: TEXTO BLANCO */
+            color: var(--white);       /* TEXTO BLANCO */
             transform: translateY(-3px); 
-            border-color: var(--white); /* <--- MODIFICADO: BORDE BLANCO */
+            border-color: var(--white); /* BORDE BLANCO */
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
-        /* --- MEDIA QUERIES HERO (MÓVIL - AJUSTE FINAL) --- */
+        /* --- MEDIA QUERIES HERO (MÓVIL) --- */
         @media (max-width: 768px) {
             header { padding: 15px 0; }
             .nav-container { flex-direction: column; gap: 15px; }
@@ -146,6 +145,7 @@
                 justify-content: flex-start; 
             }
 
+            /* --- CORRECCIÓN: ALTURA MÍNIMA PARA EVITAR QUE LA DESCRIPCIÓN SE SUBA EN INGLÉS --- */
             .hero-content h1 {
                 order: 1; 
                 font-size: 2.2rem; 
@@ -153,9 +153,9 @@
                 white-space: normal; 
                 text-shadow: 0 2px 15px rgba(0,0,0,0.9); 
                 letter-spacing: 0;
+                min-height: 165px; /* Mantiene el espacio del título fijo para que la descripción no salte */
             }
 
-            /* AJUSTE 1: OPACIDAD 0.1 (Casi transparente) */
             .hero-content p {
                 order: 2;
                 margin-top: 15px; 
@@ -164,7 +164,7 @@
                 line-height: 1.4; 
                 text-shadow: none; 
                 
-                background-color: rgba(0, 0, 0, 0.1); /* 10% de opacidad */
+                background-color: rgba(0, 0, 0, 0.1); 
                 padding: 15px; 
                 border-radius: 15px;
                 
@@ -173,11 +173,10 @@
                 align-self: center;
             }
 
-            /* AJUSTE 2: SUBIDO AÚN MÁS (260px margin-bottom) */
             .btn-cta {
                 order: 3; 
                 margin-top: auto; 
-                margin-bottom: 260px; /* Subido "un poquito más" */
+                margin-bottom: 260px; 
                 align-self: center; 
                 width: 90%; 
                 font-size: 1.1rem; 
