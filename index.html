@@ -102,7 +102,7 @@
             text-shadow: 1px 1px 8px rgba(0,0,0,0.8); max-width: 800px; font-family: var(--font-body);
         }
 
-        /* --- ESTILOS DEL BOTÓN (CORREGIDO: FONDO DORADO AL PASAR MOUSE) --- */
+        /* --- ESTILOS DEL BOTÓN --- */
         .btn-cta {
             order: 3; 
             background-color: var(--gold); 
@@ -113,11 +113,11 @@
             cursor: pointer; font-family: var(--font-title); transition: all 0.3s ease;
         }
         
-        /* HOVER: FONDO SE MANTIENE DORADO, TEXTO Y BORDE BLANCOS */
+        /* --- CORRECCIÓN 2: HOVER BORDE DORADO --- */
         .btn-cta:hover { 
             background-color: var(--gold); /* Fondo Dorado */
             color: var(--white);           /* Texto Blanco */
-            border-color: var(--white);    /* Borde Blanco */
+            border-color: var(--gold);     /* BORDE DORADO */
             transform: translateY(-3px); 
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
@@ -146,7 +146,7 @@
                 justify-content: flex-start; 
             }
 
-            /* --- CORRECCIÓN: ALTURA MÍNIMA PARA FIJAR LA POSICIÓN DE LA DESCRIPCIÓN --- */
+            /* --- CORRECCIÓN 1: AJUSTE DE ALTURA MÍNIMA PARA SUBIR LA DESCRIPCIÓN --- */
             .hero-content h1 {
                 order: 1; 
                 font-size: 2.2rem; 
@@ -155,8 +155,8 @@
                 text-shadow: 0 2px 15px rgba(0,0,0,0.9); 
                 letter-spacing: 0;
                 
-                /* ESTO HACE QUE LA DESCRIPCIÓN NO SE SUBA EN INGLÉS */
-                min-height: 240px; 
+                /* Altura ajustada exactamente para el texto español, subiendo la descripción */
+                min-height: 165px; 
                 display: block;
             }
 
@@ -1069,7 +1069,7 @@
     function generarCodigo() {
         const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
         let result = 'LTR-';
-        for (let i = 0; i < 4; i++) result += chars.charAt(Math.floor(Math.random() * chars.length));
+        for (let i = 4; i > 0; i--) result += chars.charAt(Math.floor(Math.random() * chars.length));
         return result;
     }
 
