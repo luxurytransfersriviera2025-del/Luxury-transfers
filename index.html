@@ -111,7 +111,7 @@
         }
         .btn-cta:hover { background-color: var(--gold-hover); transform: translateY(-3px); border-color: var(--gold-hover); }
 
-        /* --- MEDIA QUERIES HERO (MÓVIL - DISEÑO CORREGIDO) --- */
+        /* --- MEDIA QUERIES HERO (MÓVIL - AJUSTES FINALES) --- */
         @media (max-width: 768px) {
             header { padding: 15px 0; }
             .nav-container { flex-direction: column; gap: 15px; }
@@ -129,7 +129,7 @@
                 height: 100vh; 
                 width: 100%; 
                 margin-top: 0; 
-                padding-top: 100px; /* Margen superior estándar para no pegar al menú */
+                padding-top: 100px;
                 display: flex; 
                 flex-direction: column;
                 justify-content: flex-start; 
@@ -144,17 +144,17 @@
                 letter-spacing: 0;
             }
 
-            /* AJUSTE DESCRIPCIÓN (Zona Verde): Fondo 0.5 y posición ajustada */
+            /* AJUSTE 1: Fondo descripción a 0.1 */
             .hero-content p {
                 order: 2;
                 margin-top: 15px; 
                 margin-bottom: 0; 
-                font-size: 1.1rem; /* Letra legible */
+                font-size: 1.1rem;
                 line-height: 1.4; 
                 text-shadow: none; 
                 
-                /* OPACIDAD 0.5 SOLICITADA */
-                background-color: rgba(0, 0, 0, 0.5); 
+                /* OPACIDAD 0.1 APLICADA */
+                background-color: rgba(0, 0, 0, 0.1); 
                 padding: 15px; 
                 border-radius: 15px;
                 
@@ -163,11 +163,12 @@
                 align-self: center;
             }
 
-            /* AJUSTE BOTÓN (Zona Roja): Pegado a la parte inferior (llantas) */
+            /* AJUSTE 2: Botón subido significativamente */
             .btn-cta {
                 order: 3; 
-                margin-top: auto; /* Empuja hacia abajo */
-                margin-bottom: 120px; /* Lo levanta lo suficiente para estar en las llantas */
+                margin-top: auto; 
+                /* MARGEN AUMENTADO A 220px PARA SUBIRLO */
+                margin-bottom: 220px; 
                 align-self: center; 
                 width: 90%; 
                 font-size: 1.1rem; 
