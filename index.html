@@ -102,27 +102,27 @@
             text-shadow: 1px 1px 8px rgba(0,0,0,0.8); max-width: 800px; font-family: var(--font-body);
         }
 
-        /* --- ESTILOS DEL BOTÓN (RECOMENDACIÓN DE COLOR) --- */
+        /* --- BOTÓN COTIZAR (CAMBIOS APLICADOS) --- */
         .btn-cta {
             order: 3; 
-            background-color: var(--gold); /* DORADO */
-            color: var(--black); /* TEXTO NEGRO */
+            background-color: var(--gold); 
+            color: var(--black); /* Texto Negro Normal */
             padding: 18px 50px; border-radius: 50px; font-weight: 800; font-size: 1rem;
             text-transform: uppercase; letter-spacing: 2px; display: inline-block;
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4); border: 2px solid var(--gold);
             cursor: pointer; font-family: var(--font-title); transition: all 0.3s ease;
         }
         
-        /* HOVER: FONDO NEGRO, TEXTO DORADO */
+        /* HOVER: FONDO NEGRO, TEXTO BLANCO (SOLICITUD 1) */
         .btn-cta:hover { 
-            background-color: var(--black); 
-            color: var(--gold); 
+            background-color: #000000; /* Fondo Negro Puro */
+            color: #ffffff; /* Texto Blanco Puro */
             transform: translateY(-3px); 
             border-color: var(--gold);
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
-        /* --- MEDIA QUERIES HERO (MÓVIL - AJUSTE FINAL) --- */
+        /* --- MEDIA QUERIES HERO (MÓVIL - AJUSTES DE POSICIÓN) --- */
         @media (max-width: 768px) {
             header { padding: 15px 0; }
             .nav-container { flex-direction: column; gap: 15px; }
@@ -140,7 +140,10 @@
                 height: 100vh; 
                 width: 100%; 
                 margin-top: 0; 
-                padding-top: 100px;
+                
+                /* ANCLAJE SUPERIOR: Esto evita que el contenido "baile" al cambiar idioma */
+                padding-top: 130px; 
+                
                 display: flex; 
                 flex-direction: column;
                 justify-content: flex-start; 
@@ -155,16 +158,17 @@
                 letter-spacing: 0;
             }
 
-            /* AJUSTE 1: OPACIDAD 0.1 (Casi transparente) */
+            /* DESCRIPCIÓN: Fondo 0.1 y Posición */
             .hero-content p {
                 order: 2;
-                margin-top: 15px; 
+                margin-top: 20px; 
                 margin-bottom: 0; 
                 font-size: 1.1rem;
                 line-height: 1.4; 
                 text-shadow: none; 
                 
-                background-color: rgba(0, 0, 0, 0.1); /* 10% de opacidad */
+                /* FONDO 0.1 (CASI TRANSPARENTE) */
+                background-color: rgba(0, 0, 0, 0.1); 
                 padding: 15px; 
                 border-radius: 15px;
                 
@@ -173,11 +177,12 @@
                 align-self: center;
             }
 
-            /* AJUSTE 2: SUBIDO AÚN MÁS (260px margin-bottom) */
+            /* BOTÓN: POSICIÓN FIJA ABAJO (Llantas) */
             .btn-cta {
                 order: 3; 
                 margin-top: auto; 
-                margin-bottom: 260px; /* Subido "un poquito más" */
+                /* ESTE VALOR ALTO LEVANTA EL BOTÓN A LA ZONA DE LLANTAS */
+                margin-bottom: 25vh; 
                 align-self: center; 
                 width: 90%; 
                 font-size: 1.1rem; 
