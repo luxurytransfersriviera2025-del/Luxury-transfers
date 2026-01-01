@@ -111,7 +111,7 @@
         }
         .btn-cta:hover { background-color: var(--gold-hover); transform: translateY(-3px); border-color: var(--gold-hover); }
 
-        /* --- MEDIA QUERIES HERO (MÓVIL - CORREGIDO A DETALLE) --- */
+        /* --- MEDIA QUERIES HERO (MÓVIL - DISEÑO CORREGIDO) --- */
         @media (max-width: 768px) {
             header { padding: 15px 0; }
             .nav-container { flex-direction: column; gap: 15px; }
@@ -122,18 +122,17 @@
                 background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg');
                 background-position: center center;
                 height: 100vh;
-                align-items: flex-start; /* Alineamos todo arriba */
+                align-items: flex-start;
             }
 
             .hero-content {
                 height: 100vh; 
                 width: 100%; 
                 margin-top: 0; 
-                padding-top: 120px; /* Bajamos un poco del techo */
+                padding-top: 100px; /* Margen superior estándar para no pegar al menú */
                 display: flex; 
                 flex-direction: column;
-                justify-content: flex-start; /* Todo empieza arriba */
-                position: relative; /* Para poder posicionar absoluto si fuera necesario, pero usaremos flex */
+                justify-content: flex-start; 
             }
 
             .hero-content h1 {
@@ -145,16 +144,16 @@
                 letter-spacing: 0;
             }
 
-            /* DESCRIPCIÓN: Fondo 0.5 opacidad */
+            /* AJUSTE DESCRIPCIÓN (Zona Verde): Fondo 0.5 y posición ajustada */
             .hero-content p {
                 order: 2;
-                margin-top: 10px; 
-                margin-bottom: 0;
-                font-size: 1rem; /* Ajustado para que quepa mejor */
+                margin-top: 15px; 
+                margin-bottom: 0; 
+                font-size: 1.1rem; /* Letra legible */
                 line-height: 1.4; 
                 text-shadow: none; 
                 
-                /* AQUÍ ESTÁ EL 0.5 DE OPACIDAD */
+                /* OPACIDAD 0.5 SOLICITADA */
                 background-color: rgba(0, 0, 0, 0.5); 
                 padding: 15px; 
                 border-radius: 15px;
@@ -164,11 +163,11 @@
                 align-self: center;
             }
 
-            /* BOTÓN: SUBIDO A LA LLANTA */
+            /* AJUSTE BOTÓN (Zona Roja): Pegado a la parte inferior (llantas) */
             .btn-cta {
                 order: 3; 
-                margin-top: auto; /* Empuja hacia abajo, PERO... */
-                margin-bottom: 160px; /* ...este margen lo levanta hasta la llanta */
+                margin-top: auto; /* Empuja hacia abajo */
+                margin-bottom: 120px; /* Lo levanta lo suficiente para estar en las llantas */
                 align-self: center; 
                 width: 90%; 
                 font-size: 1.1rem; 
