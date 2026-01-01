@@ -102,16 +102,27 @@
             text-shadow: 1px 1px 8px rgba(0,0,0,0.8); max-width: 800px; font-family: var(--font-body);
         }
 
+        /* --- ESTILOS DEL BOTÓN (RECOMENDACIÓN DE COLOR) --- */
         .btn-cta {
-            order: 3; background-color: var(--gold); color: var(--black);
+            order: 3; 
+            background-color: var(--gold); /* DORADO */
+            color: var(--black); /* TEXTO NEGRO */
             padding: 18px 50px; border-radius: 50px; font-weight: 800; font-size: 1rem;
             text-transform: uppercase; letter-spacing: 2px; display: inline-block;
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4); border: 2px solid var(--gold);
-            cursor: pointer; font-family: var(--font-title);
+            cursor: pointer; font-family: var(--font-title); transition: all 0.3s ease;
         }
-        .btn-cta:hover { background-color: var(--gold-hover); transform: translateY(-3px); border-color: var(--gold-hover); }
+        
+        /* HOVER: FONDO NEGRO, TEXTO DORADO */
+        .btn-cta:hover { 
+            background-color: var(--black); 
+            color: var(--gold); 
+            transform: translateY(-3px); 
+            border-color: var(--gold);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
 
-        /* --- MEDIA QUERIES HERO (MÓVIL - AJUSTES FINALES) --- */
+        /* --- MEDIA QUERIES HERO (MÓVIL - AJUSTE FINAL) --- */
         @media (max-width: 768px) {
             header { padding: 15px 0; }
             .nav-container { flex-direction: column; gap: 15px; }
@@ -144,7 +155,7 @@
                 letter-spacing: 0;
             }
 
-            /* AJUSTE 1: Fondo descripción a 0.1 */
+            /* AJUSTE 1: OPACIDAD 0.1 (Casi transparente) */
             .hero-content p {
                 order: 2;
                 margin-top: 15px; 
@@ -153,8 +164,7 @@
                 line-height: 1.4; 
                 text-shadow: none; 
                 
-                /* OPACIDAD 0.1 APLICADA */
-                background-color: rgba(0, 0, 0, 0.1); 
+                background-color: rgba(0, 0, 0, 0.1); /* 10% de opacidad */
                 padding: 15px; 
                 border-radius: 15px;
                 
@@ -163,12 +173,11 @@
                 align-self: center;
             }
 
-            /* AJUSTE 2: Botón subido significativamente */
+            /* AJUSTE 2: SUBIDO AÚN MÁS (260px margin-bottom) */
             .btn-cta {
                 order: 3; 
                 margin-top: auto; 
-                /* MARGEN AUMENTADO A 220px PARA SUBIRLO */
-                margin-bottom: 220px; 
+                margin-bottom: 260px; /* Subido "un poquito más" */
                 align-self: center; 
                 width: 90%; 
                 font-size: 1.1rem; 
