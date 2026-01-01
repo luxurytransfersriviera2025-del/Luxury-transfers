@@ -102,27 +102,27 @@
             text-shadow: 1px 1px 8px rgba(0,0,0,0.8); max-width: 800px; font-family: var(--font-body);
         }
 
-        /* --- ESTILOS DEL BOTÓN (RECOMENDACIÓN DE COLOR) --- */
+        /* --- BOTÓN COTIZAR (CAMBIOS APLICADOS) --- */
         .btn-cta {
             order: 3; 
-            background-color: var(--gold); /* DORADO */
-            color: var(--black); /* TEXTO NEGRO */
+            background-color: var(--gold); 
+            color: var(--black); /* Texto Negro Normal */
             padding: 18px 50px; border-radius: 50px; font-weight: 800; font-size: 1rem;
             text-transform: uppercase; letter-spacing: 2px; display: inline-block;
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4); border: 2px solid var(--gold);
             cursor: pointer; font-family: var(--font-title); transition: all 0.3s ease;
         }
         
-        /* HOVER: FONDO NEGRO, TEXTO DORADO */
+        /* HOVER: FONDO NEGRO, TEXTO BLANCO (SOLICITUD 1) */
         .btn-cta:hover { 
             background-color: var(--black); 
-            color: var(--gold); 
+            color: var(--white); /* Texto Blanco al pasar el mouse */
             transform: translateY(-3px); 
             border-color: var(--gold);
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
-        /* --- MEDIA QUERIES HERO (MÓVIL - AJUSTE FINAL) --- */
+        /* --- MEDIA QUERIES HERO (MÓVIL - AJUSTES DE POSICIÓN) --- */
         @media (max-width: 768px) {
             header { padding: 15px 0; }
             .nav-container { flex-direction: column; gap: 15px; }
@@ -140,7 +140,10 @@
                 height: 100vh; 
                 width: 100%; 
                 margin-top: 0; 
-                padding-top: 100px;
+                
+                /* AJUSTE 2: Padding Top aumentado a 140px para anclar el título y que no suba al cambiar idioma */
+                padding-top: 140px; 
+                
                 display: flex; 
                 flex-direction: column;
                 justify-content: flex-start; 
@@ -155,7 +158,7 @@
                 letter-spacing: 0;
             }
 
-            /* AJUSTE 1: OPACIDAD 0.1 (Casi transparente) */
+            /* DESCRIPCIÓN: Fondo 0.1 y Posición */
             .hero-content p {
                 order: 2;
                 margin-top: 15px; 
@@ -164,7 +167,7 @@
                 line-height: 1.4; 
                 text-shadow: none; 
                 
-                background-color: rgba(0, 0, 0, 0.1); /* 10% de opacidad */
+                background-color: rgba(0, 0, 0, 0.1); 
                 padding: 15px; 
                 border-radius: 15px;
                 
@@ -173,11 +176,11 @@
                 align-self: center;
             }
 
-            /* AJUSTE 2: SUBIDO AÚN MÁS (260px margin-bottom) */
+            /* BOTÓN: Posición Alta (Llantas) */
             .btn-cta {
                 order: 3; 
                 margin-top: auto; 
-                margin-bottom: 260px; /* Subido "un poquito más" */
+                margin-bottom: 220px; 
                 align-self: center; 
                 width: 90%; 
                 font-size: 1.1rem; 
