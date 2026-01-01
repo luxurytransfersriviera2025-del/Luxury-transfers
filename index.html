@@ -102,7 +102,7 @@
             text-shadow: 1px 1px 8px rgba(0,0,0,0.8); max-width: 800px; font-family: var(--font-body);
         }
 
-        /* --- ESTILOS DEL BOTÓN (MODIFICADO: HOVER BLANCO) --- */
+        /* --- ESTILOS DEL BOTÓN (CORREGIDO: FONDO DORADO AL PASAR MOUSE) --- */
         .btn-cta {
             order: 3; 
             background-color: var(--gold); 
@@ -113,11 +113,12 @@
             cursor: pointer; font-family: var(--font-title); transition: all 0.3s ease;
         }
         
+        /* HOVER: FONDO SE MANTIENE DORADO, TEXTO Y BORDE BLANCOS */
         .btn-cta:hover { 
-            background-color: var(--black); 
-            color: var(--white);       /* TEXTO BLANCO */
+            background-color: var(--gold); /* Fondo Dorado */
+            color: var(--white);           /* Texto Blanco */
+            border-color: var(--white);    /* Borde Blanco */
             transform: translateY(-3px); 
-            border-color: var(--white); /* BORDE BLANCO */
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
@@ -145,7 +146,7 @@
                 justify-content: flex-start; 
             }
 
-            /* --- CORRECCIÓN: ALTURA MÍNIMA PARA EVITAR QUE LA DESCRIPCIÓN SE SUBA EN INGLÉS --- */
+            /* --- CORRECCIÓN: ALTURA MÍNIMA PARA FIJAR LA POSICIÓN DE LA DESCRIPCIÓN --- */
             .hero-content h1 {
                 order: 1; 
                 font-size: 2.2rem; 
@@ -153,7 +154,10 @@
                 white-space: normal; 
                 text-shadow: 0 2px 15px rgba(0,0,0,0.9); 
                 letter-spacing: 0;
-                min-height: 165px; /* Mantiene el espacio del título fijo para que la descripción no salte */
+                
+                /* ESTO HACE QUE LA DESCRIPCIÓN NO SE SUBA EN INGLÉS */
+                min-height: 240px; 
+                display: block;
             }
 
             .hero-content p {
