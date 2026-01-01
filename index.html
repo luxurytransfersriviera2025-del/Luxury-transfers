@@ -113,11 +113,11 @@
             cursor: pointer; font-family: var(--font-title); transition: all 0.3s ease;
         }
         
-        /* --- CORRECCIÓN 2: HOVER BORDE DORADO --- */
+        /* HOVER: FONDO DORADO, TEXTO BLANCO, BORDE DORADO */
         .btn-cta:hover { 
-            background-color: var(--gold); /* Fondo Dorado */
-            color: var(--white);           /* Texto Blanco */
-            border-color: var(--gold);     /* BORDE DORADO */
+            background-color: var(--gold); 
+            color: var(--white); 
+            border-color: var(--gold); 
             transform: translateY(-3px); 
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
@@ -146,7 +146,6 @@
                 justify-content: flex-start; 
             }
 
-            /* --- CORRECCIÓN 1: AJUSTE DE ALTURA MÍNIMA PARA SUBIR LA DESCRIPCIÓN --- */
             .hero-content h1 {
                 order: 1; 
                 font-size: 2.2rem; 
@@ -155,8 +154,9 @@
                 text-shadow: 0 2px 15px rgba(0,0,0,0.9); 
                 letter-spacing: 0;
                 
-                /* Altura ajustada exactamente para el texto español, subiendo la descripción */
-                min-height: 165px; 
+                /* AJUSTE MAESTRO: Altura proporcional a 5.5 renglones */
+                /* Esto asegura que el inglés (4 líneas) ocupe el mismo espacio que el español (5 líneas) */
+                min-height: 5.5em; 
                 display: block;
             }
 
@@ -1069,7 +1069,7 @@
     function generarCodigo() {
         const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
         let result = 'LTR-';
-        for (let i = 4; i > 0; i--) result += chars.charAt(Math.floor(Math.random() * chars.length));
+        for (let i = 0; i < 4; i++) result += chars.charAt(Math.floor(Math.random() * chars.length));
         return result;
     }
 
