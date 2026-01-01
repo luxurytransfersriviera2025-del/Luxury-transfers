@@ -102,7 +102,7 @@
             text-shadow: 1px 1px 8px rgba(0,0,0,0.8); max-width: 800px; font-family: var(--font-body);
         }
 
-        /* --- ESTILOS DEL BOTÓN (RECOMENDACIÓN DE COLOR) --- */
+        /* --- ESTILOS DEL BOTÓN (MODIFICADO A PETICIÓN) --- */
         .btn-cta {
             order: 3; 
             background-color: var(--gold); /* DORADO */
@@ -113,12 +113,12 @@
             cursor: pointer; font-family: var(--font-title); transition: all 0.3s ease;
         }
         
-        /* HOVER: FONDO NEGRO, TEXTO DORADO */
+        /* HOVER: FONDO NEGRO, TEXTO BLANCO, BORDE BLANCO */
         .btn-cta:hover { 
             background-color: var(--black); 
-            color: var(--gold); 
+            color: var(--white);      /* <--- MODIFICADO: TEXTO BLANCO */
             transform: translateY(-3px); 
-            border-color: var(--gold);
+            border-color: var(--white); /* <--- MODIFICADO: BORDE BLANCO */
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
