@@ -28,6 +28,7 @@
             --navy-bg: #002855;
             --light-gray: #f4f4f4;
 
+            --font-hero: 'Montserrat', sans-serif;
             --font-title: 'Montserrat', sans-serif;
             --font-body: 'Open Sans', sans-serif;
             
@@ -110,7 +111,7 @@
         }
         .btn-cta:hover { background-color: var(--gold-hover); transform: translateY(-3px); border-color: var(--gold-hover); }
 
-        /* --- MEDIA QUERIES HERO (MÓVIL) --- */
+        /* --- MEDIA QUERIES HERO (MÓVIL - CORREGIDO A DETALLE) --- */
         @media (max-width: 768px) {
             header { padding: 15px 0; }
             .nav-container { flex-direction: column; gap: 15px; }
@@ -121,46 +122,57 @@
                 background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.0)), url('https://imgur.com/qAxXmrB.jpg');
                 background-position: center center;
                 height: 100vh;
-                align-items: flex-start;
+                align-items: flex-start; /* Alineamos todo arriba */
             }
 
             .hero-content {
-                height: 90vh; width: 100%; margin-top: 100px; padding-bottom: 20px; 
-                display: flex; flex-direction: column; justify-content: flex-start; 
+                height: 100vh; 
+                width: 100%; 
+                margin-top: 0; 
+                padding-top: 120px; /* Bajamos un poco del techo */
+                display: flex; 
+                flex-direction: column;
+                justify-content: flex-start; /* Todo empieza arriba */
+                position: relative; /* Para poder posicionar absoluto si fuera necesario, pero usaremos flex */
             }
 
             .hero-content h1 {
-                order: 1; font-size: 2.2rem; margin-bottom: 0; white-space: normal; 
-                text-shadow: 0 2px 15px rgba(0,0,0,0.9); letter-spacing: 0;
+                order: 1; 
+                font-size: 2.2rem; 
+                margin-bottom: 10px; 
+                white-space: normal; 
+                text-shadow: 0 2px 15px rgba(0,0,0,0.9); 
+                letter-spacing: 0;
             }
 
-            /* AJUSTE 1: LETRA MÁS GRANDE + ZONA VERDE + FONDO SEMITRANSPARENTE (0.5) */
+            /* DESCRIPCIÓN: Fondo 0.5 opacidad */
             .hero-content p {
                 order: 2;
-                margin-top: 30px; 
-                margin-bottom: 20px; 
-                font-size: 1.15rem; 
+                margin-top: 10px; 
+                margin-bottom: 0;
+                font-size: 1rem; /* Ajustado para que quepa mejor */
                 line-height: 1.4; 
                 text-shadow: none; 
                 
-                /* AQUÍ ESTÁ EL CAMBIO DE OPACIDAD A 0.5 */
+                /* AQUÍ ESTÁ EL 0.5 DE OPACIDAD */
                 background-color: rgba(0, 0, 0, 0.5); 
                 padding: 15px; 
                 border-radius: 15px;
                 
-                width: 90%; box-sizing: border-box; 
+                width: 90%; 
+                box-sizing: border-box;
+                align-self: center;
             }
 
-            /* AJUSTE 2: BOTÓN EN ZONA ROJA (SUBIDO CON MARGIN-BOTTOM) */
+            /* BOTÓN: SUBIDO A LA LLANTA */
             .btn-cta {
                 order: 3; 
-                margin-top: auto; 
-                /* AUMENTADO A 140px PARA SUBIRLO A LA ZONA DE LAS LLANTAS */
-                margin-bottom: 140px; 
+                margin-top: auto; /* Empuja hacia abajo, PERO... */
+                margin-bottom: 160px; /* ...este margen lo levanta hasta la llanta */
                 align-self: center; 
                 width: 90%; 
                 font-size: 1.1rem; 
-                padding: 20px 0; 
+                padding: 18px 0; 
             }
         }
 
@@ -1172,89 +1184,104 @@
     function limpiarResultados() { document.getElementById('resultados').style.display = 'none'; }
 
     function cotizar() {
-        if(!document.getElementById('termsCheck').checked) { alert("⚠️ Debes leer y aceptar los Términos y Condiciones para continuar."); return; }
-        const email = document.getElementById('emailCliente').value;
-        const hora = document.getElementById('horaIda').value;
-        const fecha = document.getElementById('fechaIda').value;
-        if(email.length < 5) { alert("⚠️ Por favor escribe tu correo electrónico."); return; }
-        if(!fecha) { alert("⚠️ Selecciona una fecha."); return; }
-        if(!hora) { alert("⚠️ Selecciona la hora."); return; }
-        const nombre = document.getElementById('nombreCliente').value;
-        const tel = document.getElementById('telefonoCliente').value;
-        if(nombre.length < 2) { alert("Escribe tu nombre."); return; }
-        if(tel.length < 5) { alert("Escribe tu teléfono."); return; }
+        try {
+            if(!document.getElementById('termsCheck').checked) { alert("⚠️ Debes leer y aceptar los Términos y Condiciones para continuar."); return; }
+            const email = document.getElementById('emailCliente').value;
+            const hora = document.getElementById('horaIda').value;
+            const fecha = document.getElementById('fechaIda').value;
+            if(email.length < 5) { alert("⚠️ Por favor escribe tu correo electrónico."); return; }
+            if(!fecha) { alert("⚠️ Selecciona una fecha."); return; }
+            if(!hora) { alert("⚠️ Selecciona la hora."); return; }
+            const nombre = document.getElementById('nombreCliente').value;
+            const tel = document.getElementById('telefonoCliente').value;
+            if(nombre.length < 2) { alert("Escribe tu nombre."); return; }
+            if(tel.length < 5) { alert("Escribe tu teléfono."); return; }
 
-        if (direccionMode === 'personalizado') {
-            const subtipo = document.getElementById('subtipoPersonalizado').value;
-            const subtipoTxt = document.getElementById('subtipoPersonalizado').options[document.getElementById('subtipoPersonalizado').selectedIndex].text;
-            let destinoFinal = (subtipo === 'HORAS') ? document.getElementById('horasSeleccionadas').value : document.getElementById('destino').value;
-            const codigoUnico = generarCodigo();
-            const datosCotizacion = { esVenta: false, codigo: codigoUnico, nombre: nombre, telefono: tel, email: email, tipoViaje: document.getElementById('tipoServicio').value + " - " + subtipoTxt, origen: document.getElementById('origen').value, destino: destinoFinal, fecha: fecha, hora: hora, notas: document.getElementById('notasCliente').value, itinerario: document.getElementById('itinerarioCliente').value, vehiculo: "Cotización Especial", precio: "Por Cotizar" };
-            document.getElementById('codigoDisplay').innerText = codigoUnico;
-            iniciarEnvio(datosCotizacion);
-            return;
-        }
-
-        const tipo = document.getElementById('tipoServicio').value;
-        const moneda = document.getElementById('moneda').value;
-        const pax = parseInt(document.getElementById('pasajeros').value);
-        let lugarBusqueda = ""; let latBusqueda = 0; let lonBusqueda = 0; let cpBusqueda = "";
-
-        if (direccionMode === 'desdeAero') {
-            lugarBusqueda = document.getElementById('destino').value;
-            latBusqueda = parseFloat(document.getElementById('latitudDestino').value);
-            lonBusqueda = parseFloat(document.getElementById('longitudDestino').value);
-            cpBusqueda = document.getElementById('cpDestino').value;
-        } else {
-            lugarBusqueda = document.getElementById('origen').value;
-            latBusqueda = parseFloat(document.getElementById('latitudOrigen').value);
-            lonBusqueda = parseFloat(document.getElementById('longitudOrigen').value);
-            cpBusqueda = document.getElementById('cpOrigen').value;
-        }
-        
-        if (lugarBusqueda.length < 3) { alert("Indica el lugar."); return; }
-        let zonaDetectada = "";
-        if (!isNaN(latBusqueda) && !isNaN(lonBusqueda)) {
-            if (latBusqueda < 20.1215 && latBusqueda > 19.0 && lonBusqueda > -87.6) { alert("📍 Zona de Terracería / Sian Ka'an detectada (Sur de Estrellita).\nPor las condiciones del camino, esta zona requiere cotización especial.\n\nPor favor usa el botón 'Servicio Personalizado'."); return; }
-            zonaDetectada = detectarZonaPorGPS(latBusqueda, lonBusqueda);
-        }
-        if (!zonaDetectada && cpBusqueda) { zonaDetectada = detectarZonaPorCP(cpBusqueda); }
-        if (!zonaDetectada) {
-            lugarBusqueda = lugarBusqueda.toUpperCase();
-            for (let z in diccionarioZonas) {
-                for (let i=0; i<diccionarioZonas[z].length; i++) {
-                    if (lugarBusqueda.includes(diccionarioZonas[z][i])) { zonaDetectada = z; break; }
-                }
-                if(zonaDetectada) break;
+            if (direccionMode === 'personalizado') {
+                const subtipo = document.getElementById('subtipoPersonalizado').value;
+                const subtipoTxt = document.getElementById('subtipoPersonalizado').options[document.getElementById('subtipoPersonalizado').selectedIndex].text;
+                let destinoFinal = (subtipo === 'HORAS') ? document.getElementById('horasSeleccionadas').value : document.getElementById('destino').value;
+                const codigoUnico = generarCodigo();
+                const datosCotizacion = { esVenta: false, codigo: codigoUnico, nombre: nombre, telefono: tel, email: email, tipoViaje: document.getElementById('tipoServicio').value + " - " + subtipoTxt, origen: document.getElementById('origen').value, destino: destinoFinal, fecha: fecha, hora: hora, notas: document.getElementById('notasCliente').value, itinerario: document.getElementById('itinerarioCliente').value, vehiculo: "Cotización Especial", precio: "Por Cotizar" };
+                document.getElementById('codigoDisplay').innerText = codigoUnico;
+                iniciarEnvio(datosCotizacion);
+                return;
             }
+
+            const tipo = document.getElementById('tipoServicio').value;
+            const moneda = document.getElementById('moneda').value;
+            const pax = parseInt(document.getElementById('pasajeros').value);
+            let lugarBusqueda = ""; let latBusqueda = 0; let lonBusqueda = 0; let cpBusqueda = "";
+
+            if (direccionMode === 'desdeAero') {
+                lugarBusqueda = document.getElementById('destino').value;
+                latBusqueda = parseFloat(document.getElementById('latitudDestino').value);
+                lonBusqueda = parseFloat(document.getElementById('longitudDestino').value);
+                cpBusqueda = document.getElementById('cpDestino').value;
+            } else {
+                lugarBusqueda = document.getElementById('origen').value;
+                latBusqueda = parseFloat(document.getElementById('latitudOrigen').value);
+                lonBusqueda = parseFloat(document.getElementById('longitudOrigen').value);
+                cpBusqueda = document.getElementById('cpOrigen').value;
+            }
+            
+            if (lugarBusqueda.length < 3) { alert("Indica el lugar."); return; }
+            let zonaDetectada = "";
+            if (!isNaN(latBusqueda) && !isNaN(lonBusqueda)) {
+                if (latBusqueda < 20.1215 && latBusqueda > 19.0 && lonBusqueda > -87.6) { alert("📍 Zona de Terracería / Sian Ka'an detectada (Sur de Estrellita).\nPor las condiciones del camino, esta zona requiere cotización especial.\n\nPor favor usa el botón 'Servicio Personalizado'."); return; }
+                zonaDetectada = detectarZonaPorGPS(latBusqueda, lonBusqueda);
+            }
+            if (!zonaDetectada && cpBusqueda) { zonaDetectada = detectarZonaPorCP(cpBusqueda); }
+            if (!zonaDetectada) {
+                lugarBusqueda = lugarBusqueda.toUpperCase();
+                for (let z in diccionarioZonas) {
+                    for (let i=0; i<diccionarioZonas[z].length; i++) {
+                        if (lugarBusqueda.includes(diccionarioZonas[z][i])) { zonaDetectada = z; break; }
+                    }
+                    if(zonaDetectada) break;
+                }
+            }
+            if (!zonaDetectada) { 
+                alert("⚠️ Lo sentimos, no pudimos detectar automáticamente la zona o ubicación.\n\nEsto puede deberse a que el autocompletado de Google Maps no cargó correctamente (Falta API Key válida) o la dirección escrita no está en nuestra lista exacta.\n\nPor favor intenta seleccionar 'Personalizado' para enviar una solicitud manual."); 
+                return; 
+            }
+
+            let db;
+            if (moneda === 'MXN' && tipo === 'SENCILLO') db = tarifasSencilloMXN;
+            else if (moneda === 'USD' && tipo === 'SENCILLO') db = tarifasSencilloUSD;
+            else if (moneda === 'MXN' && tipo === 'REDONDO') db = tarifasRedondoMXN;
+            else if (moneda === 'USD' && tipo === 'REDONDO') db = tarifasRedondoUSD;
+
+            const p = db[zonaDetectada];
+            if (!p) {
+                 alert("Error interno: Zona detectada pero sin tarifa asignada. Contacta soporte.");
+                 return;
+            }
+
+            const divRes = document.getElementById('resultados');
+            divRes.innerHTML = "";
+            
+            let rutaLabel = "";
+            let aeroName = currentLang === 'en' ? airportNameEN : "Aeropuerto Cancún";
+
+            if(direccionMode === 'desdeAero') rutaLabel = `${aeroName} <i class='fas fa-arrow-right'></i> ${document.getElementById('destino').value}`;
+            else rutaLabel = `${document.getElementById('origen').value} <i class='fas fa-arrow-right'></i> ${aeroName}`;
+            
+            const t = translations[currentLang];
+            divRes.innerHTML = `<div class="ruta-header">${t.resultsFor}: ${rutaLabel}</div>`;
+
+            let cap15 = currentLang === 'en' ? "Up to 15 Pax" : "Hasta 15 Pax";
+
+            if(pax<=3) divRes.innerHTML+=crearCard("STANDARD SEDAN","1-3 Pax",p.standart,moneda,zonaDetectada,imgUrlErtiga, rutaLabel);
+            else if(pax<=8) divRes.innerHTML+=crearCard("VAN STANDARD","1-8 Pax",p.standart,moneda,zonaDetectada,imgUrlTransporter, rutaLabel);
+            if(pax<=15 && p.small) divRes.innerHTML+=crearCard("SMALL GROUP VAN", cap15, p.small,moneda,zonaDetectada,imgUrlSprinter, rutaLabel);
+            if(pax<=5 && p.luxury) divRes.innerHTML+=crearCard("LUXURY SUV","1-5 Pax",p.luxury,moneda,zonaDetectada,imgUrlSuburban, rutaLabel);
+            divRes.style.display = 'block';
+            divRes.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } catch (error) {
+            console.error(error);
+            alert("Ocurrió un error al procesar la cotización. \n\nPosible causa: La API Key de Google Maps no es válida o faltan datos.\n\nDetalle técnico: " + error.message);
         }
-        if (!zonaDetectada) { alert("Zona no detectada o requiere cotización especial. Usa Servicio Personalizado."); return; }
-
-        let db;
-        if (moneda === 'MXN' && tipo === 'SENCILLO') db = tarifasSencilloMXN;
-        else if (moneda === 'USD' && tipo === 'SENCILLO') db = tarifasSencilloUSD;
-        else if (moneda === 'MXN' && tipo === 'REDONDO') db = tarifasRedondoMXN;
-        else if (moneda === 'USD' && tipo === 'REDONDO') db = tarifasRedondoUSD;
-
-        const p = db[zonaDetectada];
-        const divRes = document.getElementById('resultados');
-        divRes.innerHTML = "";
-        
-        let rutaLabel = "";
-        if(direccionMode === 'desdeAero') rutaLabel = `${aeroName} <i class='fas fa-arrow-right'></i> ${document.getElementById('destino').value}`;
-        else rutaLabel = `${document.getElementById('origen').value} <i class='fas fa-arrow-right'></i> ${aeroName}`;
-        
-        const t = translations[currentLang];
-        divRes.innerHTML = `<div class="ruta-header">${t.resultsFor}: ${rutaLabel}</div>`;
-
-        let cap15 = currentLang === 'en' ? "Up to 15 Pax" : "Hasta 15 Pax";
-
-        if(pax<=3) divRes.innerHTML+=crearCard("STANDARD SEDAN","1-3 Pax",p.standart,moneda,zonaDetectada,imgUrlErtiga, rutaLabel);
-        else if(pax<=8) divRes.innerHTML+=crearCard("VAN STANDARD","1-8 Pax",p.standart,moneda,zonaDetectada,imgUrlTransporter, rutaLabel);
-        if(pax<=15 && p.small) divRes.innerHTML+=crearCard("SMALL GROUP VAN", cap15, p.small,moneda,zonaDetectada,imgUrlSprinter, rutaLabel);
-        if(pax<=5 && p.luxury) divRes.innerHTML+=crearCard("LUXURY SUV","1-5 Pax",p.luxury,moneda,zonaDetectada,imgUrlSuburban, rutaLabel);
-        divRes.style.display = 'block';
-        divRes.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     function crearCard(veh, cap, precio, moneda, zona, img, rutaLabel) {
