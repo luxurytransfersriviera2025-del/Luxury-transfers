@@ -776,6 +776,83 @@
     const airportNameES = "Aeropuerto Internacional de Cancún";
     const airportNameEN = "Cancun International Airport";
 
+    // --- HELPER PARA OBTENER TEXTO PLANO DE TÉRMINOS Y CONDICIONES ---
+    function getTycPlainText(lang) {
+        if (lang === 'en') {
+            return `TERMS AND CONDITIONS
+
+1. BOOKING PROCESS AND PAYMENTS
+Booking Number: Upon completing your request on our website, the system will generate a booking number. This number is for tracking purposes only and does not guarantee service confirmation.
+Official Confirmation: Service is formally confirmed, and the vehicle is blocked on our schedule only upon receipt of the 50% deposit and the issuance of our official confirmation.
+Balance Payment: For services booked more than 72 hours in advance, the remaining balance must be paid 72 hours before the trip for digital payments. For last-minute bookings (less than 72 hours), digital payments require 100% payment at the time of booking. For cash payments, a 50% digital deposit is required as a guarantee, with the remaining balance paid to the driver upon boarding.
+
+2. PRIVACY AND DATA PROTECTION
+Confidentiality: Luxury Transfers Riviera commits to using your personal information (name, phone, email, and flight details) strictly for managing your transfer.
+Security: Your data is handled with total discretion and will not be shared with third parties outside of our operations, guaranteeing the privacy of your itinerary at all times.
+
+3. INSURANCE AND MEDICAL LIABILITY DISCLAIMER
+Traveler Insurance: Our vehicles carry active Civil Liability Insurance as required by Mexican federal law for traffic accidents.
+Exclusion: The company is exempt from liability for health complications or death resulting from natural causes or pre-existing medical conditions of the passenger.
+
+4. CANCELLATION AND REFUND POLICIES
+Cancellations > 24 hours: A refund of the deposited amount will be granted, minus non-refundable bank processing fees charged by the payment platform.
+Cancellations < 24 hours or No-Show: No refunds or credits will apply.
+Force Majeure: The company is not responsible for delays or missed flights due to external factors such as heavy traffic, third-party accidents, road blockades, or extreme weather.
+
+5. WAITING TIMES AND TOLERANCE
+Airport Arrivals: Maximum waiting time is 60 minutes after the actual flight landing. If there is no contact from the passenger after 61 minutes, the vehicle may depart and will be marked as a No-Show.
+Hotel or Airbnb Pickups: Maximum tolerance is 20 minutes. After this time, the vehicle may depart to fulfill other scheduled services. Additional waiting time requested by the client may incur an extra charge, subject to availability.
+
+6. LUGGAGE, VALUABLES, AND SUBSTANCES
+Responsibility: Passengers are solely responsible for their belongings. We are not responsible for forgotten or lost items (jewelry, electronics, cash) or minor luggage damage from normal handling.
+Illegal Substances: Transporting drugs or weapons is strictly prohibited. Non-compliance will result in immediate termination of service without a refund.
+
+7. CLEANING FEES AND VEHICLE DAMAGE
+Sanitation Fee: The client agrees to an automatic charge of $300 MXN ($17 USD) for deep cleaning in the event of vomiting, food/drink spills, or severe upholstery stains.
+Physical Damage: Any intentional or accidental damage to the vehicle (screens, windows, seats) will be billed at the full cost of repair at an authorized shop.
+
+8. VEHICLES AND CONDUCT
+Visual Reference: Website images are illustrative. We guarantee the booked category, but the specific make, model, or color may vary. In the event of a technical issue, a support unit will be dispatched to guarantee your arrival at the destination.
+Right of Admission: The driver may refuse service or interrupt the journey due to aggressive behavior or intoxication that jeopardizes the safety of the staff or the vehicle.`;
+        } else {
+            return `TÉRMINOS Y CONDICIONES
+
+1. PROCESO DE RESERVACIÓN Y PAGOS
+Número de Reserva: Al completar su solicitud en nuestro sitio web, el sistema generará un número de reserva. Este número es únicamente para seguimiento y no garantiza la confirmación del servicio.
+Confirmación Oficial: El servicio se considerará formalmente confirmado y la unidad quedará bloqueada en agenda únicamente tras la recepción del anticipo del 50% y el envío de nuestra confirmación oficial por parte de nuestro equipo.
+Liquidación: En servicios con más de 72 horas de anticipación, el saldo restante debe pagarse 72 horas antes del viaje para pagos digitales. En servicios de última hora (menos de 72 horas), los pagos digitales requieren el 100% al reservar; en efectivo, se requiere el 50% de anticipo digital y el resto al abordar.
+
+2. PRIVACIDAD Y PROTECCIÓN DE DATOS
+Confidencialidad: Luxury Transfers Riviera se compromete a utilizar su información personal (nombre, teléfono, correo y detalles de vuelo) estrictamente para la gestión de su traslado.
+Seguridad: Sus datos son tratados con total discreción y no serán compartidos con terceros ajenos a la operación, garantizando la privacidad de su itinerario en todo momento.
+
+3. SEGUROS Y DESLINDE DE RESPONSABILIDAD MÉDICA
+Seguro de Viajero: Nuestras unidades cuentan con Póliza de Responsabilidad Civil vigente conforme a la ley federal mexicana por accidente de tránsito.
+Exclusión: La empresa queda exenta de responsabilidad en caso de complicaciones de salud o fallecimiento derivados de causas naturales o condiciones médicas preexistentes del pasajero.
+
+4. POLÍTICAS DE CANCELACIÓN Y REEMBOLSOS
+Cancelación mayor a 24 horas: Se otorgará el reembolso del monto depositado, menos los cargos no reembolsables por procesamiento bancario que la plataforma de pago retenga.
+Cancelación menor a 24 horas o No-Show: No aplica reembolso ni crédito.
+Fuerza Mayor: No nos responsabilizamos por retrasos o pérdida de vuelos debidos a tráfico, accidentes de terceros, bloqueos viales o clima extremo.
+
+5. TIEMPOS DE ESPERA Y TOLERANCIA
+Aeropuerto: El tiempo máximo de espera es de 60 minutos tras el aterrizaje. Al minuto 61 sin contacto, la unidad podrá retirarse y se marcará como No-Show.
+Hotel o Airbnb: La tolerancia es de 20 minutos. Tras este tiempo, la unidad podrá retirarse. El tiempo extra solicitado por el cliente podría generar un cargo adicional sujeto a disponibilidad.
+
+6. EQUIPAJE, OBJETOS DE VALOR Y SUSTANCIAS
+Responsabilidad: El pasajero es el único responsable de sus pertenencias. No nos hacemos responsables por objetos olvidados o daños menores al equipaje por manejo normal.
+Sustancias Ilícitas: Prohibido el transporte de drogas o armas. El incumplimiento causará la interrupción inmediata del servicio sin reembolso.
+
+7. CARGOS POR LIMPIEZA Y DAÑOS
+Multa por Higiene: El cliente acepta un cargo de 300 MXN (17 USD) por limpieza profunda en caso de vómito, derrames de comida o manchas graves en la tapicería.
+Daños Físicos: Cualquier daño intencional o accidental a la unidad será facturado al costo total de reparación.
+
+8. VEHÍCULOS Y CONDUCTA
+Referencia Visual: Las imágenes son ilustrativas. Se garantiza la categoría contratada, pero el modelo o color pueden variar. Ante un imprevisto técnico, se enviará una unidad de apoyo para garantizar su llegada al destino.
+Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresivas o estado inconveniente de los pasajeros que ponga en riesgo la seguridad.`;
+        }
+    }
+
     // --- DICCIONARIO DE TRADUCCIÓN ---
     const translations = {
         es: {
@@ -1537,8 +1614,15 @@
         baseText += `%0A%0A*Mi Nombre:* ${data.nombre}`;
         const subject = encodeURIComponent("Solicitud " + data.codigo + " - " + data.nombre);
         const mailBody = encodeURIComponent(baseText.replace(/%0A/g, "\n").replace(/\*/g, "")); 
-        document.getElementById('btnWhatsapp').href = `https://wa.me/529842411158?text=${baseText}`;
-        document.getElementById('btnMail').href = `mailto:reservas@luxurytransfersriviera.com.mx?subject=${subject}&body=${mailBody}`;
+        
+        // --- CAMBIO: INCLUIR TYC EN EL CORREO MANUAL (MAILTO) Y ENVIAR AL SCRIPT (DATA) ---
+        let tyc = getTycPlainText(currentLang);
+        data.terminos = tyc; // Enviamos los TyC en el objeto DATA por si el Script lo recibe
+        
+        const mailBodyConTyc = encodeURIComponent((baseText + "\n\n------------------------\n" + tyc).replace(/%0A/g, "\n").replace(/\*/g, ""));
+
+        document.getElementById('btnWhatsapp').href = `https://wa.me/529842411158?text=${baseText}`; // WhatsApp sigue corto
+        document.getElementById('btnMail').href = `mailto:reservas@luxurytransfersriviera.com.mx?subject=${subject}&body=${mailBodyConTyc}`; // Mail incluye TyC
 
         fetch(SCRIPT_URL, {
             method: 'POST', mode: 'no-cors', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)
