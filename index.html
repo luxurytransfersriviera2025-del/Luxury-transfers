@@ -1329,6 +1329,16 @@
             }
 
             const tipo = document.getElementById('tipoServicio').value;
+            
+            /* --- CORRECCIÓN CRÍTICA: VALIDAR VUELTA EN PESTAÑAS NORMALES --- */
+            if (tipo === 'REDONDO') {
+                const fVuelta = document.getElementById('fechaVuelta').value;
+                const hVuelta = document.getElementById('horaVuelta').value;
+                if (!fVuelta) { alert("⚠️ Para el viaje Redondo, por favor selecciona la Fecha de Vuelta."); return; }
+                if (!hVuelta) { alert("⚠️ Para el viaje Redondo, por favor selecciona la Hora de Vuelta."); return; }
+            }
+            /* ------------------------------------------------------------- */
+
             const moneda = document.getElementById('moneda').value;
             const pax = parseInt(document.getElementById('pasajeros').value);
             let lugarBusqueda = ""; let latBusqueda = 0; let lonBusqueda = 0; let cpBusqueda = "";
