@@ -245,7 +245,7 @@
             color: #333; background: transparent; font-family: var(--font-body); padding: 0; 
         }
         
-        /* NUEVO: ESTILOS PARA LOS SELECTORES DE HORA */
+        /* NUEVO: ESTILOS PARA LOS SELECTORES DE HORA CORREGIDOS */
         .time-select-container {
             display: flex;
             align-items: center;
@@ -262,6 +262,11 @@
             color: #333;
             outline: none;
             cursor: pointer;
+            
+            /* --- CORRECCIÓN AQUÍ --- */
+            width: auto !important; /* Evita que ocupe el 100% y se aplaste */
+            flex: 1; /* Distribuye el espacio equitativamente */
+            min-width: 0;
         }
         .time-separator {
             font-weight: 800;
@@ -1352,10 +1357,10 @@
                 let fechaVueltaVal = "";
                 let horaVueltaVal = "";
                 if(document.getElementById('tipoServicio').value === 'REDONDO') {
-                     fechaVueltaVal = document.getElementById('fechaVuelta').value;
-                     if(!fechaVueltaVal) { alert("⚠️ Has seleccionado Ida y Vuelta. Por favor indica la fecha de vuelta."); return; }
-                     if(!document.getElementById('time-h-vuelta').value || !document.getElementById('time-m-vuelta').value) { alert("⚠️ Por favor indica la hora de vuelta."); return; }
-                     horaVueltaVal = document.getElementById('time-h-vuelta').value + ':' + document.getElementById('time-m-vuelta').value + ' ' + document.getElementById('time-ampm-vuelta').value;
+                      fechaVueltaVal = document.getElementById('fechaVuelta').value;
+                      if(!fechaVueltaVal) { alert("⚠️ Has seleccionado Ida y Vuelta. Por favor indica la fecha de vuelta."); return; }
+                      if(!document.getElementById('time-h-vuelta').value || !document.getElementById('time-m-vuelta').value) { alert("⚠️ Por favor indica la hora de vuelta."); return; }
+                      horaVueltaVal = document.getElementById('time-h-vuelta').value + ':' + document.getElementById('time-m-vuelta').value + ' ' + document.getElementById('time-ampm-vuelta').value;
                 }
 
                 const codigoUnico = generarCodigo();
