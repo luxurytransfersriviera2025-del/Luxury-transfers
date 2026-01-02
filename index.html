@@ -113,7 +113,6 @@
             cursor: pointer; font-family: var(--font-title); transition: all 0.3s ease;
         }
         
-        /* HOVER: FONDO DORADO, TEXTO BLANCO, BORDE DORADO */
         .btn-cta:hover { 
             background-color: var(--gold); 
             color: var(--white); 
@@ -240,53 +239,29 @@
         }
         .input-wrapper:focus-within { box-shadow: 0 0 0 2px rgba(0, 40, 85, 0.2); border-color: var(--navy-bg); }
         .input-wrapper label { font-size: 11px; color: var(--navy-bg); font-weight: 800; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--font-title); }
-        .input-wrapper input, .input-wrapper select, .input-wrapper textarea { 
-            border: none; outline: none; width: 100%; font-size: 15px; font-weight: 600; 
-            color: #333; background: transparent; font-family: var(--font-body); padding: 0; 
-        }
         
-        /* =========================================================
-           CORRECCIÓN DE LOS SELECTORES DE HORA
-           ========================================================= */
-        .time-select-container {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            width: 100%;
+        /* ESTILOS UNIFICADOS PARA TODOS LOS INPUTS (TEXTO, SELECT Y TIME) */
+        .input-wrapper input, 
+        .input-wrapper select, 
+        .input-wrapper textarea { 
+            border: none; 
+            outline: none; 
+            width: 100%; 
+            font-size: 15px; 
+            font-weight: 600; 
+            color: #333; 
+            background: transparent; 
+            font-family: var(--font-body); 
+            padding: 0; 
+            /* Asegura que el selector de hora ocupe el espacio correcto */
+            min-height: 25px; 
         }
 
-        /* Usamos selector específico y !important para forzar los estilos */
-        .input-wrapper .time-select-container .time-select {
-            border: 1px solid #ddd !important;
-            border-radius: 4px !important;
-            padding: 5px 2px !important;
-            font-size: 14px !important;
-            background-color: #f9f9f9 !important;
-            font-family: var(--font-body);
-            font-weight: 600;
-            color: #333;
-            outline: none;
+        /* Ajuste específico para que el input type="time" se vea bien en móviles y desktop */
+        input[type="time"] {
+            font-family: 'Open Sans', sans-serif; /* Misma fuente que el resto */
             cursor: pointer;
-            
-            /* Geometría para que no se aplasten */
-            width: auto !important; 
-            flex: 1 !important; 
-            min-width: 45px !important;
-            height: 35px !important;
-            
-            /* Restaurar apariencia nativa (flechita) */
-            -webkit-appearance: menulist !important;
-            -moz-appearance: menulist !important;
-            appearance: menulist !important;
         }
-
-        .time-separator {
-            font-weight: 800;
-            color: var(--navy-bg);
-            margin: 0 5px;
-        }
-        /* ========================================================= */
-
 
         .contact-section { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin-top: 20px; border-top: 1px dashed #ddd; padding-top: 25px; }
         .flight-fields-container { grid-column: 1 / -1; display: contents; }
@@ -302,7 +277,7 @@
         .ruta-header { background: var(--navy-bg); color: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; text-align: center; font-size: 16px; font-weight: 600; border-left: 5px solid var(--highlight-yellow); animation: fadeIn 0.5s ease-in-out; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-family: var(--font-body); }
         .ruta-header i { color: var(--highlight-yellow); margin: 0 10px; }
 
-        /* TARJETAS RESULTADOS (MEJORADAS CON BORDE DORADO Y PRECIO PRO) */
+        /* TARJETAS RESULTADOS */
         .tarjeta { 
             background: var(--white); 
             border-radius: 16px; 
@@ -323,7 +298,6 @@
         .tarjeta-info { flex: 1; display: flex; flex-direction: column; justify-content: center; min-width: 280px; }
         .tarjeta-info h3 { margin: 0 0 8px 0; font-size: 22px; color: var(--text-dark); text-transform: uppercase; letter-spacing: -0.5px; font-weight: 900; font-family: var(--font-title); }
         
-        /* RUTA: Mejorada a Gris Claro */
         .tarjeta-route-display { 
             font-size: 12px; 
             color: var(--navy-bg); 
@@ -342,23 +316,20 @@
         .spec-row i { color: var(--primary-blue); width: 20px; text-align: center; font-size: 16px; }
         .feature-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 5px; }
         .feature-tag { background: #f8fafc; color: #475569; font-size: 11px; padding: 6px 12px; border-radius: 20px; display: flex; align-items: center; gap: 6px; font-weight: 600; border: 1px solid #e2e8f0; font-family: var(--font-body); }
-        
-        /* ICONOS: Color Dorado */
         .feature-tag i { color: var(--gold); font-size: 12px; }
         
         .tarjeta-price { flex: 0 0 180px; text-align: right; display: flex; flex-direction: column; justify-content: center; border-left: 2px solid #f5f5f5; padding-left: 25px; }
         .price-old { font-size: 14px; color: #bbb; text-decoration: line-through; margin-bottom: 2px; font-weight: 600; font-family: var(--font-body); display: block; }
         
-        /* PRECIO: Ajustado para que el texto NO se corte */
         .price-current { 
             font-size: 32px; 
             font-weight: 900; 
-            color: var(--navy-bg); /* Azul Marino Elegante */
+            color: var(--navy-bg); 
             margin-bottom: 10px; 
             letter-spacing: -1px; 
             line-height: 1; 
             font-family: var(--font-title); 
-            white-space: nowrap; /* Evita que se rompa la línea */
+            white-space: nowrap; 
         }
         
         .btn-reservar { background-color: var(--action-green); color: white; text-decoration: none; padding: 14px 20px; border-radius: 8px; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; margin-top: 5px; cursor: pointer; border:none; text-transform: uppercase; letter-spacing: 0.5px; width: 100%; box-shadow: 0 4px 6px rgba(0,166,81,0.3); font-family: var(--font-title); }
@@ -378,7 +349,7 @@
         .service-title { font-family: var(--font-title); font-size: 26px; color: var(--white); margin-bottom: 15px; font-weight: 700; }
         .service-desc { font-size: 14px; color: #cbd5e1; line-height: 1.6; font-weight: 400; font-family: var(--font-body); }
 
-        /* SECCIÓN FLOTA (CARRUSEL) */
+        /* SECCIÓN FLOTA */
         .fleet-section { padding: 30px 20px 80px 20px; background-color: #fafafa; }
         .slider-container { position: relative; max-width: 800px; margin: 0 auto; overflow: hidden; padding-bottom: 40px; }
         .slider-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
@@ -579,30 +550,14 @@
                         
                         <div class="input-wrapper" style="flex: 0.4;">
                             <label id="label-hora">Hora</label>
-                            <div class="time-select-container">
-                                <select id="time-h-ida" class="time-select"></select>
-                                <span class="time-separator">:</span>
-                                <select id="time-m-ida" class="time-select"></select>
-                                <select id="time-ampm-ida" class="time-select">
-                                    <option value="AM">AM</option>
-                                    <option value="PM">PM</option>
-                                </select>
-                            </div>
+                            <input type="time" id="horaIda" style="font-family: inherit; font-size: 15px; color:#333; font-weight:600;">
                         </div>
 
                         <div class="input-wrapper" id="divFechaVuelta" style="display:none; flex: 0.6;"><label id="label-fecha-vuelta">Fecha Vuelta</label><input type="date" id="fechaVuelta"></div>
                         
                         <div class="input-wrapper" id="divHoraVuelta" style="display:none; flex: 0.4;">
                             <label id="label-hora-vuelta">Hora</label>
-                            <div class="time-select-container">
-                                <select id="time-h-vuelta" class="time-select"></select>
-                                <span class="time-separator">:</span>
-                                <select id="time-m-vuelta" class="time-select"></select>
-                                <select id="time-ampm-vuelta" class="time-select">
-                                    <option value="AM">AM</option>
-                                    <option value="PM">PM</option>
-                                </select>
-                            </div>
+                            <input type="time" id="horaVuelta" style="font-family: inherit; font-size: 15px; color:#333; font-weight:600;">
                         </div>
 
                         <div class="input-wrapper" style="flex: 0.4;">
@@ -1137,36 +1092,6 @@
         }
     }
 
-    // --- FUNCIÓN PARA POBLAR SELECTORES DE TIEMPO ---
-    function populateTimeSelects() {
-        const hours = document.querySelectorAll('#time-h-ida, #time-h-vuelta');
-        const minutes = document.querySelectorAll('#time-m-ida, #time-m-vuelta');
-        
-        hours.forEach(select => {
-            select.innerHTML = '';
-            // Opción por defecto vacía o la primera
-            for(let i=1; i<=12; i++) {
-                let val = i.toString().padStart(2, '0');
-                let opt = document.createElement('option');
-                opt.value = val;
-                opt.innerText = val;
-                select.appendChild(opt);
-            }
-        });
-
-        minutes.forEach(select => {
-            select.innerHTML = '';
-            // 00 a 59
-            for(let i=0; i<60; i++) {
-                let val = i.toString().padStart(2, '0');
-                let opt = document.createElement('option');
-                opt.value = val;
-                opt.innerText = val;
-                select.appendChild(opt);
-            }
-        });
-    }
-
     window.onload = function() {
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('fechaIda').setAttribute('min', today);
@@ -1174,8 +1099,6 @@
         document.getElementById('fechaIda').addEventListener('change', function() {
             document.getElementById('fechaVuelta').setAttribute('min', this.value);
         });
-        
-        populateTimeSelects(); // LLENAR LOS SELECTS DE HORA
         
         setLang('es');
         initSlider();
@@ -1216,6 +1139,17 @@
         let result = 'LTR-';
         for (let i = 0; i < 4; i++) result += chars.charAt(Math.floor(Math.random() * chars.length));
         return result;
+    }
+
+    // --- HELPER PARA CONVERTIR HORA MILITAR (14:30) A AM/PM (02:30 PM) PARA EMAIL/WA ---
+    function convertirHora12h(hora24) {
+        if(!hora24) return "";
+        let [h, m] = hora24.split(':');
+        let hh = parseInt(h);
+        let ampm = hh >= 12 ? 'PM' : 'AM';
+        hh = hh % 12;
+        hh = hh ? hh : 12; // el 0 debe ser 12
+        return hh + ':' + m + ' ' + ampm;
     }
 
     const tarifasSencilloMXN = { "ZONA HOTELERA DE TULUM": { standart: 2970, small: 6300, luxury: 5490 }, "CENTRO DE TULUM": { standart: 2520, small: 5400, luxury: 5400 }, "ZONA HOTELERA DE CANCUN": { standart: 720, small: 1800, luxury: 1512 }, "CENTRO DE CANCUN": { standart: 720, small: 1800, luxury: 1512 }, "COSTA MUJERES": { standart: 1440, small: 2700, luxury: 2610 }, "PLAYA MUJERES": { standart: 1170, small: 3338, luxury: 2340 }, "PUERTO JUAREZ": { standart: 990, small: 2520, luxury: 1980 }, "PLAYA PARAISO": { standart: 1170, small: 3338, luxury: 2340 }, "PUERTO MORELOS": { standart: 990, small: 2520, luxury: 1980 }, "PLAYA DEL CARMEN": { standart: 1440, small: 2700, luxury: 2610 }, "PUERTO AVENTURAS": { standart: 1710, small: 4050, luxury: 3060 }, "AKUMAL": { standart: 2070, small: 4860, luxury: 4230 }, "FELIPE CARRILLO PUERTO": { standart: 8100, small: 19386, luxury: 21870 }, "MAHAHUAL": { standart: 9900, small: 19386, luxury: 17820 }, "BACALAR": { standart: 9900, small: 19386, luxury: 17820 }, "CHETUMAL": { standart: 10000, small: 19386, luxury: 19000 }, "HOLBOX": { standart: 5760, small: 14400, luxury: 11160 }, "VALLADOLID": { standart: 5400, small: 11120, luxury: 15684 }, "MERIDA": { standart: 9900, small: 17820, luxury: 17820 } };
@@ -1345,14 +1279,15 @@
             if(!document.getElementById('termsCheck').checked) { alert("⚠️ Debes leer y aceptar los Términos y Condiciones para continuar."); return; }
             const email = document.getElementById('emailCliente').value;
             
-            // CONSTRUIR LA HORA DESDE LOS SELECTORES
-            const hora = document.getElementById('time-h-ida').value + ':' + document.getElementById('time-m-ida').value + ' ' + document.getElementById('time-ampm-ida').value;
+            // --- CAMBIO: OBTENER HORA DESDE INPUT TYPE=TIME ---
+            const rawHora = document.getElementById('horaIda').value;
             const fecha = document.getElementById('fechaIda').value;
 
             if(email.length < 5) { alert("⚠️ Por favor escribe tu correo electrónico."); return; }
             if(!fecha) { alert("⚠️ Selecciona una fecha."); return; }
-            // Validación de Selectores de hora (si están vacíos el valor es vacío)
-            if(!document.getElementById('time-h-ida').value || !document.getElementById('time-m-ida').value) { alert("⚠️ Selecciona la hora."); return; }
+            if(!rawHora) { alert("⚠️ Selecciona la hora."); return; }
+
+            const hora = convertirHora12h(rawHora); // Convertimos para el texto final
 
             const nombre = document.getElementById('nombreCliente').value;
             const tel = document.getElementById('telefonoCliente').value;
@@ -1374,8 +1309,10 @@
                 if(document.getElementById('tipoServicio').value === 'REDONDO') {
                       fechaVueltaVal = document.getElementById('fechaVuelta').value;
                       if(!fechaVueltaVal) { alert("⚠️ Has seleccionado Ida y Vuelta. Por favor indica la fecha de vuelta."); return; }
-                      if(!document.getElementById('time-h-vuelta').value || !document.getElementById('time-m-vuelta').value) { alert("⚠️ Por favor indica la hora de vuelta."); return; }
-                      horaVueltaVal = document.getElementById('time-h-vuelta').value + ':' + document.getElementById('time-m-vuelta').value + ' ' + document.getElementById('time-ampm-vuelta').value;
+                      
+                      const rawHoraVuelta = document.getElementById('horaVuelta').value;
+                      if(!rawHoraVuelta) { alert("⚠️ Por favor indica la hora de vuelta."); return; }
+                      horaVueltaVal = convertirHora12h(rawHoraVuelta);
                 }
 
                 const codigoUnico = generarCodigo();
@@ -1507,15 +1444,15 @@
     function prepararVenta(datosCard) {
         const codigoUnico = generarCodigo();
         
-        // CONSTRUIR HORAS PARA EL ENVÍO
-        const horaIda = document.getElementById('time-h-ida').value + ':' + document.getElementById('time-m-ida').value + ' ' + document.getElementById('time-ampm-ida').value;
+        // --- CAMBIO: OBTENER HORA ---
+        const rawHora = document.getElementById('horaIda').value;
+        const horaIda = convertirHora12h(rawHora);
+
         let notasFinales = document.getElementById('notasCliente').value;
         
         if(document.getElementById('tipoServicio').value === 'REDONDO') {
-             // Si el usuario eligió redondo y seleccionó horas de vuelta, incluirlas en las notas o en un campo especial
-             // NOTA: Para ventas directas (no personalizado), la fecha de vuelta ya se captura si existe el input, 
-             // pero aquí agregamos la hora de vuelta manualmente al texto.
-             const horaVuelta = document.getElementById('time-h-vuelta').value + ':' + document.getElementById('time-m-vuelta').value + ' ' + document.getElementById('time-ampm-vuelta').value;
+             const rawHoraVuelta = document.getElementById('horaVuelta').value;
+             const horaVuelta = convertirHora12h(rawHoraVuelta);
              const fechaVuelta = document.getElementById('fechaVuelta').value;
              if(fechaVuelta) {
                  notasFinales += ` // REGRESO: ${fechaVuelta} a las ${horaVuelta}`;
