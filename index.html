@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Transfers Riviera | Transporte VIP</title>
+    <title>Luxury Transfers Riviera | VIP Transportation</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -513,7 +513,8 @@
                         <select id="tipoServicio" style="display:none;"><option value="SENCILLO">Sencillo</option><option value="REDONDO">Redondo</option></select>
                         <div style="width: 120px;">
                             <select id="moneda" onchange="limpiarResultados()" style="width:100%; padding: 10px; border-radius:8px; border:1px solid #ccc; font-weight:700; font-family:'Montserrat'; cursor:pointer; background:white; color:#333;">
-                                <option value="MXN">MXN ($)</option><option value="USD">USD ($)</option>
+                                <option value="USD" selected>USD ($)</option>
+                                <option value="MXN">MXN ($)</option>
                             </select>
                         </div>
                     </div>
@@ -1100,7 +1101,7 @@
             document.getElementById('fechaVuelta').setAttribute('min', this.value);
         });
         
-        setLang('es');
+        setLang('en'); // INICIALIZAR EN INGLES
         initSlider();
         adjustScrollMargin();
     };
