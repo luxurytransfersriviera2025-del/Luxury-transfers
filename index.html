@@ -776,7 +776,7 @@
     const airportNameES = "Aeropuerto Internacional de Cancún";
     const airportNameEN = "Cancun International Airport";
 
-    // --- HELPER PARA OBTENER TEXTO PLANO DE TÉRMINOS Y CONDICIONES ---
+    /* --- HELPER PARA OBTENER TEXTO PLANO DE TÉRMINOS Y CONDICIONES PARA EMAIL --- */
     function getTycPlainText(lang) {
         if (lang === 'en') {
             return `TERMS AND CONDITIONS
@@ -1436,7 +1436,7 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
                     notasFinales += ` // REGRESO: ${fechaVueltaVal} a las ${horaVueltaVal}`;
                 }
 
-                const datosCotizacion = { esVenta: false, codigo: codigoUnico, nombre: nombre, telefono: tel, email: email, tipoViaje: document.getElementById('tipoServicio').value + " - " + subtipoTxt, origen: document.getElementById('origen').value, destino: destinoFinal, fecha: fecha, hora: hora, notas: notasFinales, itinerario: document.getElementById('itinerarioCliente').value, vehiculo: "Cotización Especial", precio: "Por Cotizar" };
+                const datosCotizacion = { esVenta: false, codigo: codigoUnico, nombre: nombre, telefono: tel, email: email, tipoViaje: document.getElementById('tipoServicio').value + " - " + subtipoTxt, origen: document.getElementById('origen').value, destino: destinoFinal, fecha: fecha, hora: hora, notas: notasFinales, itinerario: document.getElementById('itinerarioCliente').value, vehiculo: "Cotización Especial", precio: "Por Cotizar", idioma: currentLang };
                 document.getElementById('codigoDisplay').innerText = codigoUnico;
                 iniciarEnvio(datosCotizacion);
                 return;
@@ -1598,7 +1598,8 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
             vuelo: document.getElementById('aerolinea').value + ' ' + document.getElementById('numVuelo').value,
             vehiculo: datosCard.vehiculo,
             precio: datosCard.precio,
-            zona: datosCard.zona
+            zona: datosCard.zona,
+            idioma: currentLang // ENVIAR IDIOMA AL SCRIPT
         };
         document.getElementById('codigoDisplay').innerText = codigoUnico;
         iniciarEnvio(datosVenta);
