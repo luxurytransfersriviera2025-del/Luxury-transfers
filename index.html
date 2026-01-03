@@ -447,9 +447,11 @@
         .btn-wa i { font-size: 24px; }
         .btn-mail { background: #333; color: white; }
 
-        .tyc-content h4 { color: var(--primary-blue); margin-bottom: 5px; margin-top: 15px; font-size: 14px; }
-        .tyc-content ul { padding-left: 20px; margin: 0; font-size: 13px; color: #444; }
-        .tyc-content p { font-size: 13px; color: #444; }
+        /* --- CORRECCION 1: ESTILO TYC JUSTIFICADO Y BONITO --- */
+        .tyc-content { text-align: justify; }
+        .tyc-content h4 { color: var(--primary-blue); margin-bottom: 5px; margin-top: 15px; font-size: 16px; font-weight: 800; font-family: var(--font-title); text-transform: uppercase; }
+        .tyc-content p { font-size: 14px; color: #444; line-height: 1.6; margin-bottom: 10px; }
+        .tyc-content strong { color: #000; }
 
         .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); z-index: 20000; display: none; align-items: center; justify-content: center; flex-direction: column; }
         .spinner { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--action-green); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
@@ -776,82 +778,78 @@
     const airportNameES = "Aeropuerto Internacional de Cancún";
     const airportNameEN = "Cancun International Airport";
 
-    /* --- HELPER PARA OBTENER TEXTO PLANO DE TÉRMINOS Y CONDICIONES --- */
-    function getTycPlainText(lang) {
-        if (lang === 'en') {
-            return `TERMS AND CONDITIONS
+    // --- CORRECCION 1: TYC EN FORMATO HTML DE NUEVO ---
+    const tycHtmlES = `
+        <h4>1. PROCESO DE RESERVACIÓN Y PAGOS</h4>
+        <p><strong>Número de Reserva:</strong> Al completar su solicitud en nuestro sitio web, el sistema generará un número de reserva. Este número es únicamente para seguimiento y no garantiza la confirmación del servicio.</p>
+        <p><strong>Confirmación Oficial:</strong> El servicio se considerará formalmente confirmado y la unidad quedará bloqueada en agenda únicamente tras la recepción del anticipo del 50% y el envío de nuestra confirmación oficial por parte de nuestro equipo.</p>
+        <p><strong>Liquidación:</strong> En servicios con más de 72 horas de anticipación, el saldo restante debe pagarse 72 horas antes del viaje para pagos digitales. En servicios de última hora (menos de 72 horas), los pagos digitales requieren el 100% al reservar; en efectivo, se requiere el 50% de anticipo digital y el resto al abordar.</p>
 
-1. BOOKING PROCESS AND PAYMENTS
-Booking Number: Upon completing your request on our website, the system will generate a booking number. This number is for tracking purposes only and does not guarantee service confirmation.
-Official Confirmation: Service is formally confirmed, and the vehicle is blocked on our schedule only upon receipt of the 50% deposit and the issuance of our official confirmation.
-Balance Payment: For services booked more than 72 hours in advance, the remaining balance must be paid 72 hours before the trip for digital payments. For last-minute bookings (less than 72 hours), digital payments require 100% payment at the time of booking. For cash payments, a 50% digital deposit is required as a guarantee, with the remaining balance paid to the driver upon boarding.
+        <h4>2. PRIVACIDAD Y PROTECCIÓN DE DATOS</h4>
+        <p><strong>Confidencialidad:</strong> Luxury Transfers Riviera se compromete a utilizar su información personal (nombre, teléfono, correo y detalles de vuelo) estrictamente para la gestión de su traslado.</p>
+        <p><strong>Seguridad:</strong> Sus datos son tratados con total discreción y no serán compartidos con terceros ajenos a la operación, garantizando la privacidad de su itinerario en todo momento.</p>
 
-2. PRIVACY AND DATA PROTECTION
-Confidentiality: Luxury Transfers Riviera commits to using your personal information (name, phone, email, and flight details) strictly for managing your transfer.
-Security: Your data is handled with total discretion and will not be shared with third parties outside of our operations, guaranteeing the privacy of your itinerary at all times.
+        <h4>3. SEGUROS Y DESLINDE DE RESPONSABILIDAD MÉDICA</h4>
+        <p><strong>Seguro de Viajero:</strong> Nuestras unidades cuentan con Póliza de Responsabilidad Civil vigente conforme a la ley federal mexicana por accidente de tránsito.</p>
+        <p><strong>Exclusión:</strong> La empresa queda exenta de responsabilidad en caso de complicaciones de salud o fallecimiento derivados de causas naturales o condiciones médicas preexistentes del pasajero.</p>
 
-3. INSURANCE AND MEDICAL LIABILITY DISCLAIMER
-Traveler Insurance: Our vehicles carry active Civil Liability Insurance as required by Mexican federal law for traffic accidents.
-Exclusion: The company is exempt from liability for health complications or death resulting from natural causes or pre-existing medical conditions of the passenger.
+        <h4>4. POLÍTICAS DE CANCELACIÓN Y REEMBOLSOS</h4>
+        <p><strong>Cancelación mayor a 24 horas:</strong> Se otorgará el reembolso del monto depositado, menos los cargos no reembolsables por procesamiento bancario que la plataforma de pago retenga.</p>
+        <p><strong>Cancelación menor a 24 horas o No-Show:</strong> No aplica reembolso ni crédito.</p>
+        <p><strong>Fuerza Mayor:</strong> No nos responsabilizamos por retrasos o pérdida de vuelos debidos a tráfico, accidentes de terceros, bloqueos viales o clima extremo.</p>
 
-4. CANCELLATION AND REFUND POLICIES
-Cancellations > 24 hours: A refund of the deposited amount will be granted, minus non-refundable bank processing fees charged by the payment platform.
-Cancellations < 24 hours or No-Show: No refunds or credits will apply.
-Force Majeure: The company is not responsible for delays or missed flights due to external factors such as heavy traffic, third-party accidents, road blockades, or extreme weather.
+        <h4>5. TIEMPOS DE ESPERA Y TOLERANCIA</h4>
+        <p><strong>Aeropuerto:</strong> El tiempo máximo de espera es de 60 minutos tras el aterrizaje. Al minuto 61 sin contacto, la unidad podrá retirarse y se marcará como No-Show.</p>
+        <p><strong>Hotel o Airbnb:</strong> La tolerancia es de 20 minutos. Tras este tiempo, la unidad podrá retirarse. El tiempo extra solicitado por el cliente podría generar un cargo adicional sujeto a disponibilidad.</p>
 
-5. WAITING TIMES AND TOLERANCE
-Airport Arrivals: Maximum waiting time is 60 minutes after the actual flight landing. If there is no contact from the passenger after 61 minutes, the vehicle may depart and will be marked as a No-Show.
-Hotel or Airbnb Pickups: Maximum tolerance is 20 minutes. After this time, the vehicle may depart to fulfill other scheduled services. Additional waiting time requested by the client may incur an extra charge, subject to availability.
+        <h4>6. EQUIPAJE, OBJETOS DE VALOR Y SUSTANCIAS</h4>
+        <p><strong>Responsabilidad:</strong> El pasajero es el único responsable de sus pertenencias. No nos hacemos responsables por objetos olvidados o daños menores al equipaje por manejo normal.</p>
+        <p><strong>Sustancias Ilícitas:</strong> Prohibido el transporte de drogas o armas. El incumplimiento causará la interrupción inmediata del servicio sin reembolso.</p>
 
-6. LUGGAGE, VALUABLES, AND SUBSTANCES
-Responsibility: Passengers are solely responsible for their belongings. We are not responsible for forgotten or lost items (jewelry, electronics, cash) or minor luggage damage from normal handling.
-Illegal Substances: Transporting drugs or weapons is strictly prohibited. Non-compliance will result in immediate termination of service without a refund.
+        <h4>7. CARGOS POR LIMPIEZA Y DAÑOS</h4>
+        <p><strong>Multa por Higiene:</strong> El cliente acepta un cargo de $300 MXN ($17 USD) por limpieza profunda en caso de vómito, derrames de comida o manchas graves en la tapicería.</p>
+        <p><strong>Daños Físicos:</strong> Cualquier daño intencional o accidental a la unidad será facturado al costo total de reparación.</p>
 
-7. CLEANING FEES AND VEHICLE DAMAGE
-Sanitation Fee: The client agrees to an automatic charge of $300 MXN ($17 USD) for deep cleaning in the event of vomiting, food/drink spills, or severe upholstery stains.
-Physical Damage: Any intentional or accidental damage to the vehicle (screens, windows, seats) will be billed at the full cost of repair at an authorized shop.
+        <h4>8. VEHÍCULOS Y CONDUCTA</h4>
+        <p><strong>Referencia Visual:</strong> Las imágenes son ilustrativas. Se garantiza la categoría contratada, pero el modelo o color pueden variar. Ante un imprevisto técnico, se enviará una unidad de apoyo para garantizar su llegada al destino.</p>
+        <p><strong>Derecho de Admisión:</strong> El chofer podrá negar el servicio ante conductas agresivas o estado inconveniente de los pasajeros que ponga en riesgo la seguridad.</p>
+    `;
 
-8. VEHICLES AND CONDUCT
-Visual Reference: Website images are illustrative. We guarantee the booked category, but the specific make, model, or color may vary. In the event of a technical issue, a support unit will be dispatched to guarantee your arrival at the destination.
-Right of Admission: The driver may refuse service or interrupt the journey due to aggressive behavior or intoxication that jeopardizes the safety of the staff or the vehicle.`;
-        } else {
-            return `TÉRMINOS Y CONDICIONES
+    const tycHtmlEN = `
+        <h4>1. BOOKING PROCESS AND PAYMENTS</h4>
+        <p><strong>Booking Number:</strong> Upon completing your request on our website, the system will generate a booking number. This number is for tracking purposes only and does not guarantee service confirmation.</p>
+        <p><strong>Official Confirmation:</strong> Service is formally confirmed, and the vehicle is blocked on our schedule only upon receipt of the 50% deposit and the issuance of our official confirmation.</p>
+        <p><strong>Balance Payment:</strong> For services booked more than 72 hours in advance, the remaining balance must be paid 72 hours before the trip for digital payments. For last-minute bookings (less than 72 hours), digital payments require 100% payment at the time of booking. For cash payments, a 50% digital deposit is required as a guarantee, with the remaining balance paid to the driver upon boarding.</p>
 
-1. PROCESO DE RESERVACIÓN Y PAGOS
-Número de Reserva: Al completar su solicitud en nuestro sitio web, el sistema generará un número de reserva. Este número es únicamente para seguimiento y no garantiza la confirmación del servicio.
-Confirmación Oficial: El servicio se considerará formalmente confirmado y la unidad quedará bloqueada en agenda únicamente tras la recepción del anticipo del 50% y el envío de nuestra confirmación oficial por parte de nuestro equipo.
-Liquidación: En servicios con más de 72 horas de anticipación, el saldo restante debe pagarse 72 horas antes del viaje para pagos digitales. En servicios de última hora (menos de 72 horas), los pagos digitales requieren el 100% al reservar; en efectivo, se requiere el 50% de anticipo digital y el resto al abordar.
+        <h4>2. PRIVACY AND DATA PROTECTION</h4>
+        <p><strong>Confidentiality:</strong> Luxury Transfers Riviera commits to using your personal information (name, phone, email, and flight details) strictly for managing your transfer.</p>
+        <p><strong>Security:</strong> Your data is handled with total discretion and will not be shared with third parties outside of our operations, guaranteeing the privacy of your itinerary at all times.</p>
 
-2. PRIVACIDAD Y PROTECCIÓN DE DATOS
-Confidencialidad: Luxury Transfers Riviera se compromete a utilizar su información personal (nombre, teléfono, correo y detalles de vuelo) estrictamente para la gestión de su traslado.
-Seguridad: Sus datos son tratados con total discreción y no serán compartidos con terceros ajenos a la operación, garantizando la privacidad de su itinerario en todo momento.
+        <h4>3. INSURANCE AND MEDICAL LIABILITY DISCLAIMER</h4>
+        <p><strong>Traveler Insurance:</strong> Our vehicles carry active Civil Liability Insurance as required by Mexican federal law for traffic accidents.</p>
+        <p><strong>Exclusion:</strong> The company is exempt from liability for health complications or death resulting from natural causes or pre-existing medical conditions of the passenger.</p>
 
-3. SEGUROS Y DESLINDE DE RESPONSABILIDAD MÉDICA
-Seguro de Viajero: Nuestras unidades cuentan con Póliza de Responsabilidad Civil vigente conforme a la ley federal mexicana por accidente de tránsito.
-Exclusión: La empresa queda exenta de responsabilidad en caso de complicaciones de salud o fallecimiento derivados de causas naturales o condiciones médicas preexistentes del pasajero.
+        <h4>4. CANCELLATION AND REFUND POLICIES</h4>
+        <p><strong>Cancellations > 24 hours:</strong> A refund of the deposited amount will be granted, minus non-refundable bank processing fees charged by the payment platform.</p>
+        <p><strong>Cancellations < 24 hours or No-Show:</strong> No refunds or credits will apply.</p>
+        <p><strong>Force Majeure:</strong> The company is not responsible for delays or missed flights due to external factors such as heavy traffic, third-party accidents, road blockades, or extreme weather.</p>
 
-4. POLÍTICAS DE CANCELACIÓN Y REEMBOLSOS
-Cancelación mayor a 24 horas: Se otorgará el reembolso del monto depositado, menos los cargos no reembolsables por procesamiento bancario que la plataforma de pago retenga.
-Cancelación menor a 24 horas o No-Show: No aplica reembolso ni crédito.
-Fuerza Mayor: No nos responsabilizamos por retrasos o pérdida de vuelos debidos a tráfico, accidentes de terceros, bloqueos viales o clima extremo.
+        <h4>5. WAITING TIMES AND TOLERANCE</h4>
+        <p><strong>Airport Arrivals:</strong> Maximum waiting time is 60 minutes after the actual flight landing. If there is no contact from the passenger after 61 minutes, the vehicle may depart and will be marked as a No-Show.</p>
+        <p><strong>Hotel or Airbnb Pickups:</strong> Maximum tolerance is 20 minutes. After this time, the vehicle may depart to fulfill other scheduled services. Additional waiting time requested by the client may incur an extra charge, subject to availability.</p>
 
-5. TIEMPOS DE ESPERA Y TOLERANCIA
-Aeropuerto: El tiempo máximo de espera es de 60 minutos tras el aterrizaje. Al minuto 61 sin contacto, la unidad podrá retirarse y se marcará como No-Show.
-Hotel o Airbnb: La tolerancia es de 20 minutos. Tras este tiempo, la unidad podrá retirarse. El tiempo extra solicitado por el cliente podría generar un cargo adicional sujeto a disponibilidad.
+        <h4>6. LUGGAGE, VALUABLES, AND SUBSTANCES</h4>
+        <p><strong>Responsibility:</strong> Passengers are solely responsible for their belongings. We are not responsible for forgotten or lost items (jewelry, electronics, cash) or minor luggage damage from normal handling.</p>
+        <p><strong>Illegal Substances:</strong> Transporting drugs or weapons is strictly prohibited. Non-compliance will result in immediate termination of service without a refund.</p>
 
-6. EQUIPAJE, OBJETOS DE VALOR Y SUSTANCIAS
-Responsabilidad: El pasajero es el único responsable de sus pertenencias. No nos hacemos responsables por objetos olvidados o daños menores al equipaje por manejo normal.
-Sustancias Ilícitas: Prohibido el transporte de drogas o armas. El incumplimiento causará la interrupción inmediata del servicio sin reembolso.
+        <h4>7. CLEANING FEES AND VEHICLE DAMAGE</h4>
+        <p><strong>Sanitation Fee:</strong> The client agrees to an automatic charge of $300 MXN ($17 USD) for deep cleaning in the event of vomiting, food/drink spills, or severe upholstery stains.</p>
+        <p><strong>Physical Damage:</strong> Any intentional or accidental damage to the vehicle (screens, windows, seats) will be billed at the full cost of repair at an authorized shop.</p>
 
-7. CARGOS POR LIMPIEZA Y DAÑOS
-Multa por Higiene: El cliente acepta un cargo de 300 MXN (17 USD) por limpieza profunda en caso de vómito, derrames de comida o manchas graves en la tapicería.
-Daños Físicos: Cualquier daño intencional o accidental a la unidad será facturado al costo total de reparación.
-
-8. VEHÍCULOS Y CONDUCTA
-Referencia Visual: Las imágenes son ilustrativas. Se garantiza la categoría contratada, pero el modelo o color pueden variar. Ante un imprevisto técnico, se enviará una unidad de apoyo para garantizar su llegada al destino.
-Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresivas o estado inconveniente de los pasajeros que ponga en riesgo la seguridad.`;
-        }
-    }
+        <h4>8. VEHICLES AND CONDUCT</h4>
+        <p><strong>Visual Reference:</strong> Website images are illustrative. We guarantee the booked category, but the specific make, model, or color may vary. In the event of a technical issue, a support unit will be dispatched to guarantee your arrival at the destination.</p>
+        <p><strong>Right of Admission:</strong> The driver may refuse service or interrupt the journey due to aggressive behavior or intoxication that jeopardizes the safety of the staff or the vehicle.</p>
+    `;
 
     // --- DICCIONARIO DE TRADUCCIÓN ---
     const translations = {
@@ -902,7 +900,7 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
             // MODALES Y TYC ESPAÑOL
             tycTitle: "Términos y Condiciones",
             btnClose: "Cerrar <i class='fas fa-times'></i>",
-            tycContent: "", // Se llena dinámicamente con getTycPlainText
+            tycContent: tycHtmlES, // USA EL HTML BONITO
             btnAcceptTyc: "HE LEÍDO Y ACEPTO",
             
             loadingText: "GENERANDO RESERVA...",
@@ -923,7 +921,6 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
             valToBeQuoted: "Por Cotizar",
             labelReturnEmail: "REGRESO",
 
-            // NUEVOS CAMPOS: Traducción para mensajes de WhatsApp/Mail
             waGreetingConfirm: "Hola, quiero *CONFIRMAR* el siguiente servicio:",
             waGreetingQuote: "Hola, quiero *COTIZAR* el siguiente servicio:",
             waLabels: {
@@ -988,7 +985,7 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
 
             tycTitle: "Terms & Conditions",
             btnClose: "Close <i class='fas fa-times'></i>",
-            tycContent: "", 
+            tycContent: tycHtmlEN, // USA EL HTML BONITO
             btnAcceptTyc: "I HAVE READ AND AGREE",
             
             loadingText: "GENERATING BOOKING...",
@@ -1009,7 +1006,6 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
             valToBeQuoted: "To Be Quoted",
             labelReturnEmail: "RETURN",
 
-            // NUEVOS CAMPOS EN INGLÉS
             waGreetingConfirm: "Hello, I would like to *CONFIRM* the following service:",
             waGreetingQuote: "Hello, I would like to *REQUEST A QUOTE* for:",
             waLabels: {
@@ -1149,7 +1145,7 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
         // ACTUALIZACIÓN DE TEXTOS EN MODALES Y BOTONES CERRAR
         document.getElementById('tyc-title').innerText = t.tycTitle;
         // Solo actualizar el contenido si tenemos el texto completo, usamos el helper
-        document.getElementById('tyc-body').innerHTML = getTycPlainText(currentLang).replace(/\n/g, '<br>'); 
+        document.getElementById('tyc-body').innerHTML = t.tycContent;
 
         document.getElementById('btn-accept-tyc').innerText = t.btnAcceptTyc;
         document.getElementById('btn-close-tyc').innerHTML = t.btnClose; 
@@ -1213,7 +1209,7 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
     }
 
     function abrirTyC() { 
-        document.getElementById('tyc-body').innerHTML = getTycPlainText(currentLang).replace(/\n/g, '<br>');
+        document.getElementById('tyc-body').innerHTML = translations[currentLang].tycContent;
         document.getElementById('modalTyC').style.display = 'flex'; 
     }
     function cerrarTyC() { document.getElementById('modalTyC').style.display = 'none'; }
@@ -1583,15 +1579,12 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
         baseText += `%0A%0A*${l.name}:* ${data.nombre}`;
         
         const subject = encodeURIComponent("Solicitud " + data.codigo + " - " + data.nombre);
+        
+        // CORRECCION 2: Eliminar TyC del Mail y WA
         const mailBody = encodeURIComponent(baseText.replace(/%0A/g, "\n").replace(/\*/g, "")); 
-        
-        let tyc = getTycPlainText(currentLang);
-        data.terminos = tyc; 
-        
-        const mailBodyConTyc = encodeURIComponent((baseText + "\n\n------------------------\n" + tyc).replace(/%0A/g, "\n").replace(/\*/g, ""));
 
         document.getElementById('btnWhatsapp').href = `https://wa.me/529842411158?text=${baseText}`; 
-        document.getElementById('btnMail').href = `mailto:reservas@luxurytransfersriviera.com.mx?subject=${subject}&body=${mailBodyConTyc}`; 
+        document.getElementById('btnMail').href = `mailto:reservas@luxurytransfersriviera.com.mx?subject=${subject}&body=${mailBody}`; 
 
         fetch(SCRIPT_URL, {
             method: 'POST', mode: 'no-cors', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)
