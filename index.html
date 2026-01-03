@@ -447,7 +447,7 @@
         .btn-wa i { font-size: 24px; }
         .btn-mail { background: #333; color: white; }
 
-        /* --- CORRECCION 1: ESTILO TYC JUSTIFICADO Y BONITO --- */
+        /* --- ESTILO TYC JUSTIFICADO Y BONITO --- */
         .tyc-content { text-align: justify; }
         .tyc-content h4 { color: var(--primary-blue); margin-bottom: 5px; margin-top: 15px; font-size: 16px; font-weight: 800; font-family: var(--font-title); text-transform: uppercase; }
         .tyc-content p { font-size: 14px; color: #444; line-height: 1.6; margin-bottom: 10px; }
@@ -851,6 +851,15 @@
         <p><strong>Right of Admission:</strong> The driver may refuse service or interrupt the journey due to aggressive behavior or intoxication that jeopardizes the safety of the staff or the vehicle.</p>
     `;
 
+    /* --- HELPER PARA OBTENER TEXTO PLANO DE TÉRMINOS Y CONDICIONES (Solo para el Script si lo requiere) --- */
+    function getTycPlainText(lang) {
+        if (lang === 'en') {
+            return `TERMS AND CONDITIONS\n\n1. BOOKING PROCESS... (Resumido para backend si aplica)`;
+        } else {
+            return `TÉRMINOS Y CONDICIONES\n\n1. PROCESO DE RESERVACIÓN... (Resumido para backend si aplica)`;
+        }
+    }
+
     // --- DICCIONARIO DE TRADUCCIÓN ---
     const translations = {
         es: {
@@ -903,6 +912,21 @@
             tycContent: tycHtmlES, // USA EL HTML BONITO
             btnAcceptTyc: "HE LEÍDO Y ACEPTO",
             
+            // ALERTAS TRADUCIDAS
+            alertTerms: "⚠️ Debes leer y aceptar los Términos y Condiciones para continuar.",
+            alertEmail: "⚠️ Por favor escribe tu correo electrónico.",
+            alertDate: "⚠️ Selecciona una fecha.",
+            alertTime: "⚠️ Selecciona la hora.",
+            alertName: "Escribe tu nombre.",
+            alertPhone: "Escribe tu teléfono.",
+            alertPickup: "⚠️ En servicio personalizado, debes indicar el Lugar de Recogida.",
+            alertDropoff: "⚠️ En servicio personalizado, debes indicar el Lugar de Destino.",
+            alertReturnDate: "⚠️ Has seleccionado Ida y Vuelta. Por favor indica la fecha de vuelta.",
+            alertReturnTime: "⚠️ Por favor indica la hora de vuelta.",
+            alertLocation: "Indica el lugar.",
+            alertDirtRoad: "📍 Zona de Terracería / Sian Ka'an detectada (Sur de Estrellita).\nPor las condiciones del camino, esta zona requiere cotización especial.\n\nPor favor usa el botón 'Servicio Personalizado'.",
+            alertNoZone: "⚠️ Lo sentimos, no pudimos detectar automáticamente la zona o ubicación.\n\nEsto puede deberse a que el autocompletado de Google Maps no cargó correctamente (Falta API Key válida) o la dirección escrita no está en nuestra lista exacta.\n\nPor favor intenta seleccionar 'Personalizado' para enviar una solicitud manual.",
+
             loadingText: "GENERANDO RESERVA...",
 
             modalTitleReceived: "¡Solicitud Recibida!",
@@ -988,6 +1012,21 @@
             tycContent: tycHtmlEN, // USA EL HTML BONITO
             btnAcceptTyc: "I HAVE READ AND AGREE",
             
+            // ALERTAS TRADUCIDAS
+            alertTerms: "⚠️ You must read and agree to the Terms & Conditions to continue.",
+            alertEmail: "⚠️ Please enter your email address.",
+            alertDate: "⚠️ Please select a date.",
+            alertTime: "⚠️ Please select a time.",
+            alertName: "Enter your name.",
+            alertPhone: "Enter your phone number.",
+            alertPickup: "⚠️ For custom service, you must indicate the Pick-up Location.",
+            alertDropoff: "⚠️ For custom service, you must indicate the Drop-off Location.",
+            alertReturnDate: "⚠️ You selected Round Trip. Please indicate the return date.",
+            alertReturnTime: "⚠️ Please indicate the return time.",
+            alertLocation: "Please indicate the location.",
+            alertDirtRoad: "📍 Dirt Road / Sian Ka'an zone detected (South of Estrellita).\nDue to road conditions, this area requires a special quote.\n\nPlease use the 'Custom Service' button.",
+            alertNoZone: "⚠️ Sorry, we could not automatically detect the zone or location.\n\nThis may be because Google Maps autocomplete didn't load correctly (Missing valid API Key) or the address typed is not in our exact list.\n\nPlease try selecting 'Custom' to send a manual request.",
+
             loadingText: "GENERATING BOOKING...",
 
             modalTitleReceived: "Request Received!",
@@ -1006,6 +1045,7 @@
             valToBeQuoted: "To Be Quoted",
             labelReturnEmail: "RETURN",
 
+            // NUEVOS CAMPOS EN INGLÉS
             waGreetingConfirm: "Hello, I would like to *CONFIRM* the following service:",
             waGreetingQuote: "Hello, I would like to *REQUEST A QUOTE* for:",
             waLabels: {
@@ -1349,47 +1389,46 @@
 
     function cotizar() {
         try {
-            if(!document.getElementById('termsCheck').checked) { alert("⚠️ Debes leer y aceptar los Términos y Condiciones para continuar."); return; }
+            // CORRECCION FINAL: ALERTA TRADUCIDA SEGÚN IDIOMA
+            const t = translations[currentLang];
+
+            if(!document.getElementById('termsCheck').checked) { alert(t.alertTerms); return; }
             const email = document.getElementById('emailCliente').value;
             
             const rawHora = document.getElementById('horaIda').value;
             const fecha = document.getElementById('fechaIda').value;
 
-            if(email.length < 5) { alert("⚠️ Por favor escribe tu correo electrónico."); return; }
-            if(!fecha) { alert("⚠️ Selecciona una fecha."); return; }
-            if(!rawHora) { alert("⚠️ Selecciona la hora."); return; }
+            if(email.length < 5) { alert(t.alertEmail); return; }
+            if(!fecha) { alert(t.alertDate); return; }
+            if(!rawHora) { alert(t.alertTime); return; }
 
             const hora = convertirHora12h(rawHora); 
 
             const nombre = document.getElementById('nombreCliente').value;
             const tel = document.getElementById('telefonoCliente').value;
-            if(nombre.length < 2) { alert("Escribe tu nombre."); return; }
-            if(tel.length < 5) { alert("Escribe tu teléfono."); return; }
+            if(nombre.length < 2) { alert(t.alertName); return; }
+            if(tel.length < 5) { alert(t.alertPhone); return; }
             
-            // CORRECCION 3: Usamos el diccionario para los textos del correo
-            const t = translations[currentLang];
-
             if (direccionMode === 'personalizado') {
                 const subtipo = document.getElementById('subtipoPersonalizado').value;
                 const subtipoTxt = document.getElementById('subtipoPersonalizado').options[document.getElementById('subtipoPersonalizado').selectedIndex].text;
                 let destinoFinal = (subtipo === 'HORAS') ? document.getElementById('horasSeleccionadas').value : document.getElementById('destino').value;
                 
-                if(!document.getElementById('origen').value) { alert("⚠️ En servicio personalizado, debes indicar el Lugar de Recogida."); return; }
-                if(subtipo !== 'HORAS' && !document.getElementById('destino').value) { alert("⚠️ En servicio personalizado, debes indicar el Lugar de Destino."); return; }
+                if(!document.getElementById('origen').value) { alert(t.alertPickup); return; }
+                if(subtipo !== 'HORAS' && !document.getElementById('destino').value) { alert(t.alertDropoff); return; }
                 
                 let fechaVueltaVal = "";
                 let horaVueltaVal = "";
                 if(document.getElementById('tipoServicio').value === 'REDONDO') {
                       fechaVueltaVal = document.getElementById('fechaVuelta').value;
-                      if(!fechaVueltaVal) { alert("⚠️ Has seleccionado Ida y Vuelta. Por favor indica la fecha de vuelta."); return; }
+                      if(!fechaVueltaVal) { alert(t.alertReturnDate); return; }
                       
                       const rawHoraVuelta = document.getElementById('horaVuelta').value;
-                      if(!rawHoraVuelta) { alert("⚠️ Por favor indica la hora de vuelta."); return; }
+                      if(!rawHoraVuelta) { alert(t.alertReturnTime); return; }
                       horaVueltaVal = convertirHora12h(rawHoraVuelta);
                 }
 
                 const codigoUnico = generarCodigo();
-                // CORRECCION 3: Etiqueta de regreso traducida
                 let notasFinales = document.getElementById('notasCliente').value;
                 if(horaVueltaVal) {
                     notasFinales += ` // ${t.labelReturnEmail}: ${fechaVueltaVal} a las ${horaVueltaVal}`;
@@ -1406,8 +1445,8 @@
             if (tipo === 'REDONDO') {
                 const fVuelta = document.getElementById('fechaVuelta').value;
                 const hVuelta = document.getElementById('horaVuelta').value;
-                if (!fVuelta) { alert("⚠️ Para el viaje Redondo, por favor selecciona la Fecha de Vuelta."); return; }
-                if (!hVuelta) { alert("⚠️ Para el viaje Redondo, por favor selecciona la Hora de Vuelta."); return; }
+                if (!fVuelta) { alert(t.alertReturnDate); return; }
+                if (!hVuelta) { alert(t.alertReturnTime); return; }
             }
 
             const moneda = document.getElementById('moneda').value;
@@ -1426,10 +1465,10 @@
                 cpBusqueda = document.getElementById('cpOrigen').value;
             }
             
-            if (lugarBusqueda.length < 3) { alert("Indica el lugar."); return; }
+            if (lugarBusqueda.length < 3) { alert(t.alertLocation); return; }
             let zonaDetectada = "";
             if (!isNaN(latBusqueda) && !isNaN(lonBusqueda)) {
-                if (latBusqueda < 20.1215 && latBusqueda > 19.0 && lonBusqueda > -87.6) { alert("📍 Zona de Terracería / Sian Ka'an detectada (Sur de Estrellita).\nPor las condiciones del camino, esta zona requiere cotización especial.\n\nPor favor usa el botón 'Servicio Personalizado'."); return; }
+                if (latBusqueda < 20.1215 && latBusqueda > 19.0 && lonBusqueda > -87.6) { alert(t.alertDirtRoad); return; }
                 zonaDetectada = detectarZonaPorGPS(latBusqueda, lonBusqueda);
             }
             if (!zonaDetectada && cpBusqueda) { zonaDetectada = detectarZonaPorCP(cpBusqueda); }
@@ -1443,7 +1482,7 @@
                 }
             }
             if (!zonaDetectada) { 
-                alert("⚠️ Lo sentimos, no pudimos detectar automáticamente la zona o ubicación.\n\nEsto puede deberse a que el autocompletado de Google Maps no cargó correctamente (Falta API Key válida) o la dirección escrita no está en nuestra lista exacta.\n\nPor favor intenta seleccionar 'Personalizado' para enviar una solicitud manual."); 
+                alert(t.alertNoZone); 
                 return; 
             }
 
@@ -1534,7 +1573,6 @@
              const horaVuelta = convertirHora12h(rawHoraVuelta);
              const fechaVuelta = document.getElementById('fechaVuelta').value;
              if(fechaVuelta) {
-                 // CORRECCION 3: Etiqueta de regreso traducida
                  notasFinales += ` // ${t.labelReturnEmail}: ${fechaVuelta} a las ${horaVuelta}`;
              }
         }
@@ -1565,13 +1603,11 @@
         if(SCRIPT_URL.includes("PEGAR")) { alert("Falta configurar la URL del Script."); return; }
         document.getElementById('loadingOverlay').style.display = 'flex';
         
-        // CORRECCIÓN FINAL: Usar traducciones dinámicas para el mensaje de WhatsApp/Mail
-        const t = translations[currentLang]; // Usar el idioma actual seleccionado
-        const l = t.waLabels; // Alias para escribir menos
+        const t = translations[currentLang]; 
+        const l = t.waLabels; 
         
         let saludo = data.esVenta ? t.waGreetingConfirm : t.waGreetingQuote;
         
-        // Construcción del mensaje usando etiquetas traducidas
         let baseText = `${saludo}%0A%0A*${l.code}:* ${data.codigo}%0A*${l.type}:* ${data.tipoViaje}%0A*${l.veh}:* ${data.vehiculo}%0A*${l.orig}:* ${data.origen}%0A*${l.dest}:* ${data.destino}%0A*${l.date}:* ${data.fecha} - *${l.time}:* ${data.hora}%0A*${l.pax}:* ${document.getElementById('pasajeros').value}`;
         
         if(data.precio && data.precio !== t.valToBeQuoted) { baseText += `%0A*${l.price}:* ${data.precio}`; }
@@ -1580,7 +1616,7 @@
         
         const subject = encodeURIComponent("Solicitud " + data.codigo + " - " + data.nombre);
         
-        // CORRECCION 2: Eliminar TyC del Mail y WA
+        // CORRECCION 2: Sin TyC en el mail y WA
         const mailBody = encodeURIComponent(baseText.replace(/%0A/g, "\n").replace(/\*/g, "")); 
 
         document.getElementById('btnWhatsapp').href = `https://wa.me/529842411158?text=${baseText}`; 
@@ -1591,7 +1627,6 @@
         })
         .then(() => {
             document.getElementById('loadingOverlay').style.display = 'none';
-            //const t = translations[currentLang]; // Ya definida arriba
             
             if(data.esVenta) {
                 document.getElementById('modalTitle').innerText = t.modalTitleReceived;
