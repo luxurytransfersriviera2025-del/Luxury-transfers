@@ -905,12 +905,10 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
             tycContent: "", // Se llena dinámicamente con getTycPlainText
             btnAcceptTyc: "HE LEÍDO Y ACEPTO",
             
-            // CORRECCION 1: TEXTO DE CARGA
             loadingText: "GENERANDO RESERVA...",
 
-            // CORRECCION 2: MODAL SOLICITUD (COTIZACION)
-            modalTitleReceived: "¡Solicitud Recibida!", // Para Venta Directa
-            modalTitleSent: "¡Solicitud Enviada!", // Para Cotización
+            modalTitleReceived: "¡Solicitud Recibida!",
+            modalTitleSent: "¡Solicitud Enviada!",
             modalTextReceived: "Hemos recibido tu solicitud. Un asesor te contactará lo más breve posible para finalizar tu reserva.",
             modalTextSent: "Hemos recibido tu solicitud. Un asesor te contactará lo más breve posible para darte un precio.",
             
@@ -921,12 +919,18 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
             btnModalWa: '<i class="fab fa-whatsapp"></i> Confirmar por WhatsApp',
             btnModalMail: '<i class="fas fa-envelope"></i> Enviar Correo',
             
-            // CORRECCION 3: EMAIL DATA
             valSpecialQuote: "Cotización Especial",
             valToBeQuoted: "Por Cotizar",
-            labelReturnEmail: "REGRESO", // Etiqueta para las notas
+            labelReturnEmail: "REGRESO",
 
-            // FEATURES DE TARJETA
+            // NUEVOS CAMPOS: Traducción para mensajes de WhatsApp/Mail
+            waGreetingConfirm: "Hola, quiero *CONFIRMAR* el siguiente servicio:",
+            waGreetingQuote: "Hola, quiero *COTIZAR* el siguiente servicio:",
+            waLabels: {
+                code: "CÓDIGO", type: "TIPO", veh: "VEHÍCULO", orig: "ORIGEN", dest: "DESTINO", 
+                date: "FECHA", time: "HORA", pax: "PASAJEROS", price: "PRECIO WEB", name: "Mi Nombre"
+            },
+
             cardFeatures: {
                 monitor: "Monitoreo de Vuelo",
                 ac: "Aire Acondicionado",
@@ -982,18 +986,15 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
             footerText: "&copy; 2026 Luxury Transfers Riviera. All rights reserved.",
             resultsFor: "Results for",
 
-            // MODALES Y TYC ENGLISH
             tycTitle: "Terms & Conditions",
             btnClose: "Close <i class='fas fa-times'></i>",
             tycContent: "", 
             btnAcceptTyc: "I HAVE READ AND AGREE",
             
-            // CORRECCION 1: TEXTO DE CARGA
             loadingText: "GENERATING BOOKING...",
 
-            // CORRECCION 2: MODAL SOLICITUD (COTIZACION)
-            modalTitleReceived: "Request Received!", // Para Venta
-            modalTitleSent: "Request Sent!", // Para Cotización
+            modalTitleReceived: "Request Received!",
+            modalTitleSent: "Request Sent!",
             modalTextReceived: "We have received your request. An advisor will contact you shortly to finalize your reservation.",
             modalTextSent: "We have received your request. An advisor will contact you shortly with the price.",
 
@@ -1004,12 +1005,18 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
             btnModalWa: '<i class="fab fa-whatsapp"></i> Confirm via WhatsApp',
             btnModalMail: '<i class="fas fa-envelope"></i> Send Email',
 
-            // CORRECCION 3: EMAIL DATA
             valSpecialQuote: "Special Quote",
             valToBeQuoted: "To Be Quoted",
-            labelReturnEmail: "RETURN", // Etiqueta para las notas
+            labelReturnEmail: "RETURN",
 
-            // FEATURES DE TARJETA
+            // NUEVOS CAMPOS EN INGLÉS
+            waGreetingConfirm: "Hello, I would like to *CONFIRM* the following service:",
+            waGreetingQuote: "Hello, I would like to *REQUEST A QUOTE* for:",
+            waLabels: {
+                code: "CODE", type: "TYPE", veh: "VEHICLE", orig: "PICKUP", dest: "DESTINATION", 
+                date: "DATE", time: "TIME", pax: "PASSENGERS", price: "WEB PRICE", name: "My Name"
+            },
+
             cardFeatures: {
                 monitor: "Flight Monitoring",
                 ac: "Air Conditioning",
@@ -1561,11 +1568,20 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
     function iniciarEnvio(data) {
         if(SCRIPT_URL.includes("PEGAR")) { alert("Falta configurar la URL del Script."); return; }
         document.getElementById('loadingOverlay').style.display = 'flex';
-        const pax = document.getElementById('pasajeros').value;
-        let saludo = data.esVenta ? "Hola, quiero *CONFIRMAR* el siguiente servicio:" : "Hola, quiero *COTIZAR* el siguiente servicio:";
-        let baseText = `${saludo}%0A%0A*CÓDIGO:* ${data.codigo}%0A*TIPO:* ${data.tipoViaje}%0A*VEHÍCULO:* ${data.vehiculo}%0A*ORIGEN:* ${data.origen}%0A*DESTINO:* ${data.destino}%0A*FECHA:* ${data.fecha} - *HORA:* ${data.hora}%0A*PASAJEROS:* ${pax}`;
-        if(data.precio && data.precio !== "Por Cotizar") { baseText += `%0A*PRECIO WEB:* ${data.precio}`; }
-        baseText += `%0A%0A*Mi Nombre:* ${data.nombre}`;
+        
+        // CORRECCIÓN FINAL: Usar traducciones dinámicas para el mensaje de WhatsApp/Mail
+        const t = translations[currentLang]; // Usar el idioma actual seleccionado
+        const l = t.waLabels; // Alias para escribir menos
+        
+        let saludo = data.esVenta ? t.waGreetingConfirm : t.waGreetingQuote;
+        
+        // Construcción del mensaje usando etiquetas traducidas
+        let baseText = `${saludo}%0A%0A*${l.code}:* ${data.codigo}%0A*${l.type}:* ${data.tipoViaje}%0A*${l.veh}:* ${data.vehiculo}%0A*${l.orig}:* ${data.origen}%0A*${l.dest}:* ${data.destino}%0A*${l.date}:* ${data.fecha} - *${l.time}:* ${data.hora}%0A*${l.pax}:* ${document.getElementById('pasajeros').value}`;
+        
+        if(data.precio && data.precio !== t.valToBeQuoted) { baseText += `%0A*${l.price}:* ${data.precio}`; }
+        
+        baseText += `%0A%0A*${l.name}:* ${data.nombre}`;
+        
         const subject = encodeURIComponent("Solicitud " + data.codigo + " - " + data.nombre);
         const mailBody = encodeURIComponent(baseText.replace(/%0A/g, "\n").replace(/\*/g, "")); 
         
@@ -1582,14 +1598,13 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
         })
         .then(() => {
             document.getElementById('loadingOverlay').style.display = 'none';
-            const t = translations[currentLang];
+            //const t = translations[currentLang]; // Ya definida arriba
             
             if(data.esVenta) {
                 document.getElementById('modalTitle').innerText = t.modalTitleReceived;
                 document.getElementById('modalMainTitle').innerText = t.modalTitleReceived;
                 document.getElementById('modalText').innerText = t.modalTextReceived;
             } else {
-                // CORRECCION 2: Textos del Modal para Cotización traducidos
                 document.getElementById('modalTitle').innerText = t.modalTitleSent;
                 document.getElementById('modalMainTitle').innerText = t.modalTitleSent;
                 document.getElementById('modalText').innerHTML = t.modalTextSent;
