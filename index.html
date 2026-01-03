@@ -708,7 +708,7 @@
 
     <div class="loading-overlay" id="loadingOverlay">
         <div class="spinner"></div>
-        <p style="margin-top: 15px; font-weight: 700; color: #333; font-size: 14px;">GENERANDO RESERVA...</p>
+        <p id="loadingTextDisplay" style="margin-top: 15px; font-weight: 700; color: #333; font-size: 14px;">GENERANDO RESERVA...</p>
     </div>
 
     <div class="modal-overlay" id="modalTyC">
@@ -776,7 +776,7 @@
     const airportNameES = "Aeropuerto Internacional de Cancún";
     const airportNameEN = "Cancun International Airport";
 
-    /* --- HELPER PARA OBTENER TEXTO PLANO DE TÉRMINOS Y CONDICIONES PARA EMAIL --- */
+    /* --- HELPER PARA OBTENER TEXTO PLANO DE TÉRMINOS Y CONDICIONES --- */
     function getTycPlainText(lang) {
         if (lang === 'en') {
             return `TERMS AND CONDITIONS
@@ -902,51 +902,30 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
             // MODALES Y TYC ESPAÑOL
             tycTitle: "Términos y Condiciones",
             btnClose: "Cerrar <i class='fas fa-times'></i>",
-            tycContent: `
-                <h4>1. PROCESO DE RESERVACIÓN Y PAGOS</h4>
-                <p><strong>Número de Reserva:</strong> Al completar su solicitud en nuestro sitio web, el sistema generará un número de reserva. Este número es únicamente para seguimiento y no garantiza la confirmación del servicio.</p>
-                <p><strong>Confirmación Oficial:</strong> El servicio se considerará formalmente confirmado y la unidad quedará bloqueada en agenda únicamente tras la recepción del anticipo del 50% y el envío de nuestra confirmación oficial por parte de nuestro equipo.</p>
-                <p><strong>Liquidación:</strong> En servicios con más de 72 horas de anticipación, el saldo restante debe pagarse 72 horas antes del viaje para pagos digitales. En servicios de última hora (menos de 72 horas), los pagos digitales requieren el 100% al reservar; en efectivo, se requiere el 50% de anticipo digital y el resto al abordar.</p>
-
-                <h4>2. PRIVACIDAD Y PROTECCIÓN DE DATOS</h4>
-                <p><strong>Confidencialidad:</strong> Luxury Transfers Riviera se compromete a utilizar su información personal (nombre, teléfono, correo y detalles de vuelo) estrictamente para la gestión de su traslado.</p>
-                <p><strong>Seguridad:</strong> Sus datos son tratados con total discreción y no serán compartidos con terceros ajenos a la operación, garantizando la privacidad de su itinerario en todo momento.</p>
-
-                <h4>3. SEGUROS Y DESLINDE DE RESPONSABILIDAD MÉDICA</h4>
-                <p><strong>Seguro de Viajero:</strong> Nuestras unidades cuentan con Póliza de Responsabilidad Civil vigente conforme a la ley federal mexicana por accidente de tránsito.</p>
-                <p><strong>Exclusión:</strong> La empresa queda exenta de responsabilidad en caso de complicaciones de salud o fallecimiento derivados de causas naturales o condiciones médicas preexistentes del pasajero.</p>
-
-                <h4>4. POLÍTICAS DE CANCELACIÓN Y REEMBOLSOS</h4>
-                <p><strong>Cancelación mayor a 24 horas:</strong> Se otorgará el reembolso del monto depositado, menos los cargos no reembolsables por procesamiento bancario que la plataforma de pago retenga.</p>
-                <p><strong>Cancelación menor a 24 horas o No-Show:</strong> No aplica reembolso ni crédito.</p>
-                <p><strong>Fuerza Mayor:</strong> No nos responsabilizamos por retrasos o pérdida de vuelos debidos a tráfico, accidentes de terceros, bloqueos viales o clima extremo.</p>
-
-                <h4>5. TIEMPOS DE ESPERA Y TOLERANCIA</h4>
-                <p><strong>Aeropuerto:</strong> El tiempo máximo de espera es de 60 minutos tras el aterrizaje. Al minuto 61 sin contacto, la unidad podrá retirarse y se marcará como No-Show.</p>
-                <p><strong>Hotel o Airbnb:</strong> La tolerancia es de 20 minutos. Tras este tiempo, la unidad podrá retirarse. El tiempo extra solicitado por el cliente podría generar un cargo adicional sujeto a disponibilidad.</p>
-
-                <h4>6. EQUIPAJE, OBJETOS DE VALOR Y SUSTANCIAS</h4>
-                <p><strong>Responsabilidad:</strong> El pasajero es el único responsable de sus pertenencias. No nos hacemos responsables por objetos olvidados o daños menores al equipaje por manejo normal.</p>
-                <p><strong>Sustancias Ilícitas:</strong> Prohibido el transporte de drogas o armas. El incumplimiento causará la interrupción inmediata del servicio sin reembolso.</p>
-
-                <h4>7. CARGOS POR LIMPIEZA Y DAÑOS</h4>
-                <p><strong>Multa por Higiene:</strong> El cliente acepta un cargo de $300 MXN ($17 USD) por limpieza profunda en caso de vómito, derrames de comida o manchas graves en la tapicería.</p>
-                <p><strong>Daños Físicos:</strong> Cualquier daño intencional o accidental a la unidad será facturado al costo total de reparación.</p>
-
-                <h4>8. VEHÍCULOS Y CONDUCTA</h4>
-                <p><strong>Referencia Visual:</strong> Las imágenes son ilustrativas. Se garantiza la categoría contratada, pero el modelo o color pueden variar. Ante un imprevisto técnico, se enviará una unidad de apoyo para garantizar su llegada al destino.</p>
-                <p><strong>Derecho de Admisión:</strong> El chofer podrá negar el servicio ante conductas agresivas o estado inconveniente de los pasajeros que ponga en riesgo la seguridad.</p>
-            `,
+            tycContent: "", // Se llena dinámicamente con getTycPlainText
             btnAcceptTyc: "HE LEÍDO Y ACEPTO",
-            modalTitleReceived: "¡Solicitud Recibida!",
-            modalCodeLabel: "TU CÓDIGO DE REFERENCIA ES:",
+            
+            // CORRECCION 1: TEXTO DE CARGA
+            loadingText: "GENERANDO RESERVA...",
+
+            // CORRECCION 2: MODAL SOLICITUD (COTIZACION)
+            modalTitleReceived: "¡Solicitud Recibida!", // Para Venta Directa
+            modalTitleSent: "¡Solicitud Enviada!", // Para Cotización
             modalTextReceived: "Hemos recibido tu solicitud. Un asesor te contactará lo más breve posible para finalizar tu reserva.",
+            modalTextSent: "Hemos recibido tu solicitud. Un asesor te contactará lo más breve posible para darte un precio.",
+            
+            modalCodeLabel: "TU CÓDIGO DE REFERENCIA ES:",
             modalWarningTitle: "IMPORTANTE:",
             modalWarningText: "Te hemos enviado un correo con los detalles de tu solicitud. <br>Por favor revisa tu carpeta de SPAM o \"Correo no deseado\".",
             btnModalCall: '<i class="fas fa-phone"></i> Llama ahora',
             btnModalWa: '<i class="fab fa-whatsapp"></i> Confirmar por WhatsApp',
             btnModalMail: '<i class="fas fa-envelope"></i> Enviar Correo',
             
+            // CORRECCION 3: EMAIL DATA
+            valSpecialQuote: "Cotización Especial",
+            valToBeQuoted: "Por Cotizar",
+            labelReturnEmail: "REGRESO", // Etiqueta para las notas
+
             // FEATURES DE TARJETA
             cardFeatures: {
                 monitor: "Monitoreo de Vuelo",
@@ -1006,50 +985,29 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
             // MODALES Y TYC ENGLISH
             tycTitle: "Terms & Conditions",
             btnClose: "Close <i class='fas fa-times'></i>",
-            tycContent: `
-                <h4>1. BOOKING PROCESS AND PAYMENTS</h4>
-                <p><strong>Booking Number:</strong> Upon completing your request on our website, the system will generate a booking number. This number is for tracking purposes only and does not guarantee service confirmation.</p>
-                <p><strong>Official Confirmation:</strong> Service is formally confirmed, and the vehicle is blocked on our schedule only upon receipt of the 50% deposit and the issuance of our official confirmation.</p>
-                <p><strong>Balance Payment:</strong> For services booked more than 72 hours in advance, the remaining balance must be paid 72 hours before the trip for digital payments. For last-minute bookings (less than 72 hours), digital payments require 100% payment at the time of booking. For cash payments, a 50% digital deposit is required as a guarantee, with the remaining balance paid to the driver upon boarding.</p>
-
-                <h4>2. PRIVACY AND DATA PROTECTION</h4>
-                <p><strong>Confidentiality:</strong> Luxury Transfers Riviera commits to using your personal information (name, phone, email, and flight details) strictly for managing your transfer.</p>
-                <p><strong>Security:</strong> Your data is handled with total discretion and will not be shared with third parties outside of our operations, guaranteeing the privacy of your itinerary at all times.</p>
-
-                <h4>3. INSURANCE AND MEDICAL LIABILITY DISCLAIMER</h4>
-                <p><strong>Traveler Insurance:</strong> Our vehicles carry active Civil Liability Insurance as required by Mexican federal law for traffic accidents.</p>
-                <p><strong>Exclusion:</strong> The company is exempt from liability for health complications or death resulting from natural causes or pre-existing medical conditions of the passenger.</p>
-
-                <h4>4. CANCELLATION AND REFUND POLICIES</h4>
-                <p><strong>Cancellations > 24 hours:</strong> A refund of the deposited amount will be granted, minus non-refundable bank processing fees charged by the payment platform.</p>
-                <p><strong>Cancellations < 24 hours or No-Show:</strong> No refunds or credits will apply.</p>
-                <p><strong>Force Majeure:</strong> The company is not responsible for delays or missed flights due to external factors such as heavy traffic, third-party accidents, road blockades, or extreme weather.</p>
-
-                <h4>5. WAITING TIMES AND TOLERANCE</h4>
-                <p><strong>Airport Arrivals:</strong> Maximum waiting time is 60 minutes after the actual flight landing. If there is no contact from the passenger after 61 minutes, the vehicle may depart and will be marked as a No-Show.</p>
-                <p><strong>Hotel or Airbnb Pickups:</strong> Maximum tolerance is 20 minutes. After this time, the vehicle may depart to fulfill other scheduled services. Additional waiting time requested by the client may incur an extra charge, subject to availability.</p>
-
-                <h4>6. LUGGAGE, VALUABLES, AND SUBSTANCES</h4>
-                <p><strong>Responsibility:</strong> Passengers are solely responsible for their belongings. We are not responsible for forgotten or lost items (jewelry, electronics, cash) or minor luggage damage from normal handling.</p>
-                <p><strong>Illegal Substances:</strong> Transporting drugs or weapons is strictly prohibited. Non-compliance will result in immediate termination of service without a refund.</p>
-
-                <h4>7. CLEANING FEES AND VEHICLE DAMAGE</h4>
-                <p><strong>Sanitation Fee:</strong> The client agrees to an automatic charge of $300 MXN ($17 USD) for deep cleaning in the event of vomiting, food/drink spills, or severe upholstery stains.</p>
-                <p><strong>Physical Damage:</strong> Any intentional or accidental damage to the vehicle (screens, windows, seats) will be billed at the full cost of repair at an authorized shop.</p>
-
-                <h4>8. VEHICLES AND CONDUCT</h4>
-                <p><strong>Visual Reference:</strong> Website images are illustrative. We guarantee the booked category, but the specific make, model, or color may vary. In the event of a technical issue, a support unit will be dispatched to guarantee your arrival at the destination.</p>
-                <p><strong>Right of Admission:</strong> The driver may refuse service or interrupt the journey due to aggressive behavior or intoxication that jeopardizes the safety of the staff or the vehicle.</p>
-            `,
+            tycContent: "", 
             btnAcceptTyc: "I HAVE READ AND AGREE",
-            modalTitleReceived: "Request Received!",
-            modalCodeLabel: "YOUR REFERENCE CODE IS:",
+            
+            // CORRECCION 1: TEXTO DE CARGA
+            loadingText: "GENERATING BOOKING...",
+
+            // CORRECCION 2: MODAL SOLICITUD (COTIZACION)
+            modalTitleReceived: "Request Received!", // Para Venta
+            modalTitleSent: "Request Sent!", // Para Cotización
             modalTextReceived: "We have received your request. An advisor will contact you shortly to finalize your reservation.",
+            modalTextSent: "We have received your request. An advisor will contact you shortly with the price.",
+
+            modalCodeLabel: "YOUR REFERENCE CODE IS:",
             modalWarningTitle: "IMPORTANT:",
             modalWarningText: "We sent you an email with the details. <br>Please check your SPAM folder.",
             btnModalCall: '<i class="fas fa-phone"></i> Call Now',
             btnModalWa: '<i class="fab fa-whatsapp"></i> Confirm via WhatsApp',
             btnModalMail: '<i class="fas fa-envelope"></i> Send Email',
+
+            // CORRECCION 3: EMAIL DATA
+            valSpecialQuote: "Special Quote",
+            valToBeQuoted: "To Be Quoted",
+            labelReturnEmail: "RETURN", // Etiqueta para las notas
 
             // FEATURES DE TARJETA
             cardFeatures: {
@@ -1132,8 +1090,8 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
         document.getElementById('label-contact').innerText = t.labelContact;
         document.getElementById('label-nombre').innerText = t.labelNombre;
         document.getElementById('label-tel').innerText = t.labelTel;
-        document.getElementById('label-email').innerText = t.labelEmail; // NUEVA TRADUCCIÓN
-        document.getElementById('label-tipo-especial').innerText = t.labelSpecialType; // NUEVA TRADUCCIÓN
+        document.getElementById('label-email').innerText = t.labelEmail; 
+        document.getElementById('label-tipo-especial').innerText = t.labelSpecialType; 
         
         // ACTUALIZAR SELECT OPCIONES
         const sel = document.getElementById('subtipoPersonalizado');
@@ -1141,8 +1099,8 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
         sel.options[1].text = t.optTour;
         sel.options[2].text = t.optHours;
 
-        document.getElementById('label-fecha-vuelta').innerText = t.labelReturnDate; // NUEVA TRADUCCIÓN
-        document.getElementById('label-hora-vuelta').innerText = t.labelReturnTime; // NUEVA TRADUCCIÓN
+        document.getElementById('label-fecha-vuelta').innerText = t.labelReturnDate; 
+        document.getElementById('label-hora-vuelta').innerText = t.labelReturnTime; 
 
         document.getElementById('label-aerolinea').innerText = t.labelAerolinea;
         document.getElementById('label-vuelo').innerText = t.labelVuelo;
@@ -1171,7 +1129,6 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
         document.getElementById('fleet-desc-3').innerText = t.fleetDesc3;
         document.getElementById('fleet-desc-4').innerText = t.fleetDesc4;
         
-        // NUEVAS TRADUCCIONES VEHÍCULOS
         document.getElementById('veh-title-1').innerText = t.vehSedan;
         document.getElementById('veh-title-2').innerText = t.vehSuv;
         document.getElementById('veh-title-3').innerText = t.vehVan;
@@ -1184,15 +1141,18 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
 
         // ACTUALIZACIÓN DE TEXTOS EN MODALES Y BOTONES CERRAR
         document.getElementById('tyc-title').innerText = t.tycTitle;
-        document.getElementById('tyc-body').innerHTML = t.tycContent;
+        // Solo actualizar el contenido si tenemos el texto completo, usamos el helper
+        document.getElementById('tyc-body').innerHTML = getTycPlainText(currentLang).replace(/\n/g, '<br>'); 
+
         document.getElementById('btn-accept-tyc').innerText = t.btnAcceptTyc;
         document.getElementById('btn-close-tyc').innerHTML = t.btnClose; 
         document.getElementById('btn-close-confirm').innerHTML = t.btnClose; 
 
-        document.getElementById('modalTitle').innerText = t.modalTitleReceived;
-        document.getElementById('modalMainTitle').innerText = t.modalTitleReceived;
+        // CORRECCION 1: ACTUALIZAR TEXTO LOADING DINÁMICO
+        document.getElementById('loadingTextDisplay').innerText = t.loadingText;
+
+        // CORRECCION 2: TEXTOS DEL MODAL DE CONFIRMACIÓN (Usamos valores por defecto, luego se sobrescriben en iniciarEnvio)
         document.getElementById('modalCodeLabel').innerText = t.modalCodeLabel;
-        document.getElementById('modalText').innerText = t.modalTextReceived;
         document.getElementById('modalWarningTitle').innerText = t.modalWarningTitle;
         document.getElementById('modalWarningText').innerHTML = t.modalWarningText;
         
@@ -1200,9 +1160,9 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
         document.getElementById('btnWhatsapp').innerHTML = t.btnModalWa;
         document.getElementById('btnMail').innerHTML = t.btnModalMail;
         
-        // --- AUTO-UPDATE RESULTADOS (SI YA ESTÁN VISIBLES) ---
+        // --- AUTO-UPDATE RESULTADOS ---
         if(document.getElementById('resultados').style.display === 'block') {
-             cotizar(); // Re-ejecuta para traducir las tarjetas al vuelo
+             cotizar(); 
         }
     }
 
@@ -1245,7 +1205,10 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
         window.addEventListener('resize', updateSlider);
     }
 
-    function abrirTyC() { document.getElementById('modalTyC').style.display = 'flex'; }
+    function abrirTyC() { 
+        document.getElementById('tyc-body').innerHTML = getTycPlainText(currentLang).replace(/\n/g, '<br>');
+        document.getElementById('modalTyC').style.display = 'flex'; 
+    }
     function cerrarTyC() { document.getElementById('modalTyC').style.display = 'none'; }
 
     function generarCodigo() {
@@ -1255,23 +1218,23 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
         return result;
     }
 
-    // --- HELPER PARA CONVERTIR HORA MILITAR (14:30) A AM/PM (02:30 PM) PARA EMAIL/WA ---
     function convertirHora12h(hora24) {
         if(!hora24) return "";
         let [h, m] = hora24.split(':');
         let hh = parseInt(h);
         let ampm = hh >= 12 ? 'PM' : 'AM';
         hh = hh % 12;
-        hh = hh ? hh : 12; // el 0 debe ser 12
+        hh = hh ? hh : 12; 
         return hh + ':' + m + ' ' + ampm;
     }
 
+    // --- TARIFAS ---
     const tarifasSencilloMXN = { "ZONA HOTELERA DE TULUM": { standart: 2970, small: 6300, luxury: 5490 }, "CENTRO DE TULUM": { standart: 2520, small: 5400, luxury: 5400 }, "ZONA HOTELERA DE CANCUN": { standart: 720, small: 1800, luxury: 1512 }, "CENTRO DE CANCUN": { standart: 720, small: 1800, luxury: 1512 }, "COSTA MUJERES": { standart: 1440, small: 2700, luxury: 2610 }, "PLAYA MUJERES": { standart: 1170, small: 3338, luxury: 2340 }, "PUERTO JUAREZ": { standart: 990, small: 2520, luxury: 1980 }, "PLAYA PARAISO": { standart: 1170, small: 3338, luxury: 2340 }, "PUERTO MORELOS": { standart: 990, small: 2520, luxury: 1980 }, "PLAYA DEL CARMEN": { standart: 1440, small: 2700, luxury: 2610 }, "PUERTO AVENTURAS": { standart: 1710, small: 4050, luxury: 3060 }, "AKUMAL": { standart: 2070, small: 4860, luxury: 4230 }, "FELIPE CARRILLO PUERTO": { standart: 8100, small: 19386, luxury: 21870 }, "MAHAHUAL": { standart: 9900, small: 19386, luxury: 17820 }, "BACALAR": { standart: 9900, small: 19386, luxury: 17820 }, "CHETUMAL": { standart: 10000, small: 19386, luxury: 19000 }, "HOLBOX": { standart: 5760, small: 14400, luxury: 11160 }, "VALLADOLID": { standart: 5400, small: 11120, luxury: 15684 }, "MERIDA": { standart: 9900, small: 17820, luxury: 17820 } };
     const tarifasSencilloUSD = { "ZONA HOTELERA DE TULUM": { standart: 170, small: 360, luxury: 314 }, "CENTRO DE TULUM": { standart: 144, small: 309, luxury: 309 }, "ZONA HOTELERA DE CANCUN": { standart: 42, small: 103, luxury: 87 }, "CENTRO DE CANCUN": { standart: 42, small: 103, luxury: 87 }, "COSTA MUJERES": { standart: 83, small: 155, luxury: 150 }, "PLAYA MUJERES": { standart: 67, small: 191, luxury: 134 }, "PUERTO JUAREZ": { standart: 57, small: 144, luxury: 114 }, "PLAYA PARAISO": { standart: 67, small: 191, luxury: 134 }, "PUERTO MORELOS": { standart: 57, small: 144, luxury: 114 }, "PLAYA DEL CARMEN": { standart: 83, small: 155, luxury: 150 }, "PUERTO AVENTURAS": { standart: 98, small: 232, luxury: 175 }, "AKUMAL": { standart: 119, small: 278, luxury: 242 }, "FELIPE CARRILLO PUERTO": { standart: 463, small: 1108, luxury: 1250 }, "MAHAHUAL": { standart: 566, small: 1108, luxury: 1019 }, "BACALAR": { standart: 566, small: 1108, luxury: 1019 }, "CHETUMAL": { standart: 572, small: 1108, luxury: 1086 }, "HOLBOX": { standart: 330, small: 823, luxury: 638 }, "VALLADOLID": { standart: 309, small: 636, luxury: 897 }, "MERIDA": { standart: 566, small: 1019, luxury: 1019 } };
     const tarifasRedondoMXN = { "ZONA HOTELERA DE TULUM": { standart: 5940, small: 12600, luxury: 10980 }, "CENTRO DE TULUM": { standart: 5040, small: 10800, luxury: 10800 }, "ZONA HOTELERA DE CANCUN": { standart: 1440, small: 3600, luxury: 3024 }, "CENTRO DE CANCUN": { standart: 1440, small: 3600, luxury: 3024 }, "COSTA MUJERES": { standart: 2880, small: 5400, luxury: 5220 }, "PLAYA MUJERES": { standart: 2340, small: 6676, luxury: 4680 }, "PUERTO JUAREZ": { standart: 1980, small: 5040, luxury: 3960 }, "PLAYA PARAISO": { standart: 2340, small: 6676, luxury: 4680 }, "PUERTO MORELOS": { standart: 1980, small: 5040, luxury: 3960 }, "PLAYA DEL CARMEN": { standart: 2880, small: 5400, luxury: 5220 }, "PUERTO AVENTURAS": { standart: 3420, small: 8100, luxury: 6120 }, "AKUMAL": { standart: 4140, small: 9720, luxury: 8460 }, "FELIPE CARRILLO PUERTO": { standart: 16200, small: 38772, luxury: 43740 }, "MAHAHUAL": { standart: 19800, small: 38772, luxury: 35640 }, "BACALAR": { standart: 19800, small: 38772, luxury: 35640 }, "CHETUMAL": { standart: 20000, small: 38772, luxury: 38000 }, "HOLBOX": { standart: 11520, small: 28800, luxury: 22320 }, "VALLADOLID": { standart: 10800, small: 22240, luxury: 31368 }, "MERIDA": { standart: 19800, small: 35640, luxury: 35640 } };
     const tarifasRedondoUSD = { "ZONA HOTELERA DE TULUM": { standart: 340, small: 720, luxury: 628 }, "CENTRO DE TULUM": { standart: 288, small: 618, luxury: 618 }, "ZONA HOTELERA DE CANCUN": { standart: 83, small: 206, luxury: 173 }, "CENTRO DE CANCUN": { standart: 83, small: 206, luxury: 173 }, "COSTA MUJERES": { standart: 165, small: 309, luxury: 299 }, "PLAYA MUJERES": { standart: 134, small: 382, luxury: 268 }, "PUERTO JUAREZ": { standart: 114, small: 288, luxury: 227 }, "PLAYA PARAISO": { standart: 134, small: 382, luxury: 268 }, "PUERTO MORELOS": { standart: 114, small: 288, luxury: 227 }, "PLAYA DEL CARMEN": { standart: 165, small: 309, luxury: 299 }, "PUERTO AVENTURAS": { standart: 196, small: 463, luxury: 350 }, "AKUMAL": { standart: 237, small: 556, luxury: 484 }, "FELIPE CARRILLO PUERTO": { standart: 926, small: 2216, luxury: 2500 }, "MAHAHUAL": { standart: 1132, small: 2216, luxury: 2037 }, "BACALAR": { standart: 1132, small: 2216, luxury: 2037 }, "CHETUMAL": { standart: 1143, small: 2216, luxury: 2172 }, "HOLBOX": { standart: 659, small: 1646, luxury: 1276 }, "VALLADOLID": { standart: 618, small: 1271, luxury: 1793 }, "MERIDA": { standart: 1132, small: 2037, luxury: 2037 } };
 
-    const diccionarioZonas = { "ZONA HOTELERA DE TULUM": ["TULUM HOTEL ZONE", "ZONA HOTELERA TULUM", "PAPAYA PLAYA", "NOMADE", "AZULIK", "ESTRELLITA", "LIBELULA", "CASA PHOENIX"], "CENTRO DE TULUM": ["TULUM DOWNTOWN", "CENTRO DE TULUM", "TULUM PUEBLO", "TULUM, Q.R.", "ZAMA", "VELETA"], "ZONA HOTELERA DE CANCUN": ["CANCUN HOTEL ZONE", "ZONA HOTELERA", "KUKULCAN", "HOTEL ZONE", "BOULEVARD KUKULCAN"], "CENTRO DE CANCUN": ["CANCUN DOWNTOWN", "CENTRO DE CANCUN", "CANCUN CENTRO", "SUPERMANZANA", "CANCUN, Q.R.", "ALAMOS", "HUAYACAN"], "COSTA MUJERES": ["COSTA MUJERES", "RIU DUNAMAR", "RIU PALACE COSTA", "PLANET HOLLYWOOD", "CATALONIA COSTA"], "PLAYA MUJERES": ["PLAYA MUJERES", "ATELIER", "FINEST", "BELOVED", "EXCELLENCE PLAYA"], "PUERTO MORELOS": ["PUERTO MORELOS", "DREAMS JADE", "NOW SAPPHIRE", "OCEAN CORAL", "MOON PALACE", "ROYALTON"], "PLAYA PARAISO": ["PLAYA PARAISO", "IBEROSTAR", "VIDANTA", "MAROMA"], "PLAYA DEL CARMEN": ["PLAYA DEL CARMEN", "XCARET", "FIFTH AVENUE", "QUINTA AVENIDA", "PLAYACAR"], "PUERTO AVENTURAS": ["PUERTO AVENTURAS", "DREAMS AVENTURAS", "DREAMS PUERTO", "HARD ROCK RIVIERA", "BARCELO", "UNICO", "CATALONIA ROYAL"], "AKUMAL": ["AKUMAL", "BAHIA PRINCIPE", "SIRENIS", "PALLADIUM", "UNICO"], "MAHAHUAL": ["MAHAHUAL"], "BACALAR": ["BACALAR"], "CHETUMAL": ["CHETUMAL"], "HOLBOX": ["HOLBOX", "CHIQUILA"], "VALLADOLID": ["VALLADOLID"], "MERIDA": ["MERIDA"] };
+    const diccionarioZonas = { "ZONA HOTELERA DE TULUM": ["TULUM HOTEL ZONE", "ZONA HOTELERA TULUM", "PAPAYA PLAYA", "NOMADE", "AZULIK", "ESTRELLITA", "LIBELULA", "CASA PHOENIX"], "CENTRO DE TULUM": ["TULUM DOWNTOWN", "CENTRO DE TULUM", "TULUM PUEBLO", "TULUM, Q.R.", "ZAMA", "VELETA"], "ZONA HOTELERA DE CANCUN": ["CANCUN HOTEL ZONE", "ZONA HOTELERA", "KUKULCAN", "HOTEL ZONE", "BOULEVARD KUKULCAN"], "CENTRO DE CANCUN": ["CANCUN DOWNTOWN", "CENTRO DE CANCUN", "CANCUN CENTRO", "SUPERMANZANA", "CANCUN, Q.R.", "ALAMOS", "HUAYACAN"], "COSTA MUJERES": ["COSTA MUJERES", "RIU DUNAMAR", "RIU PALACE COSTA", "PLANET HOLLYWOOD", "CATALONIA COSTA"], "PLAYA MUJERES": ["PLAYA MUJERES", "ATELIER", "FINEST", "BELOVED", "EXCELLENCE PLAYA"], "PUERTO MORELOS": ["PUERTO MORELOS", "DREAMS JADE", "NOW SAPPHIRE", "OCEAN CORAL", "MOON PALACE", "ROYALTON"], "PLAYA PARAISO": ["PLAYA PARAISO", "IBEROSTAR", "VIDANTA", "MAROMA"], "PLAYA DEL CARMEN": ["PLAYA DEL CARMEN", "XCARET", "FIFTH AVENUE", "QUINTA AVENIDA", "PLAYACAR"], "PUERTO AVENTURAS": ["PUERTO AVENTURAS", "DREAMS AVENTURAS", "DREAMS PUERTO", "HARD ROCK RIVIERA", "BARCELO", "UNICO", "CATALONIA ROYAL"], "AKUMAL": ["AKUMAL", "AKUMAL BAY", "BAHIA PRINCIPE", "SIRENIS", "PALLADIUM", "UNICO"], "MAHAHUAL": ["MAHAHUAL"], "BACALAR": ["BACALAR"], "CHETUMAL": ["CHETUMAL"], "HOLBOX": ["HOLBOX", "CHIQUILA"], "VALLADOLID": ["VALLADOLID"], "MERIDA": ["MERIDA"] };
     const zonasGPS = [ { nombre: "COSTA MUJERES", latMin: 21.2300, latMax: 21.3500, lonMin: -86.8500, lonMax: -86.7800 }, { nombre: "PLAYA MUJERES", latMin: 21.2000, latMax: 21.2290, lonMin: -86.8200, lonMax: -86.7800 }, { nombre: "PUERTO JUAREZ", latMin: 21.1650, latMax: 21.1990, lonMin: -86.8250, lonMax: -86.7900 }, { nombre: "ZONA HOTELERA DE CANCUN", latMin: 21.0000, latMax: 21.1200, lonMin: -86.8100, lonMax: -86.7500 }, { nombre: "ZONA HOTELERA DE CANCUN", latMin: 21.1200, latMax: 21.1500, lonMin: -86.8100, lonMax: -86.7200 }, { nombre: "PUERTO MORELOS", latMin: 20.9500, latMax: 21.0500, lonMin: -86.9500, lonMax: -86.8300 }, { nombre: "PUERTO MORELOS", latMin: 20.8200, latMax: 20.9500, lonMin: -87.0000, lonMax: -86.8000 }, { nombre: "PLAYA PARAISO", latMin: 20.7000, latMax: 20.8200, lonMin: -86.9900, lonMax: -86.9200 }, { nombre: "PLAYA DEL CARMEN", latMin: 20.5500, latMax: 20.7000, lonMin: -87.1500, lonMax: -87.0000 }, { nombre: "PUERTO AVENTURAS", latMin: 20.4500, latMax: 20.5500, lonMin: -87.3000, lonMax: -87.1500 }, { nombre: "AKUMAL", latMin: 20.3000, latMax: 20.4500, lonMin: -87.3500, lonMax: -87.2500 }, { nombre: "ZONA HOTELERA DE TULUM", latMin: 20.1215, latMax: 20.2200, lonMin: -87.4700, lonMax: -87.4000 }, { nombre: "CENTRO DE TULUM", latMin: 20.1800, latMax: 20.2400, lonMin: -87.5500, lonMax: -87.4701 }, { nombre: "CENTRO DE CANCUN", latMin: 21.1200, latMax: 21.1700, lonMin: -86.9500, lonMax: -86.8250 }, { nombre: "MERIDA", latMin: 20.8500, latMax: 21.1000, lonMin: -89.7500, lonMax: -89.5000 }, { nombre: "VALLADOLID", latMin: 20.6500, latMax: 20.7500, lonMin: -88.2500, lonMax: -88.1500 } ];
     const zonasCP = { "7750": "CENTRO DE CANCUN", "7751": "CENTRO DE CANCUN", "77520": "PUERTO JUAREZ", "77580": "PUERTO MORELOS", "77710": "PLAYA DEL CARMEN", "77712": "PLAYA DEL CARMEN", "77714": "PLAYA DEL CARMEN", "77733": "PUERTO AVENTURAS", "77776": "AKUMAL", "77760": "CENTRO DE TULUM", "77780": "CENTRO DE TULUM", "77310": "HOLBOX", "77930": "BACALAR", "770": "CHETUMAL", "970": "MERIDA", "971": "MERIDA", "972": "MERIDA", "973": "MERIDA", "9778": "VALLADOLID" };
 
@@ -1318,12 +1281,12 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
             origen.value = activeLangAirportName; origen.setAttribute('readonly', true); origen.style.cssText = ro;
             destino.value = ""; destino.removeAttribute('readonly'); destino.style.cssText = ed; 
             destino.placeholder = currentLang === 'en' ? "Where are you going?" : "¿A qué hotel vas?";
-            btnAccion.innerText = "Buscar Precios";
+            btnAccion.innerText = translations[currentLang].btnAccion;
         } else if (modo === 'haciaAero') {
             destino.value = activeLangAirportName; destino.setAttribute('readonly', true); destino.style.cssText = ro;
             origen.value = ""; origen.removeAttribute('readonly'); origen.style.cssText = ed; 
             origen.placeholder = currentLang === 'en' ? "Pick-up Location" : "¿Dónde te recogemos?";
-            btnAccion.innerText = "Buscar Precios";
+            btnAccion.innerText = translations[currentLang].btnAccion;
         } else if (modo === 'personalizado') {
             document.getElementById('divSubtipoServicio').style.display = 'flex';
             document.getElementById('divVueloInfo').style.display = 'none';
@@ -1331,16 +1294,9 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
             origen.placeholder = currentLang === 'en' ? "Pick-up Location" : "Lugar de Recogida";
             destino.value = ""; destino.removeAttribute('readonly'); destino.style.cssText = ed; 
             destino.placeholder = currentLang === 'en' ? "Destination" : "Lugar de Destino";
-            btnAccion.innerText = "Solicitar Cotización";
+            btnAccion.innerText = translations[currentLang].btnQuoteCustom;
             updateTipoServicio(document.getElementById('tipoServicio').value);
             ajustarCamposPersonalizados();
-        }
-        
-        // TRADUCCION DE BOTÓN AL CAMBIAR PESTAÑA (CORRECCIÓN)
-        if(direccionMode !== 'personalizado') {
-            document.getElementById('btnAccion').innerText = translations[currentLang].btnAccion;
-        } else {
-            document.getElementById('btnAccion').innerText = translations[currentLang].btnQuoteCustom;
         }
     }
 
@@ -1393,7 +1349,6 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
             if(!document.getElementById('termsCheck').checked) { alert("⚠️ Debes leer y aceptar los Términos y Condiciones para continuar."); return; }
             const email = document.getElementById('emailCliente').value;
             
-            // --- CAMBIO: OBTENER HORA DESDE INPUT TYPE=TIME ---
             const rawHora = document.getElementById('horaIda').value;
             const fecha = document.getElementById('fechaIda').value;
 
@@ -1401,23 +1356,24 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
             if(!fecha) { alert("⚠️ Selecciona una fecha."); return; }
             if(!rawHora) { alert("⚠️ Selecciona la hora."); return; }
 
-            const hora = convertirHora12h(rawHora); // Convertimos para el texto final
+            const hora = convertirHora12h(rawHora); 
 
             const nombre = document.getElementById('nombreCliente').value;
             const tel = document.getElementById('telefonoCliente').value;
             if(nombre.length < 2) { alert("Escribe tu nombre."); return; }
             if(tel.length < 5) { alert("Escribe tu teléfono."); return; }
+            
+            // CORRECCION 3: Usamos el diccionario para los textos del correo
+            const t = translations[currentLang];
 
             if (direccionMode === 'personalizado') {
                 const subtipo = document.getElementById('subtipoPersonalizado').value;
                 const subtipoTxt = document.getElementById('subtipoPersonalizado').options[document.getElementById('subtipoPersonalizado').selectedIndex].text;
                 let destinoFinal = (subtipo === 'HORAS') ? document.getElementById('horasSeleccionadas').value : document.getElementById('destino').value;
                 
-                // VALIDACIÓN EXTRA PARA PERSONALIZADO (PUNTO 1 CORREGIDO)
                 if(!document.getElementById('origen').value) { alert("⚠️ En servicio personalizado, debes indicar el Lugar de Recogida."); return; }
                 if(subtipo !== 'HORAS' && !document.getElementById('destino').value) { alert("⚠️ En servicio personalizado, debes indicar el Lugar de Destino."); return; }
                 
-                // Validar Vuelta si es Redondo en Personalizado
                 let fechaVueltaVal = "";
                 let horaVueltaVal = "";
                 if(document.getElementById('tipoServicio').value === 'REDONDO') {
@@ -1430,13 +1386,13 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
                 }
 
                 const codigoUnico = generarCodigo();
-                // Incluimos hora de vuelta en notas si existe
+                // CORRECCION 3: Etiqueta de regreso traducida
                 let notasFinales = document.getElementById('notasCliente').value;
                 if(horaVueltaVal) {
-                    notasFinales += ` // REGRESO: ${fechaVueltaVal} a las ${horaVueltaVal}`;
+                    notasFinales += ` // ${t.labelReturnEmail}: ${fechaVueltaVal} a las ${horaVueltaVal}`;
                 }
 
-                const datosCotizacion = { esVenta: false, codigo: codigoUnico, nombre: nombre, telefono: tel, email: email, tipoViaje: document.getElementById('tipoServicio').value + " - " + subtipoTxt, origen: document.getElementById('origen').value, destino: destinoFinal, fecha: fecha, hora: hora, notas: notasFinales, itinerario: document.getElementById('itinerarioCliente').value, vehiculo: "Cotización Especial", precio: "Por Cotizar", idioma: currentLang };
+                const datosCotizacion = { esVenta: false, codigo: codigoUnico, nombre: nombre, telefono: tel, email: email, tipoViaje: document.getElementById('tipoServicio').value + " - " + subtipoTxt, origen: document.getElementById('origen').value, destino: destinoFinal, fecha: fecha, hora: hora, notas: notasFinales, itinerario: document.getElementById('itinerarioCliente').value, vehiculo: t.valSpecialQuote, precio: t.valToBeQuoted, idioma: currentLang };
                 document.getElementById('codigoDisplay').innerText = codigoUnico;
                 iniciarEnvio(datosCotizacion);
                 return;
@@ -1444,14 +1400,12 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
 
             const tipo = document.getElementById('tipoServicio').value;
             
-            /* --- CORRECCIÓN CRÍTICA: VALIDAR VUELTA EN PESTAÑAS NORMALES --- */
             if (tipo === 'REDONDO') {
                 const fVuelta = document.getElementById('fechaVuelta').value;
                 const hVuelta = document.getElementById('horaVuelta').value;
                 if (!fVuelta) { alert("⚠️ Para el viaje Redondo, por favor selecciona la Fecha de Vuelta."); return; }
                 if (!hVuelta) { alert("⚠️ Para el viaje Redondo, por favor selecciona la Hora de Vuelta."); return; }
             }
-            /* ------------------------------------------------------------- */
 
             const moneda = document.getElementById('moneda').value;
             const pax = parseInt(document.getElementById('pasajeros').value);
@@ -1511,7 +1465,6 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
             if(direccionMode === 'desdeAero') rutaLabel = `${aeroName} <i class='fas fa-arrow-right'></i> ${document.getElementById('destino').value}`;
             else rutaLabel = `${document.getElementById('origen').value} <i class='fas fa-arrow-right'></i> ${aeroName}`;
             
-            const t = translations[currentLang];
             divRes.innerHTML = `<div class="ruta-header">${t.resultsFor}: ${rutaLabel}</div>`;
 
             let cap15 = currentLang === 'en' ? "Up to 15 Pax" : "Hasta 15 Pax";
@@ -1536,7 +1489,6 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
         let tipoTexto = (tipo === 'SENCILLO') ? t.oneWay : t.roundTrip;
         let iconoTipo = (tipo === 'SENCILLO') ? "fa-arrow-right" : "fa-exchange-alt";
         
-        // MODIFICACIÓN DE LA MONEDA: AHORA SALE PEQUEÑA Y EN LA MISMA LÍNEA
         return `
         <div class="tarjeta">
             <div class="tarjeta-img"><img src="${img}" alt="${veh}"></div>
@@ -1568,9 +1520,9 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
     function prepararVenta(datosCard) {
         const codigoUnico = generarCodigo();
         
-        // --- CAMBIO: OBTENER HORA ---
         const rawHora = document.getElementById('horaIda').value;
         const horaIda = convertirHora12h(rawHora);
+        const t = translations[currentLang];
 
         let notasFinales = document.getElementById('notasCliente').value;
         
@@ -1579,7 +1531,8 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
              const horaVuelta = convertirHora12h(rawHoraVuelta);
              const fechaVuelta = document.getElementById('fechaVuelta').value;
              if(fechaVuelta) {
-                 notasFinales += ` // REGRESO: ${fechaVuelta} a las ${horaVuelta}`;
+                 // CORRECCION 3: Etiqueta de regreso traducida
+                 notasFinales += ` // ${t.labelReturnEmail}: ${fechaVuelta} a las ${horaVuelta}`;
              }
         }
 
@@ -1599,7 +1552,7 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
             vehiculo: datosCard.vehiculo,
             precio: datosCard.precio,
             zona: datosCard.zona,
-            idioma: currentLang // ENVIAR IDIOMA AL SCRIPT
+            idioma: currentLang
         };
         document.getElementById('codigoDisplay').innerText = codigoUnico;
         iniciarEnvio(datosVenta);
@@ -1616,29 +1569,30 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
         const subject = encodeURIComponent("Solicitud " + data.codigo + " - " + data.nombre);
         const mailBody = encodeURIComponent(baseText.replace(/%0A/g, "\n").replace(/\*/g, "")); 
         
-        // --- CAMBIO: INCLUIR TYC EN EL CORREO MANUAL (MAILTO) Y ENVIAR AL SCRIPT (DATA) ---
         let tyc = getTycPlainText(currentLang);
-        data.terminos = tyc; // Enviamos los TyC en el objeto DATA por si el Script lo recibe
+        data.terminos = tyc; 
         
         const mailBodyConTyc = encodeURIComponent((baseText + "\n\n------------------------\n" + tyc).replace(/%0A/g, "\n").replace(/\*/g, ""));
 
-        document.getElementById('btnWhatsapp').href = `https://wa.me/529842411158?text=${baseText}`; // WhatsApp sigue corto
-        document.getElementById('btnMail').href = `mailto:reservas@luxurytransfersriviera.com.mx?subject=${subject}&body=${mailBodyConTyc}`; // Mail incluye TyC
+        document.getElementById('btnWhatsapp').href = `https://wa.me/529842411158?text=${baseText}`; 
+        document.getElementById('btnMail').href = `mailto:reservas@luxurytransfersriviera.com.mx?subject=${subject}&body=${mailBodyConTyc}`; 
 
         fetch(SCRIPT_URL, {
             method: 'POST', mode: 'no-cors', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)
         })
         .then(() => {
             document.getElementById('loadingOverlay').style.display = 'none';
+            const t = translations[currentLang];
+            
             if(data.esVenta) {
-                const t = translations[currentLang];
                 document.getElementById('modalTitle').innerText = t.modalTitleReceived;
                 document.getElementById('modalMainTitle').innerText = t.modalTitleReceived;
                 document.getElementById('modalText').innerText = t.modalTextReceived;
             } else {
-                document.getElementById('modalTitle').innerText = "¡Solicitud Enviada!";
-                document.getElementById('modalMainTitle').innerText = "¡Solicitud Enviada!";
-                document.getElementById('modalText').innerHTML = "Hemos recibido tu solicitud. Un asesor te contactará lo más breve posible para darte un precio.";
+                // CORRECCION 2: Textos del Modal para Cotización traducidos
+                document.getElementById('modalTitle').innerText = t.modalTitleSent;
+                document.getElementById('modalMainTitle').innerText = t.modalTitleSent;
+                document.getElementById('modalText').innerHTML = t.modalTextSent;
             }
             document.getElementById('modalConfirmacion').style.display = 'flex';
         })
@@ -1677,5 +1631,3 @@ Derecho de Admisión: El chofer podrá negar el servicio ante conductas agresiva
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdK5yLQ20SQrLc_0rOuo7oxxHVQ233Bh0&libraries=places&callback=initAutocomplete" async defer></script>
 </body>
 </html>
-
-
